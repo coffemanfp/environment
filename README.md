@@ -3,6 +3,7 @@ Entorno de desarrollo personalizado Tmux y NeoVim, Para desarrollo productivo.
 
 ## Instalar
 `git clone git@github.com:ArthurNavaH/Environment.git`
+
 `cd Environment && sh install.sh`
 
 ## Tmux y NeoVim
