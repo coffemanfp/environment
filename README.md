@@ -2,15 +2,16 @@
 Entorno de desarrollo personalizado Tmux y NeoVim, Para desarrollo productivo.
 
 ## Instalar
-´sh install.sh´
+`git clone git@github.com:ArthurNavaH/Environment.git`
+`cd Environment && sh install.sh`
 
 ## Tmux y NeoVim
-´tmux´
+`tmux`
 
-´nvim´
+`nvim`
 
 ## Ctags
-´ctags -R .´
+`ctags -R .`
 
 ## Plugins Vim
 * NERDTree (https://github.com/scrooloose/nerdtree)
