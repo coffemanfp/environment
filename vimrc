@@ -1,9 +1,3 @@
-" Instalar vim-gnome para poder usar el portapapeles del sistema
-" Instalar powerline para las fuentes de Airline.
-" Instalar FuraMono-Regular Powerline.otf para las fuentes de la interfaz.
-" Instalar universal-ctags para usar los tags.
-"
-" USAR CON NEOVIM
 
 set nocompatible              " be iMproved, required
 
@@ -34,8 +28,12 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+"--------------------------
+" Tecla lider remapeada : ,
 let mapleader=","
 let maplocalleader="\\"
+"--------------------------
+
 " - - - ArthurNavaH - Plugins -
 
 " NERDTree - Explorador de Archivos
@@ -202,9 +200,12 @@ Plugin 'raimondi/delimitmate'
 " EMMET - Generador de HTML y CSS
 Plugin 'mattn/emmet-vim'
 
+"--------------------------
+" Tecla lider de Emmet remapeada : <C-K>
 let g:user_emmet_leader_key='<C-K>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+"--------------------------
 
 "------------------
 "------------------
@@ -249,7 +250,7 @@ let g:gitgutter_max_signs = 200
 Plugin 'ryanoasis/vim-devicons'
 set encoding=utf-8
 set fileencodings=utf-8
-set guifont=FuraMono\ Nerd\ Font\ 12
+set guifont=Fira\ Mono\ for\ Powerline\ 12
 
 "------------------
 "------------------
@@ -296,9 +297,9 @@ set formatoptions+=1
 
 set smartcase
 
-set updatetime=1000
+set updatetime=600
 set ttyfast
-set timeout timeoutlen=1000 ttimeoutlen=50
+set timeout timeoutlen=600 ttimeoutlen=50
 set history=50
 set nobackup
 set noswapfile
@@ -378,6 +379,11 @@ nnoremap <C-W>ñ <C-W>l
 "------------------
 "------------------
 
+
+" - - - ArthurNavaH - Scripts -
+
+" Borrar archivos de Buffer excepto el activo con :Bo
+"   Author : Christian J. Robinson <infynity@onewest.net>
 command! -nargs=? -complete=buffer -bang Bo
     \ :call BufOnly('<args>', '<bang>')
 
@@ -428,3 +434,4 @@ function! BufOnly(buffer, bang)
 	endif
 
 endfunction
+"----------------------------------------------------
