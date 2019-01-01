@@ -1,5 +1,5 @@
 # Instalacion
-sudo apt install git vim curl neovim powerline fonts-powerline tmux universal-ctags vim-gnome xclip cmus terminator
+sudo apt install git vim curl neovim powerline fonts-powerline tmux universal-ctags vim-gnome xclip cmus terminator zsh
 
 # Carpeta
 mkdir ~/.vim
@@ -36,3 +36,16 @@ rm -rf fonts
 # Vundle
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 vim +PluginInstall +qa
+
+# GIT
+git config --global core.editor nvim
+git config --global diff.tool vimdiff
+git config --global merge.tool vimdiff
+
+# ZSH
+chsh -s /bin/zsh
+sudo chsh -s /bin/zsh
+
+# Oh My Zsh
+curl -L http://install.ohmyz.sh | sh
+wget --no-check-certificate http://install.ohmyz.sh -O - | sh
