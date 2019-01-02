@@ -317,6 +317,7 @@ if (has("termguicolors"))
 endif
 
 autocmd FileType markdown let g:indentLine_enabled=0
+set conceallevel=0
 
 "------------------
 "------------------
