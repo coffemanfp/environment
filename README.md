@@ -6,10 +6,21 @@ Entorno de desarrollo personalizado Tmux y NeoVim, Para desarrollo productivo.
 
 `cd Environment && sh install.sh`
 
-## Tmux y NeoVim
-`tmux`
-
-`nvim`
+# Lista de instalaciones
+1. GIT (Control de versiones)
+2. Vim (Editor de codigo)
+3. NeoVim (Vim mas optimizado y asincrono)
+4. Universal-Ctags (Generador de etiquetas para Vim)
+5. Vim-Gnome (Vim Gnome para integrar portapeles del sistema a Vim)
+6. Powerline (Linea de estado para Vim)
+7. Fonts-Powerline (Fuentes de Powerline)
+8. Tmux (Multiplexor de terminal)
+9. cURL (Transferencia de data en diferentes protocolos)
+10. Xclip (Manipulacion de portapapeles para Tmux)
+11. CMUS (Reproductor de musica de terminal)
+12. Terminator (Terminal preferida)
+13. Zsh (Interprete de comandos)
+14. Oh My ZSH!  (Temas para ZSH)
 
 ## Ctags
 `ctags -R .`
