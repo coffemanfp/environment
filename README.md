@@ -20,7 +20,8 @@ Entorno de desarrollo personalizado Tmux y NeoVim, Para desarrollo productivo.
 11. CMUS (Reproductor de musica de terminal)
 12. Terminator (Terminal preferida)
 13. Zsh (Interprete de comandos)
-14. Oh My ZSH!  (Temas para ZSH)
+14. Oh My ZSH! (Temas para ZSH)
+15. Git Flow (Extension de GIT)
 
 ## Ctags
 `ctags -R .`

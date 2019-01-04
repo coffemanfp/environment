@@ -3,7 +3,7 @@
 # Funciones
 installDeps() {
     # Instalacion
-    sudo "$1" install git vim curl neovim powerline fonts-powerline tmux universal-ctags vim-gnome xclip cmus terminator zsh
+    sudo "$1" install git vim curl neovim powerline fonts-powerline tmux universal-ctags vim-gnome xclip cmus terminator zsh git-flow
 }
 
 makeDirs(){
