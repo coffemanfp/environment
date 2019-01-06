@@ -2,9 +2,11 @@
 Entorno de desarrollo personalizado Tmux y NeoVim, Para desarrollo productivo.
 
 ## Instalar
-`git clone git@github.com:ArthurNavaH/Environment.git`
+```sh
+git clone git@github.com:ArthurNavaH/Environment.git
 
-`cd Environment && sh install.sh`
+cd Environment && sh install.sh
+```
 
 # Lista de instalaciones
 1. GIT (Control de versiones)
@@ -22,6 +24,8 @@ Entorno de desarrollo personalizado Tmux y NeoVim, Para desarrollo productivo.
 13. Zsh (Interprete de comandos)
 14. Oh My ZSH! (Temas para ZSH)
 15. Git Flow (Extension de GIT)
+16. ShellCheck (Validador de ShellScript)
+17. ExifTool (Manipulador de metadatos)
 
 ## Ctags
 `ctags -R .`
