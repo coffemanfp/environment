@@ -8,7 +8,7 @@ installDeps() {
 
 makeDirs(){
     # Carpeta
-    if ! [ -d "~/.vim" ]; then
+    if ! [ -d "$HOME/.vim" ]; then
         echo "----------------------"
         echo "Creando carpeta .vim"
         mkdir ~/.vim 2>/dev/null
@@ -16,14 +16,14 @@ makeDirs(){
         echo "----------------------"
     fi
 
-    if ! [ -d "~/.config" ]; then
+    if ! [ -d "$HOME/.config" ]; then
         echo "Creando carpeta .config"
         mkdir ~/.config 2>/dev/null
         sudo mkdir /root/.config 2>/dev/null
         echo "----------------------"
     fi
 
-    if ! [ -d "~/.config/nvim" ]; then
+    if ! [ -d "$HOME/.config/nvim" ]; then
         echo "Creando carpeta .config/nvim"
         mkdir ~/.config/nvim 2>/dev/null
         sudo mkdir /root/.config/nvim 2>/dev/null
@@ -35,13 +35,13 @@ vimConfig(){
     # Vim
     echo "----------------------"
     echo "Copiando configuracion VIM"
-    cp ./vimrc ~/.vim/.
+    cp ./vimrc "$HOME"/.vim/.
     sudo cp ./vimrc /root/.vim/.
     echo "----------------------"
 
     # NeoVim
     echo "Copiando configuracion NeoVim"
-    cp ./init.vim ~/.config/nvim/.
+    cp ./init.vim "$HOME"/.config/nvim/.
     sudo cp ./init.vim /root/.config/nvim/.
     echo "----------------------"
 }
@@ -49,7 +49,7 @@ vimConfig(){
 tmuxConfig() {
     # Tmux
     echo "Copiando configuracion Tmux"
-    cp ./.tmux.conf ~/.
+    cp ./.tmux.conf "$HOME"/.
     sudo cp ./.tmux.conf /root/.
     echo "----------------------"
 }
@@ -60,7 +60,7 @@ installCtags(){
     echo "----------------------"
     echo "Instalando Universal-Ctags"
     git clone https://github.com/universal-ctags/ctags.git
-    cd ctags
+    cd ctags || exit
     ./autogen.sh 
     ./configure
     make
@@ -75,7 +75,7 @@ installPowerlineFonts(){
     echo "----------------------"
     echo "Instalando Powerline Fonts"
     git clone https://github.com/powerline/fonts.git --depth=1
-    cd fonts
+    cd fonts || exit
     ./install.sh
     cd ..
     rm -rf fonts
@@ -86,7 +86,7 @@ installVundle() {
     # Vundle
     echo "----------------------"
     echo "Instalando Vundle"
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    git clone https://github.com/VundleVim/Vundle.vim.git "$HOME"/.vim/bundle/Vundle.vim
     echo "----------------------"
 
     echo "Instalando Plugins de Vim"
@@ -131,20 +131,18 @@ packageManager=""
 # ----------
 
 if [ "$existSudo" -ne "1" ]; then
-    echo "- Se necesita el comando 'sudo' para ejecutar la instalacion -"
+    echo "Se necesita el comando 'sudo' para ejecutar la instalacion"
 
 else
-    system=`sudo cat /etc/issue | grep Debian | cut -d " " -f 1`
+    system=$(sudo cat /etc/issue | grep Debian | cut -d " " -f 1)
 
     case $system in
         'Fedora')
             packageManager="dnf"
-            break
             ;;
 
         *)
             packageManager="apt"
-            break
             ;;
 
     esac
