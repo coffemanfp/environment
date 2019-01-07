@@ -1,4 +1,4 @@
-# Environment
+# environment
 Entorno de desarrollo personalizado Tmux y NeoVim, Para desarrollo productivo.
 
 ## Instalar
