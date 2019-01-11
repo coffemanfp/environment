@@ -108,6 +108,7 @@ Plugin 'leafgarland/typescript-vim'
 
 " VIM-GO - Mejor soporte para Go
 Plugin 'fatih/vim-go'
+Plugin 'nsf/gocode', {'rtp': 'vim/'}
 
 let g:go_fmt_command = "goimports"
 " Silenciar pestañas de advertencias de GoFmt
