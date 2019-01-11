@@ -108,7 +108,8 @@ Plugin 'leafgarland/typescript-vim'
 
 " VIM-GO - Mejor soporte para Go
 Plugin 'fatih/vim-go'
-Plugin 'nsf/gocode', {'rtp': 'vim/'}
+" Plugin 'nsf/gocode', {'rtp': 'vim/'}
+Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
 
 let g:go_fmt_command = "goimports"
 " Silenciar pestañas de advertencias de GoFmt
@@ -139,6 +140,9 @@ let g:go_auto_type_info = 1
 
 " Resaltar automaticamente las coincidencias bajo el cursor
 let g:go_auto_sameids = 1
+
+" Etiquetas para los campos de la estructura
+let g:go_addtags_transform = "camelcase"
 
 " let g:go_version_warning = 0
 

@@ -91,10 +91,13 @@ installVundle() {
 
     echo "Instalando Plugins de Vim"
     vim +PluginInstall +qa
+    vim +PluginUpdate +qa
     vim +GoInstallBinaries +qa
     vim +GoUpdateBinaries +qa
+
     # Reiniciando gocode
-    killall gocode && gocode drop-cache && gocode close && gocode status
+    killall gocode
+    gocode exit
     echo "----------------------"
 }
 
