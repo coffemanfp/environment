@@ -110,20 +110,36 @@ Plugin 'leafgarland/typescript-vim'
 Plugin 'fatih/vim-go'
 
 let g:go_fmt_command = "goimports"
+" Silenciar pestañas de advertencias de GoFmt
+" let g:go_fmt_fail_silently = 1
+"
+" Elije que deseas que se coloree de la sintaxis de Go
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
-let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
-let g:go_metalinter_deadline = "5s"
+let g:go_highlight_operators = 1
+"
+" Evitar que GoMetaLinter se ejecute por demasiado tiempo
+let g:go_metalinter_deadline = '3s'
+
+" let g:go_list_type = 'quickfix'
+
+" Activar GoMetaLinter al guardar el archivo
+let g:go_metalinter_autosave = 1
+
+" Declara el referenciador a definiciones
+let g:go_def_mode = 'godef'
+
+" Activa GoInfo automaticamente
+let g:go_auto_type_info = 1
+
+" Resaltar automaticamente las coincidencias bajo el cursor
 let g:go_auto_sameids = 1
-let g:go_list_type = "quickfix"
 
-let g:go_metalinter_autosave = 0
-let g:go_metalinter_autosave_enabled = ['vet', 'golint']
-
-let g:go_version_warning = 0
+" let g:go_version_warning = 0
 
 "------------------
 "------------------
@@ -152,12 +168,12 @@ Plugin 'shawncplus/phpcomplete.vim'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dracula/vim'
 Plugin 'w0ng/vim-hybrid'
-" Plugin 'edkolev/tmuxline.vim'
 
 colorscheme dracula
 color dracula
 set t_Co=256
 set background=dark
+let g:rehash256 = 1
 
 "------------------
 "------------------
@@ -297,9 +313,11 @@ set formatoptions+=1
 
 set smartcase
 
-set updatetime=600
+set nohlsearch
+
+set updatetime=100
 set ttyfast
-set timeout timeoutlen=600 ttimeoutlen=50
+" set timeout timeoutlen=300 ttimeoutlen=50
 set history=50
 set nobackup
 set noswapfile
