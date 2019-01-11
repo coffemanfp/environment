@@ -92,6 +92,7 @@ installVundle() {
     echo "Instalando Plugins de Vim"
     vim +PluginInstall +qa
     vim +PluginUpdate +qa
+    vim +UpdateRemotePlugins +qa
     vim +GoInstallBinaries +qa
     vim +GoUpdateBinaries +qa
 

@@ -1,4 +1,3 @@
-
 set nocompatible              " be iMproved, required
 
 filetype off                  " required
@@ -235,6 +234,16 @@ autocmd FileType html,css EmmetInstall
 
 " NeoComplete - Mejora para el autocompletado
 Plugin 'shougo/neocomplete.vim'
+
+Plugin 'roxma/nvim-yarp'
+Plugin 'roxma/vim-hug-neovim-rpc'
+
+if has("nvim")
+    Plugin 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+    Plugin 'shougo/deoplete.nvim'
+endif
+let g:deoplete#enable_at_startup = 1
 
 "------------------
 "------------------
