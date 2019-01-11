@@ -123,7 +123,7 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 "
 " Evitar que GoMetaLinter se ejecute por demasiado tiempo
-let g:go_metalinter_deadline = '3s'
+" let g:go_metalinter_deadline = '3s'
 
 " let g:go_list_type = 'quickfix'
 
