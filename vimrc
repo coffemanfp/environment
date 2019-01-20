@@ -124,7 +124,7 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 "
 " Evitar que GoMetaLinter se ejecute por demasiado tiempo
-" let g:go_metalinter_deadline = '3s'
+let g:go_metalinter_deadline = '20s'
 
 " let g:go_list_type = 'quickfix'
 
@@ -144,6 +144,15 @@ let g:go_auto_sameids = 1
 let g:go_addtags_transform = "camelcase"
 
 " let g:go_version_warning = 0
+
+" Ejecutar :GoTest con <leader>t
+autocmd FileType go nmap <leader>t  :GoTest<CR>
+" Ejecutar :GoBuild con <leader>b
+autocmd FileType go nmap <leader>b  :GoBuild<CR>
+" Ejecutar :GoAlternate con <leader>b
+autocmd FileType go nmap <leader>a  :GoAlternate<CR>
+" Ejecutar :GoCoverage con <leader>b
+autocmd FileType go nmap <leader>c  :GoCoverageToggle<CR>
 
 "------------------
 "------------------
