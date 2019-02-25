@@ -47,7 +47,7 @@ let NERDTreeShowFiles=1
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
 let NERDTreeMouseMode=2
-let NERDTreeIgnore=[ '^\.git$' ]
+let NERDTreeIgnore=[ '^\.git$', ]
 let NERDTreeAutoDeleteBuffer = 1
 
 "------------------
@@ -70,7 +70,8 @@ Plugin 'bling/vim-airline'
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='hybrid'
+" let g:airline_theme='hybrid'
+let g:airline_theme='oceanicnext'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 
@@ -145,14 +146,22 @@ let g:go_addtags_transform = "camelcase"
 
 " let g:go_version_warning = 0
 
-" Ejecutar :GoTest con <leader>t
-autocmd FileType go nmap <leader>t  :GoTest<CR>
-" Ejecutar :GoBuild con <leader>b
-autocmd FileType go nmap <leader>b  :GoBuild<CR>
-" Ejecutar :GoAlternate con <leader>b
-autocmd FileType go nmap <leader>a  :GoAlternate<CR>
-" Ejecutar :GoCoverage con <leader>b
-autocmd FileType go nmap <leader>c  :GoCoverageToggle<CR>
+" Ejecutar :GoTest con <leader>gt
+autocmd FileType go nmap <leader>gt  :GoTest<CR>
+" Ejecutar :GoBuild con <leader>gb
+autocmd FileType go nmap <leader>gb  :GoBuild<CR>
+" Ejecutar :GoAlternate con <leader>ga
+autocmd FileType go nmap <leader>ga  :GoAlternate<CR>
+" Ejecutar :GoCoverage con <leader>gc
+autocmd FileType go nmap <leader>gc  :GoCoverageToggle<CR>
+" Ejecutar :GoAddTags con <leader>gat
+autocmd FileType go nmap <leader>gat  :GoAddTags
+" Ejecutar :GoRemoveTags con <leader>grt
+autocmd FileType go nmap <leader>grt  :GoRemoveTags
+" Ejecutar :GoImport con <leader>gi
+autocmd FileType go nmap <leader>gi  :GoImport
+" Ejecutar :GoChannelPeers con <leader>gcp
+autocmd FileType go nmap <leader>gcp  :GoChannelPeers<CR>
 
 "------------------
 "------------------
@@ -179,14 +188,26 @@ Plugin 'shawncplus/phpcomplete.vim'
 
 " TEMAS - Configuracion de Temas
 Plugin 'vim-airline/vim-airline-themes'
+Plugin 'mhartington/oceanic-next'
+Plugin 'joshdick/onedark.vim'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'sickill/vim-monokai'
 Plugin 'dracula/vim'
 Plugin 'w0ng/vim-hybrid'
 
-colorscheme dracula
-color dracula
-set t_Co=256
+colorscheme OceanicNext
+color OceanicNext
 set background=dark
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+
 let g:rehash256 = 1
+set t_Co=256
+" let g:solarized_termcolors=256
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
 
 "------------------
 "------------------
