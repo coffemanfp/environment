@@ -162,6 +162,8 @@ autocmd FileType go nmap <leader>grt  :GoRemoveTags
 autocmd FileType go nmap <leader>gi  :GoImport
 " Ejecutar :GoChannelPeers con <leader>gcp
 autocmd FileType go nmap <leader>gcp  :GoChannelPeers<CR>
+" Agregar comentario a bloque de codigo con <leader>gac
+autocmd FileType go nmap <leader>gac  ?{<CR>0wywO//<ESC>pa
 
 "------------------
 "------------------
