@@ -178,6 +178,14 @@ Plugin 'pangloss/vim-javascript'
 "------------------
 
 
+" VIM-JSX - Soporte para JSX
+Plugin 'mxw/vim-jsx'
+
+"------------------
+"------------------
+"------------------
+
+
 " VIM-PHP - Mejor soporte para PHP
 Plugin 'stanangeloff/php.vim'
 Plugin 'shawncplus/phpcomplete.vim'
