@@ -6,7 +6,8 @@ installDeps() {
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     sudo $1 update
-    sudo "$1" install git vim curl neovim powerline fonts-powerline tmux universal-ctags vim-gnome xclip cmus terminator zsh git-flow shellcheck exiftool yarn
+    sudo "$1" install git vim curl neovim powerline fonts-powerline tmux universal-ctags vim-gnome xclip cmus terminator zsh git-flow shellcheck exiftool yarn \
+        python-neovim python3-neovim python-pip python3-pip 
 }
 
 makeDirs(){
