@@ -56,9 +56,14 @@ let NERDTreeAutoDeleteBuffer = 1
 
 
 " FZF - Buscador de Archivos
-Plugin 'junegunn/fzf'
+" Plugin 'junegunn/fzf'
+Plugin 'shougo/denite.nvim'
 
-nnoremap <leader>f :FZF<CR>
+nmap <leader>b :Denite buffer -split=floating -winrow=1<CR>
+nmap <leader>f :Denite file/rec -split=floating -winrow=1<CR>
+nnoremap <leader>h :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+
+" nnoremap <leader>f :FZF<CR>
 
 "------------------
 "------------------
@@ -264,7 +269,7 @@ Plugin 'mattn/emmet-vim'
 " Tecla lider de Emmet remapeada : <C-K>
 let g:user_emmet_leader_key='<C-K>'
 let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
+autocmd FileType html,css,javascript EmmetInstall
 "--------------------------
 
 "------------------
@@ -277,6 +282,12 @@ Plugin 'shougo/neocomplete.vim'
 
 Plugin 'roxma/nvim-yarp'
 Plugin 'roxma/vim-hug-neovim-rpc'
+
+Plugin 'neoclide/coc.nvim'
+
+nmap <silent> <leader>dd <Plug>(coc-definition)
+nmap <silent> <leader>dr <Plug>(coc-references)
+nmap <silent> <leader>dj <Plug>(coc-implementation)
 
 if has("nvim")
     Plugin 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }

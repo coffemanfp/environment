@@ -3,7 +3,10 @@
 # Funciones
 installDeps() {
     # Instalacion
-    sudo "$1" install git vim curl neovim powerline fonts-powerline tmux universal-ctags vim-gnome xclip cmus terminator zsh git-flow shellcheck exiftool
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo $1 update
+    sudo "$1" install git vim curl neovim powerline fonts-powerline tmux universal-ctags vim-gnome xclip cmus terminator zsh git-flow shellcheck exiftool yarn
 }
 
 makeDirs(){
@@ -95,6 +98,7 @@ installVundle() {
     vim +UpdateRemotePlugins +qa
     vim +GoInstallBinaries +qa
     vim +GoUpdateBinaries +qa
+    vim +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css +qa
 
     # Reiniciando gocode
     killall gocode
