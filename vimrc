@@ -107,6 +107,9 @@ let g:vim_json_syntax_conceal = 2
 Plugin 'leafgarland/typescript-vim'
 Plugin 'peitalin/vim-jsx-typescript'
 
+" set filetypes as typescript.tsx
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
 "------------------
 "------------------
 "------------------
