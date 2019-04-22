@@ -99,7 +99,7 @@ installVundle() {
     vim +UpdateRemotePlugins +qa
     vim +GoInstallBinaries +qa
     vim +GoUpdateBinaries +qa
-    vim +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html +qa
+    vim +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax coc-gocode +qa
 
     # Reiniciando gocode
     killall gocode
