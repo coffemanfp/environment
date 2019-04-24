@@ -196,8 +196,8 @@ Plugin 'mxw/vim-jsx'
 
 
 " VIM-PHP - Mejor soporte para PHP
-Plugin 'stanangeloff/php.vim'
-Plugin 'shawncplus/phpcomplete.vim'
+" Plugin 'stanangeloff/php.vim'
+" Plugin 'shawncplus/phpcomplete.vim'
 
 
 "------------------
@@ -233,17 +233,17 @@ let g:oceanic_next_terminal_italic = 1
 "------------------
 
 
-" EASYMOTION - Movilidad simple
-Plugin 'easymotion/vim-easymotion'
+" " EASYMOTION - Movilidad simple
+" Plugin 'easymotion/vim-easymotion'
 
-let g:EasyMotion_do_mapping = 0
+" let g:EasyMotion_do_mapping = 0
 
-nmap ; <Plug>(easymotion-overwin-f2)
+" nmap ; <Plug>(easymotion-overwin-f2)
 
-let g:EasyMotion_smartcase = 1
+" let g:EasyMotion_smartcase = 1
 
-nnoremap <Leader>k <Plug>(easymotion-j)
-nnoremap <Leader>l <Plug>(easymotion-k)
+" nnoremap <Leader>k <Plug>(easymotion-j)
+" nnoremap <Leader>l <Plug>(easymotion-k)
 
 "------------------
 "------------------
@@ -535,7 +535,7 @@ endfunction
 set cmdheight=2
 
 " Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=300
+set updatetime=100
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
