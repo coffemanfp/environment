@@ -389,7 +389,7 @@ set smartcase
 
 set nohlsearch
 
-set updatetime=100
+set updatetime=300
 set ttyfast
 " set timeout timeoutlen=300 ttimeoutlen=50
 set history=50
@@ -533,9 +533,6 @@ endfunction
 
 " Better display for messages
 set cmdheight=2
-
-" Smaller updatetime for CursorHold & CursorHoldI
-set updatetime=100
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
