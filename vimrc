@@ -26,10 +26,11 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+"
 
 "--------------------------
-" Tecla lider remapeada : ,
-let mapleader=","
+" Tecla lider remapeada : space
+let mapleader=" "
 let maplocalleader="\\"
 "--------------------------
 
@@ -40,8 +41,8 @@ Plugin 'scrooloose/nerdtree'
 Plugin 'xuyuanp/nerdtree-git-plugin'
 
 
-nnoremap <leader>j :NERDTreeToggle<CR>
-nnoremap <leader>g :NERDTreeFind<CR>
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>nn :NERDTreeFind<CR>
 
 let NERDTreeShowFiles=1
 let NERDTreeShowHidden=1
@@ -62,6 +63,24 @@ Plugin 'shougo/denite.nvim'
 nmap <leader>b :Denite buffer -split=floating -winrow=1<CR>
 nmap <leader>f :Denite file/rec -split=floating -winrow=1<CR>
 nnoremap <leader>h :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+
+call denite#custom#map(
+    \ 'insert',
+    \ '<C-k>',
+    \ '<denite:move_to_next_line>',
+    \ 'noremap'
+\)
+
+call denite#custom#map(
+    \ 'insert',
+    \ '<C-l>',
+    \ '<denite:move_to_previous_line>',
+    \ 'noremap'
+\)
+
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+    \ [ '.git/', '.ropeproject/', '__pycache__/',
+    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules'])
 
 " nnoremap <leader>f :FZF<CR>
 
@@ -134,7 +153,7 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_operators = 1
 "
 " Evitar que GoMetaLinter se ejecute por demasiado tiempo
-let g:go_metalinter_deadline = '20s'
+let g:go_metalinter_deadline = '5s'
 
 " let g:go_list_type = 'quickfix'
 
@@ -171,8 +190,6 @@ autocmd FileType go nmap <leader>grt  :GoRemoveTags
 autocmd FileType go nmap <leader>gi  :GoImport
 " Ejecutar :GoChannelPeers con <leader>gcp
 autocmd FileType go nmap <leader>gcp  :GoChannelPeers<CR>
-" Agregar comentario a bloque de codigo con <leader>gac
-autocmd FileType go nmap <leader>gac  ?{<CR>0wywO//<ESC>pa
 
 "------------------
 "------------------
@@ -214,9 +231,13 @@ Plugin 'sickill/vim-monokai'
 Plugin 'dracula/vim'
 Plugin 'w0ng/vim-hybrid'
 
-colorscheme OceanicNext
-color OceanicNext
-set background=dark
+Plugin 'flrnprz/taffy.vim'
+Plugin 'tomasr/molokai'
+Plugin 'morhetz/gruvbox'
+
+" colorscheme OceanicNext
+" color OceanicNext
+" set background=dark
 
 if (has("termguicolors"))
  set termguicolors
@@ -225,8 +246,10 @@ endif
 let g:rehash256 = 1
 set t_Co=256
 " let g:solarized_termcolors=256
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
+" let g:oceanic_next_terminal_bold = 1
+" let g:oceanic_next_terminal_italic = 1
+set background=dark
+colorscheme gruvbox
 
 "------------------
 "------------------
@@ -252,6 +275,9 @@ let g:oceanic_next_terminal_italic = 1
 
 " Commentary Vim - Comentarios rapidos de codigo
 Plugin 'tpope/vim-commentary'
+
+vnoremap <leader>t :'<,'>Commentary<CR>
+nnoremap <leader>t :Commentary<CR>
 
 "------------------
 "------------------
@@ -365,6 +391,18 @@ Plugin 'tpope/vim-eunuch'
 "------------------
 
 
+" ALE - Resaltado de sintaxis
+Plugin 'w0rp/ale'
+
+let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+let g:ale_sign_warning = '.'
+let g:ale_lint_on_enter = 0 " Less distracting when opening a new file<Paste>
+
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }
+
+
 " - - - ArthurNavaH - Configuracion -
 
 set number
@@ -385,18 +423,18 @@ set hlsearch
 set smartcase
 set formatoptions+=1
 
-set smartcase
+" set smartcase
 
-set nohlsearch
+" set nohlsearch
 
-set updatetime=300
+set updatetime=200
 set ttyfast
-" set timeout timeoutlen=300 ttimeoutlen=50
+set timeout timeoutlen=200 ttimeoutlen=50
 set history=50
-set nobackup
+" set nobackup
 set noswapfile
 set title
-set visualbell
+" set visualbell
 set noerrorbells
 set lazyredraw
 
@@ -445,11 +483,11 @@ vnoremap gl gk
 
 
 " Inhabilitar las teclas de dirección
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-let g:elite_mode=1
+" noremap <Up> <Nop>
+" noremap <Down> <Nop>
+" noremap <Left> <Nop>
+" noremap <Right> <Nop>
+" let g:elite_mode=1
 
 "------------------
 "------------------
@@ -646,3 +684,4 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
