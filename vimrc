@@ -60,29 +60,34 @@ let NERDTreeAutoDeleteBuffer = 1
 " Plugin 'junegunn/fzf'
 Plugin 'shougo/denite.nvim'
 
-nmap <leader>b :Denite buffer -split=floating -winrow=1<CR>
-nmap <leader>f :Denite file/rec -split=floating -winrow=1<CR>
+nmap <leader>b :Denite buffer <CR>
+nmap <leader>f :Denite file/rec <CR>
 nnoremap <leader>h :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+"
+" Define mappings
+	autocmd FileType denite call s:denite_my_settings()
+	function! s:denite_my_settings() abort
+	  nnoremap <silent><buffer><expr> <CR>
+	  \ denite#do_map('do_action')
+	  nnoremap <silent><buffer><expr> p
+	  \ denite#do_map('do_action', 'preview')
+	  nnoremap <silent><buffer><expr> q
+	  \ denite#do_map('quit')
+	  nnoremap <silent><buffer><expr> f
+	  \ denite#do_map('open_filter_buffer')
+	  nnoremap <silent><buffer><expr> <Space>
+	  \ denite#do_map('toggle_select').'j'
+	endfunction
 
-call denite#custom#map(
-    \ 'insert',
-    \ '<C-k>',
-    \ '<denite:move_to_next_line>',
-    \ 'noremap'
-\)
+	autocmd FileType denite-filter call s:denite_filter_my_settings()
+	function! s:denite_filter_my_settings() abort
+	  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+	endfunction
 
-call denite#custom#map(
-    \ 'insert',
-    \ '<C-l>',
-    \ '<denite:move_to_previous_line>',
-    \ 'noremap'
-\)
 
 call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
     \ [ '.git/', '.ropeproject/', '__pycache__/',
     \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules'])
-
-" nnoremap <leader>f :FZF<CR>
 
 "------------------
 "------------------
@@ -410,6 +415,7 @@ set ruler
 
 syntax on
 
+set ignorecase
 set expandtab
 set tabstop=4
 set shiftwidth=4
