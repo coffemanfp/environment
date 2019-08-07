@@ -464,22 +464,20 @@ set conceallevel=0
 nnoremap j h
 nnoremap k j
 nnoremap l k
-nnoremap ñ l
+nnoremap ; l
 nnoremap J H
 nnoremap K J
 nnoremap L K
-nnoremap Ñ L
 nnoremap gk gj
 nnoremap gl gk
 
 vnoremap j h
 vnoremap k j
 vnoremap l k
-vnoremap ñ l
+vnoremap ; l
 vnoremap J H
 vnoremap K J
 vnoremap L K
-vnoremap Ñ L
 vnoremap gk gj
 vnoremap gl gk
 
@@ -501,16 +499,15 @@ vnoremap gl gk
 
 
 " Atajos de Teclado Personales
-nnoremap <leader>ñ :vsplit<CR>
+nnoremap <leader>; :vsplit<CR>
 nnoremap <leader>k :split<CR>
-nnoremap <leader>{ <C-]><CR>
 
 nnoremap <C-c> <C-a><CR>
 
 nnoremap <C-W>j <C-W>h
 nnoremap <C-W>k <C-W>j
 nnoremap <C-W>l <C-W>k
-nnoremap <C-W>ñ <C-W>l
+nnoremap <C-W>; <C-W>l
 
 "------------------
 "------------------
