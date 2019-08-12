@@ -1,7 +1,7 @@
 {
     "suggest.autoTrigger": "always",
     "suggest.triggerAfterInsertEnter": true,
-    "suggest.snippetIndicator": "►",
+    "suggest.snippetIndicator": " ►",
     "suggest.minTriggerInputLength": 1,
     "languageserver": {
         "golang": {
@@ -15,3 +15,4 @@
         }
     }
 }
+
