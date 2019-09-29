@@ -35,7 +35,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'mxw/vim-jsx'
 
 " Commentary Vim - Comentarios rapidos de codigo
-Plug 'tpope/vim-commentary'
+Plug 'scrooloose/nerdcommenter'
 
 " Delimit Mate - Cierres automaticos de parentesis, llaves, etc
 Plug 'raimondi/delimitmate'
@@ -132,6 +132,10 @@ function! s:denite_filter_my_settings() abort
 	imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
 endfunction
 
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+    \ [ '.git/', '.ropeproject/', '__pycache__/',
+    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules'])
+
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='oceanicnext'
@@ -152,14 +156,8 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_generate_tags = 1
 
-" Evitar que GoMetaLinter se ejecute por demasiado tiempo
-" let g:go_metalinter_deadline = '5s'
-
 " Activar GoMetaLinter al guardar el archivo
 let g:go_metalinter_autosave = 1
-
-" Declara el referenciador a definiciones
-" let g:go_def_mode = 'godef'
 
 " Activa GoInfo automaticamente
 let g:go_auto_type_info = 1
@@ -185,9 +183,6 @@ autocmd FileType go nmap <leader>gat  :GoAddTags
 autocmd FileType go nmap <leader>grt  :GoRemoveTags
 " Ejecutar :GoChannelPeers con <leader>gcp
 autocmd FileType go nmap <leader>gcp  :GoChannelPeers<CR>
-
-vnoremap <leader>t :'<,'>Commentary<CR>
-nnoremap <leader>t :Commentary<CR>
 
 let g:user_emmet_leader_key='<C-K>'
 let g:user_emmet_install_global = 0
@@ -404,20 +399,20 @@ let g:lightline = {
 
 " Using CocList
 " Show all diagnostics
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+"nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+"" Manage extensions
+"nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+"" Show commands
+"nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+"" Find symbol of current document
+"nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+"" Search workspace symbols
+"nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+"" Do default action for next item.
+"nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+"" Do default action for previous item.
+"nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+"" Resume latest coc list
+"nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
