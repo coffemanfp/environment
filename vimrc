@@ -1,45 +1,102 @@
+call plug#begin('/home/arthurnavah/.vim/plugged')
+
+" - - - ArthurNavaH - Plugs -
+
+" NERDTree - Explorador de Archivos
+Plug 'scrooloose/nerdtree'
+Plug 'xuyuanp/nerdtree-git-plugin'
+
+" FZF - Buscador de Archivos
+" Plug 'junegunn/fzf'
+Plug 'shougo/denite.nvim'
+
+" Airline - Barra de Estado
+Plug 'bling/vim-airline'
+
+" Syntastic - Aumento de Sintaxis
+Plug 'scrooloose/syntastic'
+
+" VIM-JSON - Mejor soporte para JSON
+Plug 'elzr/vim-json'
+
+" VIM-TYPESCRIPT - Mejor soporte para TypeScript
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+
+" VIM-GO - Mejor soporte para Go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" Plug 'nsf/gocode', {'rtp': 'vim/'}
+Plug 'mdempsky/gocode', {'rtp': 'vim/'}
+
+" VIM-JAVASCRIPT - Mejor soporte para JavaScript
+Plug 'pangloss/vim-javascript'
+
+" VIM-JSX - Soporte para JSX
+Plug 'mxw/vim-jsx'
+
+" Commentary Vim - Comentarios rapidos de codigo
+Plug 'tpope/vim-commentary'
+
+" Delimit Mate - Cierres automaticos de parentesis, llaves, etc
+Plug 'raimondi/delimitmate'
+
+" EMMET - Generador de HTML y CSS
+Plug 'mattn/emmet-vim'
+
+" NeoComplete - Mejora para el autocompletado
+Plug 'shougo/neocomplete.vim'
+
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
+Plug 'neoclide/vim-node-rpc'
+
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc-neco'
+
+" AsiEsc - Solucion para caracteres de escape invalidos en la interfaz
+Plug 'vim-scripts/AnsiEsc.vim'
+
+" Multi Cursor - Multi cursor
+Plug 'terryma/vim-multiple-cursors'
+
+" Gitgutter - Soporte para señales de cambios en GIT
+Plug 'airblade/vim-gitgutter'
+
+" Icons - Iconos para archivos
+Plug 'ryanoasis/vim-devicons'
+
+" Indentline Guides - Guia de indentacion con lineas
+Plug 'yggdroot/indentline'
+
+" VIM-EUNUCH - Utilidades UNIX
+Plug 'tpope/vim-eunuch'
+
+" ALE - Resaltado de sintaxis
+Plug 'w0rp/ale'
+
+" TEMAS - Configuracion de Temas
+Plug 'vim-airline/vim-airline-themes'
+Plug 'mhartington/oceanic-next'
+Plug 'joshdick/onedark.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'sickill/vim-monokai'
+Plug 'dracula/vim'
+Plug 'w0ng/vim-hybrid'
+Plug 'flrnprz/taffy.vim'
+Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
+
+call plug#end()
+
+" ---------------------------
+
 set nocompatible              " be iMproved, required
 
 filetype off                  " required
 set backspace=2
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
 filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-"
-
-"--------------------------
-" Tecla lider remapeada : space
 let mapleader=" "
 let maplocalleader="\\"
-"--------------------------
-
-" - - - ArthurNavaH - Plugins -
-
-" NERDTree - Explorador de Archivos
-Plugin 'scrooloose/nerdtree'
-Plugin 'xuyuanp/nerdtree-git-plugin'
-
 
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>nn :NERDTreeFind<CR>
@@ -51,122 +108,58 @@ let NERDTreeMouseMode=2
 let NERDTreeIgnore=[ '^\.git$', ]
 let NERDTreeAutoDeleteBuffer = 1
 
-"------------------
-"------------------
-"------------------
-
-
-" FZF - Buscador de Archivos
-" Plugin 'junegunn/fzf'
-Plugin 'shougo/denite.nvim'
-
 nmap <leader>b :Denite buffer <CR>
 nmap <leader>f :Denite file/rec <CR>
 nnoremap <leader>h :<C-u>Denite grep:. -no-empty -mode=normal<CR>
-"
-" Define mappings
-	autocmd FileType denite call s:denite_my_settings()
-	function! s:denite_my_settings() abort
-	  nnoremap <silent><buffer><expr> <CR>
-	  \ denite#do_map('do_action')
-	  nnoremap <silent><buffer><expr> p
-	  \ denite#do_map('do_action', 'preview')
-	  nnoremap <silent><buffer><expr> q
-	  \ denite#do_map('quit')
-	  nnoremap <silent><buffer><expr> f
-	  \ denite#do_map('open_filter_buffer')
-	  nnoremap <silent><buffer><expr> <Space>
-	  \ denite#do_map('toggle_select').'j'
-	endfunction
 
-	autocmd FileType denite-filter call s:denite_filter_my_settings()
-	function! s:denite_filter_my_settings() abort
-	  imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-	endfunction
+"" Define mappings
+autocmd FileType denite call s:denite_my_settings()
+function! s:denite_my_settings() abort
+	nnoremap <silent><buffer><expr> <CR>
+				\ denite#do_map('do_action')
+	nnoremap <silent><buffer><expr> p
+				\ denite#do_map('do_action', 'preview')
+	nnoremap <silent><buffer><expr> q
+				\ denite#do_map('quit')
+	nnoremap <silent><buffer><expr> f
+				\ denite#do_map('open_filter_buffer')
+	nnoremap <silent><buffer><expr> <Space>
+				\ denite#do_map('toggle_select').'j'
+endfunction
 
-
-call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-    \ [ '.git/', '.ropeproject/', '__pycache__/',
-    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules'])
-
-"------------------
-"------------------
-"------------------
-
-
-" Airline - Barra de Estado
-Plugin 'bling/vim-airline'
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+	imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+endfunction
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-" let g:airline_theme='hybrid'
 let g:airline_theme='oceanicnext'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 
-"------------------
-"------------------
-"------------------
-
-
-" Syntastic - Aumento de Sintaxis
-Plugin 'scrooloose/syntastic'
-
-"------------------
-"------------------
-"------------------
-
-
-" VIM-JSON - Mejor soporte para JSON
-Plugin 'elzr/vim-json'
-
 let g:vim_json_syntax_conceal = 2
 
-"------------------
-"------------------
-"------------------
-
-
-" VIM-TYPESCRIPT - Mejor soporte para TypeScript
-Plugin 'leafgarland/typescript-vim'
-Plugin 'peitalin/vim-jsx-typescript'
-
-" set filetypes as typescript.tsx
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
-"------------------
-"------------------
-"------------------
-
-
-" VIM-GO - Mejor soporte para Go
-Plugin 'fatih/vim-go'
-" Plugin 'nsf/gocode', {'rtp': 'vim/'}
-Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
-
 let g:go_fmt_command = "goimports"
-" Silenciar pestañas de advertencias de GoFmt
-" let g:go_fmt_fail_silently = 1
-"
-" Elije que deseas que se coloree de la sintaxis de Go
+let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
-let g:go_highlight_methods = 1
 let g:go_highlight_functions = 1
 let g:go_highlight_function_calls = 1
 let g:go_highlight_extra_types = 1
-let g:go_highlight_operators = 1
-"
-" Evitar que GoMetaLinter se ejecute por demasiado tiempo
-let g:go_metalinter_deadline = '5s'
+let g:go_highlight_generate_tags = 1
 
-" let g:go_list_type = 'quickfix'
+" Evitar que GoMetaLinter se ejecute por demasiado tiempo
+" let g:go_metalinter_deadline = '5s'
 
 " Activar GoMetaLinter al guardar el archivo
 let g:go_metalinter_autosave = 1
 
 " Declara el referenciador a definiciones
-let g:go_def_mode = 'godef'
+" let g:go_def_mode = 'godef'
 
 " Activa GoInfo automaticamente
 let g:go_auto_type_info = 1
@@ -177,10 +170,9 @@ let g:go_auto_sameids = 1
 " Etiquetas para los campos de la estructura
 let g:go_addtags_transform = "camelcase"
 
-" let g:go_version_warning = 0
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
-" Ejecutar :GoTest con <leader>gt
-autocmd FileType go nmap <leader>gt  :GoTest<CR>
 " Ejecutar :GoBuild con <leader>gb
 autocmd FileType go nmap <leader>gb  :GoBuild<CR>
 " Ejecutar :GoAlternate con <leader>ga
@@ -191,213 +183,23 @@ autocmd FileType go nmap <leader>gc  :GoCoverageToggle<CR>
 autocmd FileType go nmap <leader>gat  :GoAddTags
 " Ejecutar :GoRemoveTags con <leader>grt
 autocmd FileType go nmap <leader>grt  :GoRemoveTags
-" Ejecutar :GoImport con <leader>gi
-autocmd FileType go nmap <leader>gi  :GoImport
 " Ejecutar :GoChannelPeers con <leader>gcp
 autocmd FileType go nmap <leader>gcp  :GoChannelPeers<CR>
-
-"------------------
-"------------------
-"------------------
-
-
-" VIM-JAVASCRIPT - Mejor soporte para JavaScript
-Plugin 'pangloss/vim-javascript'
-
-"------------------
-"------------------
-"------------------
-
-
-" VIM-JSX - Soporte para JSX
-Plugin 'mxw/vim-jsx'
-
-"------------------
-"------------------
-"------------------
-
-
-" VIM-PHP - Mejor soporte para PHP
-" Plugin 'stanangeloff/php.vim'
-" Plugin 'shawncplus/phpcomplete.vim'
-
-
-"------------------
-"------------------
-"------------------
-
-
-" TEMAS - Configuracion de Temas
-Plugin 'vim-airline/vim-airline-themes'
-Plugin 'mhartington/oceanic-next'
-Plugin 'joshdick/onedark.vim'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'sickill/vim-monokai'
-Plugin 'dracula/vim'
-Plugin 'w0ng/vim-hybrid'
-
-Plugin 'flrnprz/taffy.vim'
-Plugin 'tomasr/molokai'
-Plugin 'morhetz/gruvbox'
-
-" colorscheme OceanicNext
-" color OceanicNext
-" set background=dark
-
-if (has("termguicolors"))
- set termguicolors
-endif
-
-let g:rehash256 = 1
-set t_Co=256
-" let g:solarized_termcolors=256
-" let g:oceanic_next_terminal_bold = 1
-" let g:oceanic_next_terminal_italic = 1
-set background=dark
-colorscheme gruvbox
-
-"------------------
-"------------------
-"------------------
-
-
-" " EASYMOTION - Movilidad simple
-" Plugin 'easymotion/vim-easymotion'
-
-" let g:EasyMotion_do_mapping = 0
-
-" nmap ; <Plug>(easymotion-overwin-f2)
-
-" let g:EasyMotion_smartcase = 1
-
-" nnoremap <Leader>k <Plug>(easymotion-j)
-" nnoremap <Leader>l <Plug>(easymotion-k)
-
-"------------------
-"------------------
-"------------------
-
-
-" Commentary Vim - Comentarios rapidos de codigo
-Plugin 'tpope/vim-commentary'
 
 vnoremap <leader>t :'<,'>Commentary<CR>
 nnoremap <leader>t :Commentary<CR>
 
-"------------------
-"------------------
-"------------------
-
-
-" Delimit Mate - Cierres automaticos de parentesis, llaves, etc
-Plugin 'raimondi/delimitmate'
-
-"------------------
-"------------------
-"------------------
-
-
-" EMMET - Generador de HTML y CSS
-Plugin 'mattn/emmet-vim'
-
-"--------------------------
-" Tecla lider de Emmet remapeada : <C-K>
 let g:user_emmet_leader_key='<C-K>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascript EmmetInstall
-"--------------------------
-
-"------------------
-"------------------
-"------------------
-
-
-" NeoComplete - Mejora para el autocompletado
-Plugin 'shougo/neocomplete.vim'
-
-Plugin 'roxma/nvim-yarp'
-Plugin 'roxma/vim-hug-neovim-rpc'
-Plugin 'neoclide/vim-node-rpc'
-
-Plugin 'neoclide/coc.nvim'
-Plugin 'neoclide/coc-neco'
-
-" if has("nvim")
-"     Plugin 'shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"     Plugin 'shougo/deoplete.nvim'
-" endif
-" let g:deoplete#enable_at_startup=1
-" let g:deoplete#enable_ignore_case=1
-" let g:deoplete#enable_smart_case=1
-" let g:deoplete#enable_camel_case=1
-" let g:deoplete#enable_refresh_always=1
-" let g:deoplete#max_abbr_width=0
-" let g:deoplete#max_menu_width=0
-" let g:deoplete#omni#input_patterns=get(g:,'deoplete#omni#input_patterns', {})
-
-"------------------
-"------------------
-"------------------
-
-
-" AsiEsc - Solucion para caracteres de escape invalidos en la interfaz
-Plugin 'AnsiEsc.vim'
-
-"------------------
-"------------------
-"------------------
-
-
-" Multi Cursor - Multi cursor
-Plugin 'terryma/vim-multiple-cursors'
-
-"------------------
-"------------------
-"------------------
-
-
-" Gitgutter - Soporte para señales de cambios en GIT
-Plugin 'airblade/vim-gitgutter'
 
 let g:gitgutter_max_signs = 200
 
-"------------------
-"------------------
-"------------------
-
-
-" Icons - Iconos para archivos
-Plugin 'ryanoasis/vim-devicons'
 set encoding=utf-8
 set fileencodings=utf-8
 set guifont=Fira\ Mono\ for\ Powerline\ 12
 
-"------------------
-"------------------
-"------------------
-
-
-" Indentline Guides - Guia de indentacion con lineas
-Plugin 'yggdroot/indentline'
-
 let g:indentLine_char = '¦'
-
-"------------------
-"------------------
-"------------------
-
-
-" VIM-EUNUCH - Utilidades UNIX
-Plugin 'tpope/vim-eunuch'
-
-"------------------
-"------------------
-"------------------
-
-
-" ALE - Resaltado de sintaxis
-Plugin 'w0rp/ale'
 
 let g:ale_sign_error = '●' " Less aggressive than the default '>>'
 let g:ale_sign_warning = '.'
@@ -408,7 +210,7 @@ let g:ale_fixers = {
  \ }
 
 
-" - - - ArthurNavaH - Configuracion -
+" ---------------------------------------
 
 set number
 set ruler
@@ -429,90 +231,32 @@ set hlsearch
 set smartcase
 set formatoptions+=1
 
-" set smartcase
-
-" set nohlsearch
-
 set updatetime=200
 set ttyfast
 set timeout timeoutlen=200 ttimeoutlen=50
 set history=50
-" set nobackup
+
 set noswapfile
 set title
-" set visualbell
 set noerrorbells
 set lazyredraw
-
 set wrap linebreak nolist
 set autoread
 
-set cursorline
+colorscheme gruvbox
 if (has("termguicolors"))
-  set termguicolors
+ set termguicolors
 endif
+
+let g:rehash256 = 1
+set t_Co=256
+set background=dark
 
 autocmd FileType markdown let g:indentLine_enabled=0
 set conceallevel=0
 
-"------------------
-"------------------
-"------------------
-
-
-" Movilidad con Teclado Español
-" nnoremap j h
-" nnoremap k j
-" nnoremap l k
-" nnoremap ; l
-" nnoremap J H
-" nnoremap K J
-" nnoremap L K
-" nnoremap gk gj
-" nnoremap gl gk
-
-" vnoremap j h
-" vnoremap k j
-" vnoremap l k
-" vnoremap ; l
-" vnoremap J H
-" vnoremap K J
-" vnoremap L K
-" vnoremap gk gj
-" vnoremap gl gk
-
-"------------------
-"------------------
-"------------------
-
-
-" Inhabilitar las teclas de dirección
-" noremap <Up> <Nop>
-" noremap <Down> <Nop>
-" noremap <Left> <Nop>
-" noremap <Right> <Nop>
-" let g:elite_mode=1
-
-"------------------
-"------------------
-"------------------
-
-
-" Atajos de Teclado Personales
 nnoremap <leader>l :vsplit<CR>
 nnoremap <leader>j :split<CR>
-
-nnoremap <C-c> <C-a><CR>
-
-" nnoremap <C-W>j <C-W>h
-" nnoremap <C-W>k <C-W>j
-" nnoremap <C-W>l <C-W>k
-" nnoremap <C-W>; <C-W>l
-
-"------------------
-"------------------
-"------------------
-
 
 " - - - ArthurNavaH - Scripts -
 
@@ -675,4 +419,5 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
 
