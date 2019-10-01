@@ -36,6 +36,11 @@ cp ./init.vim "$HOME"/.config/nvim/.
 sudo cp ./init.vim /root/.config/nvim/.
 echo "----------------------"
 
+echo "Copiando configuracion coc.nvim"
+cp ./coc-settings.json "$HOME"/.config/nvim/.
+sudo cp ./coc-settings.json /root/.config/nvim/.
+echo "----------------------"
+
 echo "Copiando configuracion Tmux"
 cp ./.tmux.conf "$HOME"/.
 sudo cp ./.tmux.conf /root/.
