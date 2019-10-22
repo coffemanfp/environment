@@ -1,4 +1,4 @@
-call plug#begin('~/.vim/plugged')
+call plug#begin('/home/arthurnavah/.vim/plugged')
 
 " - - - ArthurNavaH - Plugs -
 
@@ -238,7 +238,7 @@ set lazyredraw
 set wrap linebreak nolist
 set autoread
 
-colorscheme gruvbox
+colorscheme molokai
 if (has("termguicolors"))
  set termguicolors
 endif
