@@ -238,7 +238,7 @@ set lazyredraw
 set wrap linebreak nolist
 set autoread
 
-colorscheme molokai
+colorscheme OceanicNext
 if (has("termguicolors"))
  set termguicolors
 endif
