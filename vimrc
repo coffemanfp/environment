@@ -1,4 +1,4 @@
-call plug#begin('/home/arthurnavah/.vim/plugged')
+call plug#begin('~/.vim/plugged')
 
 " - - - ArthurNavaH - Plugs -
 

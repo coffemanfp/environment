@@ -4,7 +4,7 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 
 sudo apt update
 
-sudo apt install git vim curl neovim powerline fonts-powerline tmux universal-ctags vim-gnome xclip cmus terminator zsh git-flow shellcheck exiftool yarn python-neovim python3-neovim python-pip python3-pip python3-dev python3-setuptools ruby ruby-dev
+sudo apt install git vim curl neovim powerline fonts-powerline tmux universal-ctags xclip cmus terminator zsh git-flow shellcheck exiftool yarn python-neovim python3-neovim python-pip python3-pip python3-dev python3-setuptools ruby ruby-dev
 
 sudo gem install neovim
 
