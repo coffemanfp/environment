@@ -1,6 +1,49 @@
-sudo apt install curl git vim neovim powerline fonts-powerline tmux universal-ctags xclip cmus terminator zsh git-flow shellcheck exiftool yarn python-neovim python3-neovim python-pip python3-pip python3-dev python3-setuptools ruby ruby-dev rar
+sudo apt update && sudo apt upgrade && sudo apt install curl git vim neovim powerline fonts-powerline tmux universal-ctags xclip cmus terminator zsh git-flow shellcheck exiftool yarn python-neovim python3-neovim python-pip python3-pip python3-dev python3-setuptools ruby ruby-dev rar
 
-#---
+#--- Check Commands
+
+if ! command -v curl &> /dev/null; then
+    echo "The 'curl' command is needed to continue"
+    exit 1
+fi
+if ! command -v gem &> /dev/null; then
+    echo "The 'gem' command is needed to continue"
+    exit 1
+fi
+if ! command -v easy_install3 &> /dev/null; then
+    echo "The 'easy_install3' command is needed to continue"
+    exit 1
+fi
+if ! command -v pip &> /dev/null; then
+    echo "The 'pip' command is needed to continue"
+    exit 1
+fi
+if ! command -v pip3 &> /dev/null; then
+    echo "The 'pip3' command is needed to continue"
+    exit 1
+fi
+if ! command -v yarn &> /dev/null; then
+    echo "The 'yarn' command is needed to continue"
+    exit 1
+fi
+if ! command -v python3 &> /dev/null; then
+    echo "The 'yarn' command is needed to continue"
+    exit 1
+fi
+if ! command -v vim &> /dev/null; then
+    echo "The 'vim' command is needed to continue"
+    exit 1
+fi
+if ! command -v nvim &> /dev/null; then
+    echo "The 'nvim' command is needed to continue"
+    exit 1
+fi
+if ! command -v git &> /dev/null; then
+    echo "The 'git' command is needed to continue"
+    exit 1
+fi
+
+#--- Add yarn key
 
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 
@@ -111,4 +154,3 @@ vim +UpdateRemotePlugins +qa
 vim +GoInstallBinaries +qa
 vim +GoUpdateBinaries +qa
 vim +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax coc-gocode +qa
-
