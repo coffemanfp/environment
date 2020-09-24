@@ -1,29 +1,40 @@
+sudo apt install curl git vim neovim powerline fonts-powerline tmux universal-ctags xclip cmus terminator zsh git-flow shellcheck exiftool yarn python-neovim python3-neovim python-pip python3-pip python3-dev python3-setuptools ruby ruby-dev rar
+
+#---
+
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-sudo apt update
+sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean
 
-sudo apt install git vim curl neovim powerline fonts-powerline tmux universal-ctags xclip cmus terminator zsh git-flow shellcheck exiftool yarn python-neovim python3-neovim python-pip python3-pip python3-dev python3-setuptools ruby ruby-dev
+sudo apt install yarn
+
+#---
 
 sudo gem install neovim
 
 sudo easy_install3 pip
 
-if ! [ -d "$HOME/.vim" ]; then
-    echo "----------------------"
-    echo "Creando carpeta .vim"
-    mkdir ~/.vim 2>/dev/null
-    sudo mkdir /root/.vim 2>/dev/null
-    echo "----------------------"
-fi
+pip install -U pynvim
+pip3 install -U pynvim
+cpanm Neovim::Ext
+pip install -U msgpack-python
+python3 -mpip install --user -U msgpack
+yarn install --froken-lockfile
 
-if ! [ -d "$HOME/.config/nvim" ]; then
-    echo "Creando carpeta .config/nvim"
-    mkdir -p ~/.config/nvim 2>/dev/null
-    sudo mkdir -p /root/.config/nvim 2>/dev/null
-    echo "----------------------"
-fi
+#---
+
+echo "----------------------"
+echo "Creando carpeta .vim"
+mkdir ~/.vim 2>/dev/null
+sudo mkdir /root/.vim 2>/dev/null
+echo "----------------------"
+
+echo "Creando carpeta .config/nvim"
+mkdir -p ~/.config/nvim 2>/dev/null
+sudo mkdir -p /root/.config/nvim 2>/dev/null
+echo "----------------------"
 
 echo "----------------------"
 echo "Copiando configuracion VIM"
@@ -85,7 +96,6 @@ echo "Configurando Oh My ZSH!"
 curl -L http://install.ohmyz.sh | sh
 wget --no-check-certificate http://install.ohmyz.sh -O - | sh
 echo "----------------------"
-
 
 echo "----------------------"
 echo "Configurando Plug Vim"

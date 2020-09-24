@@ -1,6 +1,8 @@
 # environment
 Entorno de desarrollo personalizado Tmux y NeoVim, Para desarrollo productivo.
 
+ADVERTENCIA : Instalar Go y NPM antes de ejecutar install.sh
+
 ## Instalar
 ```sh
 git clone https://github.com/arthurnavah/environment.git
