@@ -1,3 +1,5 @@
+#!/bin/bash
+
 sudo apt update && sudo apt upgrade && sudo apt install curl git vim neovim powerline fonts-powerline tmux universal-ctags xclip cmus terminator zsh git-flow shellcheck exiftool yarn python-neovim python3-neovim python-pip python3-pip python3-dev python3-setuptools ruby ruby-dev rar
 
 #--- Check Commands
@@ -42,8 +44,16 @@ if ! command -v git &> /dev/null; then
     echo "The 'git' command is needed to continue"
     exit 1
 fi
+if ! command -v go &> /dev/null; then
+    echo "The 'go' command is needed to continue"
+    exit 1
+fi
+if ! command -v npm &> /dev/null; then
+    echo "The 'npm' command is needed to continue"
+    exit 1
+fi
 
-#--- Add yarn key
+#--- Add yarn key, Update yarn
 
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 
@@ -147,6 +157,19 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 echo "----------------------"
+
+#--- Check Go Env
+
+if [ -z $(go env GOROOT) ]; then
+    echo "The GOROOT environment variable is not set"
+    exit 1
+fi
+if [ -z $(go env GOPATH) ]; then
+    echo "The GOPATH environment variable is not set"
+    exit 1
+fi
+
+#---
 
 vim +PlugInstall +qa
 vim +PlugUpdate +qa
