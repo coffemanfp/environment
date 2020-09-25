@@ -2,7 +2,7 @@
 
 if [ -x ./install.sh ]; then
 
-    sudo apt update && sudo apt upgrade && sudo apt install curl git vim neovim powerline fonts-powerline tmux universal-ctags xclip cmus terminator zsh git-flow shellcheck exiftool yarn python python3 python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby ruby-dev rar
+    sudo apt update && sudo apt upgrade && sudo apt install curl git vim neovim powerline fonts-powerline tmux universal-ctags xclip cmus terminator zsh git-flow shellcheck exiftool yarn python python3 python3-neovim python-pip python3-pip python3-dev python-setuptools python3-setuptools ruby ruby-dev rar
 
     #--- Check Commands
 
