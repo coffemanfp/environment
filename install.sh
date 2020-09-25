@@ -2,7 +2,7 @@
 
 if [ -x ./install.sh ]; then
 
-    sudo apt update && sudo apt upgrade && sudo apt install curl git vim neovim powerline fonts-powerline tmux universal-ctags xclip cmus terminator zsh git-flow shellcheck exiftool yarn python python3 python3-neovim python-pip python3-pip python3-dev python-setuptools python3-setuptools ruby ruby-dev rar automake autoconf autotools-dev build-essential
+    sudo apt update && sudo apt upgrade && sudo apt install curl git powerline fonts-powerline tmux universal-ctags xclip cmus terminator zsh git-flow shellcheck exiftool yarn python python3 python3-neovim python-pip python3-pip python3-dev python-setuptools python3-setuptools ruby ruby-dev rar automake autoconf autotools-dev build-essential perl cpanminus snap snapd
 
     #--- Check Commands
 
@@ -30,8 +30,8 @@ if [ -x ./install.sh ]; then
         echo "The 'yarn' command is needed to continue"
         exit 1
     fi
-    if ! command -v vim &> /dev/null; then
-        echo "The 'vim' command is needed to continue"
+    if ! command -v vim-editor &> /dev/null; then
+        echo "The 'vim-editor' command is needed to continue"
         exit 1
     fi
     if ! command -v nvim &> /dev/null; then
@@ -50,6 +50,10 @@ if [ -x ./install.sh ]; then
         echo "The 'npm' command is needed to continue"
         exit 1
     fi
+    if ! command -v snap &> /dev/null; then
+        echo "The 'snap' command is needed to continue"
+        exit 1
+    fi
 
     #--- Add yarn key, Update yarn
 
@@ -60,6 +64,11 @@ if [ -x ./install.sh ]; then
     sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean
 
     sudo apt install yarn
+
+    #---
+
+    sudo snap install vim-editor --beta
+    sudo snap install --beta nvim --classic
 
     #---
 
@@ -168,12 +177,21 @@ if [ -x ./install.sh ]; then
 
     #---
 
-    vim +PlugInstall +qa
-    vim +PlugUpdate +qa
-    vim +UpdateRemotePlugins +qa
-    vim +GoInstallBinaries +qa
-    vim +GoUpdateBinaries +qa
-    vim +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax coc-gocode +qa
+    if ! command -v vim-editor &> /dev/null; then
+        echo "The 'vim-editor' command is needed to continue"
+        exit 1
+    fi
+    if ! command -v nvim &> /dev/null; then
+        echo "The 'nvim' command is needed to continue"
+        exit 1
+    fi
+
+    vim-editor +PlugInstall +qa
+    vim-editor +PlugUpdate +qa
+    vim-editor +UpdateRemotePlugins +qa
+    vim-editor +GoInstallBinaries +qa
+    vim-editor +GoUpdateBinaries +qa
+    vim-editor +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax coc-gocode +qa
 
 else
     echo "Execute permissions are required (+x)"
