@@ -79,6 +79,7 @@ if [ -x ./install.sh ]; then
     pip install -U pynvim
     pip3 install -U pynvim
     cpanm Neovim::Ext
+    sudo cpanm Neovim::Ext
     pip install -U msgpack-python
     pip3 install -U msgpack-python
     python3 -mpip install --user -U msgpack
