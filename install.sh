@@ -72,6 +72,8 @@ if [ -x ./install.sh ]; then
 
     #---
 
+    sudo npm install -g neovim
+
     sudo gem install neovim
 
     pip install -U pynvim
