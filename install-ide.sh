@@ -1,8 +1,8 @@
 #!/bin/bash
 
-if [ -x ./install.sh ]; then
+if [ -x ./install-ide.sh ]; then
 
-    sudo apt update && sudo apt upgrade && sudo apt install curl git powerline fonts-powerline tmux universal-ctags xclip cmus terminator zsh git-flow shellcheck exiftool yarn python python3 python3-neovim python-pip python3-pip python3-dev python-setuptools python3-setuptools ruby ruby-dev rar automake autoconf autotools-dev build-essential perl cpanminus snap snapd
+    sudo apt update && sudo apt upgrade && sudo apt install curl git powerline fonts-powerline universal-ctags xclip yarn python python3 python3-neovim python-pip python3-pip python3-dev python-setuptools python3-setuptools ruby ruby-dev rar automake autoconf autotools-dev build-essential perl cpanminus snap snapd
 
     #--- Check Commands
 
@@ -88,39 +88,34 @@ if [ -x ./install.sh ]; then
     #---
 
     echo "----------------------"
-    echo "Creando carpeta .vim"
+    echo "Creating folder .vim"
     mkdir ~/.vim 2>/dev/null
     sudo mkdir /root/.vim 2>/dev/null
     echo "----------------------"
 
-    echo "Creando carpeta .config/nvim"
+    echo "Creating folder .config/nvim"
     mkdir -p ~/.config/nvim 2>/dev/null
     sudo mkdir -p /root/.config/nvim 2>/dev/null
     echo "----------------------"
 
     echo "----------------------"
-    echo "Copiando configuracion VIM"
-    cp ./vimrc "$HOME"/.vim/.
-    sudo cp ./vimrc /root/.vim/.
+    echo "Copying configuration VIM"
+    cp ./config/vimrc "$HOME"/.vim/.
+    sudo cp ./config/vimrc /root/.vim/.
     echo "----------------------"
 
-    echo "Copiando configuracion NeoVim"
-    cp ./init.vim "$HOME"/.config/nvim/.
-    sudo cp ./init.vim /root/.config/nvim/.
+    echo "Copying configuration NeoVim"
+    cp ./config/init.vim "$HOME"/.config/nvim/.
+    sudo cp ./config/init.vim /root/.config/nvim/.
     echo "----------------------"
 
-    echo "Copiando configuracion coc.nvim"
-    cp ./coc-settings.json "$HOME"/.config/nvim/.
-    sudo cp ./coc-settings.json /root/.config/nvim/.
-    echo "----------------------"
-
-    echo "Copiando configuracion Tmux"
-    cp ./.tmux.conf "$HOME"/.
-    sudo cp ./.tmux.conf /root/.
+    echo "Copying configuration coc.nvim"
+    cp ./config/coc-settings.json "$HOME"/.config/nvim/.
+    sudo cp ./config/coc-settings.json /root/.config/nvim/.
     echo "----------------------"
 
     echo "----------------------"
-    echo "Instalando Universal-Ctags"
+    echo "Installing Universal-Ctags"
     git clone https://github.com/universal-ctags/ctags.git
     cd ctags || exit
     ./autogen.sh 
@@ -132,7 +127,7 @@ if [ -x ./install.sh ]; then
     echo "----------------------"
 
     echo "----------------------"
-    echo "Instalando Powerline Fonts"
+    echo "Installing Powerline Fonts"
     git clone https://github.com/powerline/fonts.git --depth=1
     cd fonts || exit
     ./install.sh
@@ -141,36 +136,31 @@ if [ -x ./install.sh ]; then
     echo "----------------------"
 
     echo "----------------------"
-    echo "Descargando Nerd Font en ~"
-    wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete.ttf -O ~
-    echo "----------------------"
-
-    echo "----------------------"
-    echo "Configurando herramientas de GIT con Vim"
+    echo "Configuring tools GIT with Vim"
     git config --global core.editor nvim
     git config --global diff.tool vimdiff
     git config --global merge.tool vimdiff
     echo "----------------------"
 
     echo "----------------------"
-    echo "Configurando ZSH"
+    echo "Configuring ZSH"
     chsh -s /bin/zsh
     sudo chsh -s /bin/zsh
     echo "----------------------"
 
     echo "----------------------"
-    echo "Configurando Oh My ZSH!"
+    echo "Configuring Oh My ZSH!"
     curl -L http://install.ohmyz.sh | sh
     wget --no-check-certificate http://install.ohmyz.sh -O - | sh
     echo "----------------------"
 
     echo "----------------------"
-    echo "Configurando Plug Vim"
+    echo "Configuring Plug Vim"
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-        curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-            https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-                echo "----------------------"
+    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    echo "----------------------"
 
     #--- Check Go Env
 
@@ -194,12 +184,14 @@ if [ -x ./install.sh ]; then
         exit 1
     fi
 
-    vim-editor +PlugInstall +qa
-    vim-editor +PlugUpdate +qa
-    vim-editor +UpdateRemotePlugins +qa
-    vim-editor +GoInstallBinaries +qa
-    vim-editor +GoUpdateBinaries +qa
-    vim-editor +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax coc-gocode +qa
+    vim-editor -E -s -u "$HOME/.vim/.vimrc" +PlugInstall +qall
+    vim-editor -E -s -u "$HOME/.vim/.vimrc"  +PlugUpdate +qall
+    vim-editor -E -s -u "$HOME/.vim/.vimrc"  +UpdateRemotePlugins +qall
+    vim-editor -E -s -u "$HOME/.vim/.vimrc"  +GoInstallBinaries +qall
+    vim-editor -E -s -u "$HOME/.vim/.vimrc"  +GoUpdateBinaries +qall
+    vim-editor -E -s -u "$HOME/.vim/.vimrc"  +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax coc-gocode +qall
+
+    echo "+ Installation successful! +"
 
 else
     echo "Execute permissions are required (+x)"
