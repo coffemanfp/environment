@@ -31,6 +31,8 @@ if [ -x ./install-tools.sh ]; then
     sudo cp ./config/.tmux.conf /root/.
     echo "----------------------"
 
+    echo "+ Installation successful! +"
+
 else
     echo "Execute permissions are required (+x)"
     exit 1
