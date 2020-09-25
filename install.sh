@@ -138,6 +138,11 @@ if [ -x ./install.sh ]; then
     echo "----------------------"
 
     echo "----------------------"
+    echo "Descargando Nerd Font en ~"
+    wget https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/UbuntuMono/Regular/complete/Ubuntu%20Mono%20Nerd%20Font%20Complete.ttf -O ~
+    echo "----------------------"
+
+    echo "----------------------"
     echo "Configurando herramientas de GIT con Vim"
     git config --global core.editor nvim
     git config --global diff.tool vimdiff
