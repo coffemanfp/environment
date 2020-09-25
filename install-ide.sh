@@ -135,18 +135,6 @@ if [ -x ./install-ide.sh ]; then
     echo "----------------------"
 
     echo "----------------------"
-    echo "Configuring ZSH"
-    chsh -s /bin/zsh
-    sudo chsh -s /bin/zsh
-    echo "----------------------"
-
-    echo "----------------------"
-    echo "Configuring Oh My ZSH!"
-    curl -L http://install.ohmyz.sh | sh
-    wget --no-check-certificate http://install.ohmyz.sh -O - | sh
-    echo "----------------------"
-
-    echo "----------------------"
     echo "Configuring Plug Vim"
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
