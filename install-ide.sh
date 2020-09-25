@@ -30,14 +30,6 @@ if [ -x ./install-ide.sh ]; then
         echo "The 'yarn' command is needed to continue"
         exit 1
     fi
-    if ! command -v vim-editor &> /dev/null; then
-        echo "The 'vim-editor' command is needed to continue"
-        exit 1
-    fi
-    if ! command -v nvim &> /dev/null; then
-        echo "The 'nvim' command is needed to continue"
-        exit 1
-    fi
     if ! command -v git &> /dev/null; then
         echo "The 'git' command is needed to continue"
         exit 1
