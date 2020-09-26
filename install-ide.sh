@@ -164,12 +164,12 @@ if [ -x ./install-ide.sh ]; then
         exit 1
     fi
 
-    vim-editor -E -s -u "$HOME/.vim/.vimrc" +PlugInstall +qall
-    vim-editor -E -s -u "$HOME/.vim/.vimrc"  +PlugUpdate +qall
-    vim-editor -E -s -u "$HOME/.vim/.vimrc"  +UpdateRemotePlugins +qall
-    vim-editor -E -s -u "$HOME/.vim/.vimrc"  +GoInstallBinaries +qall
-    vim-editor -E -s -u "$HOME/.vim/.vimrc"  +GoUpdateBinaries +qall
-    vim-editor -E -s -u "$HOME/.vim/.vimrc"  +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax coc-gocode +qall
+    vim -E -s -u ~/.vim/vimrc +PlugInstall +qall
+    vim -E -s -u ~/.vim/vimrc +PlugUpdate +qall
+    vim -E -s -u ~/.vim/vimrc +UpdateRemotePlugins +qall
+    vim -E -s -u ~/.vim/vimrc +GoInstallBinaries +qall
+    vim -E -s -u ~/.vim/vimrc +GoUpdateBinaries +qall
+    vim -E -s -u ~/.vim/vimrc +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax coc-gocode +qall
 
     echo "+ Installation successful! +"
 
