@@ -59,6 +59,13 @@ if [ -x ./install-ide.sh ]; then
 
     #---
 
+    sudo apt remove --purge vim
+    sudo apt remove --purge vim-editor
+    sudo apt remove --purge neovim
+    sudo snap remove vim-editor
+    sudo snap remove vim
+    sudo snap remove nvim
+
     sudo snap install vim-editor --beta
     sudo snap install --beta nvim --classic
 
@@ -164,12 +171,12 @@ if [ -x ./install-ide.sh ]; then
         exit 1
     fi
 
-    vim -E -s -u ~/.vim/vimrc +PlugInstall +qall
-    vim -E -s -u ~/.vim/vimrc +PlugUpdate +qall
-    vim -E -s -u ~/.vim/vimrc +UpdateRemotePlugins +qall
-    vim -E -s -u ~/.vim/vimrc +GoInstallBinaries +qall
-    vim -E -s -u ~/.vim/vimrc +GoUpdateBinaries +qall
-    vim -E -s -u ~/.vim/vimrc +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax coc-gocode +qall
+    nvim -E -s -u ~/.vim/vimrc +PlugInstall +qall
+    nvim -E -s -u ~/.vim/vimrc +PlugUpdate +qall
+    nvim -E -s -u ~/.vim/vimrc +UpdateRemotePlugins +qall
+    nvim -E -s -u ~/.vim/vimrc +GoInstallBinaries +qall
+    nvim -E -s -u ~/.vim/vimrc +GoUpdateBinaries +qall
+    nvim -E -s -u ~/.vim/vimrc +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax coc-gocode +qall
 
     echo "+ Installation successful! +"
 
