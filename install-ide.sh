@@ -2,7 +2,7 @@
 
 if [ -x ./install-ide.sh ]; then
 
-    sudo apt update && sudo apt upgrade && sudo apt install curl git powerline fonts-powerline universal-ctags xclip yarn python python3 python3-neovim python-pip python3-pip python3-dev python-setuptools python3-setuptools ruby ruby-dev rar automake autoconf autotools-dev build-essential perl cpanminus snap snapd
+    sudo apt update && sudo apt upgrade && sudo apt install curl git powerline fonts-powerline universal-ctags xclip yarn python python3 python3-neovim python-pip python3-pip python3-dev python-setuptools python3-setuptools ruby ruby-dev automake autoconf autotools-dev build-essential perl cpanminus snap snapd
 
     #--- Check Commands
 

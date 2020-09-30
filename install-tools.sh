@@ -2,7 +2,7 @@
 
 if [ -x ./install-tools.sh ]; then
 
-    sudo apt update && sudo apt upgrade && sudo apt install curl git tmux cmus zsh git-flow shellcheck exiftool
+    sudo apt update && sudo apt upgrade && sudo apt install curl git tmux cmus zsh git-flow shellcheck exiftool rar
 
     #--- Add yarn key, Update yarn
 
