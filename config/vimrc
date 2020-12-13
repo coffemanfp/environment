@@ -7,7 +7,9 @@ Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 
 " FZF - Buscador de Archivos
-" Plug 'junegunn/fzf'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+"Plug 'junegunn/fzf.vim'
+
 Plug 'shougo/denite.nvim'
 
 " Airline - Barra de Estado
@@ -26,7 +28,8 @@ Plug 'peitalin/vim-jsx-typescript'
 " VIM-GO - Mejor soporte para Go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 " Plug 'nsf/gocode', {'rtp': 'vim/'}
-Plug 'mdempsky/gocode', {'rtp': 'vim/'}
+"Plug 'mdempsky/gocode', {'rtp': 'vim/'}
+"Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
 " VIM-JAVASCRIPT - Mejor soporte para JavaScript
 Plug 'pangloss/vim-javascript'
@@ -146,18 +149,44 @@ let g:vim_json_syntax_conceal = 2
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
+"let g:go_fmt_command = "goimports"
+"let g:go_autodetect_gopath = 1
+"let g:go_list_type = "quickfix"
+"let g:go_highlight_types = 1
+"let g:go_highlight_fields = 1
+"let g:go_highlight_functions = 1
+"let g:go_highlight_function_calls = 1
+"let g:go_highlight_extra_types = 1
+"let g:go_highlight_generate_tags = 1
 let g:go_fmt_command = "goimports"
-let g:go_autodetect_gopath = 1
-let g:go_list_type = "quickfix"
-let g:go_highlight_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
-let g:go_highlight_function_calls = 1
-let g:go_highlight_extra_types = 1
-let g:go_highlight_generate_tags = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+
+let g:ale_sign_error = '⤫'
+let g:ale_sign_warning = '⚠'
+let g:airline#extensions#ale#enabled = 1
+if has('nvim')
+    " Enable deoplete on startup
+    let g:deoplete#enable_at_startup = 1
+endif
+" Disable deoplete when in multi cursor mode
+function! Multiple_cursors_before()
+    let b:deoplete_disable_auto_complete = 1
+endfunction
+function! Multiple_cursors_after()
+    let b:deoplete_disable_auto_complete = 0
+endfunction
 
 " Activar GoMetaLinter al guardar el archivo
-let g:go_metalinter_autosave = 1
+"  desactivado para aumentar velocidad de movimiento entre archivos, hacer
+"  comprobaciones manuales con '<leader>gb'
+"let g:go_metalinter_autosave = 1
 
 " Activa GoInfo automaticamente
 let g:go_auto_type_info = 1
@@ -168,11 +197,13 @@ let g:go_auto_sameids = 1
 " Etiquetas para los campos de la estructura
 let g:go_addtags_transform = "camelcase"
 
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
+"let g:go_def_mode='gopls'
+"let g:go_info_mode='gopls'
 
 " Ejecutar :GoBuild con <leader>gb
 autocmd FileType go nmap <leader>gb  :GoBuild<CR>
+autocmd FileType go nmap <leader>gl  :GoLint<CR>
+autocmd FileType go nmap <leader>gk :GoVet<CR>
 " Ejecutar :GoAlternate con <leader>ga
 autocmd FileType go nmap <leader>ga  :GoAlternate<CR>
 " Ejecutar :GoCoverage con <leader>gc
@@ -238,10 +269,11 @@ set lazyredraw
 set wrap linebreak nolist
 set autoread
 
+"let g:solarized_termcolors=256
 colorscheme solarized
-if (has("termguicolors"))
- set termguicolors
-endif
+"if (has("termguicolors"))
+ "set termguicolors
+"endif
 
 let g:rehash256 = 1
 set t_Co=256
