@@ -202,7 +202,7 @@ let g:go_addtags_transform = "camelcase"
 
 " Ejecutar :GoBuild con <leader>gb
 autocmd FileType go nmap <leader>gb  :GoBuild<CR>
-autocmd FileType go nmap <leader>gl  :GoLint<CR>
+autocmd FileType go nmap <leader>gj  :GoLint<CR>
 autocmd FileType go nmap <leader>gk :GoVet<CR>
 " Ejecutar :GoAlternate con <leader>ga
 autocmd FileType go nmap <leader>ga  :GoAlternate<CR>
