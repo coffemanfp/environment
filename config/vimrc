@@ -100,6 +100,14 @@ set backspace=2
 filetype plugin indent on    " required
 let mapleader=" "
 let maplocalleader="\\"
+set relativenumber
+set clipboard=unnamed
+set clipboard=unnamedplus
+cnoremap kj <Esc>
+cnoremap jk <Esc>
+inoremap kj <Esc>
+inoremap jk <Esc>
+set list
 
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>nn :NERDTreeFind<CR>
