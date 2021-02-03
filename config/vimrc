@@ -107,6 +107,8 @@ cnoremap kj <Esc>
 cnoremap jk <Esc>
 inoremap kj <Esc>
 inoremap jk <Esc>
+vnoremap kj <Esc>
+vnoremap jk <Esc>
 set list
 
 nnoremap <leader>n :NERDTreeToggle<CR>
