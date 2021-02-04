@@ -204,8 +204,8 @@ let g:go_auto_sameids = 1
 " Etiquetas para los campos de la estructura
 let g:go_addtags_transform = "camelcase"
 
-"let g:go_def_mode='gopls'
-"let g:go_info_mode='gopls'
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 " Ejecutar :GoBuild con <leader>gb
 autocmd FileType go nmap <leader>gb  :GoBuild<CR>
