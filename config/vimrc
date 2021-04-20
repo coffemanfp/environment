@@ -103,15 +103,13 @@ filetype plugin indent on    " required
 let mapleader=" "
 let maplocalleader="\\"
 set relativenumber
-set clipboard=unnamed
-set clipboard=unnamedplus
+"set clipboard=unnamed
+"set clipboard=unnamedplus
 cnoremap jk <Esc>
 inoremap jk <Esc>
-vnoremap jk <Esc>
 
 cnoremap kj <Esc>
 inoremap kj <Esc>
-vnoremap kj <Esc>
 
 set list
 
@@ -170,24 +168,28 @@ let g:vim_json_syntax_conceal = 2
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
-"let g:go_fmt_command = "goimports"
-"let g:go_autodetect_gopath = 1
-"let g:go_list_type = "quickfix"
-"let g:go_highlight_types = 1
-"let g:go_highlight_fields = 1
-"let g:go_highlight_functions = 1
-"let g:go_highlight_function_calls = 1
-"let g:go_highlight_extra_types = 1
-"let g:go_highlight_generate_tags = 1
+" CONFIG GO
+" disable all linters as that is taken care of by coc.nvim
+let g:go_diagnostics_enabled = 0
+let g:go_metalinter_enabled = []
+
+" don't jump to errors after metalinter is invoked
+let g:go_jump_to_error = 0
+
+" run go imports on file save
 let g:go_fmt_command = "goimports"
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_extra_types = 1
+
+" automatically highlight variable your cursor is on
+let g:go_auto_sameids = 0
+
+let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_operators = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_types = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_generate_tags = 1
 
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
@@ -204,22 +206,8 @@ function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
 endfunction
 
-" Activar GoMetaLinter al guardar el archivo
-"  desactivado para aumentar velocidad de movimiento entre archivos, hacer
-"  comprobaciones manuales con '<leader>gb'
-"let g:go_metalinter_autosave = 1
-
-" Activa GoInfo automaticamente
-let g:go_auto_type_info = 1
-
-" Resaltar automaticamente las coincidencias bajo el cursor
-let g:go_auto_sameids = 1
-
 " Etiquetas para los campos de la estructura
 let g:go_addtags_transform = "camelcase"
-
-let g:go_def_mode='gopls'
-let g:go_info_mode='gopls'
 
 " Ejecutar :GoBuild con <leader>gb
 autocmd FileType go nmap <leader>gb  :GoBuild<CR>
@@ -235,6 +223,10 @@ autocmd FileType go nmap <leader>gat  :GoAddTags
 autocmd FileType go nmap <leader>grt  :GoRemoveTags
 " Ejecutar :GoChannelPeers con <leader>gcp
 autocmd FileType go nmap <leader>gcp  :GoChannelPeers<CR>
+" Vea las llamadas a funcion
+autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
+" renombrar / refactorizar
+nmap <leader>r <Plug>(coc-rename)
 
 let g:user_emmet_leader_key='<C-K>'
 let g:user_emmet_install_global = 0
