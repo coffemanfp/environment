@@ -173,6 +173,9 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 let g:go_diagnostics_enabled = 0
 let g:go_metalinter_enabled = []
 
+" Activa GoInfo automaticamente
+let g:go_auto_type_info = 1
+
 " don't jump to errors after metalinter is invoked
 let g:go_jump_to_error = 0
 
