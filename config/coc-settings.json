@@ -1,9 +1,14 @@
 {
     "suggest.noselect": false,
+
+    "diagnostic.enable": true,
     "diagnostic.errorSign": "✘",
     "diagnostic.warningSign": "!",
     "diagnostic.infoSign": "?",
-    "diagnostic.checkCurrentLine": true,
+    "diagnostic.virtualText": false,
+    "diagnostic.messageTarget": "float",
+    "diagnostic.level": "information",
+
     "coc.preferences.formatOnSaveFiletypes": [
         "javascript",
         "html",
@@ -12,16 +17,13 @@
         "scss",
         "go"
     ],
-    "coc.preferences.hoverTarget": "float",
+
     "languageserver": {
         "golang": {
             "command": "gopls",
             "rootPatterns": ["go.mod"],
             "filetypes": ["go"]
         }
-    },
-    "go.goplsOptions": {
-        "staticcheck": true
     },
     "prettier.tabWidth": 4
 }
