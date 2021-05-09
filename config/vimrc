@@ -76,8 +76,75 @@ call plug#end()
 
 " ---------------------------
 
+" vim config
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set backspace=2
+filetype plugin indent on    " required
+set relativenumber
+set list
 let mapleader=" "
 let maplocalleader="\\"
+cnoremap jk <Esc>
+inoremap jk <Esc>
+cnoremap kj <Esc>
+inoremap kj <Esc>
+
+set cursorline
+highlight Cursorline cterm=bold
+
+set encoding=UTF-8
+set fileencodings=UTF-8
+set guifont=Fira\ Mono\ for\ Powerline\ 12
+
+set ruler
+
+syntax on
+
+set ignorecase
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smarttab
+
+set laststatus=2
+
+set scrolloff=4
+set hlsearch
+set smartcase
+set formatoptions+=1
+
+set updatetime=200
+set ttyfast
+set timeout timeoutlen=200 ttimeoutlen=50
+set history=50
+
+set title
+set noerrorbells
+set lazyredraw
+set wrap linebreak nolist
+set autoread
+
+colorscheme OceanicNext
+
+let g:rehash256 = 1
+set t_Co=256
+set background=dark
+
+autocmd FileType markdown let g:indentLine_enabled=0
+set conceallevel=0
+
+set hidden
+set nobackup
+set nowritebackup
+set signcolumn=auto
+set scl=auto
+
+set directory^=$HOME/.vim/tmp//
+
+nnoremap <leader>l :vsplit<CR>
+nnoremap <leader>j :split<CR>
 
 " NERDTree config
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -126,6 +193,7 @@ let g:airline_powerline_fonts = 1
 let g:airline_theme='oceanicnext'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
+let g:airline#extensions#tabline#show_splits = 0
 
 " typescript config
 let g:vim_json_syntax_conceal = 2
@@ -353,71 +421,3 @@ function! BufOnly(buffer, bang)
 endfunction
 
 "----------------------------------------------------
-
-" vim config
-set nocompatible              " be iMproved, required
-filetype off                  " required
-set backspace=2
-filetype plugin indent on    " required
-set relativenumber
-set list
-cnoremap jk <Esc>
-inoremap jk <Esc>
-cnoremap kj <Esc>
-inoremap kj <Esc>
-
-set cursorline
-highlight Cursorline cterm=bold
-
-set encoding=UTF-8
-set fileencodings=UTF-8
-set guifont=Fira\ Mono\ for\ Powerline\ 12
-
-set ruler
-
-syntax on
-
-set ignorecase
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set smarttab
-
-set laststatus=2
-
-set scrolloff=4
-set hlsearch
-set smartcase
-set formatoptions+=1
-
-set updatetime=200
-set ttyfast
-set timeout timeoutlen=200 ttimeoutlen=50
-set history=50
-
-set title
-set noerrorbells
-set lazyredraw
-set wrap linebreak nolist
-set autoread
-
-colorscheme OceanicNext
-
-let g:rehash256 = 1
-set t_Co=256
-set background=dark
-
-autocmd FileType markdown let g:indentLine_enabled=0
-set conceallevel=0
-
-set hidden
-set nobackup
-set nowritebackup
-set signcolumn=auto
-set scl=auto
-
-set directory^=$HOME/.vim/tmp//
-
-nnoremap <leader>l :vsplit<CR>
-nnoremap <leader>j :split<CR>
