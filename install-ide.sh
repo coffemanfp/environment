@@ -92,6 +92,12 @@ if [ -x ./install-ide.sh ]; then
     sudo mkdir /root/.vim 2>/dev/null
     echo "----------------------"
 
+    echo "----------------------"
+    echo "Creating folder .vim/tmp"
+    mkdir ~/.vim/tmp 2>/dev/null
+    sudo mkdir /root/.vim/tmp 2>/dev/null
+    echo "----------------------"
+
     echo "Creating folder .config/nvim"
     mkdir -p ~/.config/nvim 2>/dev/null
     sudo mkdir -p /root/.config/nvim 2>/dev/null

@@ -1,85 +1,66 @@
+" - - - arthurnavah - Plugs -
+"
 call plug#begin('~/.vim/plugged')
 
-" - - - ArthurNavaH - Plugs -
-
-" NERDTree - Explorador de Archivos
+" NERDTree - File explorer
 Plug 'scrooloose/nerdtree'
 Plug 'xuyuanp/nerdtree-git-plugin'
 
-" FZF - Buscador de Archivos
-"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-"Plug 'junegunn/fzf.vim'
-
+" Denite - Search file
 Plug 'shougo/denite.nvim'
 
-" Airline - Barra de Estado
+" Airline - Status bar
 Plug 'bling/vim-airline'
-" Lightline - Barra de Estado
-"Plug 'itchyny/lightline.vim'
 
-" Syntastic - Aumento de Sintaxis
+" Syntastic - Sintax
 Plug 'scrooloose/syntastic'
 
-" VIM-JSON - Mejor soporte para JSON
+" vim-go - Go Support
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+" vim-javascript - JavaScript Support
+Plug 'pangloss/vim-javascript'
+
+" vim-json - JSON Support
 Plug 'elzr/vim-json'
 
-" VIM-TYPESCRIPT - Mejor soporte para TypeScript
+" typescript-vim - TypeScript Support
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
-" VIM-GO - Mejor soporte para Go
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'nsf/gocode', {'rtp': 'vim/'}
-"Plug 'mdempsky/gocode', {'rtp': 'vim/'}
-"Plug 'stamblerre/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
-
-" VIM-JAVASCRIPT - Mejor soporte para JavaScript
-Plug 'pangloss/vim-javascript'
-
-" VIM-JSX - Soporte para JSX
+" vim-jsx - JSX Support
 Plug 'mxw/vim-jsx'
 
-" Commentary Vim - Comentarios rapidos de codigo
+" nerdcommenter - Comments fast
 Plug 'scrooloose/nerdcommenter'
 
-" Delimit Mate - Cierres automaticos de parentesis, llaves, etc
+" delimitmate - Closing parentheses, keys, etc
 Plug 'raimondi/delimitmate'
 
-" EMMET - Generador de HTML y CSS
+" emmet - HTML and CSS generator
 Plug 'mattn/emmet-vim'
 
-" NeoComplete - Mejora para el autocompletado
-Plug 'shougo/neocomplete.vim'
-
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc'
-Plug 'neoclide/vim-node-rpc'
-
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+" coc.nvim - Autocomplete
+Plug 'Shougo/neco-vim'
 Plug 'neoclide/coc-neco'
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile', 'branch': 'release'}
 
-" AsiEsc - Solucion para caracteres de escape invalidos en la interfaz
-Plug 'vim-scripts/AnsiEsc.vim'
-
-" Multi Cursor - Multi cursor
+" vim-multiple-cursors - Multi cursor
 Plug 'terryma/vim-multiple-cursors'
 
-" Gitgutter - Soporte para señales de cambios en GIT
+" Gitgutter - GIT change signal icons
 Plug 'airblade/vim-gitgutter'
 
-" Icons - Iconos para archivos
+" vim-devicons - Icons file
 Plug 'ryanoasis/vim-devicons'
 
-" Indentline Guides - Guia de indentacion con lineas
+" indentline - Indentline guide
 Plug 'yggdroot/indentline'
 
-" VIM-EUNUCH - Utilidades UNIX
+" vim-eununch - UNIX Utility
 Plug 'tpope/vim-eunuch'
 
-" ALE - Resaltado de sintaxis
-Plug 'w0rp/ale'
-
-" TEMAS - Configuracion de Temas
+" themes
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhartington/oceanic-next'
 Plug 'joshdick/onedark.vim'
@@ -95,27 +76,8 @@ call plug#end()
 
 " ---------------------------
 
-set nocompatible              " be iMproved, required
 
-filetype off                  " required
-set backspace=2
-filetype plugin indent on    " required
-let mapleader=" "
-let maplocalleader="\\"
-set relativenumber
-"set clipboard=unnamed
-"set clipboard=unnamedplus
-cnoremap jk <Esc>
-inoremap jk <Esc>
-
-cnoremap kj <Esc>
-inoremap kj <Esc>
-
-set list
-
-set cursorline
-highlight Cursorline cterm=bold
-
+" NERDTree config
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>nn :NERDTreeFind<CR>
 
@@ -125,16 +87,14 @@ let NERDTreeHighlightCursorline=1
 let NERDTreeMouseMode=2
 let NERDTreeIgnore=[ '^\.git$', ]
 let NERDTreeAutoDeleteBuffer = 1
-" enable line numbers
 let NERDTreeShowLineNumbers=1
-" make sure relative line numbers are used
 autocmd FileType nerdtree setlocal relativenumber
 
+" denite config
 nmap <leader>b :Denite buffer <CR>
 nmap <leader>f :Denite file/rec <CR>
 nnoremap <leader>h :<C-u>Denite grep:. -no-empty -mode=normal<CR>
 
-"" Define mappings
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
 	nnoremap <silent><buffer><expr> <CR>
@@ -158,33 +118,26 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
     \ [ '.git/', '.ropeproject/', '__pycache__/',
     \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules'])
 
+" airline config
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 let g:airline_theme='oceanicnext'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 
+" typescript config
 let g:vim_json_syntax_conceal = 2
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 
-" CONFIG GO
-" disable all linters as that is taken care of by coc.nvim
+" vim-go config
 let g:go_diagnostics_enabled = 0
 let g:go_metalinter_enabled = []
 
-" Activa GoInfo automaticamente
 let g:go_auto_type_info = 1
-
-" don't jump to errors after metalinter is invoked
 let g:go_jump_to_error = 0
-
-" run go imports on file save
 let g:go_fmt_command = "goimports"
-
-" automatically highlight variable your cursor is on
 let g:go_auto_sameids = 0
-
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -193,7 +146,7 @@ let g:go_highlight_operators = 1
 let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
-
+let g:go_addtags_transform = "camelcase"
 let g:ale_sign_error = '⤫'
 let g:ale_sign_warning = '⚠'
 let g:airline#extensions#ale#enabled = 1
@@ -209,37 +162,26 @@ function! Multiple_cursors_after()
     let b:deoplete_disable_auto_complete = 0
 endfunction
 
-" Etiquetas para los campos de la estructura
-let g:go_addtags_transform = "camelcase"
-
-" Ejecutar :GoBuild con <leader>gb
 autocmd FileType go nmap <leader>gb  :GoBuild<CR>
 autocmd FileType go nmap <leader>gj  :GoLint<CR>
 autocmd FileType go nmap <leader>gk :GoVet<CR>
-" Ejecutar :GoAlternate con <leader>ga
 autocmd FileType go nmap <leader>ga  :GoAlternate<CR>
-" Ejecutar :GoCoverage con <leader>gc
 autocmd FileType go nmap <leader>gc  :GoCoverageToggle<CR>
-" Ejecutar :GoAddTags con <leader>gat
 autocmd FileType go nmap <leader>gat  :GoAddTags
-" Ejecutar :GoRemoveTags con <leader>grt
 autocmd FileType go nmap <leader>grt  :GoRemoveTags
-" Ejecutar :GoChannelPeers con <leader>gcp
 autocmd FileType go nmap <leader>gcp  :GoChannelPeers<CR>
-" Vea las llamadas a funcion
+" go - show function calls
 autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
-" renombrar / refactorizar
+" rename / refactor
 nmap <leader>r <Plug>(coc-rename)
 
+" emmet config
 let g:user_emmet_leader_key='<C-K>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,css,javascript EmmetInstall
 
+" gitgutter config
 let g:gitgutter_max_signs = 200
-
-set encoding=utf-8
-set fileencodings=utf-8
-set guifont=Fira\ Mono\ for\ Powerline\ 12
 
 let g:indentLine_char = '¦'
 
@@ -251,120 +193,13 @@ let g:ale_fixers = {
  \ 'javascript': ['eslint']
  \ }
 
-
-" ---------------------------------------
-
-set number
-set ruler
-
-syntax on
-
-set ignorecase
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set smarttab
-
-set laststatus=2
-
-set scrolloff=4
-set hlsearch
-set smartcase
-set formatoptions+=1
-
-set updatetime=200
-set ttyfast
-set timeout timeoutlen=200 ttimeoutlen=50
-set history=50
-
-set noswapfile
-set title
-set noerrorbells
-set lazyredraw
-set wrap linebreak nolist
-set autoread
-
-"let g:solarized_termcolors=256
-colorscheme OceanicNext
-"if (has("termguicolors"))
- "set termguicolors
-"endif
-
-let g:rehash256 = 1
-set t_Co=256
-set background=dark
-
-autocmd FileType markdown let g:indentLine_enabled=0
-set conceallevel=0
-
-nnoremap <leader>l :vsplit<CR>
-nnoremap <leader>j :split<CR>
-
-" - - - ArthurNavaH - Scripts -
-
-" Borrar archivos de Buffer excepto el activo con :Bo
-"   Author : Christian J. Robinson <infynity@onewest.net>
-command! -nargs=? -complete=buffer -bang Bo
-    \ :call BufOnly('<args>', '<bang>')
-
-function! BufOnly(buffer, bang)
-	if a:buffer == ''
-		" No buffer provided, use the current buffer.
-		let buffer = bufnr('%')
-	elseif (a:buffer + 0) > 0
-		" A buffer number was provided.
-		let buffer = bufnr(a:buffer + 0)
-	else
-		" A buffer name was provided.
-		let buffer = bufnr(a:buffer)
-	endif
-
-	if buffer == -1
-		echohl ErrorMsg
-		echomsg "No matching buffer for" a:buffer
-		echohl None
-		return
-	endif
-
-	let last_buffer = bufnr('$')
-
-	let delete_count = 0
-	let n = 1
-	while n <= last_buffer
-		if n != buffer && buflisted(n)
-			if a:bang == '' && getbufvar(n, '&modified')
-				echohl ErrorMsg
-				echomsg 'No write since last change for buffer'
-							\ n '(add ! to override)'
-				echohl None
-			else
-				silent exe 'bdel' . a:bang . ' ' . n
-				if ! buflisted(n)
-					let delete_count = delete_count+1
-				endif
-			endif
-		endif
-		let n = n+1
-	endwhile
-
-	if delete_count == 1
-		echomsg delete_count "buffer deleted"
-	elseif delete_count > 1
-		echomsg delete_count "buffers deleted"
-	endif
-
-endfunction
-"----------------------------------------------------
-"
-" Coc.nvim
+" coc.nvim config
 
 " Better display for messages
 set cmdheight=2
 
 " don't give |ins-completion-menu| messages.
 set shortmess+=c
-
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -440,8 +275,6 @@ let g:lightline = {
       \ },
       \ }
 
-
-
 " Using CocList
 " Show all diagnostics
 "nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
@@ -460,6 +293,131 @@ let g:lightline = {
 "" Resume latest coc list
 "nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
+" ---------------------------------------
 
+" vim scripts
+
+" Borrar archivos de Buffer excepto el activo con :Bo
+"   Author : Christian J. Robinson <infynity@onewest.net>
+command! -nargs=? -complete=buffer -bang Bo
+    \ :call BufOnly('<args>', '<bang>')
+
+function! BufOnly(buffer, bang)
+	if a:buffer == ''
+		" No buffer provided, use the current buffer.
+		let buffer = bufnr('%')
+	elseif (a:buffer + 0) > 0
+		" A buffer number was provided.
+		let buffer = bufnr(a:buffer + 0)
+	else
+		" A buffer name was provided.
+		let buffer = bufnr(a:buffer)
+	endif
+
+	if buffer == -1
+		echohl ErrorMsg
+		echomsg "No matching buffer for" a:buffer
+		echohl None
+		return
+	endif
+
+	let last_buffer = bufnr('$')
+
+	let delete_count = 0
+	let n = 1
+	while n <= last_buffer
+		if n != buffer && buflisted(n)
+			if a:bang == '' && getbufvar(n, '&modified')
+				echohl ErrorMsg
+				echomsg 'No write since last change for buffer'
+							\ n '(add ! to override)'
+				echohl None
+			else
+				silent exe 'bdel' . a:bang . ' ' . n
+				if ! buflisted(n)
+					let delete_count = delete_count+1
+				endif
+			endif
+		endif
+		let n = n+1
+	endwhile
+
+	if delete_count == 1
+		echomsg delete_count "buffer deleted"
+	elseif delete_count > 1
+		echomsg delete_count "buffers deleted"
+	endif
+
+endfunction
+
+"----------------------------------------------------
+
+" vim config
+set nocompatible              " be iMproved, required
+filetype off                  " required
+set backspace=2
+filetype plugin indent on    " required
+set relativenumber
+set list
+let mapleader=" "
+let maplocalleader="\\"
+cnoremap jk <Esc>
+inoremap jk <Esc>
+cnoremap kj <Esc>
+inoremap kj <Esc>
+
+set cursorline
+highlight Cursorline cterm=bold
+
+set encoding=UTF-8
+set fileencodings=UTF-8
+set guifont=Fira\ Mono\ for\ Powerline\ 12
+
+set ruler
+
+syntax on
+
+set ignorecase
+set expandtab
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set smarttab
+
+set laststatus=2
+
+set scrolloff=4
+set hlsearch
+set smartcase
+set formatoptions+=1
+
+set updatetime=200
+set ttyfast
+set timeout timeoutlen=200 ttimeoutlen=50
+set history=50
+
+set title
+set noerrorbells
+set lazyredraw
+set wrap linebreak nolist
+set autoread
+
+colorscheme OceanicNext
+
+let g:rehash256 = 1
+set t_Co=256
+set background=dark
+
+autocmd FileType markdown let g:indentLine_enabled=0
+set conceallevel=0
+
+set hidden
+set nobackup
+set nowritebackup
 set signcolumn=auto
 set scl=auto
+
+set directory^=$HOME/.vim/tmp//
+
+nnoremap <leader>l :vsplit<CR>
+nnoremap <leader>j :split<CR>
