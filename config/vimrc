@@ -82,6 +82,7 @@ filetype off                  " required
 set backspace=2
 filetype plugin indent on    " required
 set relativenumber
+set number
 set list
 let mapleader=" "
 let maplocalleader="\\"
