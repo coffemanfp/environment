@@ -37,10 +37,13 @@ Plug 'elzr/vim-json'
 
 " vim-javascript - JavaScript Support
 Plug 'pangloss/vim-javascript'
-
 " typescript-vim - TypeScript Support
 Plug 'leafgarland/typescript-vim'
+" vim-jsx-pretty - JSX syntax
+Plug 'maxmellon/vim-jsx-pretty'
+" vim-jsx-typescript - TSX syntax
 Plug 'peitalin/vim-jsx-typescript'
+" vim-styled-components - Styled Components
 Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 
 " nerdcommenter - Comments fast
