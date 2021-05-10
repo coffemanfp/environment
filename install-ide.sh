@@ -182,7 +182,7 @@ if [ -x ./install-ide.sh ]; then
     nvim -E -s -u ~/.vim/vimrc +UpdateRemotePlugins +qall
     nvim -E -s -u ~/.vim/vimrc +GoInstallBinaries +qall
     nvim -E -s -u ~/.vim/vimrc +GoUpdateBinaries +qall
-    nvim -E -s -u ~/.vim/vimrc +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax coc-gocode +qall
+    nvim -E -s -u ~/.vim/vimrc +CocInstall coc-tsserver coc-eslint coc-json coc-prettier coc-css coc-emmet coc-highlight coc-html coc-tag coc-omni coc-syntax +qall
 
     echo "+ Installation successful! +"
 

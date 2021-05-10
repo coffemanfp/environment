@@ -41,9 +41,9 @@ Plug 'raimondi/delimitmate'
 Plug 'mattn/emmet-vim'
 
 " coc.nvim - Autocomplete
-Plug 'Shougo/neco-vim'
-Plug 'neoclide/coc-neco'
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile', 'branch': 'release'}
+"Plug 'Shougo/neco-vim'
+"Plug 'neoclide/coc-neco'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " vim-multiple-cursors - Multi cursor
 Plug 'terryma/vim-multiple-cursors'
@@ -204,6 +204,8 @@ autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 " vim-go config
 let g:go_diagnostics_enabled = 0
 let g:go_metalinter_enabled = []
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 
 let g:go_auto_type_info = 1
 let g:go_jump_to_error = 0
@@ -218,20 +220,20 @@ let g:go_highlight_extra_types = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_addtags_transform = "camelcase"
-let g:ale_sign_error = '⤫'
-let g:ale_sign_warning = '⚠'
-let g:airline#extensions#ale#enabled = 1
-if has('nvim')
-    " Enable deoplete on startup
-    let g:deoplete#enable_at_startup = 1
-endif
-" Disable deoplete when in multi cursor mode
-function! Multiple_cursors_before()
-    let b:deoplete_disable_auto_complete = 1
-endfunction
-function! Multiple_cursors_after()
-    let b:deoplete_disable_auto_complete = 0
-endfunction
+"let g:ale_sign_error = '⤫'
+"let g:ale_sign_warning = '⚠'
+"let g:airline#extensions#ale#enabled = 1
+"if has('nvim')
+    "" Enable deoplete on startup
+    "let g:deoplete#enable_at_startup = 1
+"endif
+"" Disable deoplete when in multi cursor mode
+"function! Multiple_cursors_before()
+    "let b:deoplete_disable_auto_complete = 1
+"endfunction
+"function! Multiple_cursors_after()
+    "let b:deoplete_disable_auto_complete = 0
+"endfunction
 
 autocmd FileType go nmap <leader>gb  :GoBuild<CR>
 autocmd FileType go nmap <leader>gj  :GoLint<CR>
@@ -256,13 +258,10 @@ let g:gitgutter_max_signs = 200
 
 let g:indentLine_char = '¦'
 
-let g:ale_sign_error = '●' " Less aggressive than the default '>>'
-let g:ale_sign_warning = '.'
-let g:ale_lint_on_enter = 0 " Less distracting when opening a new file<Paste>
-
-let g:ale_fixers = {
- \ 'javascript': ['eslint']
- \ }
+"let g:ale_sign_error = '●' " Less aggressive than the default '>>'
+"let g:ale_sign_warning = '.'
+"let g:ale_lint_on_enter = 0 " Less distracting when opening a new file<Paste>
+"let g:ale_fixers = {'javascript': ['eslint']}
 
 " coc.nvim config
 
@@ -335,16 +334,16 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 
 
 " Add diagnostic info for https://github.com/itchyny/lightline.vim
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status'
-      \ },
-      \ }
+"let g:lightline = {
+      "\ 'colorscheme': 'wombat',
+      "\ 'active': {
+      "\   'left': [ [ 'mode', 'paste' ],
+      "\             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+      "\ },
+      "\ 'component_function': {
+      "\   'cocstatus': 'coc#status'
+      "\ },
+      "\ }
 
 " Using CocList
 " Show all diagnostics
