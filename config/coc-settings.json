@@ -10,12 +10,17 @@
     "diagnostic.level": "information",
 
     "coc.preferences.formatOnSaveFiletypes": [
+        "go",
+
         "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+
         "html",
         "json",
         "css",
-        "scss",
-        "go"
+        "scss"
     ],
 
     "languageserver": {
@@ -25,5 +30,11 @@
             "filetypes": ["go"]
         }
     },
-    "prettier.tabWidth": 4
+
+    "prettier.tabWidth": 4,
+    "prettier.disableSuccessMessage": true,
+
+    "eslint.autoFixOnSave": true,
+    "tsserver.formatOnType": true,
+    "coc.preferences.formatOnType": true
 }
