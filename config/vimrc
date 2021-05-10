@@ -60,6 +60,9 @@ Plug 'yggdroot/indentline'
 " vim-eununch - UNIX Utility
 Plug 'tpope/vim-eunuch'
 
+" AnsiEsc.vim - ansi escape sequences concealed
+Plug 'vim-scripts/AnsiEsc.vim'
+
 " themes
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhartington/oceanic-next'
