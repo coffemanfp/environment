@@ -26,11 +26,18 @@ if [ -x ./install-tools.sh ]; then
     wget --no-check-certificate http://install.ohmyz.sh -O - | sh
     echo "----------------------"
 
-    echo "Copying configuration Tmux"
+    echo "Download Tmux Plugin Manager"
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
     sudo git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
+    echo "----------------------"
+
+    echo "Copying configuration Tmux"
     cp ./config/.tmux.conf ~/.
     sudo cp ./config/.tmux.conf /root/.
+    echo "----------------------"
+
+    echo "Install Tmux Plugins"
+    bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
     echo "----------------------"
 
     echo "+ Installation successful! +"
