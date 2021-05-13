@@ -6,6 +6,3 @@ cd environment
 bash install-ide.sh
 bash install-tools.sh
 ```
-
-## Ctags
-`ctags -R .`
