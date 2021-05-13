@@ -146,7 +146,7 @@ set lazyredraw
 set wrap linebreak nolist
 set autoread
 
-colorscheme OceanicNext
+colorscheme onedark
 
 let g:rehash256 = 1
 set t_Co=256
@@ -210,10 +210,13 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
 " airline config
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='oceanicnext'
+let g:airline_theme='onedark'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#hunks#enabled=0
+let g:airline#extensions#branch#enabled=1
 
 " typescript config
 let g:vim_json_syntax_conceal = 2
