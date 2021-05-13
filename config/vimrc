@@ -79,6 +79,9 @@ Plug 'tpope/vim-eunuch'
 " AnsiEsc.vim - Ansi escape sequences concealed
 Plug 'vim-scripts/AnsiEsc.vim'
 
+" tmuxline.vim - Tmux integration
+Plug 'edkolev/tmuxline.vim'
+
 " themes
 Plug 'vim-airline/vim-airline-themes'
 Plug 'mhartington/oceanic-next'
@@ -217,6 +220,10 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#tmuxline#enabled = 0
+
+" tmuxline.vim config
+let g:tmuxline_powerline_separators = 0
 
 " typescript config
 let g:vim_json_syntax_conceal = 2

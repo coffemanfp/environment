@@ -27,7 +27,9 @@ if [ -x ./install-tools.sh ]; then
     echo "----------------------"
 
     echo "Copying configuration Tmux"
-    cp ./config/.tmux.conf "$HOME"/.
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+    sudo git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
+    cp ./config/.tmux.conf ~/.
     sudo cp ./config/.tmux.conf /root/.
     echo "----------------------"
 
