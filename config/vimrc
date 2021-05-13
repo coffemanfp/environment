@@ -115,7 +115,7 @@ highlight Cursorline cterm=bold
 
 set encoding=UTF-8
 set fileencodings=UTF-8
-set guifont=Fira\ Mono\ for\ Powerline\ 12
+set guifont=BlexMono\ Nerd\ Fond\ Mono\ Text\ 12
 
 set ruler
 
