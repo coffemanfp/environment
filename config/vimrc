@@ -9,7 +9,8 @@ let g:coc_global_extensions = [
 \ 'coc-tag',
 \ 'coc-tsserver',
 \ 'coc-prettier',
-\ 'coc-eslint'
+\ 'coc-eslint',
+\ 'coc-protobuf'
 \ ]
 
 " - - - arthurnavah - Plugs -
@@ -66,6 +67,8 @@ Plug 'airblade/vim-gitgutter'
 
 " vim-devicons - Icons file
 Plug 'ryanoasis/vim-devicons'
+" nerdtree-devicons-syntax - Icons in nerdtree
+Plug 'vwxyutarooo/nerdtree-devicons-syntax'
 
 " indentline - Indentline guide
 Plug 'yggdroot/indentline'
@@ -73,7 +76,7 @@ Plug 'yggdroot/indentline'
 " vim-eununch - UNIX Utility
 Plug 'tpope/vim-eunuch'
 
-" AnsiEsc.vim - ansi escape sequences concealed
+" AnsiEsc.vim - Ansi escape sequences concealed
 Plug 'vim-scripts/AnsiEsc.vim'
 
 " themes

@@ -67,7 +67,7 @@ if [ -x ./install-ide.sh ]; then
     sudo snap remove nvim
 
     sudo snap install vim-editor --beta
-    sudo snap install --beta nvim --classic
+    sudo snap install nvim --classic
 
     #---
 
@@ -157,11 +157,11 @@ if [ -x ./install-ide.sh ]; then
 
     #--- Check Go Env
 
-    if [ -z $(go env GOROOT) ]; then
+    if [ -z "$(go env GOROOT)" ]; then
         echo "The GOROOT environment variable is not set"
         exit 1
     fi
-    if [ -z $(go env GOPATH) ]; then
+    if [ -z "$(go env GOPATH)" ]; then
         echo "The GOPATH environment variable is not set"
         exit 1
     fi
@@ -179,9 +179,11 @@ if [ -x ./install-ide.sh ]; then
 
     nvim -E -s -u ~/.vim/vimrc +PlugInstall +qall
     nvim -E -s -u ~/.vim/vimrc +PlugUpdate +qall
+    nvim -E -s -u ~/.vim/vimrc +PlugUpgrade +qall
     nvim -E -s -u ~/.vim/vimrc +UpdateRemotePlugins +qall
     nvim -E -s -u ~/.vim/vimrc +GoInstallBinaries +qall
     nvim -E -s -u ~/.vim/vimrc +GoUpdateBinaries +qall
+    nvim -E -s -u ~/.vim/vimrc +CocUpdate +qall
 
     echo "+ Installation successful! +"
 
