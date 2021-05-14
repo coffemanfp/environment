@@ -120,27 +120,6 @@ if [ -x ./install-ide.sh ]; then
     echo "----------------------"
 
     echo "----------------------"
-    echo "Installing Universal-Ctags"
-    git clone https://github.com/universal-ctags/ctags.git
-    cd ctags || exit
-    ./autogen.sh 
-    ./configure
-    make
-    sudo make install
-    cd ..
-    sudo rm -r ctags
-    echo "----------------------"
-
-    echo "----------------------"
-    echo "Installing Powerline Fonts"
-    git clone https://github.com/powerline/fonts.git --depth=1
-    cd fonts || exit
-    ./install.sh
-    cd ..
-    rm -rf fonts
-    echo "----------------------"
-
-    echo "----------------------"
     echo "Configuring tools GIT with Vim"
     git config --global core.editor nvim
     git config --global diff.tool vimdiff
@@ -148,7 +127,7 @@ if [ -x ./install-ide.sh ]; then
     echo "----------------------"
 
     echo "----------------------"
-    echo "Configuring Plug Vim"
+    echo "Install Vim Plugin Manager"
     curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
     curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
