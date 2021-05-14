@@ -1,7 +1,7 @@
+![Screenshot environment](./screenshot.png)
+
 # environment
 Personal Terminal Development Environment, with Zsh, Tmux and Vim.
-
-Read [`install-ide.sh`](./install-ide.sh) and [`install-tools.sh`](./install-tools.sh) files before running on your system.
 
 [Golang/$GOPATH](https://golang.org/) for development tools and [NodeJS](https://nodejs.org/) for [`coc.nvim`](https://github.com/neoclide/coc.nvim) are required.
 
@@ -83,5 +83,16 @@ This configuration uses [`gopls`](https://pkg.go.dev/golang.org/x/tools/gopls) f
 
 You can uninstall extensions with `:CocUninstall <extensionName>`.
 
-## Screenshot
-![Screenshot environment](./screenshot.png)
+## ⚠️  Precaution ⚠️
+Read [`install-ide.sh`](./install-ide.sh) and [`install-tools.sh`](./install-tools.sh) files before running on your system.
+
+These instructions and the [`install-ide.sh`](./install-ide.sh) and [`install-tools.sh`](./install-tools.sh) files will replace your configuration files for these tools, please keep this in mind.
+```sh
+# Configuration backup
+cp ~/.zshrc ~/.zshrc.copy
+cp ~/.p10k.zsh ~/.p10k.zsh.copy
+cp ~/.tmux.conf ~/.tmux.conf.copy
+cp ~/.vim/vimrc ~/.vim/vimrc.copy
+cp ~/.config/nvim/init.vim ~/.config/nvim/init.vim.copy
+cp ~/.config/nvim/coc-settings.json ~/.config/nvim/coc-settings.json.copy
+```
