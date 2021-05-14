@@ -1,15 +1,17 @@
 # environment
 Personal Terminal Development Environment, with Zsh, Tmux and Vim.
 
-Read [install-ide.sh](./install-ide.sh) and [install-tools.sh](./install-tools.sh) files before running on your system.
+Read [`install-ide.sh`](./install-ide.sh) and [`install-tools.sh`](./install-tools.sh) files before running on your system.
 
-* [zsh](https://github.com/zsh-users/zsh)
+[Golang/$GOPATH](https://golang.org/) for development tools and [NodeJS](https://nodejs.org/) for [`coc.nvim`](https://github.com/neoclide/coc.nvim) are required.
+
+* [`zsh`](https://github.com/zsh-users/zsh)
     * [Oh My ZSH!](https://github.com/ohmyzsh/ohmyzsh)
     * [Powerlevel10k Theme](https://github.com/romkatv/powerlevel10k)
     * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
     * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
-* [tmux](https://github.com/tmux/tmux)
+* [`tmux`](https://github.com/tmux/tmux)
     * [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
     * [Tmux sensible](https://github.com/tmux-plugins/tmux-sensible)
     * [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect)
@@ -18,7 +20,7 @@ Read [install-ide.sh](./install-ide.sh) and [install-tools.sh](./install-tools.s
     * [tmux-onedark-theme](https://github.com/odedlaz/tmux-onedark-theme)
     * [Tmux battery status](https://github.com/tmux-plugins/tmux-battery)
 
-* [neovim](https://github.com/neovim/neovim)
+* [`neovim`](https://github.com/neovim/neovim)
     * Read [config/vimrc](./config/vimrc) ...
 
 * [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)
@@ -26,7 +28,7 @@ Read [install-ide.sh](./install-ide.sh) and [install-tools.sh](./install-tools.s
     * Fura Mono
     * Ubuntu Mono
 
-## Install
+## Complete installation
 ```sh
 git clone https://github.com/arthurnavah/environment.git
 
@@ -35,5 +37,51 @@ bash install-ide.sh
 bash install-tools.sh
 ```
 
-### Screenshot
+## Migration
+If you already have Neovim (With vim-plug), Tmux (With TPM) and Zsh (With Oh My Zsh) you just need to copy the configuration
+
+```sh
+git clone https://github.com/arthurnavah/environment.git
+
+cd environment 
+
+cp config/.zshrc ~/.
+cp config/.p10k.zsh ~/.
+cp config/.tmux.conf ~/.
+
+cp config/vimrc ~/.vim/.
+cp config/init.vim ~/.config/nvim/.
+cp config/coc-settings.json ~/.config/nvim/.
+```
+
+### Install Plugins and Tools
+```sh
+# Neovim
+nvim -E -s +PlugInstall +qall
+nvim -E -s +PlugUpdate +qall
+nvim -E -s +PlugUpgrade +qall
+nvim -E -s +UpdateRemotePlugins +qall
+nvim -E -s +GoInstallBinaries +qall
+nvim -E -s +GoUpdateBinaries +qall
+nvim -E -s +CocUpdate +qall
+
+# Tmux
+bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+```
+
+### Neovim Checkhealth
+```sh
+nvim +checkhealth
+```
+
+## FAQ - Errors
+
+### Why do I have double results in the autocomplete?
+Probably before using this configuration, you had more extensions for [`coc.nvim`](https://github.com/neoclide/coc.nvim), run `:CocList extensions` and `:CocList services` to confirm it.
+
+This configuration uses [`gopls`](https://pkg.go.dev/golang.org/x/tools/gopls) for autocompletion in [Golang](https://golang.org/), having the [`coc-go`](https://github.com/josa42/coc-go) extension could cause double results.
+
+You can uninstall extensions with `:CocUninstall <extensionName>`.
+
+## Screenshot
 ![Screenshot environment](./screenshot.png)

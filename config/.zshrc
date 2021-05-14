@@ -15,8 +15,9 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 # Load alias
-source ~/.alias
+[ -f ~/.alias ] && source ~/.alias
 
+# Load FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
