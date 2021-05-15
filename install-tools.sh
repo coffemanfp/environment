@@ -27,15 +27,10 @@ if [ -x ./install-tools.sh ]; then
     wget --no-check-certificate http://install.ohmyz.sh -O - | sh
     echo "----------------------"
 
-    echo "Configuring ZSH Theme and Plugins"
-    git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
-
+    echo "Configuring Zsh Plugins"
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-syntax-highlighting
 
     git clone https://github.com/zsh-users/zsh-autosuggestions "${ZSH_CUSTOM:-~/.oh-my-zsh/custom}"/plugins/zsh-autosuggestions
-
-    cp ./config/.p10k.zsh ~/.
-    sudo cp ./config/.p10k.zsh /root/.
     echo "----------------------"
 
     echo "Download Tmux Plugin Manager"

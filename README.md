@@ -7,7 +7,6 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim.
 
 * [`zsh`](https://github.com/zsh-users/zsh)
     * [Oh My ZSH!](https://github.com/ohmyzsh/ohmyzsh)
-    * [Powerlevel10k Theme](https://github.com/romkatv/powerlevel10k)
     * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
     * [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions)
 
@@ -46,7 +45,6 @@ git clone https://github.com/arthurnavah/environment.git
 cd environment 
 
 cp config/.zshrc ~/.
-cp config/.p10k.zsh ~/.
 cp config/.tmux.conf ~/.
 
 cp config/vimrc ~/.vim/.
@@ -90,7 +88,6 @@ These instructions and the [`install-ide.sh`](./install-ide.sh) and [`install-to
 ```sh
 # Configuration backup
 cp ~/.zshrc ~/.zshrc.copy
-cp ~/.p10k.zsh ~/.p10k.zsh.copy
 cp ~/.tmux.conf ~/.tmux.conf.copy
 cp ~/.vim/vimrc ~/.vim/vimrc.copy
 cp ~/.config/nvim/init.vim ~/.config/nvim/init.vim.copy
