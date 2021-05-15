@@ -156,13 +156,13 @@ if [ -x ./install-ide.sh ]; then
         exit 1
     fi
 
-    nvim -E -s -u ~/.vim/vimrc +PlugInstall +qall
-    nvim -E -s -u ~/.vim/vimrc +PlugUpdate +qall
-    nvim -E -s -u ~/.vim/vimrc +PlugUpgrade +qall
-    nvim -E -s -u ~/.vim/vimrc +UpdateRemotePlugins +qall
-    nvim -E -s -u ~/.vim/vimrc +GoInstallBinaries +qall
-    nvim -E -s -u ~/.vim/vimrc +GoUpdateBinaries +qall
-    nvim -E -s -u ~/.vim/vimrc +CocUpdate +qall
+    nvim --headless +PlugInstall +qall
+    nvim --headless +PlugUpdate +qall
+    nvim --headless +PlugUpgrade +qall
+    nvim --headless +UpdateRemotePlugins +qall
+    nvim --headless +GoInstallBinaries +qall
+    nvim --headless +GoUpdateBinaries +qall
+    nvim --headless +CocUpdate +qall
 
     echo "+ Installation successful! +"
 

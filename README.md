@@ -55,13 +55,13 @@ cp config/coc-settings.json ~/.config/nvim/.
 ### Install Plugins and Tools
 ```sh
 # Neovim
-nvim -E -s +PlugInstall +qall
-nvim -E -s +PlugUpdate +qall
-nvim -E -s +PlugUpgrade +qall
-nvim -E -s +UpdateRemotePlugins +qall
-nvim -E -s +GoInstallBinaries +qall
-nvim -E -s +GoUpdateBinaries +qall
-nvim -E -s +CocUpdate +qall
+nvim --headless +PlugInstall +qall
+nvim --headless +PlugUpdate +qall
+nvim --headless +PlugUpgrade +qall
+nvim --headless +UpdateRemotePlugins +qall
+nvim --headless +GoInstallBinaries +qall
+nvim --headless +GoUpdateBinaries +qall
+nvim --headless +CocUpdate +qall
 
 # Tmux
 bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
