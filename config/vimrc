@@ -185,7 +185,7 @@ autocmd FileType nerdtree setlocal relativenumber
 " denite config
 nmap <leader>b :Denite buffer <CR>
 nmap <leader>f :Denite file/rec <CR>
-nnoremap <leader>h :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+nnoremap <leader>h :Denite grep -no-empty<CR>
 
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
@@ -260,8 +260,6 @@ autocmd FileType go nmap <leader>grt  :GoRemoveTags
 autocmd FileType go nmap <leader>gcp  :GoChannelPeers<CR>
 " go - show function calls
 autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
-" rename / refactor
-nmap <leader>r <Plug>(coc-rename)
 
 " emmet config
 let g:user_emmet_leader_key='<C-K>'
