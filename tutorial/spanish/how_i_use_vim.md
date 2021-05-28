@@ -356,4 +356,6 @@ Soy un Digital Nomad, y entre muchas de las situaciones en las que he programado
 
 Enciende el tema "light" de esta configuracion con `:LightMode` o vuelve al "dark" con `:DarkMode`.
 
+Un `:li<tab>` podria ser suficiente para autocompletar a `:LightMode`, y `:da<tab>` para autocompletar a `:DarkMode`.
+
 _... En proceso de redaccion_
