@@ -320,7 +320,7 @@ Utilizo el paquete `vim-go` para integracion con las herramientas de Golang como
 * Ir a las llamadas de la funcion: `<leader>cc`
 * Ir a la definicion del tipo: `<leader>gy`
 * Ir a las implementaciones de una interface: `<leader>gi`
-* Refactorizar nombre: `<leader>rn`
+* Refactorizar nombre: `<leader>rn` | `:GoRename`
 * Ver documentacion: `K`
 
 * Regresar un `jump`: `<Ctrl-o>`
