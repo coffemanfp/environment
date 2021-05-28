@@ -313,6 +313,9 @@ Utilizo el paquete `vim-go` para integracion con las herramientas de Golang como
 
 ## Common actions
 
+* Comentar linea o lineas: `<leader>c<leader>`
+* Comentar en bloque: `<leader>cs`
+
 * Ir a definicion: `<leader>gd`
 * Ir a las llamadas de la funcion: `<leader>cc`
 * Ir a la definicion del tipo: `<leader>gy`
@@ -336,5 +339,21 @@ Utilizo el paquete `vim-go` para integracion con las herramientas de Golang como
 * Compilar: `<leader>gb`
 
 * Llamar a Emmet: `<Ctrl-k>`
+
+* Buscar archivo: `<leader>f`
+* Buscar archivo en buffer: `<leader>b`
+* Buscar texto en archivos: `<leader>h`
+
+* Ir al extremo opuesto de comillas, parentesis, llaves, corchetes, etc...: `%`
+
+* Cerrar todos los archivos en buffer y tabs menos el actual: `:Bo`
+
+* Cambiar a modo LightMode: `:LightMode`
+* Cambiar a modo DarkMode: `:DarkMode`
+
+## LightMode
+Soy un Digital Nomad, y entre muchas de las situaciones en las que he programado aveces he tenido el problema de que la luz natural opaque mucho mi editor mientras estoy desarrollando lo cual es bastante molesto, he encontrado una solucion en los temas "light" para estas situaciones... cuando la luz del dia no te permita ver bien tu editor un tema light podria ayudar, claro... cuando no programo fuera de casa o en un entorno con tanta luz solar uso los temas "dark" a los cuales se esta mas acostumbrado.
+
+Enciende el tema "light" de esta configuracion con `:LightMode` o vuelve al "dark" con `:DarkMode`.
 
 _... En proceso de redaccion_

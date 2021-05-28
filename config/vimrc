@@ -1,5 +1,5 @@
 let g:coc_global_extensions = [
-\ 'coc-omni',
+\ 'coc-omni', 
 \ 'coc-html',
 \ 'coc-css',
 \ 'coc-emmet',
@@ -122,8 +122,6 @@ set guifont=BlexMono\ Nerd\ Fond\ Mono\ Text\ 12
 
 set ruler
 
-syntax on
-
 set ignorecase
 set expandtab
 set tabstop=4
@@ -149,11 +147,27 @@ set lazyredraw
 set wrap linebreak nolist
 set autoread
 
-colorscheme onedark
+" set theme
+syntax on
+syntax enable
 
 let g:rehash256 = 1
 set t_Co=256
-set background=dark
+
+if (has("nvim"))
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+let g:oceanic_next_terminal_bold = 1
+let g:oceanic_next_terminal_italic = 1
+let g:onedark_terminal_italics=1
+
+colorscheme onedark
+" ---
 
 autocmd FileType markdown let g:indentLine_enabled=0
 set conceallevel=0
@@ -365,4 +379,14 @@ function! BufOnly(buffer, bang)
 
 endfunction
 
+command! -nargs=0 LightMode call LightMode()
+function! LightMode()
+    colorscheme OceanicNextLight
+    AirlineTheme oceanicnextlight
+endfunction
+command! -nargs=0 DarkMode call DarkMode()
+function! DarkMode()
+    colorscheme onedark
+    AirlineTheme onedark
+endfunction
 "----------------------------------------------------
