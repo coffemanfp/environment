@@ -319,27 +319,21 @@ Utilizo el paquete `vim-go` para integracion con las herramientas de Golang como
 * Ir a las implementaciones de una interface: `<leader>gi`
 * Refactorizar nombre: `<leader>rn`
 * Ver documentacion: `K`
---
 
 * Regresar un `jump`: `<Ctrl-o>`
 * Avanzar al `jump`: `<Ctrl-i>`
---
 
 * Siguiente error de la quicklist: `]c` | `:cn`
 * Anterior error de la quicklist: `[c` | `:cp`
---
 
 * Agregar `tags` a una estructura: `<leader>gat`
 * Eliminar `tags` de una estructura: `<leader>grt`
---
 
 * Mostrar Coverage del codigo: `<leader>gc`
---
 
 * Llamar a `golint`: `<leader>gj`
 * Llamar a `govet`: `<leader>gk`
 * Compilar: `<leader>gb`
---
 
 * Llamar a Emmet: `<Ctrl-k>`
 
