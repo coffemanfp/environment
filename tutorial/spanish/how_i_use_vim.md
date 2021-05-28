@@ -277,4 +277,70 @@ Con `<Ctrl-z>` puedes suspender el estado actual de VIM y volver a la terminal, 
 ---
 
 # Programming in VIM
+Mi lenguaje de programacion principal es Golang, esta configuracion esta adaptada para ese lenguaje de programacion.
+El autocompletado y la integracion con LSP (Language Server Protocol) la realizo con [coc.nvim](https://github.com/neoclide/coc.nvim), las extensiones que utilizo actualmente son :
+
+* `coc-omni`
+* `coc-html`
+* `coc-css`
+* `coc-emmet`
+* `coc-json`
+* `coc-highlight`
+* `coc-syntax`
+* `coc-tag`
+* `coc-tsserver`
+* `coc-prettier`
+* `coc-eslint`
+* `coc-protobuf`
+
+El unico LSP que integro es el de Golang, `gopls` en el `coc-settings.json` (accesible mediante `:CocConfig`) :
+
+```json
+{
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod"],
+            "filetypes": ["go"]
+        }
+    }
+}
+```
+
+Con esta configuracion puedo trabajar con Golang, JavaScript + TypeScript + React con `ESLint` y `Prettier`, HTML + CSS con Emmet y SASS.
+
+Utilizo el paquete `vim-go` para integracion con las herramientas de Golang como el autoimportado y autoindentado, entre las otras herramientas oficiales de Golang.
+
+## Common actions
+
+* Ir a definicion: `<leader>gd`
+* Ir a las llamadas de la funcion: `<leader>cc`
+* Ir a la definicion del tipo: `<leader>gy`
+* Ir a las implementaciones de una interface: `<leader>gi`
+* Refactorizar nombre: `<leader>rn`
+* Ver documentacion: `K`
+--
+
+* Regresar un `jump`: `<Ctrl-o>`
+* Avanzar al `jump`: `<Ctrl-i>`
+--
+
+* Siguiente error de la quicklist: `]c` | `:cn`
+* Anterior error de la quicklist: `[c` | `:cp`
+--
+
+* Agregar `tags` a una estructura: `<leader>gat`
+* Eliminar `tags` de una estructura: `<leader>grt`
+--
+
+* Mostrar Coverage del codigo: `<leader>gc`
+--
+
+* Llamar a `golint`: `<leader>gj`
+* Llamar a `govet`: `<leader>gk`
+* Compilar: `<leader>gb`
+--
+
+* Llamar a Emmet: `<Ctrl-k>`
+
 _... En proceso de redaccion_
