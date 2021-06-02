@@ -334,9 +334,9 @@ Utilizo el paquete `vim-go` para integracion con las herramientas de Golang como
 
 * Mostrar Coverage del codigo: `<leader>gc`
 
-* Llamar a `golint`: `<leader>gj`
+* Llamar a `golint`: `<leader>gl`
 * Llamar a `govet`: `<leader>gk`
-* Compilar: `<leader>gb`
+* Llamar a `:GoBuild`: `<leader>gj`
 
 * Llamar a Emmet: `<Ctrl-k>`
 

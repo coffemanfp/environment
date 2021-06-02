@@ -155,7 +155,7 @@ let g:rehash256 = 1
 set t_Co=256
 
 if (has("nvim"))
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+    let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 endif
 
 if (has("termguicolors"))
@@ -264,8 +264,8 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_addtags_transform = "camelcase"
 
-autocmd FileType go nmap <leader>gb  :GoBuild<CR>
-autocmd FileType go nmap <leader>gj  :GoLint<CR>
+autocmd FileType go nmap <leader>gj  :GoBuild<CR>
+autocmd FileType go nmap <leader>gl :GoLint<CR>
 autocmd FileType go nmap <leader>gk :GoVet<CR>
 autocmd FileType go nmap <leader>ga  :GoAlternate<CR>
 autocmd FileType go nmap <leader>gc  :GoCoverageToggle<CR>
