@@ -1,0 +1,56 @@
+# How do I use Terminal?
+Desarrollo y trabajo utilizando 100% la terminal de Linux (menos el Navegador Web), editor de codigo, bases de datos, monitorizacion de sistema.
+
+La GUI de terminal que utilizo es indiferente a mi flujo de trabajo, suelo usar la terminal por defecto de mi distribucion Linux, mi flujo de trabajo se divide en :
+
+* Terminal GUI: `gnome-terminal` (By default)
+ * Nerd fond: ["BlexMono"](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/IBMPlexMono)
+ * Color Palette: "Solarized"
+* Shell: `zsh`
+* Terminal Multiplexor: `tmux`
+* Code editor: `vim` (NeoVim)
+* Music player: `cmus`
+
+Al encender mi maquina, abro la terminal, voy a la carpeta de mi proyecto, ejecuto `tmux` y presiono `F11` para trabajar con la terminal en pantalla completa.
+
+## Zsh
+Utilizo `zsh` como Shell en reemplazo a `bash`, por el autocompletado y plugins visuales con `Oh My Zsh!`.
+
+## Tmux
+Utilizo `tmux` para multiplexar mi terminal con varios splits y paneles, he cambiado la `"Key leader"` a `<Ctrl>a` en reemplazo a `<Ctrl>b`.
+
+* Crear split horizontal: `<Ctrl>a%`
+
+* Crear split vertical: `<Ctrl>a"`
+
+* Hacer toggle zoom de un split: `<Ctrl>az`
+
+* Crear nuevo panel: `<Ctrl>ac`
+
+* Ir al siguiente panel: `<Ctrl>an`
+
+* Ir al panel anterior: `<Ctrl>ap`
+
+* Moverte entre splits (con movimientos de Vim): `<Ctrl>a{h, j, k, l}` | ejemplo: `<Ctrl>al`
+
+* Redimensionar split (con movimientos de Vim): `<Ctrl>a{H, J, K, L}` | ejemplo: `<Ctrl>aL`
+
+* Guardar entorno: `<Ctrl>a <Ctrl>s`
+
+* Restaurar entorno: `<Ctrl>a <Ctrl>r`
+
+* Modo de movimiento Vi: `<Ctrl>a[`
+
+Se puede redimensionar splits con el mouse, arrastrando las lineas separadoras.
+
+Al seleccionar texto con el mouse y dejarlo presionado, se puede presionar `y` para copiar lo seleccionado.
+
+## Common commands
+* Copiar path actual al portapapeles: `pwd | xclip -selection clipboard`
+
+* Buscador de comandos: `<Ctrl>r`
+
+## LightMode
+Como explique al final de [el tutorial de mi Vim](./how_i_use_vim.md), al programar en otras situaciones y lugares con distinta iluminacion... me hizo encontrarle un uso a los themes light, sobre todo cuando hay luz solar, acceso a la configuracion de la Terminal GUI que utilizo... por el momento es `gnome-terminal`:
+
+`Options > Preferences > My Profile > Colors > "Use colors from system theme" > Built-in schemes: Solarized light`
