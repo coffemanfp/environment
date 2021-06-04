@@ -222,7 +222,11 @@ endfunction
 
 call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
     \ [ '.git/', '.ropeproject/', '__pycache__/',
-    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules'])
+    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules/', 'package-lock.json'])
+
+call denite#custom#var('file/rec', 'command',
+\ ['package-lock.json', '--path', ':directory',
+\  "--ignore=''"])
 
 " airline config
 let g:airline#extensions#tabline#enabled = 1
