@@ -4,8 +4,8 @@ Desarrollo y trabajo utilizando 100% la terminal de Linux (menos el Navegador We
 La GUI de terminal que utilizo es indiferente a mi flujo de trabajo, suelo usar la terminal por defecto de mi distribucion Linux, mi flujo de trabajo se divide en :
 
 * Terminal GUI: `gnome-terminal` (By default)
- * Nerd fond: ["BlexMono"](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/IBMPlexMono)
- * Color Palette: "Solarized"
+    * Nerd fond: ["BlexMono"](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/IBMPlexMono)
+    * Color Palette: "Solarized"
 * Shell: `zsh`
 * Terminal Multiplexor: `tmux`
 * Code editor: `vim` (NeoVim)
@@ -47,6 +47,8 @@ Al seleccionar texto con el mouse y dejarlo presionado, se puede presionar `y` p
 
 ## Common commands/actions
 * Copiar path actual al portapapeles: `pwd | xclip -selection clipboard`
+
+* Abrir archivo o carpeta con su programa por defecto: `gio open <PATH/NAME>`
 
 * Buscador de comandos: `<Ctrl>r`
 
