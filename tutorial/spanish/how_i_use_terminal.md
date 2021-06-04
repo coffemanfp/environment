@@ -45,10 +45,36 @@ Se puede redimensionar splits con el mouse, arrastrando las lineas separadoras.
 
 Al seleccionar texto con el mouse y dejarlo presionado, se puede presionar `y` para copiar lo seleccionado.
 
-## Common commands
+## Common commands/actions
 * Copiar path actual al portapapeles: `pwd | xclip -selection clipboard`
 
 * Buscador de comandos: `<Ctrl>r`
+
+* "Flecha arriba": `<Ctrl>p`
+
+* "Flecha abajo": `<Ctrl>n`
+
+* Ir al inicio de la linea: `<Ctrl>a <Ctrl>a` (Doble, por usar Tmux)
+
+* Ir al final de la linea: `<Ctrl>e`
+
+* Borrar desde el cursor hasta el inicio de la linea: `<Ctrl>u`
+
+* Borrar desde el cursor hasta el final de la linea: `<Ctrl>k`
+
+* Borrar palabra antes del cursor: `<Ctrl>w`
+
+* Borrar palabra siguiente del cursor: `<Alt>d`
+
+* Ir a siguiente palabra: `<Alt>f`
+
+* Ir a palabra anterior: `<Alt>b`
+
+* Suspender proceso, ponerlo en background: `<Ctrl>z`
+
+* Recuperar proceso en background: `fg` | `%` 
+
+* Ver procesos en background: `jobs`
 
 ## LightMode
 Como explique al final de [el tutorial de mi Vim](./how_i_use_vim.md), al programar en otras situaciones y lugares con distinta iluminacion... me hizo encontrarle un uso a los themes light, sobre todo cuando hay luz solar, acceso a la configuracion de la Terminal GUI que utilizo... por el momento es `gnome-terminal`:
