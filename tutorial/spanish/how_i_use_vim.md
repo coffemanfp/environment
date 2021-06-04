@@ -131,6 +131,8 @@ Para moverme entre archivos utilizo el paquete `NERDTree`:
 
 * Abrir `NERDTree` posicionado en el archivo actual: `<Space>nn`
 
+* Toggle Zoom en `NERDTree`: `A`
+
 * Abrir y cerrar una carpeta en `NERDTree` estando en la carpeta: `<Enter>`
 
 * Cerrar una carpeta en `NERDTree`: `x`
