@@ -166,6 +166,7 @@ if [ -x ./install-ide.sh ]; then
 
     nvim --headless +"call dein#install()" +qall
     nvim --headless +"call dein#update()" +qall
+    nvim --headless +"call dein#remote_plugins()" +qall
     nvim --headless +UpdateRemotePlugins +qall
     nvim --headless +GoInstallBinaries +qall
     nvim --headless +GoUpdateBinaries +qall
