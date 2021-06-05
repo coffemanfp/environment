@@ -13,18 +13,17 @@ let g:coc_global_extensions = [
 \ 'coc-protobuf'
 \ ]
 
-" - - - arthurnavah - Plugs -
-"
+" - - - arthurnavah - Plugins -
 set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
 call dein#begin('~/.vim/bundles')
 call dein#add('~/.vim/bundles/repos/github.com/Shougo/dein.vim')
 if !has('nvim')
-  call dein#add('roxma/nvim-yarp')
-  call dein#add('roxma/vim-hug-neovim-rpc')
+    call dein#add('roxma/nvim-yarp')
+    call dein#add('roxma/vim-hug-neovim-rpc')
 endif
 
 " NERDTree - File explorer
-call dein#add('scrooloose/nerdtree')
+call dein#add('preservim/nerdtree')
 call dein#add('xuyuanp/nerdtree-git-plugin')
 
 " Denite - Search file
@@ -33,8 +32,18 @@ call dein#add('Shougo/denite.nvim')
 " Airline - Status bar
 call dein#add('bling/vim-airline')
 
-" Syntastic - Sintax
-call dein#add('scrooloose/syntastic')
+" neomake - Check errors
+"call dein#add('scrooloose/syntastic')
+call dein#add('neomake/neomake')
+
+" vim-polyglot config
+au BufNewFile,BufReadPost *.md set filetype=markdown
+let g:polyglot_disabled = ['markdown']
+let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'vim']
+
+" vim-polyglot syntax
+call dein#add('sheerun/vim-polyglot')
+call dein#add('matthewbdaly/vim-filetype-settings')
 
 " vim-go - Go Support
 call dein#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
@@ -54,19 +63,16 @@ call dein#add('peitalin/vim-jsx-typescript')
 call dein#add('styled-components/vim-styled-components', { 'branch': 'main'})
 
 " nerdcommenter - Comments fast
-call dein#add('scrooloose/nerdcommenter')
+call dein#add('preservim/nerdcommenter')
 
-" delimitmate - Closing parentheses, keys, etc
-call dein#add('raimondi/delimitmate')
+" auto-pairs - Closing parentheses, keys, etc
+call dein#add('jiangmiao/auto-pairs')
 
 " emmet - HTML and CSS generator
 call dein#add('mattn/emmet-vim')
 
 " coc.nvim - Autocomplete
 call dein#add('neoclide/coc.nvim', { 'merged': 0 })
-
-" vim-multiple-cursors - Multi cursor
-call dein#add('terryma/vim-multiple-cursors')
 
 " Gitgutter - GIT change signal icons
 call dein#add('airblade/vim-gitgutter')
@@ -82,11 +88,11 @@ call dein#add('yggdroot/indentline')
 " vim-eununch - UNIX Utility
 call dein#add('tpope/vim-eunuch')
 
-" AnsiEsc.vim - Ansi escape sequences concealed
-call dein#add('vim-scripts/AnsiEsc.vim')
-
 " tmuxline.vim - Tmux integration
 call dein#add('edkolev/tmuxline.vim')
+
+" vim-surround - 'surroundings'
+call dein#add('tpope/vim-surround')
 
 " themes
 call dein#add('vim-airline/vim-airline-themes')
@@ -99,6 +105,9 @@ call dein#add('w0ng/vim-hybrid')
 call dein#add('flrnprz/taffy.vim')
 call dein#add('tomasr/molokai')
 call dein#add('morhetz/gruvbox')
+
+" vim-multiple-cursors - Multi cursor
+"call dein#add('terryma/vim-multiple-cursors')
 
 call dein#end()
 
@@ -117,6 +126,7 @@ set backspace=2
 filetype plugin indent on    " required
 set relativenumber
 set number
+set listchars=tab:\▏\ 
 set list
 let mapleader=" "
 let maplocalleader="\\"
@@ -156,7 +166,6 @@ set history=50
 set title
 set noerrorbells
 set lazyredraw
-set wrap linebreak nolist
 set autoread
 
 " set theme
@@ -181,8 +190,7 @@ let g:onedark_terminal_italics=1
 colorscheme onedark
 " ---
 
-autocmd FileType markdown let g:indentLine_enabled=0
-set conceallevel=0
+"set conceallevel=0
 
 set hidden
 set nobackup
@@ -265,7 +273,7 @@ let g:go_metalinter_enabled = []
 let g:go_auto_type_info = 1
 let g:go_jump_to_error = 0
 let g:go_fmt_command = "goimports"
-let g:go_auto_sameids = 0
+let g:go_auto_sameids = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -296,7 +304,10 @@ autocmd FileType html,css,javascript EmmetInstall
 let g:gitgutter_max_signs = 200
 
 " indentline config
-let g:indentLine_char = '¦'
+let g:indentLine_char = '▏'
+
+" neomake config
+call neomake#configure#automake('nrwi', 500)
 
 " coc.nvim config
 

@@ -317,8 +317,9 @@ Utilizo el paquete `vim-go` para integracion con las herramientas de Golang como
 
 ## Common actions
 
-* Comentar linea o lineas: `<leader>c<leader>`
+* Comentar toggle linea o lineas: `<leader>c<leader>`
 * Comentar en bloque: `<leader>cs`
+* Descomentar: `<leader>cu`
 
 * Ir a definicion: `<leader>gd`
 * Ir a las llamadas de la funcion: `<leader>cc`
