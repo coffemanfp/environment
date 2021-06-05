@@ -304,16 +304,22 @@ El unico LSP que integro es el de Golang, `gopls` en el `coc-settings.json` (acc
     "languageserver": {
         "golang": {
             "command": "gopls",
-            "rootPatterns": ["go.mod"],
-            "filetypes": ["go"]
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["go"],
+            "initializationOptions": {
+                "usePlaceholders": true,
+                "static_check": true
+            }
         }
-    }
+    },
 }
 ```
 
 Con esta configuracion puedo trabajar con Golang, JavaScript + TypeScript + React con `ESLint` y `Prettier`, HTML + CSS con Emmet y SASS.
 
 Utilizo el paquete `vim-go` para integracion con las herramientas de Golang como el autoimportado y autoindentado, entre las otras herramientas oficiales de Golang.
+
+El `gopls` esta configurado con el `usePlaceholders` en `true`, al autocompletar funciones apareceran los parametros con el tipo de dato, se puede editar el primer parametro directamente al autocompletar la funcion, y con `<Ctrl>j` y `<Ctrl>k` puedes moverte entre los parametros a escribir.
 
 ## Common actions
 

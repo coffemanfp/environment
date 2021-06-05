@@ -29,7 +29,8 @@
             "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
             "filetypes": ["go"],
             "initializationOptions": {
-                "usePlaceholders": true
+                "usePlaceholders": true,
+                "static_check": true
             }
         }
     },
