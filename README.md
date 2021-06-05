@@ -37,7 +37,7 @@ bash install-tools.sh
 ```
 
 ## Migration
-If you already have Neovim (With vim-plug), Tmux (With TPM) and Zsh (With Oh My Zsh) you just need to copy the configuration
+If you already have Neovim (With [dein.vim](https://github.com/Shougo/dein.vim)), Tmux (With [TPM](https://github.com/tmux-plugins/tpm)) and Zsh (With Oh My Zsh) you just need to copy the configuration
 
 ```sh
 git clone https://github.com/arthurnavah/environment.git
@@ -55,9 +55,8 @@ cp config/coc-settings.json ~/.config/nvim/.
 ### Install Plugins and Tools
 ```sh
 # Neovim
-nvim --headless +PlugInstall +qall
-nvim --headless +PlugUpdate +qall
-nvim --headless +PlugUpgrade +qall
+nvim --headless +"call dein#install()" +qall
+nvim --headless +"call dein#update()" +qall
 nvim --headless +UpdateRemotePlugins +qall
 nvim --headless +GoInstallBinaries +qall
 nvim --headless +GoUpdateBinaries +qall

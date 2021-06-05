@@ -139,6 +139,8 @@ Para moverme entre archivos utilizo el paquete `NERDTree`:
 
 * Menu de `NERDTree`: `m`
 
+* Actualizar arbol: `R`
+
 * Abrir un archivo en una tab: `t`
 
 * Abrir un archivo en una tab sin ir a ella: `T`
@@ -349,6 +351,8 @@ Utilizo el paquete `vim-go` para integracion con las herramientas de Golang como
 * Ir al extremo opuesto de comillas, parentesis, llaves, corchetes, etc...: `%`
 
 * Cerrar todos los archivos en buffer y tabs menos el actual: `:Bo`
+
+* Actualizar contenido del archivo actual: `:e`
 
 * Cambiar a modo LightMode: `:LightMode`
 * Cambiar a modo DarkMode: `:DarkMode`

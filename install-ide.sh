@@ -53,7 +53,7 @@ if [ -x ./install-ide.sh ]; then
 
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-    sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt autoremove && sudo apt autoclean
+    sudo apt update && sudo apt upgrade && sudo apt dist-upgrade && sudo apt full-upgrade && sudo apt autoremove && sudo apt autoclean
 
     sudo apt install yarn
 
@@ -98,6 +98,12 @@ if [ -x ./install-ide.sh ]; then
     sudo mkdir /root/.vim/tmp 2>/dev/null
     echo "----------------------"
 
+    echo "----------------------"
+    echo "Creating folder .vim/bundles"
+    mkdir ~/.vim/bundles 2>/dev/null
+    sudo mkdir /root/.vim/bundles 2>/dev/null
+    echo "----------------------"
+
     echo "Creating folder .config/nvim"
     mkdir -p ~/.config/nvim 2>/dev/null
     sudo mkdir -p /root/.config/nvim 2>/dev/null
@@ -128,10 +134,12 @@ if [ -x ./install-ide.sh ]; then
 
     echo "----------------------"
     echo "Install Vim Plugin Manager"
-    curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-    curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/bundles/installer.sh
+    sh ~/.vim/bundles/installer.sh ~/.vim/bundles
+
+    # in root
+    sudo curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/bundles/installer.sh
+    sudo sh ~/.vim/bundles/installer.sh ~/.vim/bundles
     echo "----------------------"
 
     #--- Check Go Env
@@ -156,9 +164,8 @@ if [ -x ./install-ide.sh ]; then
         exit 1
     fi
 
-    nvim --headless +PlugInstall +qall
-    nvim --headless +PlugUpdate +qall
-    nvim --headless +PlugUpgrade +qall
+    nvim --headless +"call dein#install()" +qall
+    nvim --headless +"call dein#update()" +qall
     nvim --headless +UpdateRemotePlugins +qall
     nvim --headless +GoInstallBinaries +qall
     nvim --headless +GoUpdateBinaries +qall
