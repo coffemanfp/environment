@@ -1,10 +1,12 @@
 if [ -x ./install-basic-ide.sh ]; then
-    sudo apt remove --purge vim
-    sudo apt remove --purge vim-editor
-    sudo apt remove --purge neovim
-    sudo snap remove vim-editor
-    sudo snap remove vim
-    sudo snap remove nvim
+    sudo apt remove --purge vim 2>/dev/null
+    sudo apt remove --purge vim-editor 2>/dev/null
+    sudo apt remove --purge neovim 2>/dev/null
+    sudo apt remove --purge nvim 2>/dev/null
+    sudo snap remove --purge vim-editor 2>/dev/null
+    sudo snap remove --purge vim 2>/dev/null
+    sudo snap remove --purge nvim 2>/dev/null
+    sudo snap remove --purge neovim 2>/dev/null
 
     sudo snap install vim-editor --beta
     sudo snap install nvim --classic
