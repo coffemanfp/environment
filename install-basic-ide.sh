@@ -45,6 +45,7 @@ if [ -x ./install-basic-ide.sh ]; then
 
     echo "----------------------"
     echo "Install Vim Plugin Manager"
+    sudo rm -r ~/.vim/bundles
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/bundles/installer.sh
     sh ~/.vim/bundles/installer.sh ~/.vim/bundles
     echo "----------------------"
