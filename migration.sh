@@ -7,9 +7,9 @@ cp config/init.vim ~/.config/nvim/.
 cp config/coc-settings.json ~/.config/nvim/.
 
 # install updates
-nvim --headless +PlugInstall +qall
-nvim --headless +PlugUpdate +qall
-nvim --headless +PlugUpgrade +qall
+nvim --headless +"call dein#install()" +qall
+nvim --headless +"call dein#update()" +qall
+nvim --headless +"call dein#remote_plugins()" +qall
 nvim --headless +UpdateRemotePlugins +qall
 nvim --headless +GoInstallBinaries +qall
 nvim --headless +GoUpdateBinaries +qall

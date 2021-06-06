@@ -78,18 +78,20 @@ if [ -x ./install-ide.sh ]; then
 
     #---
 
-    sudo npm install -g neovim
+    echo "Install Providers for NeoVim"
+    sudo npm install -g neovim &>/dev/null
 
-    sudo gem install neovim
+    sudo gem install neovim &>/dev/null
 
-    pip install -U pynvim
-    pip3 install -U pynvim
-    cpanm Neovim::Ext
-    sudo cpanm Neovim::Ext
-    pip install -U msgpack-python
-    pip3 install -U msgpack-python
-    python3 -mpip install --user -U msgpack
-    yarn install --froken-lockfile
+    pip install -U pynvim &>/dev/null
+    pip3 install -U pynvim &>/dev/null
+    cpanm Neovim::Ext &>/dev/null
+    sudo cpanm Neovim::Ext &>/dev/null
+    pip install -U msgpack-python &>/dev/null
+    pip3 install -U msgpack-python &>/dev/null
+    python3 -mpip install --user -U msgpack &>/dev/null
+    yarn install --froken-lockfile &>/dev/null
+    echo "----------------------"
 
     #---
 
@@ -164,10 +166,6 @@ if [ -x ./install-ide.sh ]; then
 
     #---
 
-    if ! command -v vim-editor &> /dev/null; then
-        echo "The 'vim-editor' command is needed to continue"
-        exit 1
-    fi
     if ! command -v nvim &> /dev/null; then
         echo "The 'nvim' command is needed to continue"
         exit 1
