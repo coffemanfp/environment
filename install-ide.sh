@@ -59,6 +59,8 @@ if [ -x ./install-ide.sh ]; then
 
     #---
 
+    echo "----------------------"
+    echo "Removing current version of Vim and NeoVim"
     sudo apt remove --purge vim 2>/dev/null
     sudo apt remove --purge vim-editor 2>/dev/null
     sudo apt remove --purge neovim 2>/dev/null
@@ -67,9 +69,12 @@ if [ -x ./install-ide.sh ]; then
     sudo snap remove --purge vim 2>/dev/null
     sudo snap remove --purge nvim 2>/dev/null
     sudo snap remove --purge neovim 2>/dev/null
+    echo "----------------------"
 
+    echo "Install Vim and NeoVim"
     sudo snap install vim-editor --beta
     sudo snap install nvim --classic
+    echo "----------------------"
 
     #---
 

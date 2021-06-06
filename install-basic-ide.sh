@@ -1,4 +1,6 @@
 if [ -x ./install-basic-ide.sh ]; then
+    echo "----------------------"
+    echo "Removing current version of Vim and NeoVim"
     sudo apt remove --purge vim &>/dev/null
     sudo apt remove --purge vim-editor &>/dev/null
     sudo apt remove --purge neovim &>/dev/null
@@ -7,9 +9,12 @@ if [ -x ./install-basic-ide.sh ]; then
     sudo snap remove --purge vim &>/dev/null
     sudo snap remove --purge nvim &>/dev/null
     sudo snap remove --purge neovim &>/dev/null
+    echo "----------------------"
 
+    echo "Install Vim and NeoVim"
     sudo snap -y install vim-editor --beta
     sudo snap -y install nvim --classic
+    echo "----------------------"
 
     echo "----------------------"
     echo "Creating folder .vim"
