@@ -1,15 +1,15 @@
 if [ -x ./install-basic-ide.sh ]; then
-    sudo apt remove --purge vim 2>/dev/null
-    sudo apt remove --purge vim-editor 2>/dev/null
-    sudo apt remove --purge neovim 2>/dev/null
-    sudo apt remove --purge nvim 2>/dev/null
-    sudo snap remove --purge vim-editor 2>/dev/null
-    sudo snap remove --purge vim 2>/dev/null
-    sudo snap remove --purge nvim 2>/dev/null
-    sudo snap remove --purge neovim 2>/dev/null
+    sudo apt remove --purge vim &>/dev/null
+    sudo apt remove --purge vim-editor &>/dev/null
+    sudo apt remove --purge neovim &>/dev/null
+    sudo apt remove --purge nvim &>/dev/null
+    sudo snap remove --purge vim-editor &>/dev/null
+    sudo snap remove --purge vim &>/dev/null
+    sudo snap remove --purge nvim &>/dev/null
+    sudo snap remove --purge neovim &>/dev/null
 
-    sudo snap install vim-editor --beta
-    sudo snap install nvim --classic
+    sudo snap -y install vim-editor --beta
+    sudo snap -y install nvim --classic
 
     echo "----------------------"
     echo "Creating folder .vim"
@@ -23,6 +23,7 @@ if [ -x ./install-basic-ide.sh ]; then
 
     echo "----------------------"
     echo "Creating folder .vim/bundles"
+    sudo rm -r ~/.vim/bundles
     mkdir ~/.vim/bundles 2>/dev/null
     echo "----------------------"
 
@@ -45,7 +46,6 @@ if [ -x ./install-basic-ide.sh ]; then
 
     echo "----------------------"
     echo "Install Vim Plugin Manager"
-    sudo rm -r ~/.vim/bundles
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/bundles/installer.sh
     sh ~/.vim/bundles/installer.sh ~/.vim/bundles
     echo "----------------------"

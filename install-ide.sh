@@ -102,7 +102,9 @@ if [ -x ./install-ide.sh ]; then
 
     echo "----------------------"
     echo "Creating folder .vim/bundles"
+    sudo rm -r ~/.vim/bundles
     mkdir ~/.vim/bundles 2>/dev/null
+    sudo rm -r /root/.vim/bundles
     sudo mkdir /root/.vim/bundles 2>/dev/null
     echo "----------------------"
 
@@ -136,7 +138,6 @@ if [ -x ./install-ide.sh ]; then
 
     echo "----------------------"
     echo "Install Vim Plugin Manager"
-    sudo rm -r ~/.vim/bundles
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/bundles/installer.sh
     sh ~/.vim/bundles/installer.sh ~/.vim/bundles
 
