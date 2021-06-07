@@ -17,9 +17,7 @@ if [ -x ./install-tools.sh ]; then
     echo "----------------------"
     echo "Configuring ZSH"
     chsh -s /bin/zsh
-    sudo chsh -s /bin/zsh
     cp ./config/.zshrc ~/.
-    sudo cp ./config/.zshrc /root/.
     echo "----------------------"
 
     echo "Install Oh My ZSH!"
@@ -35,12 +33,10 @@ if [ -x ./install-tools.sh ]; then
 
     echo "Download Tmux Plugin Manager"
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-    sudo git clone https://github.com/tmux-plugins/tpm /root/.tmux/plugins/tpm
     echo "----------------------"
 
     echo "Copying configuration Tmux"
     cp ./config/.tmux.conf ~/.
-    sudo cp ./config/.tmux.conf /root/.
     echo "----------------------"
 
     echo "Install Tmux Plugins"

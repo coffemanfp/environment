@@ -361,6 +361,8 @@ El `gopls` esta configurado con el `usePlaceholders` en `true`, al autocompletar
 
 * Actualizar contenido del archivo actual: `:e`
 
+* Alternar numeros de line relativas: `:set relativenumber!`
+
 * Cambiar a modo LightMode: `:LightMode`
 * Cambiar a modo DarkMode: `:DarkMode`
 

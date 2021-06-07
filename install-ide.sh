@@ -2,10 +2,9 @@
 
 if [ -x ./install-ide.sh ]; then
 
-    sudo apt update && sudo apt upgrade && sudo apt install curl git powerline fonts-powerline xclip yarn python python3 python3-neovim python-pip python3-pip python3-dev python-setuptools python3-setuptools ruby ruby-dev automake autoconf autotools-dev build-essential perl cpanminus snap snapd
+    sudo apt update && sudo apt upgrade && sudo apt install curl git xclip python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev automake autoconf autotools-dev build-essential perl cpanminus snap snapd
 
     #--- Check Commands
-
     if ! command -v curl &> /dev/null; then
         echo "The 'curl' command is needed to continue"
         exit 1
@@ -15,7 +14,7 @@ if [ -x ./install-ide.sh ]; then
         exit 1
     fi
     if ! command -v python3 &> /dev/null; then
-        echo "The 'yarn' command is needed to continue"
+        echo "The 'python3' command is needed to continue"
         exit 1
     fi
     if ! command -v pip &> /dev/null; then
@@ -40,6 +39,10 @@ if [ -x ./install-ide.sh ]; then
     fi
     if ! command -v npm &> /dev/null; then
         echo "The 'npm' command is needed to continue"
+        exit 1
+    fi
+    if ! command -v node &> /dev/null; then
+        echo "The 'node' command is needed to continue"
         exit 1
     fi
     if ! command -v snap &> /dev/null; then
@@ -98,42 +101,34 @@ if [ -x ./install-ide.sh ]; then
     echo "----------------------"
     echo "Creating folder .vim"
     mkdir ~/.vim 2>/dev/null
-    sudo mkdir /root/.vim 2>/dev/null
     echo "----------------------"
 
     echo "----------------------"
     echo "Creating folder .vim/tmp"
     mkdir ~/.vim/tmp 2>/dev/null
-    sudo mkdir /root/.vim/tmp 2>/dev/null
     echo "----------------------"
 
     echo "----------------------"
     echo "Creating folder .vim/bundles"
     sudo rm -r ~/.vim/bundles
     mkdir ~/.vim/bundles 2>/dev/null
-    sudo rm -r /root/.vim/bundles
-    sudo mkdir /root/.vim/bundles 2>/dev/null
     echo "----------------------"
 
     echo "Creating folder .config/nvim"
     mkdir -p ~/.config/nvim 2>/dev/null
-    sudo mkdir -p /root/.config/nvim 2>/dev/null
     echo "----------------------"
 
     echo "----------------------"
     echo "Copying configuration VIM"
     cp ./config/vimrc "$HOME"/.vim/.
-    sudo cp ./config/vimrc /root/.vim/.
     echo "----------------------"
 
     echo "Copying configuration NeoVim"
     cp ./config/init.vim "$HOME"/.config/nvim/.
-    sudo cp ./config/init.vim /root/.config/nvim/.
     echo "----------------------"
 
     echo "Copying configuration coc.nvim"
     cp ./config/coc-settings.json "$HOME"/.config/nvim/.
-    sudo cp ./config/coc-settings.json /root/.config/nvim/.
     echo "----------------------"
 
     echo "----------------------"
@@ -147,10 +142,6 @@ if [ -x ./install-ide.sh ]; then
     echo "Install Vim Plugin Manager"
     curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/bundles/installer.sh
     sh ~/.vim/bundles/installer.sh ~/.vim/bundles
-
-    # in root
-    sudo curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh > ~/.vim/bundles/installer.sh
-    sudo sh ~/.vim/bundles/installer.sh ~/.vim/bundles
     echo "----------------------"
 
     #--- Check Go Env
