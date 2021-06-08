@@ -21,6 +21,8 @@ requiredCommands() {
     fi
 }
 
+requiredCommands go node npm python3
+
 #--- Add yarn key, Update yarn
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 
@@ -29,6 +31,8 @@ echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/source
 sudo apt update
 
 sudo apt install curl git xclip python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev automake autoconf autotools-dev build-essential perl cpanminus snap snapd yarn
+
+requiredCommands curl git snap pip pip3 gem
 
 #--- Check Go Env
 if [ -z "$(go env GOROOT)" ]; then
@@ -39,8 +43,6 @@ if [ -z "$(go env GOPATH)" ]; then
     echo "The GOPATH environment variable is not set"
     exit 1
 fi
-
-requiredCommands curl git snap go node python3 npm yarn pip pip3 gem
 
 echo "----------------------"
 echo "Removing current version of Vim and NeoVim"
