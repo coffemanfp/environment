@@ -63,7 +63,7 @@ echo "----------------------"
 
 requiredCommands nvim
 
-# not found
+## not working
 #echo "Install Providers for NeoVim"
 #sudo npm install -g neovim &>/dev/null
 #sudo gem install neovim &>/dev/null
