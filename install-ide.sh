@@ -63,18 +63,19 @@ echo "----------------------"
 
 requiredCommands nvim
 
-echo "Install Providers for NeoVim"
-sudo npm install -g neovim &>/dev/null
-sudo gem install neovim &>/dev/null
-pip install -U pynvim &>/dev/null
-pip3 install -U pynvim &>/dev/null
-cpanm Neovim::Ext &>/dev/null
-sudo cpanm Neovim::Ext &>/dev/null
-pip install -U msgpack-python &>/dev/null
-pip3 install -U msgpack-python &>/dev/null
-python3 -mpip install --user -U msgpack &>/dev/null
-yarn install --froken-lockfile &>/dev/null
-echo "----------------------"
+# not found
+#echo "Install Providers for NeoVim"
+#sudo npm install -g neovim &>/dev/null
+#sudo gem install neovim &>/dev/null
+#pip install -U pynvim &>/dev/null
+#pip3 install -U pynvim &>/dev/null
+#cpanm Neovim::Ext &>/dev/null
+#sudo cpanm Neovim::Ext &>/dev/null
+#pip install -U msgpack-python &>/dev/null
+#pip3 install -U msgpack-python &>/dev/null
+#python3 -mpip install --user -U msgpack &>/dev/null
+#yarn install --froken-lockfile &>/dev/null
+#echo "----------------------"
 
 echo "----------------------"
 echo "Creating folder .vim"
