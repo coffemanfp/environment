@@ -14,14 +14,29 @@ requiredCommands() {
     done;
 
     if [[ -n $concatMissingCommand ]]; then 
-        echo ""
-        echo "These commands are required:"
+        echo "Commands are required:"
         echo -e "$concatMissingCommand"
         exit 1
     fi
 }
 
-requiredCommands go node npm python3
+requiredSudoCommands() {
+    concatMissingCommand=""
+    for p in "$@"; do
+        if ! p_tmp="$(sudo which "$p")" || [[ -z $p_tmp ]]; then
+            concatMissingCommand+="\tsudo $p\n"
+        fi
+    done;
+
+    if [[ -n $concatMissingCommand ]]; then 
+        echo "Commands with SUDO are required:"
+        echo -e "$concatMissingCommand"
+        exit 1
+    fi
+}
+
+requiredCommands go node python3
+requiredSudoCommands apt npm apt-key tee
 
 #--- Check Go Env
 if [ -z "$(go env GOROOT)" ]; then
@@ -42,7 +57,8 @@ sudo apt update
 
 sudo apt install curl git xclip python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev automake autoconf autotools-dev build-essential perl cpanminus snap snapd yarn
 
-requiredCommands curl git snap pip pip3 gem
+requiredCommands curl git pip pip3 gem
+requiredSudoCommands snap gem cpanm
 
 echo "----------------------"
 echo "Removing current version of Vim and NeoVim"
