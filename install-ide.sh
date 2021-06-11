@@ -35,7 +35,7 @@ requiredSudoCommands() {
     fi
 }
 
-requiredCommands go node python3
+requiredCommands go node python python2 python3
 requiredSudoCommands apt npm apt-key tee
 
 #--- Check Go Env
@@ -79,19 +79,19 @@ echo "----------------------"
 
 requiredCommands nvim
 
-## not working
-#echo "Install Providers for NeoVim"
-#sudo npm install -g neovim &>/dev/null
-#sudo gem install neovim &>/dev/null
-#pip install -U pynvim &>/dev/null
-#pip3 install -U pynvim &>/dev/null
-#cpanm Neovim::Ext &>/dev/null
-#sudo cpanm Neovim::Ext &>/dev/null
-#pip install -U msgpack-python &>/dev/null
-#pip3 install -U msgpack-python &>/dev/null
-#python3 -mpip install --user -U msgpack &>/dev/null
-#yarn install --froken-lockfile &>/dev/null
-#echo "----------------------"
+echo "Install Providers for NeoVim"
+sudo npm install -g neovim &>/dev/null
+sudo gem install neovim &>/dev/null
+pip install -U pynvim &>/dev/null
+python2 -m pip install --user --upgrade pynvim
+pip3 install -U pynvim &>/dev/null
+python3 -m pip install --user --upgrade pynvim
+cpanm Neovim::Ext &>/dev/null
+pip install -U msgpack-python &>/dev/null
+pip3 install -U msgpack-python &>/dev/null
+python3 -mpip install --user -U msgpack &>/dev/null
+yarn install --froken-lockfile &>/dev/null
+echo "----------------------"
 
 echo "----------------------"
 echo "Creating folder .vim"
