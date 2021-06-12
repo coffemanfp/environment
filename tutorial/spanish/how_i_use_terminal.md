@@ -41,6 +41,8 @@ Utilizo `tmux` para multiplexar mi terminal con varios splits y paneles, he camb
 
 * Modo de movimiento Vi: `<Ctrl>a[`
 
+* Renombrar panel: `<Ctrl>a,`
+
 Se puede redimensionar splits con el mouse, arrastrando las lineas separadoras.
 
 Al seleccionar texto con el mouse y dejarlo presionado, se puede presionar `y` para copiar lo seleccionado.
