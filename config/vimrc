@@ -411,10 +411,13 @@ command! -nargs=0 LightMode call LightMode()
 function! LightMode()
     colorscheme OceanicNextLight
     AirlineTheme oceanicnextlight
+    silent exec "!echo 'light' > ~/.mode"
 endfunction
+
 command! -nargs=0 DarkMode call DarkMode()
 function! DarkMode()
     colorscheme onedark
     AirlineTheme onedark
+    silent exec "!echo 'dark' > ~/.mode"
 endfunction
 "----------------------------------------------------

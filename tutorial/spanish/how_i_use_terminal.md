@@ -81,4 +81,6 @@ Al seleccionar texto con el mouse y dejarlo presionado, se puede presionar `y` p
 ## LightMode
 Como explique al final de [el tutorial de mi Vim](./how_i_use_vim.md), al programar en otras situaciones y lugares con distinta iluminacion... me hizo encontrarle un uso a los themes light, sobre todo cuando hay luz solar, acceso a la configuracion de la Terminal GUI que utilizo... por el momento es `gnome-terminal`:
 
-`Options > Preferences > My Profile > Colors > "Use colors from system theme" > Built-in schemes: Solarized light`
+`Options > Preferences > My Profile > Colors > "Use colors from system theme" > Built-in schemes: Tango light`
+
+Tambien cambio los colores del Tmux con los comandos `lightmode` / `darkmode` o `li` / `da`
