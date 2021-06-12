@@ -214,6 +214,7 @@ let NERDTreeMouseMode=2
 let NERDTreeIgnore=[ '^\.git$', ]
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeShowLineNumbers=1
+let g:NERDTreeWinPos = "right"
 autocmd FileType nerdtree setlocal relativenumber
 
 " denite config
