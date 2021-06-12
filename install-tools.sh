@@ -9,6 +9,8 @@ echo "Install tools"
 sudo apt install curl git tmux cmus zsh git-flow shellcheck exiftool rar fzf
 echo "----------------------"
 
+echo "dark" > ~/.mode
+
 echo "Add yarn key, Update yarn"
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
 

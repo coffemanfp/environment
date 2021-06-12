@@ -48,6 +48,8 @@ if [ -z "$(go env GOPATH)" ]; then
     exit 1
 fi
 
+echo "dark" > ~/.mode
+
 echo "Add yarn key, Update yarn"
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
 
