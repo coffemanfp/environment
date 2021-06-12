@@ -187,7 +187,13 @@ let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 let g:onedark_terminal_italics=1
 
-colorscheme onedark
+if $MODE == "light"
+    colorscheme OceanicNextLight
+    let g:airline_theme='oceanicnextlight'
+else
+    colorscheme onedark
+    let g:airline_theme='onedark'
+endif
 " ---
 
 "set conceallevel=0
@@ -248,7 +254,6 @@ call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
 " airline config
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
-let g:airline_theme='onedark'
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
 let g:airline#extensions#tabline#formatter = 'unique_tail'
@@ -400,7 +405,6 @@ function! BufOnly(buffer, bang)
 	elseif delete_count > 1
 		echomsg delete_count "buffers deleted"
 	endif
-
 endfunction
 
 command! -nargs=0 LightMode call LightMode()

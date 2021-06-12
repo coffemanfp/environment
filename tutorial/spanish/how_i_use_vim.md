@@ -375,3 +375,5 @@ Soy un Digital Nomad, y entre muchas de las situaciones en las que he programado
 Enciende el tema "light" de esta configuracion con `:LightMode` o vuelve al "dark" con `:DarkMode`.
 
 Un `:li<tab>` podria ser suficiente para autocompletar a `:LightMode`, y `:da<tab>` para autocompletar a `:DarkMode`.
+
+Usando la configuracion de `.zshrc` se carga la variable de entorno `$MODE` para setear el tema del Vim desde la terminal, con el alias `lightmode` / `darkmode` o `li` / `da`
