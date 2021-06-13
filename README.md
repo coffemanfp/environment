@@ -32,8 +32,13 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim.
 git clone https://github.com/arthurnavah/environment.git
 
 cd environment 
-bash install-ide.sh
-bash install-tools.sh
+bash install.sh vim tmux
+```
+
+### Options
+With the `-n` option, Vim can be installed without the providers.
+```sh
+bash install.sh -n vim tmux
 ```
 
 ## Migration

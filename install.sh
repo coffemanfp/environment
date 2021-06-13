@@ -96,7 +96,12 @@ requiredSudoCommands() {
 
 # installVim install vim
 installVim() {
-    requiredCommands go node python python2 python3
+    if [ "$NO_PROVIDERS" != 1 ]; then
+        requiredCommands go node python python2 python3
+    else
+        requiredCommands go
+    fi
+
     requiredSudoCommands apt npm apt-key tee
 
     #--- Check Go Env
@@ -111,18 +116,24 @@ installVim() {
 
     echo "dark" > ~/.mode
 
-    echo "Add yarn key, Update yarn"
-    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
+    sudo apt install curl git xclip snap snapd
+    if [ "$NO_PROVIDERS" != 1 ]; then
+        echo "Add yarn key, Update yarn"
+        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
 
-    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-    sudo apt update 1>/dev/null
+        sudo apt update 1>/dev/null
 
-    sudo apt install curl git xclip python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev automake autoconf autotools-dev build-essential perl cpanminus snap snapd yarn
-    echo "----------------------"
+        sudo apt install python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev automake autoconf autotools-dev build-essential perl cpanminus yarn
+        echo "----------------------"
 
-    requiredCommands curl git pip pip3 gem
-    requiredSudoCommands snap gem cpanm
+        requiredCommands pip pip3 gem
+        requiredSudoCommands gem cpanm
+    fi
+
+    requiredCommands curl git
+    requiredSudoCommands snap apt 
 
     echo "Removing current version of Vim and NeoVim"
     sudo apt remove --purge vim &>/dev/null
