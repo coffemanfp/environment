@@ -13,6 +13,11 @@ main() {
         exit 1
     fi
 
+    if [ "$INSTALL_ALL" == 1 ]; then
+        INSTALL_VIM=1
+        INSTALL_TMUX=1
+    fi
+
     if [ "$INSTALL_VIM" == 1 ]; then
         if [ "$NO_PROVIDERS" == 1 ]; then
             echo "Install Vim without Providers..."
@@ -59,6 +64,10 @@ for p in "$@"; do
     fi
     if [ "$p" == "tmux" ]; then
         INSTALL_TMUX=1
+    fi
+
+    if [ "$p" == "all" ]; then
+        INSTALL_ALL=1
     fi
 done;
 
