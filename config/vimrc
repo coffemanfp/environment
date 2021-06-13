@@ -187,9 +187,11 @@ let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 let g:onedark_terminal_italics=1
 
-let modeTheme = readfile(expand("$HOME/.mode"))
-if len(modeTheme) == 1
-    let $MODE = modeTheme[0]
+if filereadable(expand("$HOME/.mode"))
+    let modeTheme = readfile(expand("$HOME/.mode"))
+    if len(modeTheme) == 1
+        let $MODE = modeTheme[0]
+    endif
 endif
 
 if $MODE == "light"
