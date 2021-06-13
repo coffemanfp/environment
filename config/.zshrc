@@ -7,6 +7,8 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+LS_COLORS="di=1;31"
+
 # Load alias
 [ -f ~/.alias ] && source ~/.alias
 
