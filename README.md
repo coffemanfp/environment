@@ -5,6 +5,8 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim.
 
 [Golang/$GOPATH](https://golang.org/) for development tools and [NodeJS](https://nodejs.org/) for [`coc.nvim`](https://github.com/neoclide/coc.nvim) are required.
 
+* [`alacritty`](https://github.com/alacritty/alacritty)
+
 * [`zsh`](https://github.com/zsh-users/zsh)
     * [Oh My ZSH!](https://github.com/ohmyzsh/ohmyzsh)
     * [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
@@ -16,7 +18,7 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim.
     * [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect)
     * [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum)
     * [tmux-yank](https://github.com/tmux-plugins/tmux-yank)
-    * [tmux-onedark-theme](https://github.com/odedlaz/tmux-onedark-theme)
+    * [tmux-onedark-theme](https://github.com/arthurnavah/tmux-onedark-theme)
     * [Tmux battery status](https://github.com/tmux-plugins/tmux-battery)
 
 * [`neovim`](https://github.com/neovim/neovim)
@@ -32,13 +34,16 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim.
 git clone https://github.com/arthurnavah/environment.git
 
 cd environment 
-bash install.sh vim tmux
+bash install.sh editor console
+
+# or
+#  bash install.sh all
 ```
 
 ### Options
 With the `-n` option, Vim can be installed without the providers.
 ```sh
-bash install.sh -n vim tmux
+bash install.sh -n editor console
 ```
 
 ## Migration
@@ -49,6 +54,7 @@ git clone https://github.com/arthurnavah/environment.git
 
 cd environment 
 
+cp config/alacritty.yml ~/.config/alacritty/.
 cp config/.zshrc ~/.
 cp config/.tmux.conf ~/.
 
@@ -86,14 +92,22 @@ This configuration uses [`gopls`](https://pkg.go.dev/golang.org/x/tools/gopls) f
 You can uninstall extensions with `:CocUninstall <extensionName>`.
 
 ## ⚠️  Precaution ⚠️
-Read [`install-ide.sh`](./install-ide.sh) and [`install-tools.sh`](./install-tools.sh) files before running on your system.
+Read [`install.sh`](./install.sh) file before running on your system.
 
-These instructions and the [`install-ide.sh`](./install-ide.sh) and [`install-tools.sh`](./install-tools.sh) files will replace your configuration files for these tools, please keep this in mind.
+These instructions and the [`install.sh`](./install.sh) file will replace your configuration files for these tools, please keep this in mind.
 ```sh
 # Configuration backup
+cp ~/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml.copy
 cp ~/.zshrc ~/.zshrc.copy
 cp ~/.tmux.conf ~/.tmux.conf.copy
 cp ~/.vim/vimrc ~/.vim/vimrc.copy
 cp ~/.config/nvim/init.vim ~/.config/nvim/init.vim.copy
 cp ~/.config/nvim/coc-settings.json ~/.config/nvim/coc-settings.json.copy
 ```
+
+## Light Mode
+To activate the 'light mode' execute the command `lightmode` or the alias `li`. To return to 'dark mode' execute the command `darkmode` or the alias `da`.
+
+To change mode in Vim run `:LightMode` or `:DarkMode`.
+
+![Screenshot light environment](./screenshot2.png)
