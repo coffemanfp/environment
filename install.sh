@@ -6,16 +6,16 @@ if [ ! -x ./install.sh ]; then
 fi
 
 main() {
+    if [ "$INSTALL_ALL" == 1 ]; then
+        INSTALL_EDITOR=1
+        INSTALL_CONSOLE=1
+    fi
+
     if [ "$INSTALL_EDITOR" != 1 ] && [ "$INSTALL_CONSOLE" != 1 ]; then
         echo "List of installations:"
         echo -e "\t editor"
         echo -e "\t console"
         exit 1
-    fi
-
-    if [ "$INSTALL_ALL" == 1 ]; then
-        INSTALL_EDITOR=1
-        INSTALL_CONSOLE=1
     fi
 
     if [ "$INSTALL_EDITOR" == 1 ]; then
