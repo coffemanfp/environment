@@ -169,7 +169,6 @@ installEditor() {
         python2 -m pip install --user --upgrade pynvim
         pip3 install -U pynvim
         python3 -m pip install --user --upgrade pynvim
-        cpanm Neovim::Ext
         pip install -U msgpack-python
         pip3 install -U msgpack-python
         python3 -mpip install --user -U msgpack
