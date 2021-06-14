@@ -60,7 +60,7 @@ done
 # set vars with arguments
 for p in "$@"; do
     if [ "$p" == "editor" ]; then
-        INSTALL_CONSOLE=1
+        INSTALL_EDITOR=1
     fi
     if [ "$p" == "console" ]; then
         INSTALL_CONSOLE=1
@@ -215,7 +215,7 @@ installEditor() {
     nvim --headless +GoUpdateBinaries +qall
     nvim --headless +CocUpdate +qall
 
-    echo "+ Installation successful! +"
+    echo "+ Installation Editor successful! +"
 }
 
 # installConsole install console and tools
@@ -276,7 +276,7 @@ installConsole() {
     chsh -s "$(command -v zsh)"
     echo "----------------------"
 
-    echo "+ Installation successful! +"
+    echo "+ Installation Console successful! +"
 }
 
 main "$@"
