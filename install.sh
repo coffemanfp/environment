@@ -144,14 +144,14 @@ installEditor() {
     requiredSudoCommands snap apt 
 
     echo "Removing current version of Vim and NeoVim"
-    sudo apt remove --purge vim &>/dev/null
-    sudo apt remove --purge vim-editor &>/dev/null
-    sudo apt remove --purge neovim &>/dev/null
-    sudo apt remove --purge nvim &>/dev/null
-    sudo snap remove --purge vim-editor &>/dev/null
-    sudo snap remove --purge vim &>/dev/null
-    sudo snap remove --purge nvim &>/dev/null
-    sudo snap remove --purge neovim &>/dev/null
+    sudo apt remove --purge vim 2>/dev/null
+    sudo apt remove --purge vim-editor 2>/dev/null
+    sudo apt remove --purge neovim 2>/dev/null
+    sudo apt remove --purge nvim 2>/dev/null
+    sudo snap remove --purge vim-editor 2>/dev/null
+    sudo snap remove --purge vim 2>/dev/null
+    sudo snap remove --purge nvim 2>/dev/null
+    sudo snap remove --purge neovim 2>/dev/null
     echo "----------------------"
 
     echo "Install Vim and NeoVim"
