@@ -6,32 +6,32 @@ if [ ! -x ./install.sh ]; then
 fi
 
 main() {
-    if [ "$INSTALL_VIM" != 1 ] && [ "$INSTALL_TMUX" != 1 ]; then
+    if [ "$INSTALL_EDITOR" != 1 ] && [ "$INSTALL_CONSOLE" != 1 ]; then
         echo "List of installations:"
-        echo -e "\t vim"
-        echo -e "\t tmux"
+        echo -e "\t editor"
+        echo -e "\t console"
         exit 1
     fi
 
     if [ "$INSTALL_ALL" == 1 ]; then
-        INSTALL_VIM=1
-        INSTALL_TMUX=1
+        INSTALL_EDITOR=1
+        INSTALL_CONSOLE=1
     fi
 
-    if [ "$INSTALL_VIM" == 1 ]; then
+    if [ "$INSTALL_EDITOR" == 1 ]; then
         if [ "$NO_PROVIDERS" == 1 ]; then
-            echo "Install Vim without Providers..."
+            echo "Install Editor without Providers..."
         else
-            echo "Install Vim..."
+            echo "Install Editor..."
         fi
 
-        installVim
+        installEditor
     fi
 
-    if [ "$INSTALL_TMUX" == 1 ]; then
-        echo "Install Tmux and Tools..."
+    if [ "$INSTALL_CONSOLE" == 1 ]; then
+        echo "Install Console and Tools..."
 
-        installTmux
+        installConsole
     fi
 }
 
@@ -59,13 +59,12 @@ for a; do
 done
 # set vars with arguments
 for p in "$@"; do
-    if [ "$p" == "vim" ]; then
-        INSTALL_VIM=1
+    if [ "$p" == "editor" ]; then
+        INSTALL_CONSOLE=1
     fi
-    if [ "$p" == "tmux" ]; then
-        INSTALL_TMUX=1
+    if [ "$p" == "console" ]; then
+        INSTALL_CONSOLE=1
     fi
-
     if [ "$p" == "all" ]; then
         INSTALL_ALL=1
     fi
@@ -103,8 +102,8 @@ requiredSudoCommands() {
     fi
 }
 
-# installVim install vim
-installVim() {
+# installEditor install editor
+installEditor() {
     if [ "$NO_PROVIDERS" != 1 ]; then
         requiredCommands go node python python2 python3
     else
@@ -178,38 +177,22 @@ installVim() {
         echo "----------------------"
     fi
 
-    echo "----------------------"
-    echo "Creating folder .vim"
+    echo "Creating folders"
     mkdir ~/.vim 2>/dev/null
-    echo "----------------------"
-
-    echo "----------------------"
-    echo "Creating folder .vim/tmp"
     mkdir -p ~/.vim/tmp 2>/dev/null
-    echo "----------------------"
-
-    echo "----------------------"
-    echo "Creating folder .vim/bundles"
     sudo rm -r ~/.vim/bundles
     mkdir -p ~/.vim/bundles 2>/dev/null
-    echo "----------------------"
-
-    echo "Creating folder .config/nvim"
     mkdir -p ~/.config/nvim 2>/dev/null
     echo "----------------------"
 
-    echo "----------------------"
-    echo "Copying configuration VIM"
+    echo " - Copying configuration VIM"
     cp ./config/vimrc "$HOME"/.vim/.
-    echo "----------------------"
 
-    echo "Copying configuration NeoVim"
+    echo "- Copying configuration NeoVim"
     cp ./config/init.vim "$HOME"/.config/nvim/.
-    echo "----------------------"
 
-    echo "Copying configuration coc.nvim"
+    echo "- Copying configuration coc.nvim"
     cp ./config/coc-settings.json "$HOME"/.config/nvim/.
-    echo "----------------------"
 
     echo "----------------------"
     echo "Configuring tools GIT with Vim"
@@ -235,14 +218,15 @@ installVim() {
     echo "+ Installation successful! +"
 }
 
-# installTmux install tmux and tools
-installTmux() {
+# installConsole install console and tools
+installConsole() {
     requiredCommands curl wget git
     requiredSudoCommands snap apt 
 
+    sudo snap install alacritty --classic
+
     echo "Install tools"
     sudo apt install curl git tmux cmus zsh git-flow shellcheck exiftool rar fzf
-    sudo snap install alacritty --classic
     echo "----------------------"
 
     echo "dark" > ~/.mode
@@ -262,14 +246,12 @@ installTmux() {
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 1>/dev/null
     echo "----------------------"
 
-    echo "Copying configuration Alacritty"
+    echo "- Copying configuration Alacritty"
     mkdir -p ~/.config/alacritty 2>/dev/null
     cp ./config/alacritty.yml ~/.config/alacritty/.
-    echo "----------------------"
 
-    echo "Copying configuration Tmux"
+    echo "- Copying configuration Tmux"
     cp ./config/.tmux.conf ~/.
-    echo "----------------------"
 
     echo "Install Tmux Plugins"
     bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
@@ -286,9 +268,8 @@ installTmux() {
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions 1>/dev/null
     echo "----------------------"
 
-    echo "Copying configuration Zsh"
+    echo "- Copying configuration Zsh"
     cp ./config/.zshrc ~/. 
-    echo "----------------------"
 
     echo "----------------------"
     echo "Configuring ZSH"
