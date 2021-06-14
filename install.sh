@@ -275,7 +275,7 @@ installConsole() {
     chsh -s "$(command -v zsh)"
     echo "----------------------"
 
-    echo "+ Installation Console successful! +"
+    echo "+ Installation Console successful! (Restarting the computer to use Zsh for the first time) +"
 }
 
 main "$@"
