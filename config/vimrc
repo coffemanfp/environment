@@ -140,7 +140,7 @@ highlight Cursorline cterm=bold
 
 set encoding=UTF-8
 set fileencodings=UTF-8
-set guifont=BlexMono\ Nerd\ Fond\ Mono\ Text\ 12
+set guifont=BlexMono\ Nerd\ Font\ Mono\ 12
 
 set ruler
 
@@ -227,7 +227,7 @@ let NERDTreeMouseMode=2
 let NERDTreeIgnore=[ '^\.git$', ]
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeShowLineNumbers=1
-let g:NERDTreeWinPos = "right"
+"let g:NERDTreeWinPos = "right"
 autocmd FileType nerdtree setlocal relativenumber
 
 " denite config
