@@ -185,13 +185,13 @@ installVim() {
 
     echo "----------------------"
     echo "Creating folder .vim/tmp"
-    mkdir ~/.vim/tmp 2>/dev/null
+    mkdir -p ~/.vim/tmp 2>/dev/null
     echo "----------------------"
 
     echo "----------------------"
     echo "Creating folder .vim/bundles"
     sudo rm -r ~/.vim/bundles
-    mkdir ~/.vim/bundles 2>/dev/null
+    mkdir -p ~/.vim/bundles 2>/dev/null
     echo "----------------------"
 
     echo "Creating folder .config/nvim"
@@ -237,8 +237,12 @@ installVim() {
 
 # installTmux install tmux and tools
 installTmux() {
+    requiredCommands curl wget git
+    requiredSudoCommands snap apt 
+
     echo "Install tools"
     sudo apt install curl git tmux cmus zsh git-flow shellcheck exiftool rar fzf
+    sudo snap install alacritty --classic
     echo "----------------------"
 
     echo "dark" > ~/.mode
@@ -258,8 +262,13 @@ installTmux() {
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 1>/dev/null
     echo "----------------------"
 
+    echo "Copying configuration Alacritty"
+    mkdir -p ~/.config/alacritty 2>/dev/null
+    cp ./config/alacritty.yml ~/.config/alacritty/.
+    echo "----------------------"
+
     echo "Copying configuration Tmux"
-    cp ./config/.tmux.conf ~/. 1>/dev/null
+    cp ./config/.tmux.conf ~/.
     echo "----------------------"
 
     echo "Install Tmux Plugins"

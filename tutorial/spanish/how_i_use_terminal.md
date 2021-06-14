@@ -1,11 +1,10 @@
 # How do I use Terminal?
 Desarrollo y trabajo utilizando 100% la terminal de Linux (menos el Navegador Web), editor de codigo, bases de datos, monitorizacion de sistema.
 
-La GUI de terminal que utilizo es indiferente a mi flujo de trabajo, suelo usar la terminal por defecto de mi distribucion Linux, mi flujo de trabajo se divide en :
+La GUI de terminal que utilizo es indiferente a mi flujo de trabajo, suelo usar la [Alacritty](https://github.com/alacritty/alacritty) porque tiene aceleracion por GPU y se me hizo mas facil de transportar su configuracion, mi flujo de trabajo se divide en :
 
-* Terminal GUI: `gnome-terminal` (By default)
+* Terminal GUI: [`alacritty`](https://github.com/alacritty/alacritty)
     * Nerd fond: ["BlexMono"](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/IBMPlexMono)
-    * Color Palette: "Solarized"
 * Shell: `zsh`
 * Terminal Multiplexor: `tmux`
 * Code editor: `vim` (NeoVim)
@@ -81,8 +80,8 @@ Al seleccionar texto con el mouse y dejarlo presionado, se puede presionar `y` p
 * Ver procesos en background: `jobs`
 
 ## LightMode
-Como explique al final de [el tutorial de mi Vim](./how_i_use_vim.md), al programar en otras situaciones y lugares con distinta iluminacion... me hizo encontrarle un uso a los themes light, sobre todo cuando hay luz solar, acceso a la configuracion de la Terminal GUI que utilizo... por el momento es `gnome-terminal`:
+Como explique al final de [el tutorial de mi Vim](./how_i_use_vim.md), al programar en otras situaciones y lugares con distinta iluminacion... me hizo encontrarle un uso a los themes light, sobre todo cuando hay luz solar, acceso a la configuracion de la Terminal GUI que utilizo... por el momento es [`alacritty`](https://github.com/alacritty/alacritty):
 
-`Options > Preferences > My Profile > Colors > "Use colors from system theme" > Built-in schemes: Tango light`
+`~/.config/alacritty/alacritty.yml`
 
 Tambien cambio los colores del Tmux con los comandos `lightmode` / `darkmode` o `li` / `da`

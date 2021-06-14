@@ -1,0 +1,59 @@
+window:
+  dimensions:
+    columns: 170
+    lines: 40
+
+  padding:
+    x: 0
+    y: 0
+
+  dynamic_padding: false
+
+  decorations: full
+
+  startup_mode: Windowed
+
+tabspaces: 4
+dynamic_title: true
+
+scrolling:
+  history: 0
+
+  multiplier: 3
+
+font:
+  normal:
+    family: "BlexMono Nerd Font Mono"
+    style: Regular
+
+  bold:
+    family: "BlexMono Nerd Font Mono"
+    style: Bold
+
+  italic:
+    family: "BlexMono Nerd Font Mono"
+    style: Italic
+
+  size: 12
+
+  offset:
+    x: 0
+    y: 0
+
+  glyph_offset:
+    x: 0
+    y: 0
+
+  use_thin_strokes: true
+
+draw_bold_text_with_bright_colors: false
+
+options:
+  size: 12
+  thin_strokes: true
+  antialias: lcd
+  hinting: true
+  style: Regular
+
+key_bindings:
+  - { key: F11,       mods: None,          action: ToggleFullscreen            }
