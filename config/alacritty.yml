@@ -23,15 +23,15 @@ scrolling:
 
 font:
   normal:
-    family: "BlexMono Nerd Font Mono"
+    family: "BlexMono Nerd Font"
     style: Regular
 
   bold:
-    family: "BlexMono Nerd Font Mono"
+    family: "BlexMono Nerd Font"
     style: Bold
 
   italic:
-    family: "BlexMono Nerd Font Mono"
+    family: "BlexMono Nerd Font"
     style: Italic
 
   size: 12
