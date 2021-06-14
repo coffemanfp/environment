@@ -186,13 +186,13 @@ installEditor() {
     echo "----------------------"
 
     echo " - Copying configuration VIM"
-    cp ./config/vimrc "$HOME"/.vim/.
+    cp ./config/vimrc ~/.vim/.
 
     echo "- Copying configuration NeoVim"
-    cp ./config/init.vim "$HOME"/.config/nvim/.
+    cp ./config/init.vim ~/.config/nvim/.
 
     echo "- Copying configuration coc.nvim"
-    cp ./config/coc-settings.json "$HOME"/.config/nvim/.
+    cp ./config/coc-settings.json ~/.config/nvim/.
 
     echo "----------------------"
     echo "Configuring tools GIT with Vim"
