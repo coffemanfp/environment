@@ -29,7 +29,7 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim.
     * Fura Mono
     * Ubuntu Mono
 
-## Complete installation
+## Installation
 ```sh
 git clone https://github.com/arthurnavah/environment.git
 
@@ -46,35 +46,19 @@ With the `-n` option, Vim can be installed without the providers.
 bash install.sh -n editor console
 ```
 
-## Migration
-If you already have Neovim (With [dein.vim](https://github.com/Shougo/dein.vim)), Tmux (With [TPM](https://github.com/tmux-plugins/tpm)) and Zsh (With Oh My Zsh) you just need to copy the configuration
+## Update
+If you already have Neovim (With [dein.vim](https://github.com/Shougo/dein.vim)), Tmux (With [TPM](https://github.com/tmux-plugins/tpm)) and Zsh (With Oh My Zsh) you just need to copy the configuration.
+
+This is recommended if you were already using this configuration and just want to get the latest configuration.
 
 ```sh
 git clone https://github.com/arthurnavah/environment.git
 
 cd environment 
+bash update.sh editor console
 
-cp config/alacritty.yml ~/.config/alacritty/.
-cp config/.zshrc ~/.
-cp config/.tmux.conf ~/.
-
-cp config/vimrc ~/.vim/.
-cp config/init.vim ~/.config/nvim/.
-cp config/coc-settings.json ~/.config/nvim/.
-```
-
-### Install Plugins and Tools
-```sh
-# Neovim
-nvim --headless +"call dein#install()" +qall
-nvim --headless +"call dein#update()" +qall
-nvim --headless +UpdateRemotePlugins +qall
-nvim --headless +GoInstallBinaries +qall
-nvim --headless +GoUpdateBinaries +qall
-nvim --headless +CocUpdate +qall
-
-# Tmux
-bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+# or
+#  bash update.sh all
 ```
 
 ### Neovim Checkhealth
