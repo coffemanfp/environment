@@ -163,17 +163,17 @@ installEditor() {
 
     if [ "$NO_PROVIDERS" != 1 ]; then
         echo "Install Providers for NeoVim"
-        sudo npm install -g neovim &>/dev/null
-        sudo gem install neovim &>/dev/null
-        pip install -U pynvim &>/dev/null
-        python2 -m pip install --user --upgrade pynvim &>/dev/null
-        pip3 install -U pynvim &>/dev/null &>/dev/null
-        python3 -m pip install --user --upgrade pynvim &>/dev/null
-        cpanm Neovim::Ext &>/dev/null &>/dev/null
-        pip install -U msgpack-python &>/dev/null
-        pip3 install -U msgpack-python &>/dev/null
-        python3 -mpip install --user -U msgpack &>/dev/null
-        yarn install --froken-lockfile &>/dev/null
+        sudo npm install -g neovim
+        sudo gem install neovim
+        pip install -U pynvim 
+        python2 -m pip install --user --upgrade pynvim
+        pip3 install -U pynvim
+        python3 -m pip install --user --upgrade pynvim
+        cpanm Neovim::Ext
+        pip install -U msgpack-python
+        pip3 install -U msgpack-python
+        python3 -mpip install --user -U msgpack
+        yarn install --froken-lockfile
         echo "----------------------"
     fi
 
