@@ -7,6 +7,7 @@ window:
     x: 0
     y: 0
 
+  dynamic_title: true
   dynamic_padding: false
 
   decorations: full
@@ -57,3 +58,10 @@ options:
 
 key_bindings:
   - { key: F11,       mods: None,          action: ToggleFullscreen            }
+
+shell:
+  program: zsh
+  args:
+    - -l
+    - -c
+    - "tmux"
