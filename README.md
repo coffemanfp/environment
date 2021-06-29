@@ -37,6 +37,9 @@ cd environment
 bash install.sh editor console
 
 # or
+#  bash install.sh
+#
+# or
 #  bash install.sh all
 ```
 
@@ -57,6 +60,9 @@ git clone https://github.com/arthurnavah/environment.git
 cd environment 
 bash update.sh editor console
 
+# or
+#  bash update.sh
+#
 # or
 #  bash update.sh all
 ```

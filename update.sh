@@ -6,6 +6,7 @@ if [ ! -x ./update.sh ]; then
 fi
 
 main() {
+    # check install all
     if [ "$UPDATE_ALL" == 1 ]; then
         UPDATE_EDITOR=1
         UPDATE_CONSOLE=1
@@ -13,19 +14,26 @@ main() {
 
     if [ "$UPDATE_EDITOR" != 1 ] && [ "$UPDATE_CONSOLE" != 1 ]; then
         echo "List of update:"
+        echo -e "\t all"
         echo -e "\t editor"
         echo -e "\t console"
         exit 1
     fi
 
+    # check requireds
     if [ "$UPDATE_EDITOR" == 1 ]; then
-        echo "Update Editor..."
+        requiredCommands nvim
+    fi
+
+    # installs
+    if [ "$UPDATE_EDITOR" == 1 ]; then
+        echo "[Editor Updater] : Update Editor..."
 
         updateEditor
     fi
 
     if [ "$UPDATE_CONSOLE" == 1 ]; then
-        echo "Update Console..."
+        echo "[Console Updater] : Update Console..."
 
         updateConsole
     fi
@@ -51,6 +59,9 @@ for p in "$@"; do
         UPDATE_ALL=1
     fi
 done;
+if [ "$#" == 0 ]; then
+    UPDATE_ALL=1
+fi
 
 # requiredCommands terminates the execution if there are no commands
 requiredCommands() {
@@ -70,8 +81,6 @@ requiredCommands() {
 
 # updateEditor update editor
 updateEditor() {
-    requiredCommands nvim
-
     # copy configurations
     cp config/vimrc ~/.vim/.
     cp config/init.vim ~/.config/nvim/.
@@ -86,10 +95,10 @@ updateEditor() {
     nvim --headless +GoUpdateBinaries +qall
     nvim --headless +CocUpdate +qall
 
-    echo "+ Update editor successful! +"
+    echo "[Editor Updater] : + Update editor successful! +"
 }
 
-# updateConsole udpate console
+# updateConsole update console
 updateConsole() {
     # copy configurations
     cp config/alacritty.yml ~/.config/alacritty/.
@@ -98,7 +107,7 @@ updateConsole() {
 
     bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
 
-    echo "+ Update console successful! +"
+    echo "[Console Updater] : + Update console successful! +"
 }
 
 main "$@"
