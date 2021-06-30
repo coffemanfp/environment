@@ -25,6 +25,13 @@ main() {
         requiredCommands nvim
     fi
 
+    echo ""
+    echo "[Fonts Updater] : Updating fonts..."
+    sudo mkdir -p /usr/local/share/fonts/arthurFonts
+    sudo cp ./fonts/* /usr/local/share/fonts/arthurFonts/.
+    sudo fc-cache -f -v
+    echo "[Fonts Updater] : ----------------------"
+
     # installs
     if [ "$UPDATE_EDITOR" == 1 ]; then
         echo "[Editor Updater] : Update Editor..."

@@ -45,6 +45,13 @@ main() {
         requiredSudoCommands snap apt 
     fi
 
+    echo ""
+    echo "[Fonts Installer] : Installing fonts..."
+    sudo mkdir -p /usr/local/share/fonts/arthurFonts
+    sudo cp ./fonts/* /usr/local/share/fonts/arthurFonts/.
+    sudo fc-cache -f -v
+    echo "[Fonts Installer] : ----------------------"
+
     # installs
     if [ "$INSTALL_EDITOR" == 1 ]; then
         if [ "$NO_PROVIDERS" == 1 ]; then
