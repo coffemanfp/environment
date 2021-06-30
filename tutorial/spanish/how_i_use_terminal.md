@@ -4,7 +4,7 @@ Desarrollo y trabajo utilizando 100% la terminal de Linux (menos el Navegador We
 La GUI de terminal que utilizo es indiferente a mi flujo de trabajo, suelo usar la [Alacritty](https://github.com/alacritty/alacritty) porque tiene aceleracion por GPU y se me hizo mas facil de transportar su configuracion, mi flujo de trabajo se divide en :
 
 * Terminal GUI: [`alacritty`](https://github.com/alacritty/alacritty)
-    * Nerd fond: ["BlexMono"](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/IBMPlexMono)
+    * Nerd fond: ["FiraCode"](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode)
 * Shell: `zsh`
 * Terminal Multiplexor: `tmux`
 * Code editor: `vim` (NeoVim)

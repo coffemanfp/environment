@@ -25,8 +25,8 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim.
     * Read [config/vimrc](./config/vimrc) ...
 
 * [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)
+    * FiraCode Mono
     * Blex Mono
-    * Fura Mono
     * Ubuntu Mono
 
 ## Installation
