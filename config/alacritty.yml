@@ -25,11 +25,27 @@ scrolling:
 font:
   normal:
     family: "FiraCode Nerd Font Mono"
-    style: Regular
+    style: Retina
+
+  light:
+    family: "FiraCode Nerd Font Mono"
+    style: Light
+
+  medium:
+    family: "FiraCode Nerd Font Mono"
+    style: Medium
 
   bold:
     family: "FiraCode Nerd Font Mono"
     style: Bold
+
+  semi_bold:
+    family: "FiraCode Nerd Font Mono"
+    style: SemiBold
+
+  bold_italic:
+    family: "FiraCode Nerd Font Mono"
+    style: BoldItalic
 
   italic:
     family: "FiraCode Nerd Font Mono"
