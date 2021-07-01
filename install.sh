@@ -25,18 +25,25 @@ main() {
         if [ "$NO_PROVIDERS" != 1 ]; then
             requiredCommands go node python python2 python3
         else
-            requiredCommands go
+            requiredCommands go node
         fi
 
         requiredSudoCommands apt npm apt-key tee
 
-        #--- Check Go Env
+        #--- check node version
+        nodeVersion="$(node --version | cut -d'.' -f1)"; nodeVersion="${nodeVersion#'v'}"
+        if [ "$nodeVersion" -lt 11 ]; then
+            echo "[Editor Installer Error] : NodeJs version must be higher than v11.0.0 ( >= v12.0.0)"
+            exit 1
+        fi
+
+        #--- check go env
         if [ -z "$(go env GOROOT)" ]; then
-            echo "[Editor Installer] : The GOROOT environment variable is not set"
+            echo "[Editor Installer Error] : The GOROOT environment variable is not set"
             exit 1
         fi
         if [ -z "$(go env GOPATH)" ]; then
-            echo "[Editor Installer] : The GOPATH environment variable is not set"
+            echo "[Editor Installer Error] : The GOPATH environment variable is not set"
             exit 1
         fi
     fi
@@ -118,7 +125,7 @@ requiredCommands() {
     done;
 
     if [[ -n $concatMissingCommand ]]; then 
-        echo "Commands are required:"
+        echo "[Installer Error] : Commands are required:"
         echo -e "$concatMissingCommand"
         exit 1
     fi
@@ -134,7 +141,7 @@ requiredSudoCommands() {
     done;
 
     if [[ -n $concatMissingCommand ]]; then 
-        echo "Commands with SUDO are required:"
+        echo "[Installer Error] : Commands with SUDO are required:"
         echo -e "$concatMissingCommand"
         exit 1
     fi

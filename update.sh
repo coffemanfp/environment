@@ -22,7 +22,28 @@ main() {
 
     # check requireds
     if [ "$UPDATE_EDITOR" == 1 ]; then
-        requiredCommands nvim
+        requiredSudoCommands snap
+        requiredCommands nvim node
+
+        #--- check node version
+        nodeVersion="$(node --version | cut -d'.' -f1)"; nodeVersion="${nodeVersion#'v'}"
+        if [ "$nodeVersion" -lt 11 ]; then
+            echo "[Editor Updater Error] : NodeJs version must be higher than v11.0.0 ( >= v12.0.0)"
+            exit 1
+        fi
+
+        #--- check go env
+        if [ -z "$(go env GOROOT)" ]; then
+            echo "[Editor Updater Error] : The GOROOT environment variable is not set"
+            exit 1
+        fi
+        if [ -z "$(go env GOPATH)" ]; then
+            echo "[Editor Updater Error] : The GOPATH environment variable is not set"
+            exit 1
+        fi
+    fi
+    if [ "$UPDATE_CONSOLE" == 1 ]; then
+        requiredSudoCommands snap apt
     fi
 
     echo ""
@@ -80,7 +101,23 @@ requiredCommands() {
     done;
 
     if [[ -n $concatMissingCommand ]]; then 
-        echo "Commands are required:"
+        echo "[Updater Error] : Commands are required:"
+        echo -e "$concatMissingCommand"
+        exit 1
+    fi
+}
+
+# requiredSudoCommands terminates the execution if no 'sudo' commands exist
+requiredSudoCommands() {
+    concatMissingCommand=""
+    for p in "$@"; do
+        if ! p_tmp="$(sudo which "$p")" || [[ -z $p_tmp ]]; then
+            concatMissingCommand+="\tsudo $p\n"
+        fi
+    done;
+
+    if [[ -n $concatMissingCommand ]]; then 
+        echo "[Updater Error] : Commands with SUDO are required:"
         echo -e "$concatMissingCommand"
         exit 1
     fi
@@ -88,6 +125,8 @@ requiredCommands() {
 
 # updateEditor update editor
 updateEditor() {
+    sudo snap refresh vim-editor nvim
+
     # copy configurations
     cp config/vimrc ~/.vim/.
     cp config/init.vim ~/.config/nvim/.
@@ -107,6 +146,9 @@ updateEditor() {
 
 # updateConsole update console
 updateConsole() {
+    sudo snap refresh alacritty
+    sudo apt install --only-upgrade tmux zsh
+
     # copy configurations
     cp config/alacritty.yml ~/.config/alacritty/.
     cp config/.zshrc ~/.
