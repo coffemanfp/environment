@@ -1,27 +1,33 @@
 #!/bin/bash
+mkdir logs &>/dev/null
+now=$(date +"%F+%T")
+log_file="logs/install-$now.log"
+sudo rm logs/install-* &>/dev/null
 
-if [ ! -x ./install.sh ]; then
-    echo "Execute permissions are required (+x)"
+if [ ! -x "$0" ]; then
+    echo "[Installer Error] : Execute permissions are required (+x)" | tee -a "$log_file"
+    echo "exit 1" | tee -a "$log_file"
     exit 1
 fi
 
 main() {
     # check install all
-    if [ "$INSTALL_ALL" == 1 ]; then
-        INSTALL_EDITOR=1
-        INSTALL_CONSOLE=1
+    if [ "$install_all" == 1 ]; then
+        install_editor=1
+        install_console=1
     fi
 
-    if [ "$INSTALL_EDITOR" != 1 ] && [ "$INSTALL_CONSOLE" != 1 ]; then
-        echo "List of installations:"
-        echo -e "\t all"
-        echo -e "\t editor"
-        echo -e "\t console"
+    if [ "$install_editor" != 1 ] && [ "$install_console" != 1 ]; then
+        echo "[Installer Error] : List of installations:" | tee -a "$log_file"
+        echo -e "\tall" | tee -a "$log_file"
+        echo -e "\teditor" | tee -a "$log_file"
+        echo -e "\tconsole" | tee -a "$log_file"
+        echo "exit 1" | tee -a "$log_file"
         exit 1
     fi
 
     # check requireds
-    if [ "$INSTALL_EDITOR" == 1 ]; then
+    if [ "$install_editor" == 1 ]; then
         if [ "$NO_PROVIDERS" != 1 ]; then
             requiredCommands go node python python2 python3
         else
@@ -33,45 +39,48 @@ main() {
         #--- check node version
         nodeVersion="$(node --version | cut -d'.' -f1)"; nodeVersion="${nodeVersion#'v'}"
         if [ "$nodeVersion" -lt 11 ]; then
-            echo "[Editor Installer Error] : NodeJs version must be higher than v11.0.0 ( >= v12.0.0)"
+            echo "[Editor Installer Error] : NodeJs version must be higher than v11.0.0 ( >= v12.0.0)" | tee -a "$log_file"
+            echo "exit 1" | tee -a "$log_file"
             exit 1
         fi
 
         #--- check go env
         if [ -z "$(go env GOROOT)" ]; then
-            echo "[Editor Installer Error] : The GOROOT environment variable is not set"
+            echo "[Editor Installer Error] : The GOROOT environment variable is not set" | tee -a "$log_file"
+            echo "exit 1" | tee -a "$log_file"
             exit 1
         fi
         if [ -z "$(go env GOPATH)" ]; then
-            echo "[Editor Installer Error] : The GOPATH environment variable is not set"
+            echo "[Editor Installer Error] : The GOPATH environment variable is not set" | tee -a "$log_file"
+            echo "exit 1" | tee -a "$log_file"
             exit 1
         fi
     fi
-    if [ "$INSTALL_CONSOLE" == 1 ]; then
+    if [ "$install_console" == 1 ]; then
         requiredCommands curl wget git
         requiredSudoCommands snap apt 
     fi
 
     echo ""
-    echo "[Fonts Installer] : Installing fonts..."
-    sudo mkdir -p /usr/local/share/fonts/arthurFonts
-    sudo cp ./fonts/* /usr/local/share/fonts/arthurFonts/.
-    sudo fc-cache -f -v
-    echo "[Fonts Installer] : ----------------------"
+    echo "[Fonts Installer] : Installing fonts..." | tee -a "$log_file"
+    sudo mkdir -p /usr/local/share/fonts/arthurFonts | tee -a "$log_file"
+    sudo cp ./fonts/* /usr/local/share/fonts/arthurFonts/. | tee -a "$log_file"
+    sudo fc-cache -f -v | tee -a "$log_file"
+    echo "[Fonts Installer] : ----------------------" | tee -a "$log_file"
 
     # installs
-    if [ "$INSTALL_EDITOR" == 1 ]; then
+    if [ "$install_editor" == 1 ]; then
         if [ "$NO_PROVIDERS" == 1 ]; then
-            echo "[Editor Installer] : Install Editor without Providers..."
+            echo "[Editor Installer] : Install Editor without Providers..." | tee -a "$log_file"
         else
-            echo "[Editor Installer] : Install Editor..."
+            echo "[Editor Installer] : Install Editor..." | tee -a "$log_file"
         fi
 
         installEditor
     fi
 
-    if [ "$INSTALL_CONSOLE" == 1 ]; then
-        echo "[Console Installer] : Install Console and Tools..."
+    if [ "$install_console" == 1 ]; then
+        echo "[Console Installer] : Install Console and Tools..." | tee -a "$log_file"
 
         installConsole
     fi
@@ -85,8 +94,9 @@ while getopts ${optstring} arg; do
         NO_PROVIDERS=1
         ;;
     ?) 
-        echo "Invalid option:" 
-        echo -e "\t$OPTARG"
+        echo "[Installer Error] : Invalid option:"  | tee -a "$log_file"
+        echo -e "\t$OPTARG" | tee -a "$log_file"
+        echo "exit 1" | tee -a "$log_file"
         exit 1
         ;;
   esac
@@ -102,17 +112,17 @@ done
 # set vars with arguments
 for p in "$@"; do
     if [ "$p" == "editor" ]; then
-        INSTALL_EDITOR=1
+        install_editor=1
     fi
     if [ "$p" == "console" ]; then
-        INSTALL_CONSOLE=1
+        install_console=1
     fi
     if [ "$p" == "all" ]; then
-        INSTALL_ALL=1
+        install_all=1
     fi
 done;
 if [ "$#" == 0 ]; then
-    INSTALL_ALL=1
+    install_all=1
 fi
 
 # requiredCommands terminates the execution if there are no commands
@@ -125,8 +135,9 @@ requiredCommands() {
     done;
 
     if [[ -n $concatMissingCommand ]]; then 
-        echo "[Installer Error] : Commands are required:"
-        echo -e "$concatMissingCommand"
+        echo "[Installer Error] : Commands are required:" | tee -a "$log_file"
+        echo -e "$concatMissingCommand" | tee -a "$log_file"
+        echo "exit 1" | tee -a "$log_file"
         exit 1
     fi
 }
@@ -141,29 +152,30 @@ requiredSudoCommands() {
     done;
 
     if [[ -n $concatMissingCommand ]]; then 
-        echo "[Installer Error] : Commands with SUDO are required:"
-        echo -e "$concatMissingCommand"
+        echo "[Installer Error] : Commands with SUDO are required:" | tee -a "$log_file"
+        echo -e "$concatMissingCommand" | tee -a "$log_file"
+        echo "exit 1" | tee -a "$log_file"
         exit 1
     fi
 }
 
 # installEditor install editor
 installEditor() {
-    echo "dark" > ~/.mode
+    echo "dark" > ~/.mode | tee -a "$log_file"
 
-    sudo apt install curl git xclip snap snapd
+    sudo apt install curl git xclip snap snapd | tee -a "$log_file"
 
     if [ "$NO_PROVIDERS" != 1 ]; then
-        echo ""
-        echo "[Editor Installer] : Adding yarn key, Updating yarn..."
+        echo "" | tee -a "$log_file"
+        echo "[Editor Installer] : Adding yarn key, Updating yarn..." | tee -a "$log_file"
         curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
 
         echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-        sudo apt update 1>/dev/null
+        sudo apt update 1>/dev/null | tee -a "$log_file"
 
-        sudo apt install python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev automake autoconf autotools-dev build-essential perl cpanminus yarn
-        echo "[Editor Installer] : ----------------------"
+        sudo apt install python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev automake autoconf autotools-dev build-essential perl cpanminus yarn | tee -a "$log_file"
+        echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
         requiredCommands pip pip3 gem
         requiredSudoCommands gem cpanm
@@ -172,147 +184,147 @@ installEditor() {
     requiredCommands curl git
     requiredSudoCommands snap apt 
 
-    echo ""
-    echo "[Editor Installer] : Removing current version of Vim and NeoVim..."
-    sudo apt remove --purge vim 2>/dev/null
-    sudo apt remove --purge vim-editor 2>/dev/null
-    sudo apt remove --purge neovim 2>/dev/null
-    sudo apt remove --purge nvim 2>/dev/null
-    sudo snap remove --purge vim-editor 2>/dev/null
-    sudo snap remove --purge vim 2>/dev/null
-    sudo snap remove --purge nvim 2>/dev/null
-    sudo snap remove --purge neovim 2>/dev/null
-    echo "[Editor Installer] : ----------------------"
+    echo "" | tee -a "$log_file"
+    echo "[Editor Installer] : Removing current version of Vim and NeoVim..." | tee -a "$log_file"
+    sudo apt remove --purge vim 2>/dev/null | tee -a "$log_file"
+    sudo apt remove --purge vim-editor 2>/dev/null | tee -a "$log_file"
+    sudo apt remove --purge neovim 2>/dev/null | tee -a "$log_file"
+    sudo apt remove --purge nvim 2>/dev/null | tee -a "$log_file"
+    sudo snap remove --purge vim-editor 2>/dev/null | tee -a "$log_file"
+    sudo snap remove --purge vim 2>/dev/null | tee -a "$log_file"
+    sudo snap remove --purge nvim 2>/dev/null | tee -a "$log_file"
+    sudo snap remove --purge neovim 2>/dev/null | tee -a "$log_file"
+    echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
-    echo ""
-    echo "[Editor Installer] : Installing Vim and NeoVim..."
-    sudo snap install vim-editor --beta
-    sudo snap install nvim --classic
-    echo "[Editor Installer] : ----------------------"
+    echo "" | tee -a "$log_file"
+    echo "[Editor Installer] : Installing Vim and NeoVim..." | tee -a "$log_file"
+    sudo snap install vim-editor --beta | tee -a "$log_file"
+    sudo snap install nvim --classic | tee -a "$log_file"
+    echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
     requiredCommands nvim
 
     if [ "$NO_PROVIDERS" != 1 ]; then
-        echo ""
-        echo "[Editor Installer] : Installing Providers for NeoVim..."
-        sudo npm install -g neovim
-        sudo gem install neovim
-        pip install -U pynvim 
-        python2 -m pip install --user --upgrade pynvim
-        pip3 install -U pynvim
-        python3 -m pip install --user --upgrade pynvim
-        pip install -U msgpack-python
-        pip3 install -U msgpack-python
-        python3 -mpip install --user -U msgpack
-        yarn install --froken-lockfile
-        echo "[Editor Installer] : ----------------------"
+        echo "" | tee -a "$log_file"
+        echo "[Editor Installer] : Installing Providers for NeoVim..." | tee -a "$log_file"
+        sudo npm install -g neovim | tee -a "$log_file"
+        sudo gem install neovim | tee -a "$log_file"
+        pip install -U pynvim  | tee -a "$log_file"
+        python2 -m pip install --user --upgrade pynvim | tee -a "$log_file"
+        pip3 install -U pynvim | tee -a "$log_file"
+        python3 -m pip install --user --upgrade pynvim | tee -a "$log_file"
+        pip install -U msgpack-python | tee -a "$log_file"
+        pip3 install -U msgpack-python | tee -a "$log_file"
+        python3 -mpip install --user -U msgpack | tee -a "$log_file"
+        yarn install --froken-lockfile | tee -a "$log_file"
+        echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
     fi
 
-    echo ""
-    echo "[Editor Installer] : Creating folders..."
-    mkdir ~/.vim 2>/dev/null
-    mkdir -p ~/.vim/tmp 2>/dev/null
-    sudo rm -r ~/.vim/bundles
-    mkdir -p ~/.vim/bundles 2>/dev/null
-    mkdir -p ~/.config/nvim 2>/dev/null
+    echo "" | tee -a "$log_file"
+    echo "[Editor Installer] : Creating folders..." | tee -a "$log_file"
+    mkdir ~/.vim 2>/dev/null | tee -a "$log_file"
+    mkdir -p ~/.vim/tmp 2>/dev/null | tee -a "$log_file"
+    sudo rm -r ~/.vim/bundles | tee -a "$log_file"
+    mkdir -p ~/.vim/bundles 2>/dev/null | tee -a "$log_file"
+    mkdir -p ~/.config/nvim 2>/dev/null | tee -a "$log_file"
 
-    echo "[Editor Installer] : - Copying configuration VIM..."
-    cp ./config/vimrc ~/.vim/.
+    echo "[Editor Installer] : - Copying configuration VIM..." | tee -a "$log_file"
+    cp ./config/vimrc ~/.vim/. | tee -a "$log_file"
 
-    echo "[Editor Installer] : - Copying configuration NeoVim..."
-    cp ./config/init.vim ~/.config/nvim/.
+    echo "[Editor Installer] : - Copying configuration NeoVim..." | tee -a "$log_file"
+    cp ./config/init.vim ~/.config/nvim/. | tee -a "$log_file"
 
-    echo "[Editor Installer] : - Copying configuration coc.nvim..."
-    cp ./config/coc-settings.json ~/.config/nvim/.
+    echo "[Editor Installer] : - Copying configuration coc.nvim..." | tee -a "$log_file"
+    cp ./config/coc-settings.json ~/.config/nvim/. | tee -a "$log_file"
 
-    echo "[Editor Installer] : ----------------------"
+    echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
-    echo ""
-    echo "[Editor Installer] : Configuring tools GIT with Vim..."
-    git config --global core.editor nvim
-    git config --global diff.tool vimdiff
-    git config --global merge.tool vimdiff
-    echo "[Editor Installer] : ----------------------"
+    echo "" | tee -a "$log_file"
+    echo "[Editor Installer] : Configuring tools GIT with Vim..." | tee -a "$log_file"
+    git config --global core.editor nvim | tee -a "$log_file"
+    git config --global diff.tool vimdiff | tee -a "$log_file"
+    git config --global merge.tool vimdiff | tee -a "$log_file"
+    echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
-    echo ""
-    echo "[Editor Installer] : Install Vim Plugin Manager..."
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh 2>/dev/null > ~/.vim/bundles/installer.sh
-    sh ~/.vim/bundles/installer.sh ~/.vim/bundles
-    echo "[Editor Installer] : ----------------------"
+    echo "" | tee -a "$log_file"
+    echo "[Editor Installer] : Install Vim Plugin Manager..." | tee -a "$log_file"
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh 2>/dev/null > ~/.vim/bundles/installer.sh | tee -a "$log_file"
+    sh ~/.vim/bundles/installer.sh ~/.vim/bundles | tee -a "$log_file"
+    echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
-    nvim --headless +"call dein#install()" +qall
-    nvim --headless +"call dein#update()" +qall
-    nvim --headless +"call dein#remote_plugins()" +qall
-    nvim --headless +UpdateRemotePlugins +qall
-    nvim --headless +GoInstallBinaries +qall
-    nvim --headless +GoUpdateBinaries +qall
-    nvim --headless +CocUpdate +qall
+    nvim --headless +"call dein#install()" +qall | tee -a "$log_file"
+    nvim --headless +"call dein#update()" +qall | tee -a "$log_file"
+    nvim --headless +"call dein#remote_plugins()" +qall | tee -a "$log_file"
+    nvim --headless +UpdateRemotePlugins +qall | tee -a "$log_file"
+    nvim --headless +GoInstallBinaries +qall | tee -a "$log_file"
+    nvim --headless +GoUpdateBinaries +qall | tee -a "$log_file"
+    nvim --headless +CocUpdate +qall | tee -a "$log_file"
 
-    echo ""
-    echo "[Editor Installer] : + Installation Editor successful! +"
+    echo "" | tee -a "$log_file"
+    echo "[Editor Installer] : + Installation Editor successful! +" | tee -a "$log_file"
 }
 
 # installConsole install console and tools
 installConsole() {
-    echo "dark" > ~/.mode
+    echo "dark" > ~/.mode | tee -a "$log_file"
 
-    sudo snap install alacritty --classic
+    sudo snap install alacritty --classic | tee -a "$log_file"
 
-    echo ""
-    echo "[Console Installer] : Installing tools..."
-    sudo apt install curl git tmux cmus zsh git-flow shellcheck exiftool rar fzf
-    echo "[Console Installer] : ----------------------"
+    echo "" | tee -a "$log_file"
+    echo "[Console Installer] : Installing tools..." | tee -a "$log_file"
+    sudo apt install curl git tmux cmus zsh git-flow shellcheck exiftool rar fzf | tee -a "$log_file"
+    echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
-    echo ""
-    echo "[Console Installer] : Adding yarn key, Updating yarn"
+    echo "" | tee -a "$log_file"
+    echo "[Console Installer] : Adding yarn key, Updating yarn" | tee -a "$log_file"
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
 
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
-    sudo apt update 1>/dev/null
-    sudo apt install yarn 1>/dev/null
-    echo "[Console Installer] : ----------------------"
+    sudo apt update 1>/dev/null | tee -a "$log_file"
+    sudo apt install yarn 1>/dev/null | tee -a "$log_file"
+    echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
-    echo ""
-    echo "[Console Installer] : Downloading Tmux Plugin Manager..."
-    sudo rm -r ~/.tmux/plugins 
-    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 1>/dev/null
+    echo "" | tee -a "$log_file"
+    echo "[Console Installer] : Downloading Tmux Plugin Manager..." | tee -a "$log_file"
+    sudo rm -r ~/.tmux/plugins  | tee -a "$log_file"
+    git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 1>/dev/null | tee -a "$log_file"
 
-    echo "[Console Installer] : - Copying configuration Alacritty..."
-    mkdir -p ~/.config/alacritty 2>/dev/null
-    cp ./config/alacritty.yml ~/.config/alacritty/.
+    echo "[Console Installer] : - Copying configuration Alacritty..." | tee -a "$log_file"
+    mkdir -p ~/.config/alacritty 2>/dev/null | tee -a "$log_file"
+    cp ./config/alacritty.yml ~/.config/alacritty/. | tee -a "$log_file"
 
-    echo "[Console Installer] : - Copying configuration Tmux..."
-    cp ./config/.tmux.conf ~/.
-    echo "[Console Installer] : ----------------------"
+    echo "[Console Installer] : - Copying configuration Tmux..." | tee -a "$log_file"
+    cp ./config/.tmux.conf ~/. | tee -a "$log_file"
+    echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
-    echo ""
-    echo "[Console Installer] : Installing Tmux Plugins..."
-    bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh
-    echo "[Console Installer] : ----------------------"
+    echo "" | tee -a "$log_file"
+    echo "[Console Installer] : Installing Tmux Plugins..." | tee -a "$log_file"
+    bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh | tee -a "$log_file"
+    echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
-    echo ""
-    echo "[Console Installer] : Installing Oh My ZSH!..."
-    curl -L http://install.ohmyz.sh 2>/dev/null | sh
-    wget --no-check-certificate http://install.ohmyz.sh -O - | sh
+    echo "" | tee -a "$log_file"
+    echo "[Console Installer] : Installing Oh My ZSH!..." | tee -a "$log_file"
+    curl -L http://install.ohmyz.sh 2>/dev/null | sh | tee -a "$log_file"
+    wget --no-check-certificate http://install.ohmyz.sh -O - | sh | tee -a "$log_file"
 
-    echo ""
-    echo "[Console Installer] : ----------------------"
-    echo "[Console Installer] : Configuring Zsh Plugins..."
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting 1>/dev/null
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions 1>/dev/null
+    echo "" | tee -a "$log_file"
+    echo "[Console Installer] : ----------------------" | tee -a "$log_file"
+    echo "[Console Installer] : Configuring Zsh Plugins..." | tee -a "$log_file"
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting 1>/dev/null | tee -a "$log_file"
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions 1>/dev/null | tee -a "$log_file"
 
-    echo "[Console Installer] : - Copying configuration Zsh..."
-    cp ./config/.zshrc ~/. 
-    echo "[Console Installer] : ----------------------"
+    echo "[Console Installer] : - Copying configuration Zsh..." | tee -a "$log_file"
+    cp ./config/.zshrc ~/.  | tee -a "$log_file"
+    echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
-    echo ""
-    echo "[Console Installer] : Configuring ZSH..."
-    chsh -s "$(command -v zsh)"
-    echo "[Console Installer] : ----------------------"
+    echo "" | tee -a "$log_file"
+    echo "[Console Installer] : Configuring ZSH..." | tee -a "$log_file"
+    chsh -s "$(command -v zsh)" | tee -a "$log_file"
+    echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
-    echo ""
-    echo "[Console Installer] : + Installation Console successful! (Restarting the computer to use Zsh for the first time) +"
+    echo "" | tee -a "$log_file"
+    echo "[Console Installer] : + Installation Console successful! (Restarting the computer to use Zsh for the first time) +" | tee -a "$log_file"
 }
 
 main "$@"
