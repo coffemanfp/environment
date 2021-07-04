@@ -311,15 +311,15 @@ installConsole() {
     echo "" | tee -a "$log_file"
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
     echo "[Console Installer] : Configuring Zsh Plugins..." | tee -a "$log_file"
-    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting 1>/dev/null | tee -a "$log_file"
-    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions 1>/dev/null | tee -a "$log_file"
+    git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting | tee -a "$log_file"
+    git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions | tee -a "$log_file"
 
     echo "[Console Installer] : - Copying configuration Zsh..." | tee -a "$log_file"
     cp ./config/.zshrc ~/.  | tee -a "$log_file"
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
     echo "" | tee -a "$log_file"
-    echo "[Console Installer] : Configuring ZSH..." | tee -a "$log_file"
+    echo "[Console Installer] : Configuring ZSH... enter your sudo or root password" | tee -a "$log_file"
     chsh -s "$(command -v zsh)" | tee -a "$log_file"
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
