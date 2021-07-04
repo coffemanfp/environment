@@ -33,7 +33,6 @@ call dein#add('Shougo/denite.nvim')
 call dein#add('bling/vim-airline')
 
 " neomake - Check errors
-"call dein#add('scrooloose/syntastic')
 call dein#add('neomake/neomake')
 
 " vim-polyglot config
@@ -105,6 +104,12 @@ call dein#add('w0ng/vim-hybrid')
 call dein#add('flrnprz/taffy.vim')
 call dein#add('tomasr/molokai')
 call dein#add('morhetz/gruvbox')
+
+" vim-highlightedyank - Highlight yank
+call dein#add('machakann/vim-highlightedyank')
+
+" vimade - Dims inactive windows
+call dein#add('TaDaa/vimade')
 
 " vim-multiple-cursors - Multi cursor
 "call dein#add('terryma/vim-multiple-cursors')
@@ -203,8 +208,6 @@ else
 endif
 " ---
 
-"set conceallevel=0
-
 set hidden
 set nobackup
 set nowritebackup
@@ -215,6 +218,12 @@ set directory^=$HOME/.vim/tmp//
 
 nnoremap <leader>l :vsplit<CR>
 nnoremap <leader>j :split<CR>
+
+set icm=nosplit
+
+" vimade config
+let g:vimade = {}
+let g:vimade.fadelevel = 0.7
 
 " NERDTree config
 nnoremap <leader>n :NERDTreeToggle<CR>
