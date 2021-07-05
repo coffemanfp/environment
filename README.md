@@ -72,7 +72,7 @@ nvim +checkhealth
 ```
 
 ## 💨⚡ More speed? ⚡💨
-If with [`Ctrl-Alt-F3`] you go to another terminal without graphic interface and use Vim you will notice that the movement speed is higher, this is because our graphic server configures the "delay rate" and "repeat rate" of our keyboard with "slower" values... these are the values of how much we must wait for a key to repeat and how much it repeats.
+If with `Ctrl-Alt-F3` you go to another terminal without graphic interface and use Vim you will notice that the movement speed is higher, this is because our graphic server configures the "delay rate" and "repeat rate" of our keyboard with "slower" values... these are the values of how much we must wait for a key to repeat and how much it repeats.
 
 When I noticed this I felt very slow in Vim, you can change the delay and repeat rate with the following command:
 ```sh
