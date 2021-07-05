@@ -151,6 +151,7 @@ set listchars=tab:\▏\
 set list
 let mapleader=" "
 let maplocalleader="\\"
+set conceallevel=0
 cnoremap jk <Esc>
 inoremap jk <Esc>
 cnoremap kj <Esc>
