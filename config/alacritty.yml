@@ -24,31 +24,31 @@ scrolling:
 
 font:
   normal:
-    family: "FiraCode Nerd Font Mono"
-    style: Retina
+    family: FiraCode Nerd Font Mono
+    style: Regular
 
   light:
-    family: "FiraCode Nerd Font Mono"
+    family: FiraCode Nerd Font Mono
     style: Light
 
   medium:
-    family: "FiraCode Nerd Font Mono"
+    family: FiraCode Nerd Font Mono
     style: Medium
 
   bold:
-    family: "FiraCode Nerd Font Mono"
+    family: FiraCode Nerd Font Mono
     style: Bold
 
   semi_bold:
-    family: "FiraCode Nerd Font Mono"
+    family: FiraCode Nerd Font Mono
     style: SemiBold
 
   bold_italic:
-    family: "FiraCode Nerd Font Mono"
-    style: BoldItalic
+    family: UbuntuMono Nerd Font
+    style: Bold Italic
 
   italic:
-    family: "FiraCode Nerd Font Mono"
+    family: UbuntuMono Nerd Font
     style: Italic
 
   size: 12
