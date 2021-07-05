@@ -71,6 +71,17 @@ bash update.sh editor console
 nvim +checkhealth
 ```
 
+## 💨⚡ More speed? ⚡💨
+If with [`Ctrl-Alt-F3`] you go to another terminal without graphic interface and use Vim you will notice that the movement speed is higher, this is because our graphic server configures the "delay rate" and "repeat rate" of our keyboard with "slower" values... these are the values of how much we must wait for a key to repeat and how much it repeats.
+
+When I noticed this I felt very slow in Vim, you can change the delay and repeat rate with the following command:
+```sh
+xset r rate 200 30
+# to make it permanent, write in ~/.zshrc (backup first for safety)
+```
+
+_(This configuration already integrates this command in .zshrc)_
+
 ## FAQ - Errors
 
 ### Why do I have double results in the autocomplete?
@@ -80,7 +91,7 @@ This configuration uses [`gopls`](https://pkg.go.dev/golang.org/x/tools/gopls) f
 
 You can uninstall extensions with `:CocUninstall <extensionName>`.
 
-## ⚠️  Precaution ⚠️
+## ⚠️ Precaution ⚠️
 Read [`install.sh`](./install.sh) file before running on your system.
 
 These instructions and the [`install.sh`](./install.sh) file will replace your configuration files for these tools, please keep this in mind.
