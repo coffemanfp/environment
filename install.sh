@@ -65,7 +65,7 @@ main() {
     echo "[Fonts Installer] : Installing fonts..." | tee -a "$log_file"
     sudo mkdir -p /usr/local/share/fonts/arthurFonts | tee -a "$log_file"
     sudo cp ./fonts/* /usr/local/share/fonts/arthurFonts/. | tee -a "$log_file"
-    sudo fc-cache -f -v | tee -a "$log_file"
+    sudo fc-cache -f -v &>/dev/null | tee -a "$log_file"
     echo "[Fonts Installer] : ----------------------" | tee -a "$log_file"
 
     # installs
