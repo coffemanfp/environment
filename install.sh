@@ -28,10 +28,11 @@ main() {
 
     # check requireds
     if [ "$install_editor" == 1 ]; then
-        if [ "$no_providers" != 1 ]; then
-            requiredCommands go node python python2 python3
+        if [ "$no_providers" == 1 ]; then
+            requiredCommands go node npm
         else
-            requiredCommands go node
+            requiredCommands go node npm python python2 python3
+            requiredSudoCommands node npm
         fi
 
         requiredSudoCommands apt npm apt-key tee
@@ -178,7 +179,7 @@ installEditor() {
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
         requiredCommands pip pip3 gem
-        requiredSudoCommands gem cpanm
+        requiredSudoCommands gem cpanm node npm
     fi
 
     requiredCommands curl git

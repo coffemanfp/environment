@@ -29,7 +29,7 @@ main() {
     # check requireds
     if [ "$update_editor" == 1 ]; then
         requiredSudoCommands snap
-        requiredCommands nvim node
+        requiredCommands nvim node npm
 
         #--- check node version
         nodeVersion="$(node --version | cut -d'.' -f1)"; nodeVersion="${nodeVersion#'v'}"
