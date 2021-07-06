@@ -7,8 +7,14 @@ La GUI de terminal que utilizo es indiferente a mi flujo de trabajo, suelo usar 
     * Nerd fond: ["FiraCode"](https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode)
 * Shell: `zsh`
 * Terminal Multiplexor: `tmux`
-* Code editor: `vim` (NeoVim)
+* Code editor: `nvim` (NeoVim)
 * Music player: `cmus`
+
+Para aumentar la velocidad de movimiento en Vim seteo el delay y repeat rate para el servidor grafico con:
+```sh
+xset r rate 200 30
+# to make it permanent, write in ~/.zshrc (backup first for safety)
+```
 
 Al encender mi maquina, abro la terminal, voy a la carpeta de mi proyecto, ejecuto `tmux` y presiono `F11` para trabajar con la terminal en pantalla completa.
 

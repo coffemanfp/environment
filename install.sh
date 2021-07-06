@@ -28,7 +28,7 @@ main() {
 
     # check requireds
     if [ "$install_editor" == 1 ]; then
-        if [ "$NO_PROVIDERS" != 1 ]; then
+        if [ "$no_providers" != 1 ]; then
             requiredCommands go node python python2 python3
         else
             requiredCommands go node
@@ -70,7 +70,7 @@ main() {
 
     # installs
     if [ "$install_editor" == 1 ]; then
-        if [ "$NO_PROVIDERS" == 1 ]; then
+        if [ "$no_providers" == 1 ]; then
             echo "[Editor Installer] : Install Editor without Providers..." | tee -a "$log_file"
         else
             echo "[Editor Installer] : Install Editor..." | tee -a "$log_file"
@@ -91,7 +91,7 @@ optstring=":n"
 while getopts ${optstring} arg; do
   case ${arg} in
     n) 
-        NO_PROVIDERS=1
+        no_providers=1
         ;;
     ?) 
         echo "[Installer Error] : Invalid option:"  | tee -a "$log_file"
@@ -165,7 +165,7 @@ installEditor() {
 
     sudo apt install curl git xclip snap snapd | tee -a "$log_file"
 
-    if [ "$NO_PROVIDERS" != 1 ]; then
+    if [ "$no_providers" != 1 ]; then
         echo "" | tee -a "$log_file"
         echo "[Editor Installer] : Adding yarn key, Updating yarn..." | tee -a "$log_file"
         curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
@@ -204,7 +204,7 @@ installEditor() {
 
     requiredCommands nvim
 
-    if [ "$NO_PROVIDERS" != 1 ]; then
+    if [ "$no_providers" != 1 ]; then
         echo "" | tee -a "$log_file"
         echo "[Editor Installer] : Installing Providers for NeoVim..." | tee -a "$log_file"
         sudo npm install -g neovim | tee -a "$log_file"
@@ -217,6 +217,7 @@ installEditor() {
         pip3 install -U msgpack-python | tee -a "$log_file"
         python3 -mpip install --user -U msgpack | tee -a "$log_file"
         yarn install --froken-lockfile | tee -a "$log_file"
+        sudo npm install -g bash-language-server | tee -a "$log_file"
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
     fi
 

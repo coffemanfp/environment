@@ -9,8 +9,7 @@ let g:coc_global_extensions = [
 \ 'coc-tag',
 \ 'coc-tsserver',
 \ 'coc-prettier',
-\ 'coc-eslint',
-\ 'coc-protobuf'
+\ 'coc-eslint'
 \ ]
 
 " - - - arthurnavah - Plugins -
@@ -37,8 +36,7 @@ call dein#add('neomake/neomake')
 
 " vim-polyglot config
 au BufNewFile,BufReadPost *.md set filetype=markdown
-let g:polyglot_disabled = ['markdown']
-let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'vim']
+let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'vim', 'go']
 
 " vim-polyglot syntax
 call dein#add('sheerun/vim-polyglot')
@@ -151,7 +149,6 @@ set listchars=tab:\▏\
 set list
 let mapleader=" "
 let maplocalleader="\\"
-set conceallevel=0
 cnoremap jk <Esc>
 inoremap jk <Esc>
 cnoremap kj <Esc>
@@ -173,16 +170,24 @@ set hlsearch
 set smartcase
 set formatoptions+=1
 
-set updatetime=200
+set updatetime=500
+set timeout timeoutlen=200 ttimeoutlen=80
+set history=30
 set ttyfast
-set timeout timeoutlen=200 ttimeoutlen=50
-set history=50
 
 set title
 set noerrorbells
-set lazyredraw
 set autoread
 
+" disable conceal
+set conceallevel=0
+let g:vim_json_syntax_conceal = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
+" increment speed
+"set lazyredraw
+"set cul!
 
 " theme enable
 syntax on
@@ -286,8 +291,6 @@ let g:airline#extensions#tmuxline#enabled = 0
 let g:tmuxline_powerline_separators = 0
 
 " typescript config
-let g:vim_json_syntax_conceal = 2
-
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
