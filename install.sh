@@ -175,7 +175,7 @@ installEditor() {
 
         sudo apt update 1>/dev/null | tee -a "$log_file"
 
-        sudo apt install python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev automake autoconf autotools-dev build-essential perl cpanminus yarn | tee -a "$log_file"
+        sudo apt install python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev perl cpanminus yarn | tee -a "$log_file"
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
         requiredCommands pip pip3 gem
