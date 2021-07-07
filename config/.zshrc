@@ -21,17 +21,27 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 # Load FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# Light mode
 alias lightmode="echo 'light' > ~/.mode ; \
     export MODE=light; \
     tmux setenv MODE light &>/dev/null; \
     bash ~/.tmux/plugins/tmux-onedark-theme/tmux-onedark-theme.tmux &>/dev/null; \
     bash ~/.tmux/plugins/tmux-battery/battery.tmux &>/dev/null;"
+alias li=lightmode
 
+# Dark mode
 alias darkmode="echo 'dark' > ~/.mode; \
     export MODE=dark; \
     tmux setenv MODE dark &>/dev/null; \
     bash ~/.tmux/plugins/tmux-onedark-theme/tmux-onedark-theme.tmux &>/dev/null; \
     bash ~/.tmux/plugins/tmux-battery/battery.tmux &>/dev/null;"
-
-alias li=lightmode
 alias da=darkmode
+
+# Clear swap
+alias cacheclear='sudo su -c "sync; echo 3 > /proc/sys/vm/drop_caches ; swapoff -a && swapon -a"'
+
+# Reload env files
+alias reloadenv='source /etc/environment; source /etc/profile; source ~/.zshrc'
+
+# Update all
+alias updateall='sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y full-upgrade && sudo snap refresh && sudo apt autoremove && sudo apt autoclean'
