@@ -35,7 +35,7 @@ main() {
             requiredSudoCommands node npm
         fi
 
-        requiredSudoCommands apt npm apt-key tee
+        requiredSudoCommands snap apt npm apt-key tee
 
         #--- check node version
         nodeVersion="$(node --version | cut -d'.' -f1)"; nodeVersion="${nodeVersion#'v'}"
@@ -172,10 +172,10 @@ installEditor() {
         curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
 
         echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+        echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
         sudo apt update 1>/dev/null | tee -a "$log_file"
-
-        sudo apt install python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev perl cpanminus yarn | tee -a "$log_file"
+        sudo apt install -y python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev perl cpanminus yarn | tee -a "$log_file"
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
         requiredCommands pip pip3 gem
