@@ -24,8 +24,8 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim.
 * [`neovim`](https://github.com/neovim/neovim)
     * Read [config/vimrc](./config/vimrc) ...
 
-* [Nerd fonts](https://github.com/ryanoasis/nerd-fonts)
-    * FiraCode Mono
+* [Powerline fonts](https://github.com/powerline/fonts)
+    * Fira Mono
     * Ubuntu Mono
 
 ## Installation

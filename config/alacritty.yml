@@ -24,31 +24,23 @@ scrolling:
 
 font:
   normal:
-    family: FiraCode Nerd Font Mono
+    family: Fira Mono for Powerline
     style: Regular
 
-  light:
-    family: FiraCode Nerd Font Mono
-    style: Light
-
   medium:
-    family: FiraCode Nerd Font Mono
+    family: Fira Mono for Powerline
     style: Medium
 
   bold:
-    family: FiraCode Nerd Font Mono
+    family: Fira Mono for Powerline
     style: Bold
 
-  semi_bold:
-    family: FiraCode Nerd Font Mono
-    style: SemiBold
-
   bold_italic:
-    family: UbuntuMono Nerd Font
+    family: Ubuntu Mono derivative Powerline
     style: Bold Italic
 
   italic:
-    family: UbuntuMono Nerd Font
+    family: Ubuntu Mono derivative Powerline
     style: Italic
 
   size: 12
