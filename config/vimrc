@@ -238,6 +238,11 @@ let g:vimade.fadelevel = 0.7
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>nn :NERDTreeFind<CR>
 
+let g:WebDevIconsOS = 'Darwin'
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:DevIconsEnableFolderExtensionPatternMatching = 1
 let NERDTreeShowFiles=1
 let NERDTreeShowHidden=1
 let NERDTreeHighlightCursorline=1
@@ -245,8 +250,8 @@ let NERDTreeMouseMode=2
 let NERDTreeIgnore=[ '^\.git$', ]
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeShowLineNumbers=1
-"let g:NERDTreeWinPos = "right"
 autocmd FileType nerdtree setlocal relativenumber
+"let g:NERDTreeWinPos = "right"
 
 " denite config
 nmap <leader>b :Denite buffer <CR>
