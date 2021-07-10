@@ -102,7 +102,7 @@ while getopts ${optstring} arg; do
         ;;
   esac
 done
-# clean arguments
+# excluding opts from the arguments
 for a; do
    shift
    case $a in
@@ -112,15 +112,7 @@ for a; do
 done
 # set vars with arguments
 for p in "$@"; do
-    if [ "$p" == "editor" ]; then
-        install_editor=1
-    fi
-    if [ "$p" == "console" ]; then
-        install_console=1
-    fi
-    if [ "$p" == "all" ]; then
-        install_all=1
-    fi
+    eval install_"$p"=1
 done;
 if [ "$#" == 0 ]; then
     install_all=1

@@ -76,7 +76,7 @@ main() {
     fi
 }
 
-# clean arguments
+# excluding opts from the arguments
 for a; do
    shift
    case $a in
@@ -86,15 +86,7 @@ for a; do
 done
 # set vars with arguments
 for p in "$@"; do
-    if [ "$p" == "editor" ]; then
-        update_console=1
-    fi
-    if [ "$p" == "console" ]; then
-        update_console=1
-    fi
-    if [ "$p" == "all" ]; then
-        update_all=1
-    fi
+    eval update_"$p"=1
 done;
 if [ "$#" == 0 ]; then
     update_all=1

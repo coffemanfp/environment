@@ -239,7 +239,7 @@ nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>nn :NERDTreeFind<CR>
 
 let g:WebDevIconsOS = 'Darwin'
-let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = " "
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:DevIconsEnableFolderExtensionPatternMatching = 1
