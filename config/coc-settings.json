@@ -1,13 +1,8 @@
 {
-    "suggest.noselect": false,
-
-    "diagnostic.enable": true,
     "diagnostic.errorSign": "✘",
-    "diagnostic.warningSign": "!",
-    "diagnostic.infoSign": "?",
-    "diagnostic.virtualText": false,
-    "diagnostic.messageTarget": "float",
-    "diagnostic.level": "information",
+    "diagnostic.warningSign": "⚠️",
+    "diagnostic.infoSign": "❓",
+    "diagnostic.hintSign": "❓",
 
     "coc.preferences.formatOnSaveFiletypes": [
         "go",

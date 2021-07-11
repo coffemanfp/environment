@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir logs &>/dev/null
 now=$(date +"%F+%T")
-log_file="logs/install-$now.log"
+log_file="$PWD/logs/install-$now.log"
 sudo rm logs/install-* &>/dev/null
 
 if [ ! -x "$0" ]; then
@@ -35,7 +35,7 @@ main() {
             requiredSudoCommands node npm
         fi
 
-        requiredSudoCommands snap apt npm apt-key tee
+        requiredSudoCommands apt npm apt-key tee add-apt-repository
 
         #--- check node version
         nodeVersion="$(node --version | cut -d'.' -f1)"; nodeVersion="${nodeVersion#'v'}"
@@ -156,7 +156,7 @@ requiredSudoCommands() {
 installEditor() {
     echo "dark" > ~/.mode | tee -a "$log_file"
 
-    sudo apt install curl git xclip snap snapd | tee -a "$log_file"
+    sudo apt install curl git xclip | tee -a "$log_file"
 
     if [ "$no_providers" != 1 ]; then
         echo "" | tee -a "$log_file"
@@ -175,7 +175,7 @@ installEditor() {
     fi
 
     requiredCommands curl git
-    requiredSudoCommands snap apt 
+    requiredSudoCommands apt 
 
     echo "" | tee -a "$log_file"
     echo "[Editor Installer] : Removing current version of Vim and NeoVim..." | tee -a "$log_file"
@@ -191,8 +191,22 @@ installEditor() {
 
     echo "" | tee -a "$log_file"
     echo "[Editor Installer] : Installing Vim and NeoVim..." | tee -a "$log_file"
-    sudo snap install vim-editor --beta | tee -a "$log_file"
-    sudo snap install nvim --classic | tee -a "$log_file"
+    #sudo snap install vim-editor --beta | tee -a "$log_file"
+    sudo add-apt-repository ppa:jonathonf/vim
+    sudo apt update
+    sudo apt install vim
+    #sudo snap install nvim --classic | tee -a "$log_file"
+    sudo rm -r download-nvim/ 2>/dev/null | tee -a "$log_file"
+    mkdir download-nvim/ | tee -a "$log_file"
+    cd download-nvim/ || exit
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage | tee -a "$log_file"
+    chmod u+x nvim.appimage | tee -a "$log_file"
+    ./nvim.appimage --appimage-extract | tee -a "$log_file"
+    ./squashfs-root/AppRun --version | tee -a "$log_file"
+    sudo rm -r /squashfs-root/ | tee -a "$log_file"
+    sudo rm /usr/bin/nvim | tee -a "$log_file"
+    sudo mv squashfs-root / && sudo ln -s /squashfs-root/AppRun /usr/bin/nvim | tee -a "$log_file"
+    cd ..
     echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
     requiredCommands nvim

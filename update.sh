@@ -1,7 +1,7 @@
 #!/bin/bash
 mkdir logs &>/dev/null
 now=$(date +"%F+%T")
-log_file="logs/update-$now.log"
+log_file="$PWD/logs/update-$now.log"
 sudo rm logs/update-* &>/dev/null
 
 if [ ! -x "$0" ]; then
@@ -128,7 +128,20 @@ requiredSudoCommands() {
 
 # updateEditor update editor
 updateEditor() {
-    sudo snap refresh vim-editor nvim | tee -a "$log_file"
+    #sudo snap refresh vim-editor | tee -a "$log_file"
+    sudo apt install --only-upgrade vim | tee -a "$log_file"
+
+    sudo rm -r download-nvim/ 2>/dev/null | tee -a "$log_file"
+    mkdir download-nvim/ | tee -a "$log_file"
+    cd download-nvim/ || exit
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage | tee -a "$log_file"
+    chmod u+x nvim.appimage | tee -a "$log_file"
+    ./nvim.appimage --appimage-extract | tee -a "$log_file"
+    ./squashfs-root/AppRun --version | tee -a "$log_file"
+    sudo rm -r /squashfs-root/ | tee -a "$log_file"
+    sudo rm /usr/bin/nvim | tee -a "$log_file"
+    sudo mv squashfs-root / && sudo ln -s /squashfs-root/AppRun /usr/bin/nvim | tee -a "$log_file"
+    cd ..
 
     # copy configurations
     cp config/vimrc ~/.vim/. | tee -a "$log_file"
@@ -144,6 +157,7 @@ updateEditor() {
     nvim --headless +GoUpdateBinaries +qall | tee -a "$log_file"
     nvim --headless +CocUpdate +qall | tee -a "$log_file"
 
+    echo "" | tee -a "$log_file"
     echo "[Editor Updater] : + Update editor successful! +" | tee -a "$log_file"
 }
 
