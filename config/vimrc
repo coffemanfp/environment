@@ -216,7 +216,7 @@ set encoding=UTF-8
 set fileencodings=UTF-8
 set guifont=FiraCode\ Nerd\ Font\ Mono\ 12
 
-set wildignore+=**/bower_components/**,**/node_modules/**,**vendor/bundle**,**target/scala**,**project/target**,*.jpg,*.gif,*.png,*.svg,*.zip,*-lock.json
+set wildignore+=**/bower_components/**,**/node_modules/**,**vendor/bundle**,**target/scala**,**project/target**,*.jpg,*.gif,*.png,*.svg,*.zip,package-lock.json
 " ---
 
 set hidden
@@ -253,9 +253,9 @@ autocmd FileType nerdtree setlocal relativenumber
 "let g:NERDTreeWinPos = "right"
 
 " denite config
-nmap <leader>b :Denite buffer <CR>
-nmap <leader>f :Denite file/rec <CR>
-nnoremap <leader>h :Denite grep -no-empty<CR>
+nmap <leader>b :Denite -no-empty buffer <CR>
+nmap <leader>f :Denite -no-empty file/rec <CR>
+nnoremap <leader>h :Denite -no-empty grep<CR>
 
 " Define mappings
 autocmd FileType denite call s:denite_my_settings()
@@ -272,16 +272,28 @@ function! s:denite_my_settings() abort
   \ denite#do_map('toggle_select').'j'
 endfunction
 
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+    \ [ '.git/', '.ropeproject/', '__pycache__/',
+    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules/', 'package-lock.json'])
+
+call denite#custom#var('file/rec', 'command',
+    \ ['rg', '--files', '--vimgrep'])
+
+call denite#custom#var('grep', {
+    \ 'command': ['rg',
+    \   '-g', '!package-lock.json', 
+    \   '-g', '!go.sum'],
+    \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
+    \ 'recursive_opts': [],
+    \ 'pattern_opt': ['--regexp'],
+    \ 'separator': ['--'],
+    \ 'final_opts': [],
+    \ })
+
 autocmd FileType denite-filter call s:denite_filter_my_settings()
 function! s:denite_filter_my_settings() abort
 	imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
 endfunction
-
-call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-    \ [ '.git/', '.ropeproject/', '__pycache__/',
-    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules/', 'package-lock.json'])
-call denite#custom#var('file/rec', 'command',
-    \ ['rg', '--files', '--vimgrep'])
 
 " airline config
 let g:airline#extensions#tabline#enabled = 1
