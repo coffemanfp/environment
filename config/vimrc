@@ -215,6 +215,8 @@ set cursorline
 set encoding=UTF-8
 set fileencodings=UTF-8
 set guifont=FiraCode\ Nerd\ Font\ Mono\ 12
+
+set wildignore+=**/bower_components/**,**/node_modules/**,**vendor/bundle**,**target/scala**,**project/target**,*.jpg,*.gif,*.png,*.svg,*.zip,*-lock.json
 " ---
 
 set hidden
@@ -274,9 +276,11 @@ function! s:denite_filter_my_settings() abort
 	imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
 endfunction
 
-"call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-    "\ [ '.git/', '.ropeproject/', '__pycache__/',
-    "\   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules/'])
+call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
+    \ [ '.git/', '.ropeproject/', '__pycache__/',
+    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules/', 'package-lock.json'])
+call denite#custom#var('file/rec', 'command',
+    \ ['rg', '--files', '--vimgrep'])
 
 " airline config
 let g:airline#extensions#tabline#enabled = 1

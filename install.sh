@@ -156,7 +156,7 @@ requiredSudoCommands() {
 installEditor() {
     echo "dark" > ~/.mode | tee -a "$log_file"
 
-    sudo apt install curl git xclip | tee -a "$log_file"
+    sudo apt install curl git xclip ripgrep silversearcher-ag | tee -a "$log_file"
 
     if [ "$no_providers" != 1 ]; then
         echo "" | tee -a "$log_file"
