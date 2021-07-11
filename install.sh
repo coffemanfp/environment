@@ -40,7 +40,7 @@ main() {
         #--- check node version
         nodeVersion="$(node --version | cut -d'.' -f1)"; nodeVersion="${nodeVersion#'v'}"
         if [ "$nodeVersion" -lt 11 ]; then
-            echo "[Editor Installer Error] : NodeJs version must be higher than v11.0.0 ( >= v12.0.0)" | tee -a "$log_file"
+            echo "[Editor Installer Error] : NodeJs version must be higher than v11.0.0 ( >= v12.0.0 )" | tee -a "$log_file"
             echo "exit 1" | tee -a "$log_file"
             exit 1
         fi
