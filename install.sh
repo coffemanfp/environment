@@ -267,6 +267,7 @@ installEditor() {
     nvim --headless +UpdateRemotePlugins +qall | tee -a "$log_file"
     nvim --headless +GoInstallBinaries +qall | tee -a "$log_file"
     nvim --headless +GoUpdateBinaries +qall | tee -a "$log_file"
+    nvim --headless +CocInstall +qall | tee -a "$log_file"
     nvim --headless +CocUpdate +qall | tee -a "$log_file"
 
     echo "" | tee -a "$log_file"
