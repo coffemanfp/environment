@@ -179,6 +179,8 @@ En la lista de `Denite`:
 
 * Seleccionar archivos: `<Space>`
 
+* Borrar del buffer: `d`
+
 #### Tricks with tabs and splits
 Con `<Ctrl-w>r` puedes rotar splits.
 
