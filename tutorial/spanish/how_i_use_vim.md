@@ -169,7 +169,15 @@ En la lista de `Denite`:
 
 * Ver preview del archivo: `p`
 
-* Filtrar entre los archivos: `i`
+* Filtrar archivos: `f`
+
+* Abrir en nueva tab: `t`
+
+* Abrir en split: `i`
+
+* Abrir en vsplit: `s`
+
+* Seleccionar archivos: `<Space>`
 
 #### Tricks with tabs and splits
 Con `<Ctrl-w>r` puedes rotar splits.
