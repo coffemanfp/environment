@@ -261,9 +261,12 @@ installEditor() {
     sh ~/.vim/bundles/installer.sh ~/.vim/bundles | tee -a "$log_file"
     echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
+    nvim --headless +"call dein#clear_state()" +qall | tee -a "$log_file"
+    nvim --headless +"call dein#recache_runtimepath()" +qall | tee -a "$log_file"
     nvim --headless +"call dein#install()" +qall | tee -a "$log_file"
     nvim --headless +"call dein#update()" +qall | tee -a "$log_file"
     nvim --headless +"call dein#remote_plugins()" +qall | tee -a "$log_file"
+    nvim --headless +"call dein#save_state()" +qall | tee -a "$log_file"
     nvim --headless +UpdateRemotePlugins +qall | tee -a "$log_file"
     nvim --headless +GoInstallBinaries +qall | tee -a "$log_file"
     nvim --headless +GoUpdateBinaries +qall | tee -a "$log_file"

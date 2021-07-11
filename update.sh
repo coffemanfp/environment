@@ -149,6 +149,8 @@ updateEditor() {
     cp config/coc-settings.json ~/.config/nvim/. | tee -a "$log_file"
 
     # install updates
+    nvim --headless +"call dein#clear_state()" +qall | tee -a "$log_file"
+    nvim --headless +"call dein#recache_runtimepath()" +qall | tee -a "$log_file"
     nvim --headless +"call dein#install()" +qall | tee -a "$log_file"
     nvim --headless +"call dein#update()" +qall | tee -a "$log_file"
     nvim --headless +"call dein#remote_plugins()" +qall | tee -a "$log_file"
@@ -157,6 +159,7 @@ updateEditor() {
     nvim --headless +GoUpdateBinaries +qall | tee -a "$log_file"
     nvim --headless +CocInstall +qall | tee -a "$log_file"
     nvim --headless +CocUpdate +qall | tee -a "$log_file"
+    nvim --headless +"call dein#save_state()" +qall | tee -a "$log_file"
 
     echo "" | tee -a "$log_file"
     echo "[Editor Updater] : + Update editor successful! +" | tee -a "$log_file"
