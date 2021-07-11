@@ -192,6 +192,7 @@ installEditor() {
     echo "" | tee -a "$log_file"
     echo "[Editor Installer] : Installing Vim and NeoVim..." | tee -a "$log_file"
     #sudo snap install vim-editor --beta | tee -a "$log_file"
+    echo "[Editor Installer] : - Adding vim repository (ppa:jonathonf/vim)..." | tee -a "$log_file"
     sudo add-apt-repository ppa:jonathonf/vim
     sudo apt update
     sudo apt install vim
