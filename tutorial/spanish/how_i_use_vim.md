@@ -123,7 +123,7 @@ Utilizo `o` para alternar la posicion del cursos en lo resaltado en modo `VISUAL
 Utilizo `:Bo` para ejecutar un script que cierra todos los archivos del buffer y tabs, menos el archivo actual. Esto optimiza mucho el rendimiento si he abierto varios archivos.
 
 ## File navigation
-Para trabajar con varios archivos uso principalmente tabs y splits, para crear un split vertical pulso `<Space>l` y `<Space>j` para un split horizontal, entre los splits me muevo con `<Ctrl>w{direction}`, la "`direction`" es la tecla de movimiendo hacia donde esta el split... `h`, `j`, `k`, `l`.
+Para trabajar con varios archivos uso principalmente tabs y splits, para crear un split vertical pulso `:vsplit` y `:split` para un split horizontal, entre los splits me muevo con `<Ctrl>w{direction}`, la "`direction`" es la tecla de movimiendo hacia donde esta el split... `h`, `j`, `k`, `l`.
 
 Para moverme entre archivos utilizo el paquete `NERDTree`:
 
@@ -328,8 +328,8 @@ El `gopls` esta configurado con el `usePlaceholders` en `true`, al autocompletar
 * Descomentar: `<leader>cu`
 
 * Ir a definicion: `<leader>gd`
-* Ir a las llamadas de la funcion: `<leader>cc`
-* Ir a la definicion del tipo: `<leader>gy`
+* Ir a las llamadas de la funcion: `<leader>gc`
+* Ir a la definicion del tipo: `<leader>gt`
 * Ir a las implementaciones de una interface: `<leader>gi`
 * Refactorizar nombre: `<leader>rn` | `:GoRename`
 * Ver documentacion: `K`
@@ -343,11 +343,11 @@ El `gopls` esta configurado con el `usePlaceholders` en `true`, al autocompletar
 * Agregar `tags` a una estructura: `<leader>gat`
 * Eliminar `tags` de una estructura: `<leader>grt`
 
-* Mostrar Coverage del codigo: `<leader>gc`
+* Mostrar Coverage del codigo: `:GoCoverageToggle`
 
+* Llamar a `:GoBuild`: `<leader>gj`
 * Llamar a `golint`: `<leader>gl`
 * Llamar a `govet`: `<leader>gk`
-* Llamar a `:GoBuild`: `<leader>gj`
 
 * Llamar a Emmet: `<Ctrl-k>`
 

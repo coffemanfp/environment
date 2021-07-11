@@ -225,9 +225,6 @@ set scl=auto
 
 set directory^=$HOME/.vim/tmp//
 
-nnoremap <leader>l :vsplit<CR>
-nnoremap <leader>j :split<CR>
-
 set icm=nosplit
 
 " vimade config
@@ -301,7 +298,7 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " vim-go config
-let g:go_diagnostics_enabled = 0
+"let g:go_diagnostics_enabled = 0
 let g:go_metalinter_enabled = []
 
 let g:go_auto_type_info = 1
@@ -321,13 +318,13 @@ let g:go_addtags_transform = "camelcase"
 autocmd FileType go nmap <leader>gj  :GoBuild<CR>
 autocmd FileType go nmap <leader>gl :GoLint<CR>
 autocmd FileType go nmap <leader>gk :GoVet<CR>
-autocmd FileType go nmap <leader>ga  :GoAlternate<CR>
-autocmd FileType go nmap <leader>gc  :GoCoverageToggle<CR>
+"autocmd FileType go nmap <leader>ga  :GoAlternate<CR>
+"autocmd FileType go nmap <leader>gc  :GoCoverageToggle<CR>
 autocmd FileType go nmap <leader>gat  :GoAddTags
 autocmd FileType go nmap <leader>grt  :GoRemoveTags
 autocmd FileType go nmap <leader>gcp  :GoChannelPeers<CR>
 " go - show function calls
-autocmd BufEnter *.go nmap <leader>cc  <Plug>(go-callers)
+autocmd BufEnter *.go nmap <leader>gc  <Plug>(go-callers)
 
 " emmet config
 let g:user_emmet_leader_key='<C-K>'
@@ -341,7 +338,14 @@ let g:gitgutter_max_signs = 200
 let g:indentLine_char = '▏'
 
 " neomake config
-call neomake#configure#automake('nrwi', 500)
+call neomake#configure#automake('nrwi', 350)
+let g:neomake_warning_sign = {
+  \ 'text': '⚠️',
+  \ }
+let g:neomake_error_sign = {
+  \ 'text': '✘',
+  \ }
+let g:neomake_javascript_enabled_makers = ['eslint']
 
 " coc.nvim config
 
@@ -352,7 +356,7 @@ inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 nmap <silent> [c <Plug>(coc-diagnostic-prev)
 nmap <silent> ]c <Plug>(coc-diagnostic-next)
 nmap <leader>gd <Plug>(coc-definition)
-nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gt <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>gr <Plug>(coc-references)
 nmap <leader>rn <Plug>(coc-rename)
