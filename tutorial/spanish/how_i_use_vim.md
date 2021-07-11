@@ -163,6 +163,14 @@ Para hacer una busqueda de archivo utilizo el paquete `Denite`:
 
 * Buscar texto en archivos con `Denite`: `<Space>h`
 
+En la lista de `Denite`:
+
+* Cerrar `Denite`: `q`
+
+* Ver preview del archivo: `p`
+
+* Filtrar entre los archivos: `i`
+
 #### Tricks with tabs and splits
 Con `<Ctrl-w>r` puedes rotar splits.
 
