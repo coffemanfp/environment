@@ -156,7 +156,7 @@ requiredSudoCommands() {
 installEditor() {
     echo "dark" > ~/.mode | tee -a "$log_file"
 
-    sudo apt install curl git xclip ripgrep silversearcher-ag | tee -a "$log_file"
+    sudo apt install -y curl git xclip ripgrep silversearcher-ag | tee -a "$log_file"
 
     if [ "$no_providers" != 1 ]; then
         echo "" | tee -a "$log_file"
@@ -179,10 +179,10 @@ installEditor() {
 
     echo "" | tee -a "$log_file"
     echo "[Editor Installer] : Removing current version of Vim and NeoVim..." | tee -a "$log_file"
-    sudo apt remove --purge vim 2>/dev/null | tee -a "$log_file"
-    sudo apt remove --purge vim-editor 2>/dev/null | tee -a "$log_file"
-    sudo apt remove --purge neovim 2>/dev/null | tee -a "$log_file"
-    sudo apt remove --purge nvim 2>/dev/null | tee -a "$log_file"
+    sudo apt remove -y --purge vim 2>/dev/null | tee -a "$log_file"
+    sudo apt remove -y --purge vim-editor 2>/dev/null | tee -a "$log_file"
+    sudo apt remove -y --purge neovim 2>/dev/null | tee -a "$log_file"
+    sudo apt remove -y --purge nvim 2>/dev/null | tee -a "$log_file"
     sudo snap remove --purge vim-editor 2>/dev/null | tee -a "$log_file"
     sudo snap remove --purge vim 2>/dev/null | tee -a "$log_file"
     sudo snap remove --purge nvim 2>/dev/null | tee -a "$log_file"
@@ -193,9 +193,9 @@ installEditor() {
     echo "[Editor Installer] : Installing Vim and NeoVim..." | tee -a "$log_file"
     #sudo snap install vim-editor --beta | tee -a "$log_file"
     echo "[Editor Installer] : - Adding vim repository (ppa:jonathonf/vim)..." | tee -a "$log_file"
-    sudo add-apt-repository ppa:jonathonf/vim
+    sudo add-apt-repository -y ppa:jonathonf/vim
     sudo apt update
-    sudo apt install vim
+    sudo apt install -y vim
     #sudo snap install nvim --classic | tee -a "$log_file"
     sudo rm -r download-nvim/ 2>/dev/null | tee -a "$log_file"
     mkdir download-nvim/ | tee -a "$log_file"
@@ -285,7 +285,7 @@ installConsole() {
 
     echo "" | tee -a "$log_file"
     echo "[Console Installer] : Installing tools..." | tee -a "$log_file"
-    sudo apt install curl git tmux cmus zsh git-flow shellcheck exiftool rar fzf | tee -a "$log_file"
+    sudo apt install -y curl git tmux cmus zsh git-flow shellcheck exiftool rar fzf | tee -a "$log_file"
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
     echo "" | tee -a "$log_file"
@@ -295,7 +295,7 @@ installConsole() {
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
     sudo apt update 1>/dev/null | tee -a "$log_file"
-    sudo apt install yarn 1>/dev/null | tee -a "$log_file"
+    sudo apt install -y yarn 1>/dev/null | tee -a "$log_file"
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
     echo "" | tee -a "$log_file"

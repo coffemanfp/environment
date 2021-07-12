@@ -129,7 +129,7 @@ requiredSudoCommands() {
 # updateEditor update editor
 updateEditor() {
     #sudo snap refresh vim-editor | tee -a "$log_file"
-    sudo apt install --only-upgrade vim | tee -a "$log_file"
+    sudo apt install -y --only-upgrade vim | tee -a "$log_file"
 
     sudo rm -r download-nvim/ 2>/dev/null | tee -a "$log_file"
     mkdir download-nvim/ | tee -a "$log_file"
@@ -168,7 +168,7 @@ updateEditor() {
 # updateConsole update console
 updateConsole() {
     sudo snap refresh alacritty | tee -a "$log_file"
-    sudo apt install --only-upgrade tmux zsh | tee -a "$log_file"
+    sudo apt install -y --only-upgrade tmux zsh | tee -a "$log_file"
 
     # copy configurations
     cp config/alacritty.yml ~/.config/alacritty/. | tee -a "$log_file"
