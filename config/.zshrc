@@ -41,7 +41,7 @@ alias da=darkmode
 alias cacheclear='sudo su -c "sync; echo 3 > /proc/sys/vm/drop_caches ; swapoff -a && swapon -a"'
 
 # Reload env files
-alias reloadenv='source /etc/environment; source /etc/profile; source ~/.zshrc'
+alias reloadenv='source /etc/environment; source /etc/profile; source ~/.profile; source ~/.zshrc'
 
 # Update all
 alias updateall='sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-upgrade && sudo apt -y full-upgrade && sudo snap refresh && sudo apt autoremove && sudo apt autoclean'
