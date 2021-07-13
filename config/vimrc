@@ -227,7 +227,9 @@ set scl=auto
 
 set directory^=$HOME/.vim/tmp//
 
-set icm=nosplit
+if has('nvim')
+    set icm=nosplit
+endif
 
 " vimade config
 let g:vimade = {}
