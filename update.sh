@@ -89,7 +89,7 @@ for p in "$@"; do
     eval update_"$p"=1
 done;
 if [ "$#" == 0 ]; then
-    update_all=1
+    update_editor=1
 fi
 
 # requiredCommands terminates the execution if there are no commands
@@ -131,16 +131,16 @@ updateEditor() {
     #sudo snap refresh vim-editor | tee -a "$log_file"
     sudo apt install -y --only-upgrade vim | tee -a "$log_file"
 
-    sudo rm -r download-nvim/ 2>/dev/null | tee -a "$log_file"
-    mkdir download-nvim/ | tee -a "$log_file"
-    cd download-nvim/ || exit
+    sudo rm -r downloads/ 2>/dev/null | tee -a "$log_file"
+    mkdir downloads/ | tee -a "$log_file"
+    cd downloads/ || exit
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage | tee -a "$log_file"
     chmod u+x nvim.appimage | tee -a "$log_file"
     ./nvim.appimage --appimage-extract | tee -a "$log_file"
     ./squashfs-root/AppRun --version | tee -a "$log_file"
-    sudo rm -r /squashfs-root/ | tee -a "$log_file"
+    sudo rm -r /nvim-arthurnavah/ | tee -a "$log_file"
     sudo rm /usr/bin/nvim | tee -a "$log_file"
-    sudo mv squashfs-root / && sudo ln -s /squashfs-root/AppRun /usr/bin/nvim | tee -a "$log_file"
+    sudo mv squashfs-root /nvim-arthurnavah && sudo ln -s /nvim-arthurnavah/AppRun /usr/bin/nvim | tee -a "$log_file"
     cd ..
 
     # copy configurations
