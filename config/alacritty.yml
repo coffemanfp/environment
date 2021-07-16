@@ -80,7 +80,7 @@ colors:
     foreground: "0xe2e2e3"
 
   normal:
-    black: "0x181819"
+    black: "0x646464"
     red: "0xfc5d7c"
     green: "0x599724"
     yellow: "0xcda52c"
@@ -90,7 +90,7 @@ colors:
     white: "0xe2e2e3"
 
   bright:
-    black: "0x5b5b5b"
+    black: "0x646464"
     red: "0xfc5d7c"
     green: "0x599724"
     yellow: "0xcda52c"
