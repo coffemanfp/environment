@@ -217,7 +217,9 @@ let g:onedark_termcolors=256
 set cursorline
 highlight Comment cterm=italic gui=italic
 highlight Cursorline cterm=bold gui=bold guibg=NONE
-highlight SignColumn guibg=dark
+if has('nvim')
+    highlight SignColumn guibg=dark
+endif
 set encoding=UTF-8
 set fileencodings=UTF-8
 
