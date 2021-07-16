@@ -394,7 +394,7 @@ autocmd BufEnter *.go nmap <leader>gc  <Plug>(go-callers)
 " emmet config
 let g:user_emmet_leader_key='<C-K>'
 let g:user_emmet_install_global = 0
-autocmd FileType html,xhtml,css,javascript EmmetInstall
+autocmd FileType html,xhtml,css,javascript,js EmmetInstall
 
 " gitgutter config
 let g:gitgutter_max_signs = 200
