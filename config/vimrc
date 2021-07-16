@@ -124,31 +124,13 @@ if &compatible
   set nocompatible " Be iMproved
 endif
 
-" set theme
-if filereadable(expand("$HOME/.mode"))
-    let modeTheme = readfile(expand("$HOME/.mode"))
-    if len(modeTheme) == 1
-        let $MODE = modeTheme[0]
-    endif
-endif
-
-if $MODE == "light"
-    colorscheme OceanicNextLight
-    let g:airline_theme='oceanicnextlight'
-else
-    "colorscheme onedark
-    colorscheme molokai
-    "let g:airline_theme='onedark'
-    let g:airline_theme='molokai'
-endif
-
 filetype off                  " required
 set backspace=2
 filetype plugin indent on    " required
 set relativenumber
 set number
-set listchars=tab:\▏\ 
 set list
+set listchars=tab:\▏\ 
 let mapleader=" "
 let maplocalleader="\\"
 cnoremap jk <Esc>
@@ -181,19 +163,41 @@ set title
 set noerrorbells
 set autoread
 
+set encoding=UTF-8
+set fileencodings=UTF-8
+
+set wildignore+=**/bower_components/**,**/node_modules/**,**vendor/bundle**,**target/scala**,**project/target**,*.jpg,*.gif,*.png,*.svg,*.zip,package-lock.json
+
+" increment speed
+"set lazyredraw
+"set cul!
+
 " disable conceal
 set conceallevel=0
 let g:vim_json_syntax_conceal = 0
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
-" increment speed
-"set lazyredraw
-"set cul!
+set hidden
+set nobackup
+set nowritebackup
+set signcolumn=auto
+
+set directory^=$HOME/.vim/tmp//
+
+if has('nvim')
+    set icm=nosplit
+endif
+
+set guifont=Fira\ Mono\ for\ Powerline\ 12
 
 " theme enable
-syntax on
-syntax enable
+"syntax enable
+"syntax on
+"
+if !exists("g:syntax_on")
+    syntax enable
+endif
 
 let g:rehash256 = 1
 set t_Co=256
@@ -206,36 +210,35 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-set guifont=Fira\ Mono\ for\ Powerline\ 12
-
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 let g:onedark_terminal_italics=1
 let g:onedark_hide_endofbuffer=1
 let g:onedark_termcolors=256
 
+" set theme
+if filereadable(expand("$HOME/.mode"))
+    let modeTheme = readfile(expand("$HOME/.mode"))
+    if len(modeTheme) == 1
+        let $MODE = modeTheme[0]
+    endif
+endif
+
+if $MODE == "light"
+    let g:airline_theme='oceanicnextlight'
+    colorscheme OceanicNextLight
+else
+    let g:airline_theme='molokai'
+    colorscheme molokai
+endif
+
 set cursorline
 highlight Comment cterm=italic gui=italic
 highlight Cursorline cterm=bold gui=bold guibg=NONE
 if has('nvim')
-    highlight SignColumn guibg=dark
+    highlight SignColumn gui=bold guibg=dark guifg=grey
 endif
-set encoding=UTF-8
-set fileencodings=UTF-8
-
-set wildignore+=**/bower_components/**,**/node_modules/**,**vendor/bundle**,**target/scala**,**project/target**,*.jpg,*.gif,*.png,*.svg,*.zip,package-lock.json
 " ---
-
-set hidden
-set nobackup
-set nowritebackup
-set signcolumn=auto
-
-set directory^=$HOME/.vim/tmp//
-
-if has('nvim')
-    set icm=nosplit
-endif
 
 " vimade config
 let g:vimade = {}
@@ -391,7 +394,7 @@ autocmd BufEnter *.go nmap <leader>gc  <Plug>(go-callers)
 " emmet config
 let g:user_emmet_leader_key='<C-K>'
 let g:user_emmet_install_global = 0
-autocmd FileType html,css,javascript EmmetInstall
+autocmd FileType html,xhtml,css,javascript EmmetInstall
 
 " gitgutter config
 let g:gitgutter_max_signs = 200
@@ -403,22 +406,32 @@ let g:indentLine_char = '▏'
 call neomake#configure#automake('nrwi', 350)
 let g:neomake_warning_sign = {
   \ 'text': '⚠️',
+  \ 'texthl': 'NeomakeWarningSign',
   \ }
 let g:neomake_error_sign = {
   \ 'text': '✘',
+  \ 'texthl': 'NeomakeErrorSign',
+  \ }
+let g:neomake_message_sign = {
+  \ 'text': '➤',
+  \ 'texthl': 'NeomakeMessageSign',
+  \ }
+let g:neomake_info_sign = {
+  \ 'text': 'ℹ',
+  \ 'texthl': 'NeomakeInfoSign',
   \ }
 let g:neomake_javascript_enabled_makers = ['eslint']
 
-highlight NeomakeError guifg=red
-highlight SpellBad guifg=red
+highlight NeomakeError guifg=red ctermfg=red
+highlight SpellBad guifg=red ctermfg=red
 highlight NeomakeWarning guifg=yellow
-highlight NeomakeInfo guifg=grey
-highlight NeomakeMessage guifg=cyan
+highlight NeomakeInfo guifg=cyan
+highlight NeomakeMessage guifg=grey
 
 highlight TestOk    ctermbg=green
-highlight TestError ctermbg=red
+highlight TestError ctermbg=red ctermfg=red
 highlight ErrorMsg ctermfg=red
-highlight QuickFixLine ctermbg=black
+highlight QuickFixLine ctermbg=red
 
 " coc.nvim config
 
