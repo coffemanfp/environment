@@ -73,3 +73,29 @@ shell:
     - -l
     - -c
     - "tmux"
+
+colors:
+  primary:
+    background: "0x1c1c1c"
+    foreground: "0xe2e2e3"
+
+  normal:
+    black: "0x181819"
+    red: "0xfc5d7c"
+    green: "0x599724"
+    yellow: "0xcda52c"
+    blue: "0x658BCF"
+    magenta: "0xb39df3"
+    cyan: "0xf39660"
+    white: "0xe2e2e3"
+
+  bright:
+    black: "0x5b5b5b"
+    red: "0xfc5d7c"
+    green: "0x599724"
+    yellow: "0xcda52c"
+    blue: "0x658BCF"
+    magenta: "0xb39df3"
+    cyan: "0xf39660"
+    white: "0xe2e2e3"
+

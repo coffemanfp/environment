@@ -7,6 +7,8 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
+CARETCOLOR="green"
+
 # Delay and repeat rate
 xset r rate 200 30
 

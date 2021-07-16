@@ -136,8 +136,10 @@ if $MODE == "light"
     colorscheme OceanicNextLight
     let g:airline_theme='oceanicnextlight'
 else
-    colorscheme onedark
-    let g:airline_theme='onedark'
+    "colorscheme onedark
+    colorscheme molokai
+    "let g:airline_theme='onedark'
+    let g:airline_theme='molokai'
 endif
 
 filetype off                  " required
@@ -204,17 +206,20 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
+set guifont=Fira\ Mono\ for\ Powerline\ 12
+
 let g:oceanic_next_terminal_bold = 1
 let g:oceanic_next_terminal_italic = 1
 let g:onedark_terminal_italics=1
 let g:onedark_hide_endofbuffer=1
 let g:onedark_termcolors=256
-highlight Comment cterm=italic gui=italic
-highlight Cursorline cterm=bold gui=bold
+
 set cursorline
+highlight Comment cterm=italic gui=italic
+highlight Cursorline cterm=bold gui=bold guibg=NONE
+highlight SignColumn guibg=dark
 set encoding=UTF-8
 set fileencodings=UTF-8
-set guifont=Fira\ Mono\ for\ Powerline\ 12
 
 set wildignore+=**/bower_components/**,**/node_modules/**,**vendor/bundle**,**target/scala**,**project/target**,*.jpg,*.gif,*.png,*.svg,*.zip,package-lock.json
 " ---
@@ -223,7 +228,6 @@ set hidden
 set nobackup
 set nowritebackup
 set signcolumn=auto
-set scl=auto
 
 set directory^=$HOME/.vim/tmp//
 
@@ -319,12 +323,26 @@ let s:denite_options = {
 call denite#custom#option('default', s:denite_options)
 
 " airline config
-let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_detect_iminsert=1
+let g:airline_skip_empty_sections = 1
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+let g:airline#extensions#tagbar#enabled = 1
+let g:airline#extensions#syntastic#enabled = 0
+
+let g:airline#extensions#tabline#fnamemod = ':t'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_close_button = 0
+let g:airline#extensions#tabline#show_tabs = 1
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#show_buffers = 0
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
 let g:airline#extensions#tabline#show_splits = 0
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#tmuxline#enabled = 0
