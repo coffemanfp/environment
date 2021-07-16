@@ -349,6 +349,8 @@ let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#tmuxline#enabled = 0
 
+let g:airline#extensions#neomake#enabled = 1
+
 " tmuxline.vim config
 let g:tmuxline_powerline_separators = 0
 
@@ -406,6 +408,17 @@ let g:neomake_error_sign = {
   \ 'text': '✘',
   \ }
 let g:neomake_javascript_enabled_makers = ['eslint']
+
+highlight NeomakeError guifg=red
+highlight SpellBad guifg=red
+highlight NeomakeWarning guifg=yellow
+highlight NeomakeInfo guifg=grey
+highlight NeomakeMessage guifg=cyan
+
+highlight TestOk    ctermbg=green
+highlight TestError ctermbg=red
+highlight ErrorMsg ctermfg=red
+highlight QuickFixLine ctermbg=black
 
 " coc.nvim config
 
