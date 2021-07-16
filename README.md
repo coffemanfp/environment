@@ -1,7 +1,7 @@
 ![Screenshot environment](./screenshot.png)
 
 # environment
-Personal Terminal Development Environment, with Zsh, Tmux and Vim.
+Personal Terminal Development Environment, with Zsh, Tmux and Vim. (Screenshots of the environment in [screenshots](./screenshots/README.md))
 
 [Golang/$GOPATH](https://golang.org/) for development tools and [NodeJS](https://nodejs.org/) for [`coc.nvim`](https://github.com/neoclide/coc.nvim) are required.
 
