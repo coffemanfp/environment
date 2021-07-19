@@ -534,8 +534,8 @@ endfunction
 
 command! -nargs=0 DarkMode call DarkMode()
 function! DarkMode()
-    colorscheme onedark
-    AirlineTheme onedark
+    colorscheme molokai
+    AirlineTheme molokai
     silent exec "!echo 'dark' > ~/.mode"
 endfunction
 "----------------------------------------------------
