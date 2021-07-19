@@ -131,12 +131,6 @@ set relativenumber
 set number
 set list
 set listchars=tab:\▏\ 
-let mapleader=" "
-let maplocalleader="\\"
-cnoremap jk <Esc>
-inoremap jk <Esc>
-cnoremap kj <Esc>
-inoremap kj <Esc>
 
 set ruler
 
@@ -168,16 +162,6 @@ set fileencodings=UTF-8
 
 set wildignore+=**/bower_components/**,**/node_modules/**,**vendor/bundle**,**target/scala**,**project/target**,*.jpg,*.gif,*.png,*.svg,*.zip,package-lock.json
 
-" increment speed
-"set lazyredraw
-"set cul!
-
-" disable conceal
-set conceallevel=0
-let g:vim_json_syntax_conceal = 0
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-
 set hidden
 set nobackup
 set nowritebackup
@@ -191,10 +175,25 @@ endif
 
 set guifont=Fira\ Mono\ for\ Powerline\ 12
 
-" theme enable
-"syntax enable
-"syntax on
-"
+" vim config -- disable conceal
+set conceallevel=0
+let g:vim_json_syntax_conceal = 0
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
+" vim config -- increment speed
+"set lazyredraw
+"set cul!
+
+" vim config -- mapping
+let mapleader=" "
+let maplocalleader="\\"
+cnoremap jk <Esc>
+inoremap jk <Esc>
+cnoremap kj <Esc>
+inoremap kj <Esc>
+
+" vim config -- theme enable
 if !exists("g:syntax_on")
     syntax enable
 endif
@@ -216,7 +215,7 @@ let g:onedark_terminal_italics=1
 let g:onedark_hide_endofbuffer=1
 let g:onedark_termcolors=256
 
-" set theme
+" vim config -- set theme
 if filereadable(expand("$HOME/.mode"))
     let modeTheme = readfile(expand("$HOME/.mode"))
     if len(modeTheme) == 1
@@ -232,13 +231,15 @@ else
     colorscheme molokai
 endif
 
+" vim config -- theme config
 set cursorline
 highlight Comment cterm=italic gui=italic
 highlight Cursorline cterm=bold gui=bold guibg=NONE
 if has('nvim')
     highlight SignColumn gui=bold guibg=dark guifg=grey
 endif
-" ---
+
+" --- end vim config
 
 " vimade config
 let g:vimade = {}
@@ -248,7 +249,6 @@ let g:vimade.fadelevel = 0.7
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>nn :NERDTreeFind<CR>
 
-"let g:WebDevIconsOS = 'Darwin'
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = " "
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
@@ -434,7 +434,6 @@ highlight ErrorMsg ctermfg=red
 highlight QuickFixLine ctermbg=red
 
 " coc.nvim config
-
 set cmdheight=2
 set shortmess+=c
 inoremap <silent><expr> <c-space> coc#refresh()
