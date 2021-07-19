@@ -8,6 +8,10 @@ plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 source $ZSH/oh-my-zsh.sh
 
 CARETCOLOR="green"
+_fix_cursor() {
+   echo -ne "\e[1 q"
+}
+precmd_functions+=(_fix_cursor)
 
 # Delay and repeat rate
 xset r rate 200 30

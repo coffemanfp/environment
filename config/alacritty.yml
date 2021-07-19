@@ -79,6 +79,9 @@ colors:
     background: "0x1c1c1c"
     foreground: "0xe2e2e3"
 
+  cursor:
+    cursor: "0x599724"
+
   normal:
     black: "0x646464"
     red: "0xfc5d7c"
