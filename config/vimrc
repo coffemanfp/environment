@@ -422,15 +422,15 @@ let g:neomake_info_sign = {
   \ }
 let g:neomake_javascript_enabled_makers = ['eslint']
 
-highlight NeomakeError guifg=red ctermfg=red
-highlight SpellBad guifg=red ctermfg=red
+"highlight NeomakeError guifg=red ctermfg=red
+"highlight SpellBad guifg=red ctermfg=red
 highlight NeomakeWarning guifg=yellow
 highlight NeomakeInfo guifg=cyan
 highlight NeomakeMessage guifg=grey
 
-highlight TestOk    ctermbg=green
-highlight TestError ctermbg=red ctermfg=red
-highlight ErrorMsg ctermfg=red
+"highlight TestOk    ctermbg=green
+"highlight TestError ctermbg=red ctermfg=red
+"highlight ErrorMsg ctermfg=red
 highlight QuickFixLine ctermbg=red
 
 " coc.nvim config
