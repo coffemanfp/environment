@@ -26,6 +26,9 @@ main() {
         exit 1
     fi
 
+    requiredCommands git
+    git pull origin master | tee -a "$log_file"
+
     # check requireds
     if [ "$update_editor" == 1 ]; then
         requiredSudoCommands snap
