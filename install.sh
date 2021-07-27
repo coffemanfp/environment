@@ -331,7 +331,11 @@ installConsole() {
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions | tee -a "$log_file"
 
     echo "[Console Installer] : - Copying configuration Zsh..." | tee -a "$log_file"
-    cp ./config/.zshrc ~/.  | tee -a "$log_file"
+    cp ./config/.zshrc ~/.zshrc.arthurnavah | tee -a "$log_file"
+    principalContent=$(awk '$0 ~ /^(source ~[/].zshrc.arthurnavah)/ { print }' ~/.zshrc)
+    if [ -z "$principalContent" ]; then
+        echo "source ~/.zshrc.arthurnavah" >>~/.zshrc
+    fi
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
     echo "" | tee -a "$log_file"
