@@ -167,6 +167,9 @@ installEditor() {
         curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
 
         echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+        curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
         sudo apt update 1>/dev/null | tee -a "$log_file"
@@ -297,6 +300,8 @@ installConsole() {
 
     echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 
+    curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+
     sudo apt update 1>/dev/null | tee -a "$log_file"
     sudo apt install -y yarn 1>/dev/null | tee -a "$log_file"
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
@@ -331,11 +336,18 @@ installConsole() {
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions | tee -a "$log_file"
 
     echo "[Console Installer] : - Copying configuration Zsh..." | tee -a "$log_file"
-    cp ./config/.zshrc ~/.zshrc.arthurnavah | tee -a "$log_file"
-    principalContent=$(awk '$0 ~ /^(source ~[/].zshrc.arthurnavah)/ { print }' ~/.zshrc)
-    if [ -z "$principalContent" ]; then
-        echo "source ~/.zshrc.arthurnavah" >>~/.zshrc
+
+    cp ./config/.zshrc.arthurnavah ~/.zshrc.arthurnavah | tee -a "$log_file"
+    # if they are different, add 'source' command to the end of the file
+    [ ! -f ~/.zshrc ] && touch ~/.zshrc
+    if [ -n "$(diff ~/.zshrc ~/.zshrc.arthurnavah 2>/dev/null)" ]; then
+        exist_source=$(awk '$0 ~ "source ~/.zshrc.arthurnavah" { print }' ~/.zshrc 2>/dev/null)
+
+        if [ -z "$exist_source" ]; then
+            echo "source ~/.zshrc.arthurnavah" >> ~/.zshrc
+        fi
     fi
+
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
     echo "" | tee -a "$log_file"

@@ -175,11 +175,18 @@ updateConsole() {
 
     # copy configurations
     cp config/alacritty.yml ~/.config/alacritty/. | tee -a "$log_file"
-    cp ./config/.zshrc ~/.zshrc.arthurnavah | tee -a "$log_file"
-    principalContent=$(awk '$0 ~ /^(source ~[/].zshrc.arthurnavah)/ { print }' ~/.zshrc)
-    if [ -z "$principalContent" ]; then
-        echo "source ~/.zshrc.arthurnavah" >>~/.zshrc
+
+    cp ./config/.zshrc.arthurnavah ~/.zshrc.arthurnavah | tee -a "$log_file"
+    # if they are different, add 'source' command to the end of the file
+    [ ! -f ~/.zshrc ] && touch ~/.zshrc
+    if [ -n "$(diff ~/.zshrc ~/.zshrc.arthurnavah 2>/dev/null)" ]; then
+        exist_source=$(awk '$0 ~ "source ~/.zshrc.arthurnavah" { print }' ~/.zshrc 2>/dev/null)
+
+        if [ -z "$exist_source" ]; then
+            echo "source ~/.zshrc.arthurnavah" >> ~/.zshrc
+        fi
     fi
+
     cp config/.tmux.conf ~/. | tee -a "$log_file"
 
     bash ~/.tmux/plugins/tpm/scripts/install_plugins.sh | tee -a "$log_file"
