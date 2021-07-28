@@ -294,6 +294,19 @@ installConsole() {
     sudo apt install -y curl git tmux cmus zsh git-flow shellcheck exiftool rar fzf | tee -a "$log_file"
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
+    echo "[Console Installer] : - Copying configuration Zsh..." | tee -a "$log_file"
+    cp ./config/.zshrc.arthurnavah ~/.zshrc.arthurnavah | tee -a "$log_file"
+    # if they are different, add 'source' command to the end of the file
+    [ ! -f ~/.zshrc ] && touch ~/.zshrc
+    if [ -n "$(diff ~/.zshrc ~/.zshrc.arthurnavah 2>/dev/null)" ]; then
+        exist_source=$(awk '$0 ~ "source ~/.zshrc.arthurnavah" { print }' ~/.zshrc 2>/dev/null)
+
+        if [ -z "$exist_source" ]; then
+            echo "source ~/.zshrc.arthurnavah" >> ~/.zshrc
+        fi
+    fi
+    echo "[Console Installer] : ----------------------" | tee -a "$log_file"
+
     echo "" | tee -a "$log_file"
     echo "[Console Installer] : Adding yarn key, Updating yarn" | tee -a "$log_file"
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
@@ -334,19 +347,6 @@ installConsole() {
     echo "[Console Installer] : Configuring Zsh Plugins..." | tee -a "$log_file"
     git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/.oh-my-zsh/plugins/zsh-syntax-highlighting | tee -a "$log_file"
     git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions | tee -a "$log_file"
-
-    echo "[Console Installer] : - Copying configuration Zsh..." | tee -a "$log_file"
-
-    cp ./config/.zshrc.arthurnavah ~/.zshrc.arthurnavah | tee -a "$log_file"
-    # if they are different, add 'source' command to the end of the file
-    [ ! -f ~/.zshrc ] && touch ~/.zshrc
-    if [ -n "$(diff ~/.zshrc ~/.zshrc.arthurnavah 2>/dev/null)" ]; then
-        exist_source=$(awk '$0 ~ "source ~/.zshrc.arthurnavah" { print }' ~/.zshrc 2>/dev/null)
-
-        if [ -z "$exist_source" ]; then
-            echo "source ~/.zshrc.arthurnavah" >> ~/.zshrc
-        fi
-    fi
 
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
