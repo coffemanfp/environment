@@ -66,16 +66,16 @@ main() {
     echo "[Fonts Updater] : ----------------------" | tee -a "$log_file"
 
     # installs
-    if [ "$update_editor" == 1 ]; then
-        echo "[Editor Updater] : Update Editor..." | tee -a "$log_file"
-
-        updateEditor
-    fi
-
     if [ "$update_console" == 1 ]; then
         echo "[Console Updater] : Update Console..." | tee -a "$log_file"
 
         updateConsole
+    fi
+
+    if [ "$update_editor" == 1 ]; then
+        echo "[Editor Updater] : Update Editor..." | tee -a "$log_file"
+
+        updateEditor
     fi
 }
 

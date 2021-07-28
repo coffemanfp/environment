@@ -73,6 +73,12 @@ main() {
     echo "[Fonts Installer] : ----------------------" | tee -a "$log_file"
 
     # installs
+    if [ "$install_console" == 1 ]; then
+        echo "[Console Installer] : Install Console and Tools..." | tee -a "$log_file"
+
+        installConsole
+    fi
+
     if [ "$install_editor" == 1 ]; then
         if [ "$no_providers" == 1 ]; then
             echo "[Editor Installer] : Install Editor without Providers..." | tee -a "$log_file"
@@ -81,12 +87,6 @@ main() {
         fi
 
         installEditor
-    fi
-
-    if [ "$install_console" == 1 ]; then
-        echo "[Console Installer] : Install Console and Tools..." | tee -a "$log_file"
-
-        installConsole
     fi
 }
 
@@ -159,21 +159,20 @@ requiredSudoCommands() {
 installEditor() {
     echo "dark" > ~/.mode | tee -a "$log_file"
 
-    sudo apt install -y curl git xclip ripgrep silversearcher-ag | tee -a "$log_file"
+    echo "" | tee -a "$log_file"
+    echo "[Editor Installer] : Adding yarn key, Updating yarn..." | tee -a "$log_file"
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
+
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+
+    curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+
+    sudo apt install -y curl git xclip ripgrep silversearcher-ag yarn | tee -a "$log_file"
 
     if [ "$no_providers" != 1 ]; then
-        echo "" | tee -a "$log_file"
-        echo "[Editor Installer] : Adding yarn key, Updating yarn..." | tee -a "$log_file"
-        curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
-
-        echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
-        curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
-
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
-
         sudo apt update 1>/dev/null | tee -a "$log_file"
-        sudo apt install -y python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev perl cpanminus yarn | tee -a "$log_file"
+        sudo apt install -y python3-neovim python3-pip python3-dev python-setuptools python3-setuptools ruby-dev perl cpanminus | tee -a "$log_file"
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
         requiredCommands pip pip3 gem
@@ -197,12 +196,10 @@ installEditor() {
 
     echo "" | tee -a "$log_file"
     echo "[Editor Installer] : Installing Vim and NeoVim..." | tee -a "$log_file"
-    #sudo snap install vim-editor --beta | tee -a "$log_file"
     echo "[Editor Installer] : - Adding vim repository (ppa:jonathonf/vim)..." | tee -a "$log_file"
     sudo add-apt-repository -y ppa:jonathonf/vim
     sudo apt update
     sudo apt install -y vim
-    #sudo snap install nvim --classic | tee -a "$log_file"
     sudo rm -r downloads/ 2>/dev/null | tee -a "$log_file"
     mkdir downloads/ | tee -a "$log_file"
     cd downloads/ || exit
