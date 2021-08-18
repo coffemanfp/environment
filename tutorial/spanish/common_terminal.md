@@ -8,7 +8,7 @@ find . -type f -exec chmod 644 {} \;
 
 Cambiar texto en todos los archivos desde un lugar:
 ```sh
-find . -type f -exec sed -i 's/text/other/g' {} \
+find . -type f -exec sed -i 's/text/other/g' {} \;
 ```
 
 Buscar texto en todos los archivos desde un lugar:
