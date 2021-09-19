@@ -129,7 +129,7 @@ set listchars=tab:\▏\
 set ruler
 
 set ignorecase
-set expandtab
+set noexpandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
@@ -211,21 +211,25 @@ if filereadable(expand("$HOME/.mode"))
     endif
 endif
 
+let g:gruvbox_termcolors=256
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_contrast_light='hard'
 let g:gruvbox_bold=1
 let g:gruvbox_italic=1
-let g:gruvbox_termcolors=256
+let g:gruvbox_italicize_comments=1
 let g:gruvbox_sign_column='bg0'
-let g:gruvbox_italicize_comments='1'
 
 if $MODE == "light"
     set background=light
     let g:airline_theme='gruvbox'
+
+    let g:gruvbox_number_column='light2'
     colorscheme gruvbox
 else
     set background=dark
     let g:airline_theme='gruvbox'
+
+    let g:gruvbox_number_column='dark0'
     colorscheme gruvbox
 endif
 
@@ -358,7 +362,6 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " vim-go config
-"let g:go_diagnostics_enabled = 0
 let g:go_metalinter_enabled = []
 
 let g:go_auto_type_info = 1
@@ -375,11 +378,11 @@ let g:go_highlight_build_constraints = 1
 let g:go_highlight_generate_tags = 1
 let g:go_addtags_transform = "camelcase"
 
+let g:go_term_enabled = 1
+
 autocmd FileType go nmap <leader>gj  :GoBuild<CR>
 autocmd FileType go nmap <leader>gl :GoLint<CR>
 autocmd FileType go nmap <leader>gk :GoVet<CR>
-"autocmd FileType go nmap <leader>ga  :GoAlternate<CR>
-"autocmd FileType go nmap <leader>gc  :GoCoverageToggle<CR>
 autocmd FileType go nmap <leader>gat  :GoAddTags
 autocmd FileType go nmap <leader>grt  :GoRemoveTags
 autocmd FileType go nmap <leader>gcp  :GoChannelPeers<CR>
@@ -398,24 +401,24 @@ let g:gitgutter_max_signs = 200
 let g:indentLine_char = '▏'
 
 " neomake config
+autocmd! BufReadPost,BufWritePost * Neomake
+
 call neomake#configure#automake('nrwi', 350)
-let g:neomake_warning_sign = {
-  \ 'text': '⚠️',
-  \ 'texthl': 'NeomakeWarningSign',
-  \ }
-let g:neomake_error_sign = {
-  \ 'text': '✘',
-  \ 'texthl': 'NeomakeErrorSign',
-  \ }
-let g:neomake_message_sign = {
-  \ 'text': '➤',
-  \ 'texthl': 'NeomakeMessageSign',
-  \ }
-let g:neomake_info_sign = {
-  \ 'text': 'ℹ',
-  \ 'texthl': 'NeomakeInfoSign',
-  \ }
+let g:neomake_error_sign   = {'text': '✖', 'texthl': 'NeomakeErrorSign'}
+let g:neomake_warning_sign = {'text': '∆', 'texthl': 'NeomakeWarningSign'}
+let g:neomake_message_sign = {'text': '➤', 'texthl': 'NeomakeMessageSign'}
+let g:neomake_info_sign    = {'text': 'ℹ', 'texthl': 'NeomakeInfoSign'}
+let g:neomake_go_enabled_makers = [ 'go', 'golint' ]
 let g:neomake_javascript_enabled_makers = ['eslint']
+
+" Disable inherited syntastic
+let g:syntastic_mode_map = {
+  \ "mode": "passive",
+  \ "active_filetypes": [],
+  \ "passive_filetypes": [] }
+
+let g:neomake_serialize = 1
+let g:neomake_serialize_abort_on_error = 1
 
 " coc.nvim config
 set cmdheight=2
@@ -510,15 +513,25 @@ endfunction
 
 command! -nargs=0 LightMode call LightMode()
 function! LightMode()
-    colorscheme OceanicNextLight
-    AirlineTheme oceanicnextlight
+    set background=light
+
+    let g:gruvbox_number_column='light2'
+    colorscheme gruvbox
+
+    AirlineTheme gruvbox
+
     silent exec "!echo 'light' > ~/.mode"
 endfunction
 
 command! -nargs=0 DarkMode call DarkMode()
 function! DarkMode()
-    colorscheme molokai
-    AirlineTheme molokai
+    set background=dark
+
+    let g:gruvbox_number_column='dark0'
+    colorscheme gruvbox
+
+    AirlineTheme gruvbox
+
     silent exec "!echo 'dark' > ~/.mode"
 endfunction
 "----------------------------------------------------
