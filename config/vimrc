@@ -93,13 +93,7 @@ call dein#add('tpope/vim-surround')
 
 " themes
 call dein#add('vim-airline/vim-airline-themes')
-call dein#add('mhartington/oceanic-next')
-call dein#add('joshdick/onedark.vim')
-call dein#add('altercation/vim-colors-solarized')
-call dein#add('sickill/vim-monokai')
-call dein#add('dracula/vim')
-call dein#add('w0ng/vim-hybrid')
-call dein#add('flrnprz/taffy.vim')
+"call dein#add('sickill/vim-monokai')
 call dein#add('tomasr/molokai')
 call dein#add('morhetz/gruvbox')
 
@@ -182,7 +176,7 @@ let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
 " vim config -- increment speed
-"set lazyredraw
+set lazyredraw
 "set cul!
 
 " vim config -- mapping
@@ -195,7 +189,7 @@ inoremap kj <Esc>
 
 " vim config -- theme enable
 if !exists("g:syntax_on")
-    syntax enable
+    syntax on
 endif
 
 let g:rehash256 = 1
@@ -209,12 +203,6 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-let g:oceanic_next_terminal_bold = 1
-let g:oceanic_next_terminal_italic = 1
-let g:onedark_terminal_italics=1
-let g:onedark_hide_endofbuffer=1
-let g:onedark_termcolors=256
-
 " vim config -- set theme
 if filereadable(expand("$HOME/.mode"))
     let modeTheme = readfile(expand("$HOME/.mode"))
@@ -223,21 +211,28 @@ if filereadable(expand("$HOME/.mode"))
     endif
 endif
 
+let g:gruvbox_contrast_dark='hard'
+let g:gruvbox_contrast_light='hard'
+let g:gruvbox_bold=1
+let g:gruvbox_italic=1
+let g:gruvbox_termcolors=256
+let g:gruvbox_sign_column='bg0'
+let g:gruvbox_italicize_comments='1'
+
 if $MODE == "light"
-    let g:airline_theme='oceanicnextlight'
-    colorscheme OceanicNextLight
+    set background=light
+    let g:airline_theme='gruvbox'
+    colorscheme gruvbox
 else
-    let g:airline_theme='molokai'
-    colorscheme molokai
+    set background=dark
+    let g:airline_theme='gruvbox'
+    colorscheme gruvbox
 endif
 
 " vim config -- theme config
 set cursorline
 highlight Comment cterm=italic gui=italic
 highlight Cursorline cterm=bold gui=bold guibg=NONE
-if has('nvim')
-    highlight SignColumn gui=bold guibg=dark guifg=grey
-endif
 
 " --- end vim config
 
@@ -421,17 +416,6 @@ let g:neomake_info_sign = {
   \ 'texthl': 'NeomakeInfoSign',
   \ }
 let g:neomake_javascript_enabled_makers = ['eslint']
-
-"highlight NeomakeError guifg=red ctermfg=red
-"highlight SpellBad guifg=red ctermfg=red
-highlight NeomakeWarning guifg=yellow
-highlight NeomakeInfo guifg=cyan
-highlight NeomakeMessage guifg=grey
-
-"highlight TestOk    ctermbg=green
-"highlight TestError ctermbg=red ctermfg=red
-"highlight ErrorMsg ctermfg=red
-highlight QuickFixLine ctermbg=red
 
 " coc.nvim config
 set cmdheight=2
