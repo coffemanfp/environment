@@ -5,6 +5,8 @@ ZSH_THEME="avit"
 
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions)
 
+DISABLE_MAGIC_FUNCTIONS=true
+
 source $ZSH/oh-my-zsh.sh
 
 CARETCOLOR="green"
