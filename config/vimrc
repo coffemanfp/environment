@@ -5,12 +5,16 @@ let g:coc_global_extensions = [
 \ 'coc-emmet',
 \ 'coc-json',
 \ 'coc-highlight',
+\ 'coc-yank',
+\ 'coc-pairs',
 \ 'coc-syntax',
-\ 'coc-tag',
 \ 'coc-tsserver',
+\ 'coc-tslint-plugin',
 \ 'coc-prettier',
-\ 'coc-eslint'
+\ 'coc-eslint',
+\ 'coc-emoji'
 \ ]
+
 " - - - arthurnavah - Plugins -
 set runtimepath+=~/.vim/bundles/repos/github.com/Shougo/dein.vim
 call dein#begin('~/.vim/bundles')
@@ -61,9 +65,6 @@ call dein#add('styled-components/vim-styled-components', { 'branch': 'main'})
 " nerdcommenter - Comments fast
 call dein#add('preservim/nerdcommenter')
 
-" auto-pairs - Closing parentheses, keys, etc
-call dein#add('jiangmiao/auto-pairs')
-
 " emmet - HTML and CSS generator
 call dein#add('mattn/emmet-vim')
 
@@ -93,9 +94,6 @@ call dein#add('tpope/vim-surround')
 " themes
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('morhetz/gruvbox')
-
-" vim-highlightedyank - Highlight yank
-call dein#add('machakann/vim-highlightedyank')
 
 " vimade - Dims inactive windows
 call dein#add('TaDaa/vimade')
@@ -246,7 +244,7 @@ let g:vimade.fadelevel = 0.7
 
 " NERDTree config
 nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>nn :NERDTreeFind<CR>
+nnoremap <leader>m :NERDTreeFind<CR>
 
 let g:WebDevIconsNerdTreeBeforeGlyphPadding = " "
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
@@ -373,7 +371,9 @@ let g:airline#extensions#default#layout = [
 let g:tmuxline_powerline_separators = 0
 
 " typescript config
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.ts set filetype=typescript
+autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
@@ -468,6 +468,10 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 command! -nargs=0 Format :call CocAction('format')
 command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" coc-pairs config
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+	\: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " ---------------------------------------
 
