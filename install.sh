@@ -228,7 +228,6 @@ installEditor() {
         pip3 install -U msgpack-python | tee -a "$log_file"
         python3 -mpip install --user -U msgpack | tee -a "$log_file"
         yarn install --froken-lockfile | tee -a "$log_file"
-        sudo npm install -g eslint | tee -a "$log_file"
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
     fi
 
