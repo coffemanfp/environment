@@ -388,7 +388,7 @@ El `gopls` esta configurado con el `usePlaceholders` en `true`, al autocompletar
 Esta configuracion incluye [vim-surround](https://github.com/tpope/vim-surround), para la utilizacion del mismo recomiendo leer su [README.markdown](https://github.com/tpope/vim-surround/blob/master/README.markdown) ya que explica todo lo fundamental
 
 ## coc-emoji
-En un archivo Markdown (.md) puedes acceder al autocompletado de emojis con `:` en modo INSERT
+En un archivo Markdown (.md) puedes acceder al autocompletado de emojis con `:` en modo `INSERT`
 
 ## LightMode
 Soy un Digital Nomad, y entre muchas de las situaciones en las que he programado aveces he tenido el problema de que la luz natural opaque mucho mi editor mientras estoy desarrollando lo cual es bastante molesto, he encontrado una solucion en los temas "light" para estas situaciones... cuando la luz del dia no te permita ver bien tu editor un tema light podria ayudar, claro... cuando no programo fuera de casa o en un entorno con tanta luz solar uso los temas "dark" a los cuales se esta mas acostumbrado.

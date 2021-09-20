@@ -136,11 +136,11 @@ set hlsearch
 set smartcase
 set formatoptions+=1
 
-set updatetime=500
+set updatetime=350
 set timeout 
 set ttimeout 
-set timeoutlen=100 
-set ttimeoutlen=50
+set timeoutlen=200 
+set ttimeoutlen=100
 set history=30
 set ttyfast
 
@@ -349,11 +349,10 @@ let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#tmuxline#enabled = 0
-
-let g:airline#extensions#neomake#enabled = 1
+let g:airline#extensions#neomake#enabled = 0
 
 let g:airline_extensions = 
-	\ ['coc', 'denite', 'neomake', 'quickfix', 'tabline', 'whitespace']
+	\ ['coc', 'quickfix', 'tabline', 'whitespace']
 let g:airline_highlighting_cache = 1
 
 let g:airline_section_z = '%p%%%#__accent_bold# %l%#__restore__#%#__accent_bold#/%L%#__restore__#%#__accent_bold#%{g:airline_symbols.colnr}%v%#__restore__#'
