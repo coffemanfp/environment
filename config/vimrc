@@ -378,7 +378,7 @@ autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 
 " vim-go config
-let g:go_metalinter_enabled = []
+"let g:go_metalinter_enabled = []
 
 let g:go_auto_type_info = 1
 let g:go_jump_to_error = 0
