@@ -16,9 +16,14 @@
         "typescriptreact",
 
         "html",
-        "json",
         "css",
-        "scss"
+        "scss",
+
+        "json",
+        "yaml",
+        "python",
+
+        "markdown"
     ],
 
     "languageserver": {

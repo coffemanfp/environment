@@ -136,7 +136,7 @@ set hlsearch
 set smartcase
 set formatoptions+=1
 
-set updatetime=350
+set updatetime=300
 set timeout 
 set ttimeout 
 set timeoutlen=200 
