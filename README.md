@@ -21,7 +21,7 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim. (Screenshots 
     -   [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect)
     -   [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum)
     -   [tmux-yank](https://github.com/tmux-plugins/tmux-yank)
-    -   [tmux-onedark-theme](https://github.com/arthurnavah/tmux-onedark-theme)
+    -   [tmux-arthur-theme](https://github.com/arthurnavah/tmux-arthur-theme)
     -   [Tmux battery status](https://github.com/tmux-plugins/tmux-battery)
 
 -   [`neovim`](https://github.com/neovim/neovim)
