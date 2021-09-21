@@ -1,103 +1,103 @@
 window:
-  dimensions:
-    columns: 170
-    lines: 40
+    dimensions:
+        columns: 170
+        lines: 40
 
-  padding:
-    x: 0
-    y: 0
+    padding:
+        x: 0
+        y: 0
 
-  dynamic_title: true
-  dynamic_padding: false
+    dynamic_title: true
+    dynamic_padding: false
 
-  decorations: full
+    decorations: full
 
-  startup_mode: Windowed
+    startup_mode: Windowed
 
 tabspaces: 4
 dynamic_title: true
 
 scrolling:
-  history: 0
+    history: 0
 
-  multiplier: 3
+    multiplier: 3
 
 font:
-  normal:
-    family: Fira Mono for Powerline
-    style: Regular
+    normal:
+        family: Fira Mono for Powerline
+        style: Regular
 
-  medium:
-    family: Fira Mono for Powerline
-    style: Medium
+    medium:
+        family: Fira Mono for Powerline
+        style: Medium
 
-  bold:
-    family: Fira Mono for Powerline
-    style: Bold
+    bold:
+        family: Fira Mono for Powerline
+        style: Bold
 
-  bold_italic:
-    family: Ubuntu Mono derivative Powerline
-    style: Bold Italic
+    bold_italic:
+        family: Ubuntu Mono derivative Powerline
+        style: Bold Italic
 
-  italic:
-    family: Ubuntu Mono derivative Powerline
-    style: Italic
+    italic:
+        family: Ubuntu Mono derivative Powerline
+        style: Italic
 
-  size: 12
+    size: 12
 
-  offset:
-    x: 0
-    y: 0
+    offset:
+        x: 0
+        y: 0
 
-  glyph_offset:
-    x: 0
-    y: 0
+    glyph_offset:
+        x: 0
+        y: 0
 
-  use_thin_strokes: true
+    use_thin_strokes: true
 
 draw_bold_text_with_bright_colors: false
 
 options:
-  size: 12
-  thin_strokes: true
-  antialias: lcd
-  hinting: true
-  style: Regular
+    size: 12
+    thin_strokes: true
+    antialias: lcd
+    hinting: true
+    style: Regular
 
 key_bindings:
-  - { key: F11,       mods: None,          action: ToggleFullscreen            }
+    - { key: F11, mods: None, action: ToggleFullscreen }
 
 shell:
-  program: zsh
-  args:
-    - -l
-    - -c
-    - "tmux"
+    program: zsh
+    args:
+        - -l
+        - -c
+        - "tmux"
 
 colors:
-  primary:
-    background: "0x1c1c1c"
-    foreground: "0xe2e2e3"
+    primary:
+        background: "0x1c1c1c"
+        foreground: "0xe2e2e3"
 
-  cursor:
-    cursor: "0x599724"
+    cursor:
+        cursor: "0x599724"
 
-  normal:
-    black: "0x646464"
-    red: "0xfc5d7c"
-    green: "0x599724"
-    yellow: "0xcda52c"
-    blue: "0x658BCF"
-    magenta: "0xb39df3"
-    cyan: "0xf39660"
-    white: "0xe2e2e3"
+    normal:
+        black: "0x646464"
+        red: "0xfc5d7c"
+        green: "0x599724"
+        yellow: "0xcda52c"
+        blue: "0x658BCF"
+        magenta: "0xb39df3"
+        cyan: "0xf39660"
+        white: "0xe2e2e3"
 
-  bright:
-    black: "0x646464"
-    red: "0xfc5d7c"
-    green: "0x599724"
-    yellow: "0xcda52c"
-    blue: "0x658BCF"
-    magenta: "0xb39df3"
-    cyan: "0xf39660"
-    white: "0xe2e2e3"
+    bright:
+        black: "0x646464"
+        red: "0xfc5d7c"
+        green: "0x599724"
+        yellow: "0xcda52c"
+        blue: "0x658BCF"
+        magenta: "0xb39df3"
+        cyan: "0xf39660"
+        white: "0xe2e2e3"
