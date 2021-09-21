@@ -33,7 +33,7 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 alias lightmode="echo 'light' > ~/.mode ; \
     export MODE=light; \
     tmux setenv MODE light &>/dev/null; \
-    bash ~/.tmux/plugins/tmux-onedark-theme/tmux-onedark-theme.tmux &>/dev/null; \
+    bash ~/.tmux/plugins/tmux-arthur-theme/tmux-arthur-theme.tmux &>/dev/null; \
     bash ~/.tmux/plugins/tmux-battery/battery.tmux &>/dev/null;"
 alias li=lightmode
 
@@ -41,7 +41,7 @@ alias li=lightmode
 alias darkmode="echo 'dark' > ~/.mode; \
     export MODE=dark; \
     tmux setenv MODE dark &>/dev/null; \
-    bash ~/.tmux/plugins/tmux-onedark-theme/tmux-onedark-theme.tmux &>/dev/null; \
+    bash ~/.tmux/plugins/tmux-arthur-theme/tmux-arthur-theme.tmux &>/dev/null; \
     bash ~/.tmux/plugins/tmux-battery/battery.tmux &>/dev/null;"
 alias da=darkmode
 
