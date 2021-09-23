@@ -44,11 +44,14 @@ bash install.sh editor console
 #  bash install.sh all
 ```
 
+A `bash install.sh` alone (without parameters), would install only the `editor`.
+
 ### Options
 
-With the `-n` option, Vim can be installed without the providers.
+With the `-n` option, Neovim can be installed without the providers.
 
 ```sh
+# example:
 bash install.sh -n editor console
 ```
 
@@ -67,6 +70,8 @@ bash update.sh editor console
 # or
 #  bash update.sh all
 ```
+
+A `bash update.sh` alone (without parameters), would update only the `editor`.
 
 ### Neovim Checkhealth
 
