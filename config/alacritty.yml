@@ -82,9 +82,7 @@ colors:
         background: &gruvbox_dark_bg "#1d2021"
         foreground: "#ebdbb2"
         bright_foreground: "#fbf1c7"
-        dim_foreground: "#a89984"
     cursor:
-        text: CellBackground
         cursor: "#79740e"
     vi_mode_cursor:
         text: CellBackground
@@ -109,7 +107,7 @@ colors:
         blue: "#458588"
         magenta: "#b16286"
         cyan: "#689d6a"
-        white: "#a89984"
+        white: "#ebdbb2"
     dim:
         black: "#32302f"
         red: "#9d0006"
