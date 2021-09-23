@@ -29,6 +29,9 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 # Load FZF
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+# SSH alias
+alias ssh="TERM=xterm-256color ssh"
+
 # Light mode
 alias lightmode="echo 'light' > ~/.mode ; \
     export MODE=light; \
