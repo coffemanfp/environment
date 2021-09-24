@@ -35,7 +35,7 @@ main() {
             requiredCommands go node npm
         else
             requiredCommands go node npm python python2 python3
-            requiredSudoCommands node npm
+            requiredSudoCommands node npm snap
         fi
 
         requiredSudoCommands apt npm apt-key tee add-apt-repository
@@ -167,7 +167,8 @@ installEditor() {
 
     curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
-    sudo apt install -y curl git xclip ripgrep silversearcher-ag yarn | tee -a "$log_file"
+    sudo apt install -y curl git xclip silversearcher-ag yarn | tee -a "$log_file"
+	sudo snap install ripgrep | tee -a "$log_file"
 
     if [ "$no_providers" != 1 ]; then
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
