@@ -30,22 +30,22 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # SSH alias, activates the colors
-alias ssh="TERM=xterm-256color ssh"
+alias ssh='TERM=xterm-256color ssh'
 
 # Light mode
-alias lightmode="echo 'light' > ~/.mode ; \
+alias lightmode='echo "light" > ~/.mode ; \
     export MODE=light; \
     tmux setenv MODE light &>/dev/null; \
     bash ~/.tmux/plugins/tmux-arthur-theme/tmux-arthur-theme.tmux &>/dev/null; \
-    bash ~/.tmux/plugins/tmux-battery/battery.tmux &>/dev/null;"
+    bash ~/.tmux/plugins/tmux-battery/battery.tmux &>/dev/null;'
 alias li=lightmode
 
 # Dark mode
-alias darkmode="echo 'dark' > ~/.mode; \
+alias darkmode='echo "dark" > ~/.mode; \
     export MODE=dark; \
     tmux setenv MODE dark &>/dev/null; \
     bash ~/.tmux/plugins/tmux-arthur-theme/tmux-arthur-theme.tmux &>/dev/null; \
-    bash ~/.tmux/plugins/tmux-battery/battery.tmux &>/dev/null;"
+    bash ~/.tmux/plugins/tmux-battery/battery.tmux &>/dev/null;'
 alias da=darkmode
 
 # Clear swap
@@ -59,3 +59,6 @@ alias updateall='sudo apt -y update && sudo apt -y upgrade && sudo apt -y dist-u
 
 # Copy current path
 alias cpath='pwd | xclip -selection clipboard'
+
+# Flush the DNS Cache
+alias flushdns='sudo systemd-resolve --flush-caches'
