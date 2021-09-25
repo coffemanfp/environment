@@ -216,6 +216,8 @@ let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=1
 let g:gruvbox_sign_column='bg0'
 
+set cursorline
+
 if $MODE == "light"
     set background=light
     let g:airline_theme='gruvbox'
@@ -228,12 +230,11 @@ else
 
     let g:gruvbox_number_column='dark0'
     colorscheme gruvbox
+
+	highlight CursorLine guibg=#262626
 endif
 
 " vim config -- theme config
-set cursorline
-highlight Comment cterm=italic gui=italic
-highlight Cursorline cterm=bold gui=bold guibg=NONE
 
 " --- end vim config
 
@@ -548,6 +549,8 @@ function! DarkMode()
     colorscheme gruvbox
 
     AirlineTheme gruvbox
+
+	highlight CursorLine guibg=#262626
 
     silent exec "!echo 'dark' > ~/.mode"
 endfunction
