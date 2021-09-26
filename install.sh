@@ -235,14 +235,11 @@ installEditor() {
 
     echo "" | tee -a "$log_file"
     echo "[Editor Installer] : Creating folders..." | tee -a "$log_file"
-    mkdir ~/.vim 2>/dev/null | tee -a "$log_file"
-    mkdir -p ~/.vim/tmp 2>/dev/null | tee -a "$log_file"
-    sudo rm -r ~/.vim/bundles | tee -a "$log_file"
-    mkdir -p ~/.vim/bundles 2>/dev/null | tee -a "$log_file"
-    mkdir -p ~/.config/nvim 2>/dev/null | tee -a "$log_file"
+    sudo rm -r ~/.config/nvim/tmp | tee -a "$log_file"
+    mkdir -p ~/.config/nvim/tmp 2>/dev/null | tee -a "$log_file"
 
-    echo "[Editor Installer] : - Copying configuration VIM..." | tee -a "$log_file"
-    cp ./config/vimrc ~/.vim/. | tee -a "$log_file"
+    sudo rm -r ~/.config/nvim/dein | tee -a "$log_file"
+    mkdir -p ~/.config/nvim/dein 2>/dev/null | tee -a "$log_file"
 
     echo "[Editor Installer] : - Copying configuration NeoVim..." | tee -a "$log_file"
     cp ./config/init.vim ~/.config/nvim/. | tee -a "$log_file"
@@ -261,8 +258,10 @@ installEditor() {
 
     echo "" | tee -a "$log_file"
     echo "[Editor Installer] : Install Vim Plugin Manager..." | tee -a "$log_file"
-    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh 2>/dev/null > ~/.vim/bundles/installer.sh | tee -a "$log_file"
-    sh ~/.vim/bundles/installer.sh ~/.vim/bundles | tee -a "$log_file"
+    curl https://raw.githubusercontent.com/Shougo/dein.vim/master/bin/installer.sh 2>/dev/null > downloads/installer.sh | tee -a "$log_file"
+	cd downloads/ || exit | tee -a "$log_file"
+    sh installer.sh ~/.config/nvim/dein | tee -a "$log_file"
+	cd .. || exit | tee -a "$log_file"
     echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
     nvim --headless +"call dein#recache_runtimepath()" +qall | tee -a "$log_file"
