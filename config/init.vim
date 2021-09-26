@@ -18,7 +18,7 @@ let g:coc_global_extensions = [
 set runtimepath+=~/.config/nvim/dein/repos/github.com/Shougo/dein.vim
 
 call dein#begin(expand('~/.config/nvim/dein'))
-call dein#add('Shougo/dein.vim')
+call dein#add(expand('~/.config/nvim/dein/repos/github.com/Shougo/dein.vim'))
 if !has('nvim')
     call dein#add('roxma/nvim-yarp')
     call dein#add('roxma/vim-hug-neovim-rpc')
@@ -164,7 +164,7 @@ set nobackup
 set nowritebackup
 set signcolumn=auto
 
-set directory^=$HOME/.vim/tmp//
+set directory^=$HOME/.config/nvim/tmp//
 
 if has('nvim')
     set icm=nosplit
