@@ -246,7 +246,7 @@ endif
 nnoremap <leader>n :NERDTreeToggle<CR>
 nnoremap <leader>m :NERDTreeFind<CR>
 
-let g:WebDevIconsNerdTreeBeforeGlyphPadding = " "
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
 let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:DevIconsEnableFolderExtensionPatternMatching = 1
@@ -257,6 +257,8 @@ let NERDTreeMouseMode=2
 let NERDTreeIgnore=[ '^\.git$', '\.pyc$', '^__pycache__$' ]
 let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeShowLineNumbers=1
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 autocmd FileType nerdtree setlocal relativenumber
 
 " denite config
