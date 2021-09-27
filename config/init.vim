@@ -67,7 +67,8 @@ call dein#add('peitalin/vim-jsx-typescript')
 call dein#add('styled-components/vim-styled-components', { 'branch': 'main'})
 
 " nerdcommenter - Comments fast
-call dein#add('preservim/nerdcommenter')
+"call dein#add('preservim/nerdcommenter')
+call dein#add('b3nj5m1n/kommentary')
 
 " emmet - HTML and CSS generator
 call dein#add('mattn/emmet-vim')
@@ -76,7 +77,9 @@ call dein#add('mattn/emmet-vim')
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'master', 'build': 'yarn install --frozen-lockfile' })
 
 " Gitgutter - GIT change signal icons
-call dein#add('airblade/vim-gitgutter')
+"call dein#add('airblade/vim-gitgutter')
+call dein#add('nvim-lua/plenary.nvim')
+call dein#add('lewis6991/gitsigns.nvim')
 " vim-devicons - Icons file
 call dein#add('ryanoasis/vim-devicons')
 " nerdtree-devicons-syntax - Icons in nerdtree
@@ -405,8 +408,10 @@ let g:user_emmet_leader_key='<C-K>'
 let g:user_emmet_install_global = 0
 autocmd FileType html,xhtml,css,javascript,js EmmetInstall
 
-" gitgutter config
-let g:gitgutter_max_signs = 200
+" gitsigns config
+lua << EOF
+require('gitsigns').setup()
+EOF
 
 " indentline config
 let g:indentLine_char = '▏'

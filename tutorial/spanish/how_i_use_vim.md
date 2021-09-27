@@ -361,9 +361,8 @@ El `gopls` esta configurado con el `usePlaceholders` en `true`, al autocompletar
 
 ## Common actions
 
--   Comentar toggle linea o lineas: `<leader>c<leader>`
--   Comentar en bloque: `<leader>cs`
--   Descomentar: `<leader>cu`
+-   Comentar toggle en modo `VISUAL`: `gc`
+-   Comentar toggle en modo `NORMAL`: `gcc`
 
 -   Ir a definicion: `<leader>gd`
 -   Ir a las llamadas de la funcion: `<leader>gc`
