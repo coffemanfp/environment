@@ -10,7 +10,7 @@ window:
     dynamic_title: true
     dynamic_padding: false
 
-    decorations: full
+    decorations: none
 
     startup_mode: Windowed
 

@@ -379,7 +379,7 @@ let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#neomake#enabled = 0
 
 let g:airline_extensions = 
-	\ ['coc', 'quickfix', 'tabline', 'whitespace']
+	\ ['quickfix', 'tabline', 'whitespace', 'coc']
 let g:airline_highlighting_cache = 1
 
 let g:airline_section_z = '%p%%%#__accent_bold# %l%#__restore__#%#__accent_bold#/%L%#__restore__#%#__accent_bold#%{g:airline_symbols.colnr}%v%#__restore__#'
