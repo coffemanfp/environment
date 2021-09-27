@@ -97,13 +97,7 @@ call dein#add('tpope/vim-surround')
 " themes
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('morhetz/gruvbox')
-
-" vimade - Dims inactive windows
-"call dein#add('TaDaa/vimade')
-call dein#add('sunjon/shade.nvim')
-
-" vim-multiple-cursors - Multi cursor
-"call dein#add('terryma/vim-multiple-cursors')
+call dein#add('lifepillar/vim-gruvbox8')
 
 call dein#end()
 
@@ -219,38 +213,31 @@ let g:gruvbox_contrast_light='hard'
 let g:gruvbox_bold=1
 let g:gruvbox_italic=1
 let g:gruvbox_italicize_comments=1
+let g:gruvbox_italicize_strings=1
 let g:gruvbox_sign_column='bg0'
 
 set cursorline
 
 if $MODE == "light"
     set background=light
-    let g:airline_theme='gruvbox'
+    let g:airline_theme='gruvbox8'
 
     let g:gruvbox_number_column='light2'
     colorscheme gruvbox
 else
     set background=dark
-    let g:airline_theme='gruvbox'
+    let g:airline_theme='gruvbox8'
 
     let g:gruvbox_number_column='dark0'
     colorscheme gruvbox
 
-	highlight CursorLine guibg=#262626
+	highlight Cursorline cterm=bold gui=bold guibg=#262626
 endif
+
 
 " vim config -- theme config
 
 " --- end vim config
-
-" shade.nvim config
-
-lua << EOF
-require'shade'.setup({
-  overlay_opacity = 70,
-  opacity_step = 1
-})
-EOF
 
 " NERDTree config
 nnoremap <leader>n :NERDTreeToggle<CR>
@@ -559,7 +546,7 @@ function! DarkMode()
 
     AirlineTheme gruvbox
 
-	highlight CursorLine guibg=#262626
+	highlight Cursorline cterm=bold gui=bold guibg=#262626
 
     silent exec "!echo 'dark' > ~/.mode"
 endfunction
