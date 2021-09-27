@@ -41,9 +41,6 @@ call dein#add('kyazdani42/nvim-tree.lua')
 " Airline - Status bar
 call dein#add('bling/vim-airline')
 
-" Shade.nvim - Dims
-call dein#add('sunjon/shade.nvim')
-
 " Denite - Search file
 call dein#add('Shougo/denite.nvim')
 
@@ -113,6 +110,19 @@ if dein#check_install()
 endif
 " ---------------------------
 
+" startify config
+let g:startify_custom_header = [
+\ '    ███╗░░██╗███████╗░█████╗░██╗░░░██╗██╗███╗░░░███╗',
+\ '    ████╗░██║██╔════╝██╔══██╗██║░░░██║██║████╗░████║',
+\ '    ██╔██╗██║█████╗░░██║░░██║╚██╗░██╔╝██║██╔████╔██║',
+\ '    ██║╚████║██╔══╝░░██║░░██║░╚████╔╝░██║██║╚██╔╝██║',
+\ '    ██║░╚███║███████╗╚█████╔╝░░╚██╔╝░░██║██║░╚═╝░██║',
+\ '    ╚═╝░░╚══╝╚══════╝░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝',
+\ '                                                    ',
+\ '                                         a̳r̳t̳h̳u̳r̳n̳a̳v̳a̳h̳',
+\ ]
+highlight StartifyHeader ctermfg=white
+
 " vim config
 if &compatible
   set nocompatible " Be iMproved
@@ -163,7 +173,6 @@ set hidden
 set nobackup
 set nowritebackup
 set signcolumn=auto
-set mouse+=a
 
 set directory^=$HOME/.config/nvim/tmp//
 
@@ -247,21 +256,6 @@ endif
 
 " --- end vim config
 
-
-" startify config
-let g:startify_custom_header = [
-\ '    ███╗░░██╗███████╗░█████╗░██╗░░░██╗██╗███╗░░░███╗',
-\ '    ████╗░██║██╔════╝██╔══██╗██║░░░██║██║████╗░████║',
-\ '    ██╔██╗██║█████╗░░██║░░██║╚██╗░██╔╝██║██╔████╔██║',
-\ '    ██║╚████║██╔══╝░░██║░░██║░╚████╔╝░██║██║╚██╔╝██║',
-\ '    ██║░╚███║███████╗╚█████╔╝░░╚██╔╝░░██║██║░╚═╝░██║',
-\ '    ╚═╝░░╚══╝╚══════╝░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝',
-\ '                                                    ',
-\ '                                         a̳r̳t̳h̳u̳r̳n̳a̳v̳a̳h̳',
-\ ]
-
-highlight StartifyHeader ctermfg=white
-
 " nvim-tree config
 let g:nvim_tree_ignore = [ '.git', '.pyc', '__pycache__' ]
 let g:nvim_tree_refresh_wait = 600
@@ -279,9 +273,7 @@ require'nvim-tree'.setup {
 		  { key = "s",                        cb = tree_cb("vsplit") },
 		  { key = "i",                        cb = tree_cb("split") },
 		  { key = "t",                        cb = tree_cb("tabnew") },
-		  { key = "i",                        cb = tree_cb("split") },
 		  { key = "x",                        cb = tree_cb("close_node") },
-		  { key = "g?",                        cb = tree_cb("toggle_help") },
 	  } 
     }
   }
@@ -396,14 +388,6 @@ let g:airline#extensions#default#layout = [
   \ [ 'a', 'b', 'c'],
   \ [ 'x', 'z' ]
   \ ]
-
-" shade.nvim config
-lua << EOF
-require'shade'.setup({
-  overlay_opacity = 65,
-  opacity_step = 1,
-})
-EOF
 
 " tmuxline.vim config
 let g:tmuxline_powerline_separators = 0
