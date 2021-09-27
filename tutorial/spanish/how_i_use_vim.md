@@ -137,25 +137,21 @@ Utilizo `:Bo` para ejecutar un script que cierra todos los archivos del buffer y
 
 Para trabajar con varios archivos uso principalmente tabs y splits, para crear un split vertical pulso `:vsplit` y `:split` para un split horizontal, entre los splits me muevo con `<Ctrl>w{direction}`, la "`direction`" es la tecla de movimiendo hacia donde esta el split... `h`, `j`, `k`, `l`.
 
-Para moverme entre archivos utilizo el paquete `NERDTree`:
+Para moverme entre archivos utilizo el paquete `NvimTree.lua`:
 
--   Abrir y cerrar `NERDTree`: `<Space>n`
+-   Abrir y cerrar `NvimTree`: `<Space>n`
 
--   Abrir `NERDTree` posicionado en el archivo actual: `<Space>m`
+-   Abrir `NvimTree` posicionado en el archivo actual: `<Space>m`
 
--   Toggle Zoom en `NERDTree`: `A`
+-   Toggle Zoom en `NvimTree`: `A`
 
--   Abrir y cerrar una carpeta en `NERDTree` estando en la carpeta: `<Enter>`
+-   Abrir y cerrar una carpeta en `NvimTree` estando sobre ella: `<Enter>`
 
--   Cerrar una carpeta en `NERDTree`: `x`
-
--   Menu de `NERDTree`: `m`
+-   Cerrar una carpeta en `NvimTree`: `x`
 
 -   Actualizar arbol: `R`
 
 -   Abrir un archivo en una tab: `t`
-
--   Abrir un archivo en una tab sin ir a ella: `T`
 
 -   Ir a la siguiente tab: `gt`
 

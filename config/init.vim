@@ -24,6 +24,10 @@ if !has('nvim')
     call dein#add('roxma/vim-hug-neovim-rpc')
 endif
 
+" icons
+call dein#add('kyazdani42/nvim-web-devicons')
+call dein#add('ryanoasis/vim-devicons')
+
 " nvim-notify - Notification manager
 call dein#add('rcarriga/nvim-notify')
 let g:dein#enable_notification=1
@@ -31,15 +35,17 @@ let g:dein#enable_notification=1
 " startify - Start screen
 call dein#add('mhinz/vim-startify')
 
-" NERDTree - File explorer
-call dein#add('preservim/nerdtree')
-call dein#add('xuyuanp/nerdtree-git-plugin')
-
-" Denite - Search file
-call dein#add('Shougo/denite.nvim')
+" nvim-tree - File explorer
+call dein#add('kyazdani42/nvim-tree.lua')
 
 " Airline - Status bar
 call dein#add('bling/vim-airline')
+
+" Shade.nvim - Dims
+call dein#add('sunjon/shade.nvim')
+
+" Denite - Search file
+call dein#add('Shougo/denite.nvim')
 
 " neomake - Check errors
 call dein#add('neomake/neomake')
@@ -82,14 +88,9 @@ call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'master', 'build': 'yar
 call dein#add('nvim-lua/plenary.nvim')
 call dein#add('lewis6991/gitsigns.nvim')
 
-" vim-devicons - Icons file
-call dein#add('ryanoasis/vim-devicons')
-
-" nerdtree-devicons-syntax - Icons in nerdtree
-call dein#add('vwxyutarooo/nerdtree-devicons-syntax')
-
 " indentline - Indentline guide
-call dein#add('yggdroot/indentline')
+" call dein#add('yggdroot/indentline')
+call dein#add('lukas-reineke/indent-blankline.nvim')
 
 " vim-eununch - UNIX Utility
 call dein#add('tpope/vim-eunuch')
@@ -162,6 +163,7 @@ set hidden
 set nobackup
 set nowritebackup
 set signcolumn=auto
+set mouse+=a
 
 set directory^=$HOME/.config/nvim/tmp//
 
@@ -226,13 +228,13 @@ set cursorline
 
 if $MODE == "light"
     set background=light
-    let g:airline_theme='gruvbox8'
+	let g:airline_theme='gruvbox8'
 
     let g:gruvbox_number_column='light2'
     colorscheme gruvbox
 else
     set background=dark
-    let g:airline_theme='gruvbox8'
+	let g:airline_theme='deus'
 
     let g:gruvbox_number_column='dark0'
     colorscheme gruvbox
@@ -260,24 +262,34 @@ let g:startify_custom_header = [
 
 highlight StartifyHeader ctermfg=white
 
-" NERDTree config
-nnoremap <leader>n :NERDTreeToggle<CR>
-nnoremap <leader>m :NERDTreeFind<CR>
-
-let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:DevIconsEnableFolderExtensionPatternMatching = 1
-let NERDTreeShowFiles=1
-let NERDTreeShowHidden=1
-let NERDTreeHighlightCursorline=1
-let NERDTreeMouseMode=2
-let NERDTreeIgnore=[ '^\.git$', '\.pyc$', '^__pycache__$' ]
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeShowLineNumbers=1
-let NERDTreeMinimalUI = 1
-let NERDTreeDirArrows = 1
-autocmd FileType nerdtree setlocal relativenumber
+" nvim-tree config
+let g:nvim_tree_ignore = [ '.git', '.pyc', '__pycache__' ]
+let g:nvim_tree_refresh_wait = 600
+lua << EOF
+local tree_cb = require'nvim-tree.config'.nvim_tree_callback
+-- default mappings
+require'nvim-tree'.setup {
+  auto_close          = true,
+  open_on_setup       = true,
+  view = {
+    width = 30,
+    auto_resize = true,
+    mappings = {
+      list = {
+		  { key = "s",                        cb = tree_cb("vsplit") },
+		  { key = "i",                        cb = tree_cb("split") },
+		  { key = "t",                        cb = tree_cb("tabnew") },
+		  { key = "i",                        cb = tree_cb("split") },
+		  { key = "x",                        cb = tree_cb("close_node") },
+		  { key = "g?",                        cb = tree_cb("toggle_help") },
+	  } 
+    }
+  }
+}
+EOF
+nnoremap <leader>n :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>m :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
 
 " denite config
 nmap <leader>b :Denite -no-empty buffer <CR>
@@ -385,6 +397,14 @@ let g:airline#extensions#default#layout = [
   \ [ 'x', 'z' ]
   \ ]
 
+" shade.nvim config
+lua << EOF
+require'shade'.setup({
+  overlay_opacity = 65,
+  opacity_step = 1,
+})
+EOF
+
 " tmuxline.vim config
 let g:tmuxline_powerline_separators = 0
 
@@ -433,8 +453,13 @@ lua << EOF
 require('gitsigns').setup()
 EOF
 
-" indentline config
-let g:indentLine_char = '▏'
+" indent-blankline config
+lua << EOF
+require("indent_blankline").setup {
+    char = "▏",
+    buftype_exclude = {"terminal"}
+}
+EOF
 
 " neomake config
 autocmd! BufReadPost,BufWritePost * Neomake
@@ -553,11 +578,10 @@ endfunction
 command! -nargs=0 LightMode call LightMode()
 function! LightMode()
     set background=light
+	let g:airline_theme='gruvbox8'
 
     let g:gruvbox_number_column='light2'
     colorscheme gruvbox
-
-    AirlineTheme gruvbox
 
     silent exec "!echo 'light' > ~/.mode"
 endfunction
@@ -565,11 +589,10 @@ endfunction
 command! -nargs=0 DarkMode call DarkMode()
 function! DarkMode()
     set background=dark
+	let g:airline_theme='deus'
 
     let g:gruvbox_number_column='dark0'
     colorscheme gruvbox
-
-    AirlineTheme gruvbox
 
 	highlight Cursorline cterm=bold gui=bold guibg=#262626
 
