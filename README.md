@@ -17,9 +17,6 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim. (Screenshots 
 -   [`tmux`](https://github.com/tmux/tmux)
 
     -   [Tmux Plugin Manager](https://github.com/tmux-plugins/tpm)
-    -   [Tmux sensible](https://github.com/tmux-plugins/tmux-sensible)
-    -   [Tmux Resurrect](https://github.com/tmux-plugins/tmux-resurrect)
-    -   [tmux-continuum](https://github.com/tmux-plugins/tmux-continuum)
     -   [tmux-yank](https://github.com/tmux-plugins/tmux-yank)
     -   [tmux-arthur-theme](https://github.com/arthurnavah/tmux-arthur-theme)
     -   [Tmux battery status](https://github.com/tmux-plugins/tmux-battery)

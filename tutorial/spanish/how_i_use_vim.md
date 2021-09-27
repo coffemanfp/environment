@@ -137,7 +137,7 @@ Utilizo `:Bo` para ejecutar un script que cierra todos los archivos del buffer y
 
 Para trabajar con varios archivos uso principalmente tabs y splits, para crear un split vertical pulso `:vsplit` y `:split` para un split horizontal, entre los splits me muevo con `<Ctrl>w{direction}`, la "`direction`" es la tecla de movimiendo hacia donde esta el split... `h`, `j`, `k`, `l`.
 
-Para moverme entre archivos utilizo el paquete `NvimTree.lua`:
+Para moverme entre archivos utilizo el paquete [`NvimTree.lua`](https://github.com/kyazdani42/nvim-tree.lua):
 
 -   Abrir y cerrar `NvimTree`: `<Space>n`
 
