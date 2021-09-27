@@ -38,10 +38,10 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim. (Screenshots 
 git clone https://github.com/arthurnavah/environment.git
 
 cd environment
-bash install.sh editor console
+bash install.sh all
 
 # or
-#  bash install.sh all
+#  bash install.sh editor console
 ```
 
 A `bash install.sh` alone (without parameters), would install only the `editor`.
@@ -52,7 +52,7 @@ With the `-n` option, Neovim can be installed without the providers.
 
 ```sh
 # example:
-bash install.sh -n editor console
+bash install.sh -n all
 ```
 
 ## Update
@@ -65,10 +65,10 @@ This is recommended if you were already using this configuration and just want t
 git clone https://github.com/arthurnavah/environment.git
 
 cd environment
-bash update.sh editor console
+bash update.sh all
 
 # or
-#  bash update.sh all
+#  bash update.sh editor console
 ```
 
 A `bash update.sh` alone (without parameters), would update only the `editor`.
@@ -113,7 +113,6 @@ These instructions and the [`install.sh`](./install.sh) file will replace your c
 cp ~/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml.copy
 cp ~/.zshrc ~/.zshrc.copy
 cp ~/.tmux.conf ~/.tmux.conf.copy
-cp ~/.vim/vimrc ~/.vim/vimrc.copy
 cp ~/.config/nvim/init.vim ~/.config/nvim/init.vim.copy
 cp ~/.config/nvim/coc-settings.json ~/.config/nvim/coc-settings.json.copy
 ```
