@@ -44,10 +44,6 @@ Utilizo `tmux` para multiplexar mi terminal con varios splits y paneles, he camb
 
 -   Redimensionar split (con movimientos de Vim): `<Ctrl>a{H, J, K, L}` | ejemplo: `<Ctrl>aL`
 
--   Guardar entorno: `<Ctrl>a <Ctrl>s`
-
--   Restaurar entorno: `<Ctrl>a <Ctrl>r`
-
 -   Modo de movimiento Vi: `<Ctrl>a[`
 
 -   Renombrar panel: `<Ctrl>a,`
