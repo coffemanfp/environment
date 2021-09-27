@@ -86,8 +86,8 @@ call dein#add('nvim-lua/plenary.nvim')
 call dein#add('lewis6991/gitsigns.nvim')
 
 " indentline - Indentline guide
-" call dein#add('yggdroot/indentline')
-call dein#add('lukas-reineke/indent-blankline.nvim')
+call dein#add('yggdroot/indentline')
+" call dein#add('lukas-reineke/indent-blankline.nvim')
 
 " vim-eununch - UNIX Utility
 call dein#add('tpope/vim-eunuch')
@@ -249,6 +249,9 @@ else
     colorscheme gruvbox
 
 	highlight Cursorline cterm=bold gui=bold guibg=#262626
+	highlight CocFloating guibg=#303030 
+	highlight Pmenu guibg=#303030 
+
 endif
 
 
@@ -437,13 +440,8 @@ lua << EOF
 require('gitsigns').setup()
 EOF
 
-" indent-blankline config
-lua << EOF
-require("indent_blankline").setup {
-    char = "▏",
-    buftype_exclude = {"terminal"}
-}
-EOF
+" indentline config
+let g:indentLine_char = '▏'
 
 " neomake config
 autocmd! BufReadPost,BufWritePost * Neomake
@@ -579,6 +577,8 @@ function! DarkMode()
     colorscheme gruvbox
 
 	highlight Cursorline cterm=bold gui=bold guibg=#262626
+	highlight CocFloating guibg=#303030 
+	highlight Pmenu guibg=#303030 
 
     silent exec "!echo 'dark' > ~/.mode"
 endfunction
