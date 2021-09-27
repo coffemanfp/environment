@@ -28,9 +28,9 @@ let g:dein#enable_notification=1
 " nvim-notify - Notification manager
 call dein#add('rcarriga/nvim-notify')
 
-" NvimTree - File explorer
-call dein#add('kyazdani42/nvim-web-devicons')
-call dein#add('kyazdani42/nvim-tree.lua')
+" NERDTree - File explorer
+call dein#add('preservim/nerdtree')
+call dein#add('xuyuanp/nerdtree-git-plugin')
 
 " Denite - Search file
 call dein#add('Shougo/denite.nvim')
@@ -77,6 +77,10 @@ call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'master', 'build': 'yar
 
 " Gitgutter - GIT change signal icons
 call dein#add('airblade/vim-gitgutter')
+" vim-devicons - Icons file
+call dein#add('ryanoasis/vim-devicons')
+" nerdtree-devicons-syntax - Icons in nerdtree
+call dein#add('vwxyutarooo/nerdtree-devicons-syntax')
 
 " indentline - Indentline guide
 call dein#add('yggdroot/indentline')
@@ -243,35 +247,27 @@ endif
 
 lua << EOF
 require'shade'.setup({
-  overlay_opacity = 70
+  overlay_opacity = 70,
+  opacity_step = 1
 })
 EOF
 
-" NvimTree config
-lua << EOF
-vim.g.nvim_tree_ignore = { ".git", ".cache", ".pyc" }
+" NERDTree config
+nnoremap <leader>n :NERDTreeToggle<CR>
+nnoremap <leader>m :NERDTreeFind<CR>
 
-local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-require'nvim-tree'.setup {
-  view = {
-    width = 30,
-    auto_resize = true,
-    mappings = {
-      list = {
-		  { key = "x", cb = tree_cb("close_node") },
-		  { key = "t", cb = tree_cb("tabnew") },
-		  { key = "i", cb = tree_cb("split") },
-		  { key = "s", cb = tree_cb("vsplit") },
-		  { key = "o", cb = tree_cb("system_open") },
-	  }
-    }
-  }
-}
-EOF
-
-nnoremap <leader>n :NvimTreeToggle<CR>
-nnoremap <leader>m :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = " "
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:DevIconsEnableFolderExtensionPatternMatching = 1
+let NERDTreeShowFiles=1
+let NERDTreeShowHidden=1
+let NERDTreeHighlightCursorline=1
+let NERDTreeMouseMode=2
+let NERDTreeIgnore=[ '^\.git$', '\.pyc$', '^__pycache__$' ]
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeShowLineNumbers=1
+autocmd FileType nerdtree setlocal relativenumber
 
 " denite config
 nmap <leader>b :Denite -no-empty buffer <CR>
