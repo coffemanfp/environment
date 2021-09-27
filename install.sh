@@ -167,7 +167,7 @@ installEditor() {
 
     curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
-    sudo apt install -y curl git xclip silversearcher-ag yarn | tee -a "$log_file"
+    sudo apt install -y curl git xclip silversearcher-ag yarn lua5.3 | tee -a "$log_file"
 	sudo snap install ripgrep | tee -a "$log_file"
 
     if [ "$no_providers" != 1 ]; then

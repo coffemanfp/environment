@@ -78,11 +78,6 @@ call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'master', 'build': 'yar
 " Gitgutter - GIT change signal icons
 call dein#add('airblade/vim-gitgutter')
 
-" vim-devicons - Icons file
-call dein#add('ryanoasis/vim-devicons')
-" nerdtree-devicons-syntax - Icons in nerdtree
-"call dein#add('vwxyutarooo/nerdtree-devicons-syntax')
-
 " indentline - Indentline guide
 call dein#add('yggdroot/indentline')
 
@@ -244,9 +239,7 @@ endif
 
 " --- end vim config
 
-" vimade config
-"let g:vimade = {}
-"let g:vimade.fadelevel = 0.7
+" shade.nvim config
 
 lua << EOF
 require'shade'.setup({
@@ -255,23 +248,30 @@ require'shade'.setup({
 EOF
 
 " NvimTree config
-let g:nvim_tree_width = 30
-let g:nvim_tree_ignore = [ '.git', '.cache', '.pyc' ]
-let g:nvim_tree_refresh_wait = 600
-let g:nvim_tree_special_files = { 'README.md': 1, 'readme.md' : 1, 'Makefile': 1, 'MAKEFILE': 1 }
 lua << EOF
-require'nvim-tree'.setup()
+vim.g.nvim_tree_ignore = { ".git", ".cache", ".pyc" }
 
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
-vim.g.nvim_tree_bindings = {
-	{ key = "t", cb = tree_cb("tabnew") },
-	{ key = "g?", cb = tree_cb("toggle_help") },
+require'nvim-tree'.setup {
+  view = {
+    width = 30,
+    auto_resize = true,
+    mappings = {
+      list = {
+		  { key = "x", cb = tree_cb("close_node") },
+		  { key = "t", cb = tree_cb("tabnew") },
+		  { key = "i", cb = tree_cb("split") },
+		  { key = "s", cb = tree_cb("vsplit") },
+		  { key = "o", cb = tree_cb("system_open") },
+	  }
+    }
+  }
 }
 EOF
+
 nnoremap <leader>n :NvimTreeToggle<CR>
 nnoremap <leader>m :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
-
 
 " denite config
 nmap <leader>b :Denite -no-empty buffer <CR>
