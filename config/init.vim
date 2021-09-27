@@ -24,9 +24,12 @@ if !has('nvim')
     call dein#add('roxma/vim-hug-neovim-rpc')
 endif
 
-let g:dein#enable_notification=1
 " nvim-notify - Notification manager
 call dein#add('rcarriga/nvim-notify')
+let g:dein#enable_notification=1
+
+" startify - Start screen
+call dein#add('mhinz/vim-startify')
 
 " NERDTree - File explorer
 call dein#add('preservim/nerdtree')
@@ -241,6 +244,21 @@ endif
 " vim config -- theme config
 
 " --- end vim config
+
+
+" startify config
+let g:startify_custom_header = [
+\ '    ███╗░░██╗███████╗░█████╗░██╗░░░██╗██╗███╗░░░███╗',
+\ '    ████╗░██║██╔════╝██╔══██╗██║░░░██║██║████╗░████║',
+\ '    ██╔██╗██║█████╗░░██║░░██║╚██╗░██╔╝██║██╔████╔██║',
+\ '    ██║╚████║██╔══╝░░██║░░██║░╚████╔╝░██║██║╚██╔╝██║',
+\ '    ██║░╚███║███████╗╚█████╔╝░░╚██╔╝░░██║██║░╚═╝░██║',
+\ '    ╚═╝░░╚══╝╚══════╝░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝',
+\ '                                                    ',
+\ '                                         a̳r̳t̳h̳u̳r̳n̳a̳v̳a̳h̳',
+\ ]
+
+highlight StartifyHeader ctermfg=white
 
 " NERDTree config
 nnoremap <leader>n :NERDTreeToggle<CR>
