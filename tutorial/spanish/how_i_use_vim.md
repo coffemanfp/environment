@@ -143,8 +143,6 @@ Para moverme entre archivos utilizo el paquete `NvimTree.lua`:
 
 -   Abrir `NvimTree` posicionado en el archivo actual: `<Space>m`
 
--   Toggle Zoom en `NvimTree`: `A`
-
 -   Abrir y cerrar una carpeta en `NvimTree` estando sobre ella: `<Enter>`
 
 -   Cerrar una carpeta en `NvimTree`: `x`
@@ -160,6 +158,22 @@ Para moverme entre archivos utilizo el paquete `NvimTree.lua`:
 -   Abrir un archivo en split vertical: `s`
 
 -   Abrir un archivo en split horizontal: `i`
+
+-   Ver previsualizacion del archivo: `<Tab>`
+
+-   Copiar nombre del archivo: `y`
+
+-   Copiar path relativo del archivo: `Y`
+
+-   Copiar path absoluto del archivo: `gy`
+
+-   Crear un archivo/carpeta en `NvimTree`: `a`
+
+-   Borrar un archivo/carpeta en `NvimTree`: `d`
+
+-   Renombrar/mover un archivo/carpeta en `NvimTree`: `r`
+
+-   Navegar a la carpeta padre `NvimTree`: `-`
 
 ---
 
