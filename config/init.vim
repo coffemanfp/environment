@@ -32,6 +32,9 @@ call dein#add('ryanoasis/vim-devicons')
 call dein#add('rcarriga/nvim-notify')
 let g:dein#enable_notification=1
 
+" fugitive - Git integration
+call dein#add('tpope/vim-fugitive')
+
 " startify - Start screen
 call dein#add('mhinz/vim-startify')
 
@@ -354,12 +357,12 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let g:airline#extensions#wordcount#enabled = 0
 let g:airline#extensions#hunks#enabled=0
-let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#neomake#enabled = 0
+let g:airline#extensions#branch#enabled=1
 
 let g:airline_extensions = 
-	\ ['quickfix', 'tabline', 'whitespace', 'coc']
+	\ ['branch', 'quickfix', 'tabline', 'whitespace', 'coc']
 let g:airline_highlighting_cache = 1
 
 let g:airline_section_z = '%p%%%#__accent_bold# %l%#__restore__#%#__accent_bold#/%L%#__restore__#%#__accent_bold#%{g:airline_symbols.colnr}%v%#__restore__#'
