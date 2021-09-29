@@ -177,21 +177,19 @@ Para moverme entre archivos utilizo el paquete [`NvimTree.lua`](https://github.c
 
 ---
 
-Para hacer una busqueda de archivo utilizo el paquete `Denite`:
+Para hacer una busqueda de archivo utilizo el paquete [`Telescope.nvim`](https://github.com/nvim-telescope/telescope.nvim):
 
--   Abrir `Denite`: `<Space>f`
+-   Abrir `Telescope`: `<Space>f`
 
--   Ver el buffer con `Denite`: `<Space>b`
+-   Ver el buffer con `Telescope`: `<Space>b`
 
--   Buscar texto en archivos con `Denite`: `<Space>h`
+-   Buscar texto en archivos con `Telescope`: `<Space>h`
 
-En la lista de `Denite`:
+-   Salir de `Telescope` (en modo `NORMAL`): `q` | `<Esc>`
 
--   Cerrar `Denite`: `q`
+En la lista de `Telescope`:
 
--   Ver preview del archivo: `p`
-
--   Filtrar archivos: `f`
+-   Cerrar `Telescope`: `q` | `<Esc>`
 
 -   Abrir en nueva tab: `t`
 

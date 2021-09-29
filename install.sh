@@ -169,6 +169,8 @@ installEditor() {
 
     sudo apt install -y curl git xclip silversearcher-ag yarn lua5.3 | tee -a "$log_file"
 	sudo snap install ripgrep | tee -a "$log_file"
+	sudo apt install -y fd-find | tee -a "$log_file"
+	sudo ln -s "$(command -v fdfind)" /usr/bin/fd
 
     if [ "$no_providers" != 1 ]; then
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
