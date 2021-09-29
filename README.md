@@ -1,4 +1,4 @@
-![Screenshot environment](./screenshot.png)
+![Screenshot environment](./screenshots/screenshot.png)
 
 # environment
 
@@ -120,4 +120,4 @@ To activate the 'light mode' execute the command `lightmode` or the alias `li`. 
 
 To change mode in Vim run `:LightMode` or `:DarkMode`.
 
-![Screenshot light environment](./screenshot2.png)
+![Screenshot light environment](./screenshots/screenshot2.png)
