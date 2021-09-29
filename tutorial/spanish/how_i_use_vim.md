@@ -187,6 +187,10 @@ Para hacer una busqueda de archivo utilizo el paquete [`Telescope.nvim`](https:/
 
 -   Salir de `Telescope` (en modo `NORMAL`): `q` | `<Esc>`
 
+-   Moverse por los archivos de la lista (en modo `NORMAL`): `j` | `k`
+
+-   Moverse por los archivos de la lista (en modo `INSERT`): `<Ctrl>p` | `<Ctrl>n`
+
 En la lista de `Telescope`:
 
 -   Cerrar `Telescope`: `q` | `<Esc>`
