@@ -42,7 +42,10 @@ call dein#add('kyazdani42/nvim-tree.lua')
 call dein#add('bling/vim-airline')
 
 " Denite - Search file
-call dein#add('Shougo/denite.nvim')
+" call dein#add('Shougo/denite.nvim')
+call dein#add('nvim-telescope/telescope.nvim')
+call dein#add('nvim-telescope/telescope-fzf-native.nvim')
+call dein#add('nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' })
 
 " neomake - Check errors
 call dein#add('neomake/neomake')
@@ -81,13 +84,12 @@ call dein#add('mattn/emmet-vim')
 " coc.nvim - Autocomplete
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'master', 'build': 'yarn install --frozen-lockfile' })
 
-" Gitgutter - GIT change signal icons
+" gitsigns - GIT change signal icons
 call dein#add('nvim-lua/plenary.nvim')
 call dein#add('lewis6991/gitsigns.nvim')
 
 " indentline - Indentline guide
 call dein#add('yggdroot/indentline')
-" call dein#add('lukas-reineke/indent-blankline.nvim')
 
 " vim-eununch - UNIX Utility
 call dein#add('tpope/vim-eunuch')
@@ -286,69 +288,47 @@ nnoremap <leader>n :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>m :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
 
-" denite config
-nmap <leader>b :Denite -no-empty buffer <CR>
-nmap <leader>f :Denite -no-empty file/rec <CR>
-nnoremap <leader>h :Denite -no-empty grep<CR>
+" telescope.nvim config
+lua << EOF
+require('telescope').setup{
+	defaults = {
+		prompt_prefix = "🔍 ",
 
-" Define mappings
-autocmd FileType denite call s:denite_my_settings()
-function! s:denite_my_settings() abort
-  nnoremap <silent><buffer><expr> <CR>
-  \ denite#do_map('do_action')
-  nnoremap <silent><buffer><expr> d
-  \ denite#do_map('do_action', 'delete')
-  nnoremap <silent><buffer><expr> t
-  \ denite#do_map('do_action', 'tabopen')
-  nnoremap <silent><buffer><expr> s
-  \ denite#do_map('do_action', 'vsplit')
-  nnoremap <silent><buffer><expr> i
-  \ denite#do_map('do_action', 'split')
-  nnoremap <silent><buffer><expr> p
-  \ denite#do_map('do_action', 'preview')
-  nnoremap <silent><buffer><expr> f
-  \ denite#do_map('open_filter_buffer')
-  nnoremap <silent><buffer><expr> <Space>
-  \ denite#do_map('toggle_select').'j'
-  nnoremap <silent><buffer><expr> q
-  \ denite#do_map('quit')
-endfunction
+		vimgrep_arguments = {
+		  "rg",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+		  "-g", "!package-lock.json",
+		  "-g", "!go.sum",
+		  "-g", "!node_modules",
+		},
 
-call denite#custom#filter('matcher/ignore_globs', 'ignore_globs',
-    \ [ '.git/', '.ropeproject/', '__pycache__/',
-    \   'venv/', 'images/', '*.min.*', 'img/', 'fonts/', 'vendor/', 'node_modules/', 'package-lock.json'])
+		mappings = {
+			n = {
+				["q"] = require('telescope.actions').close,
+				["<Esc>"] = require('telescope.actions').close,
+				["t"] = require('telescope.actions').select_tab,
+				["s"] = require('telescope.actions').select_vertical,
+				["i"] = require('telescope.actions').select_horizontal,
+				["d"] = require('telescope.actions').delete_buffer,
 
-call denite#custom#var('file/rec', 'command',
-    \ ['rg', '--files', '--vimgrep'])
-
-call denite#custom#var('grep', {
-    \ 'command': ['rg',
-    \   '-g', '!package-lock.json', 
-    \   '-g', '!go.sum'],
-    \ 'default_opts': ['-i', '--vimgrep', '--no-heading'],
-    \ 'recursive_opts': [],
-    \ 'pattern_opt': ['--regexp'],
-    \ 'separator': ['--'],
-    \ 'final_opts': [],
-    \ })
-
-autocmd FileType denite-filter call s:denite_filter_my_settings()
-function! s:denite_filter_my_settings() abort
-	imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
-endfunction
-
-let s:denite_options = {
-      \ 'prompt' : '>',
-      \ 'split': 'floating',
-      \ 'start_filter': 0,
-      \ 'auto_resize': 1,
-      \ 'source_names': 'short',
-      \ 'direction': 'botright',
-      \ 'highlight_filter_background': 'CursorLine',
-      \ 'highlight_matched_char': 'Type',
-      \ }
-
-call denite#custom#option('default', s:denite_options)
+				["<Space>"] = {
+					require('telescope.actions').toggle_selection,
+					type = 'action',
+					keymap_opts = { nowait = true },
+				},
+			},
+		},
+	},
+}
+EOF
+nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>h <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
 
 " airline config
 let g:airline_powerline_fonts = 1
