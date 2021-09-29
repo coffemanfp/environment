@@ -299,6 +299,7 @@ require('telescope').setup{
 
 		vimgrep_arguments = {
 		  "rg",
+          "--color=never",
           "--no-heading",
           "--with-filename",
           "--line-number",
@@ -308,24 +309,30 @@ require('telescope').setup{
 		  "-g", "!package-lock.json",
 		  "-g", "!go.sum",
 		  "-g", "!node_modules",
+		  "-g", "!.git",
 		},
 
 		mappings = {
 			n = {
 				["q"] = require('telescope.actions').close,
 				["<Esc>"] = require('telescope.actions').close,
-				["t"] = require('telescope.actions').select_tab,
-				["s"] = require('telescope.actions').select_vertical,
-				["i"] = require('telescope.actions').select_horizontal,
-				["d"] = require('telescope.actions').delete_buffer,
-
-				["<Space>"] = {
-					require('telescope.actions').toggle_selection,
-					type = 'action',
-					keymap_opts = { nowait = true },
-				},
+				["<C-t>"] = require('telescope.actions').select_tab,
+				["<C-s>"] = require('telescope.actions').select_vertical,
+				["<C-i>"] = require('telescope.actions').select_horizontal,
+				["<C-d>"] = require('telescope.actions').delete_buffer
+			},
+			i = {
+				["<C-t>"] = require('telescope.actions').select_tab,
+				["<C-s>"] = require('telescope.actions').select_vertical,
+				["<C-i>"] = require('telescope.actions').select_horizontal,
+				["<C-d>"] = require('telescope.actions').delete_buffer
 			},
 		},
+
+		preview = {
+			filesize_limit = 15,
+			timeout = 200,
+		}
 	},
 }
 EOF
@@ -339,6 +346,7 @@ let g:airline_detect_iminsert=1
 let g:airline_skip_empty_sections = 1
 let g:hybrid_custom_term_colors = 1
 let g:hybrid_reduced_contrast = 1
+let g:airline_detect_modified=1
 
 let g:airline#extensions#tagbar#enabled = 0
 let g:airline#extensions#syntastic#enabled = 0
@@ -356,16 +364,18 @@ let g:airline#extensions#tabline#show_splits = 0
 let g:airline#extensions#tabline#formatter = 'unique_tail'
 
 let g:airline#extensions#wordcount#enabled = 0
-let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#neomake#enabled = 0
+let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
 
 let g:airline_extensions = 
 	\ ['branch', 'quickfix', 'tabline', 'whitespace', 'coc']
-let g:airline_highlighting_cache = 1
+
+let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),80)}%{get(b:, "gitsigns_status", "")}'
 
 let g:airline_section_z = '%p%%%#__accent_bold# %l%#__restore__#%#__accent_bold#/%L%#__restore__#%#__accent_bold#%{g:airline_symbols.colnr}%v%#__restore__#'
+
 let g:airline_section_warning = ''
 let g:airline_section_errors = ''
 let g:airline_section_statistics = ''
@@ -374,6 +384,8 @@ let g:airline#extensions#default#layout = [
   \ [ 'a', 'b', 'c'],
   \ [ 'x', 'z' ]
   \ ]
+
+let g:airline_highlighting_cache = 1
 
 " tmuxline.vim config
 let g:tmuxline_powerline_separators = 0

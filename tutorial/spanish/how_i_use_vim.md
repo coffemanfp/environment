@@ -191,19 +191,29 @@ Para hacer una busqueda de archivo utilizo el paquete [`Telescope.nvim`](https:/
 
 -   Moverse por los archivos de la lista (en modo `INSERT`): `<Ctrl>p` | `<Ctrl>n`
 
-En la lista de `Telescope`:
+-   Abrir en nueva tab (en modo `INSERT`): `<Ctrl>t`
+
+-   Abrir en split (en modo `INSERT`): `<Ctrl>i`
+
+-   Abrir en vsplit (en modo `INSERT`): `<Ctrl>s`
+
+-   Borrar del buffer (en modo `INSERT`): `<Ctrl>d`
+
+En la lista de `Telescope` (modo `NORMAL`):
 
 -   Cerrar `Telescope`: `q` | `<Esc>`
 
--   Abrir en nueva tab: `t`
+-   Abrir en nueva tab: `<Ctrl>t`
 
--   Abrir en split: `i`
+-   Abrir en split: `<Ctrl>i`
 
--   Abrir en vsplit: `s`
+-   Abrir en vsplit: `<Ctrl>s`
 
 -   Seleccionar archivos: `<Space>`
 
--   Borrar del buffer: `d`
+-   Borrar del buffer: `<Ctrl>d`
+
+-   Volver a modo `INSERT` para cambiar busqueda: `i`
 
 #### Tricks with tabs and splits
 
