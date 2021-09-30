@@ -50,7 +50,7 @@ main() {
         goVersion="$(go version | cut -d' ' -f3 | cut -d'.' -f1)"; goVersion="${goVersion#'go'}"
         goVersion2="$(go version | cut -d' ' -f3 | cut -d'.' -f2)"
 
-        if [ "$goVersion" -lt 1 ] && [ "$goVersion2" -lt 15 ]; then
+        if [ "$goVersion" -lt 1 ] || [ "$goVersion2" -lt 15 ]; then
             echo "[Editor Installer Error] : Go version must be higher than v1.15.0 ( >= v16.0.0 )" | tee -a "$log_file"
             echo "exit 1" | tee -a "$log_file"
             exit 1
