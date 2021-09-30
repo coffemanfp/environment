@@ -216,6 +216,11 @@ endif
 
 set guifont=Fira\ Mono\ for\ Powerline\ 12
 
+" disable providers
+let g:loaded_python_provider = 0
+let g:loaded_ruby_provider = 0
+let g:loaded_perl_provider = 0
+
 " vim config -- disable conceal
 set conceallevel=0
 let g:vim_json_syntax_conceal = 0

@@ -301,20 +301,6 @@ installConsole() {
     sudo apt install -y curl git tmux cmus zsh git-flow shellcheck exiftool rar fzf | tee -a "$log_file"
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
-    echo "[Console Installer] : - Copying configuration Zsh..." | tee -a "$log_file"
-    cp ./config/.zshrc.arthurnavah ~/.zshrc.arthurnavah | tee -a "$log_file"
-	touch ~/.zshrc
-    # if they are different, add 'source' command to the end of the file
-    [ ! -f ~/.zshrc ] && touch ~/.zshrc
-    if [ -n "$(diff ~/.zshrc ~/.zshrc.arthurnavah 2>/dev/null)" ]; then
-        exist_source=$(awk '$0 ~ "source ~/.zshrc.arthurnavah" { print }' ~/.zshrc 2>/dev/null)
-
-        if [ -z "$exist_source" ]; then
-            echo "source ~/.zshrc.arthurnavah" >> ~/.zshrc
-        fi
-    fi
-    echo "[Console Installer] : ----------------------" | tee -a "$log_file"
-
     echo "" | tee -a "$log_file"
     echo "[Console Installer] : Adding yarn key, Updating yarn" | tee -a "$log_file"
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
@@ -361,6 +347,20 @@ installConsole() {
     echo "" | tee -a "$log_file"
     echo "[Console Installer] : Configuring ZSH... enter your sudo or root password" | tee -a "$log_file"
     chsh -s "$(command -v zsh)" | tee -a "$log_file"
+    echo "[Console Installer] : ----------------------" | tee -a "$log_file"
+
+    echo "[Console Installer] : - Copying configuration Zsh..." | tee -a "$log_file"
+    cp ./config/.zshrc.arthurnavah ~/.zshrc.arthurnavah | tee -a "$log_file"
+	touch ~/.zshrc
+    # if they are different, add 'source' command to the end of the file
+    [ ! -f ~/.zshrc ] && touch ~/.zshrc
+    if [ -n "$(diff ~/.zshrc ~/.zshrc.arthurnavah 2>/dev/null)" ]; then
+        exist_source=$(awk '$0 ~ "source ~/.zshrc.arthurnavah" { print }' ~/.zshrc 2>/dev/null)
+
+        if [ -z "$exist_source" ]; then
+            echo "source ~/.zshrc.arthurnavah" >> ~/.zshrc
+        fi
+    fi
     echo "[Console Installer] : ----------------------" | tee -a "$log_file"
 
     echo "" | tee -a "$log_file"
