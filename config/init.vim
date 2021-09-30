@@ -24,6 +24,10 @@ if !has('nvim')
     call dein#add('roxma/vim-hug-neovim-rpc')
 endif
 
+" dependencies
+call dein#add('nvim-lua/plenary.nvim')
+call dein#add('nvim-lua/popup.nvim')
+
 " icons
 call dein#add('kyazdani42/nvim-web-devicons')
 call dein#add('ryanoasis/vim-devicons')
@@ -88,7 +92,6 @@ call dein#add('mattn/emmet-vim')
 call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'master', 'build': 'yarn install --frozen-lockfile' })
 
 " gitsigns - GIT change signal icons
-call dein#add('nvim-lua/plenary.nvim')
 call dein#add('lewis6991/gitsigns.nvim')
 
 " indentline - Indentline guide
