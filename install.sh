@@ -27,8 +27,6 @@ main() {
     fi
 
     requiredCommands git
-    git pull origin master | tee -a "$log_file"
-
     # check requireds
     if [ "$install_editor" == 1 ]; then
         if [ "$no_providers" == 1 ]; then
@@ -72,6 +70,8 @@ main() {
         requiredCommands curl wget git
         requiredSudoCommands snap apt 
     fi
+
+    git pull origin master | tee -a "$log_file"
 
     echo ""
     echo "[Fonts Installer] : Installing fonts..." | tee -a "$log_file"
