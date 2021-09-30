@@ -35,8 +35,8 @@ let g:dein#enable_notification=1
 " fugitive - Git integration
 call dein#add('tpope/vim-fugitive')
 
-" startify - Start screen
-call dein#add('mhinz/vim-startify')
+" dashboard-nvim - Start screen
+call dein#add('glepnir/dashboard-nvim')
 
 " nvim-tree - File explorer
 call dein#add('kyazdani42/nvim-tree.lua')
@@ -115,18 +115,47 @@ if dein#check_install()
 endif
 " ---------------------------
 
-" startify config
-let g:startify_custom_header = [
-\ '    ███╗░░██╗███████╗░█████╗░██╗░░░██╗██╗███╗░░░███╗',
-\ '    ████╗░██║██╔════╝██╔══██╗██║░░░██║██║████╗░████║',
-\ '    ██╔██╗██║█████╗░░██║░░██║╚██╗░██╔╝██║██╔████╔██║',
-\ '    ██║╚████║██╔══╝░░██║░░██║░╚████╔╝░██║██║╚██╔╝██║',
-\ '    ██║░╚███║███████╗╚█████╔╝░░╚██╔╝░░██║██║░╚═╝░██║',
-\ '    ╚═╝░░╚══╝╚══════╝░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝',
-\ '                                                    ',
-\ '                                         a̳r̳t̳h̳u̳r̳n̳a̳v̳a̳h̳',
+" dashboard-nvim config
+let g:dashboard_custom_header = [
+\ '███╗░░██╗███████╗░█████╗░██╗░░░██╗██╗███╗░░░███╗',
+\ '████╗░██║██╔════╝██╔══██╗██║░░░██║██║████╗░████║',
+\ '██╔██╗██║█████╗░░██║░░██║╚██╗░██╔╝██║██╔████╔██║',
+\ '██║╚████║██╔══╝░░██║░░██║░╚████╔╝░██║██║╚██╔╝██║',
+\ '██║░╚███║███████╗╚█████╔╝░░╚██╔╝░░██║██║░╚═╝░██║',
+\ '╚═╝░░╚══╝╚══════╝░╚════╝░░░░╚═╝░░░╚═╝╚═╝░░░░░╚═╝',
+\ '                                                ',
+\ 'Welcome, '.$USER.'.',
 \ ]
-highlight StartifyHeader ctermfg=white
+
+let g:dashboard_default_executive ='telescope'
+let g:indentLine_fileTypeExclude = ['dashboard']
+
+let g:dashboard_custom_section={
+\	'new_file': {
+\		'description': ['    New file'],
+\		'command': 'DashboardNewFile',
+\	},
+\	'find_file': {
+\		'description': ['   Find File'],
+\		'command': 'DashboardFindFile',
+\	},
+\	'find_word': {
+\		'description': ['   Find Word'],
+\		'command': 'DashboardFindWord',
+\	},
+\	'open_tree': {
+\		'description': ['  Open Tree'],
+\		'command': 'NvimTreeOpen',
+\	},
+\	'open_config': {
+\		'description': [' Open Config'],
+\		'command': 'e ~/.config/nvim/init.vim',
+\	},
+\	'open_folder': {
+\		'description': [' Open Folder'],
+\		'command': '!gio open .',
+\	},
+\}
 
 " vim config
 if &compatible
@@ -198,7 +227,7 @@ set lazyredraw
 "set cul!
 
 " vim config -- mapping
-let mapleader=" "
+let mapleader="\<Space>"
 let maplocalleader="\\"
 cnoremap jk <Esc>
 inoremap jk <Esc>
@@ -422,6 +451,7 @@ autocmd FileType go nmap <leader>gk :GoVet<CR>
 autocmd FileType go nmap <leader>gat  :GoAddTags
 autocmd FileType go nmap <leader>grt  :GoRemoveTags
 autocmd FileType go nmap <leader>gcp  :GoChannelPeers<CR>
+
 " go - show function calls
 autocmd BufEnter *.go nmap <leader>gc  <Plug>(go-callers)
 
@@ -578,3 +608,4 @@ function! DarkMode()
     silent exec "!echo 'dark' > ~/.mode"
 endfunction
 "----------------------------------------------------
+
