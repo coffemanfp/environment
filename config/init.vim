@@ -284,13 +284,17 @@ else
     set background=dark
 	let g:airline_theme='deus'
 
-    let g:gruvbox_number_column='dark0'
+    let g:gruvbox_number_column='bg0'
     colorscheme gruvbox
 
 	highlight Cursorline cterm=bold gui=bold guibg=#262626
+
 	highlight CocFloating guibg=#303030 
 	highlight Pmenu guibg=#303030 
 
+	highlight NvimTreeNormal guibg=#262626 
+	highlight NvimTreeVertSplit guibg=#262626 guifg=#262626
+	highlight NvimTreeCursorLine guibg=#1c1c1c
 endif
 
 
@@ -305,8 +309,18 @@ lua << EOF
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 -- default mappings
 require'nvim-tree'.setup {
+  active = true,
   auto_close          = true,
   open_on_setup       = true,
+  setup = {
+    tab_open = 0,
+    update_focused_file = {
+      enable = 1,
+    },
+  },
+  root_folder_modifier = ":t",
+  allow_resize = 1,
+  auto_ignore_ft = { "startify", "dashboard" },
   view = {
     width = 30,
     auto_resize = true,
@@ -321,9 +335,9 @@ require'nvim-tree'.setup {
   }
 }
 EOF
-nnoremap <leader>n :NvimTreeToggle<CR>
+nnoremap <leader>e :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>m :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
 
 " telescope.nvim config
 lua << EOF

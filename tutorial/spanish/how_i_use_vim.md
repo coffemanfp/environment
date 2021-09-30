@@ -139,9 +139,9 @@ Para trabajar con varios archivos uso principalmente tabs y splits, para crear u
 
 Para moverme entre archivos utilizo el paquete [`NvimTree.lua`](https://github.com/kyazdani42/nvim-tree.lua):
 
--   Abrir y cerrar `NvimTree`: `<Space>n`
+-   Abrir y cerrar `NvimTree`: `<Space>e`
 
--   Abrir `NvimTree` posicionado en el archivo actual: `<Space>m`
+-   Abrir `NvimTree` posicionado en el archivo actual: `<Space>n`
 
 -   Abrir y cerrar una carpeta en `NvimTree` estando sobre ella: `<Enter>`
 
