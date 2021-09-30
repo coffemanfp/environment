@@ -150,13 +150,17 @@ let g:dashboard_custom_section={
 \		'description': ['  Open Tree'],
 \		'command': 'NvimTreeOpen',
 \	},
-\	'open_config': {
-\		'description': [' Open Config'],
+\	'edit_config': {
+\		'description': [' Edit Config'],
 \		'command': 'e ~/.config/nvim/init.vim',
 \	},
 \	'open_folder': {
 \		'description': [' Open Folder'],
 \		'command': '!gio open .',
+\	},
+\	'checkhealth': {
+\		'description': ['❤️ Checkhealth'],
+\		'command': 'checkhealth',
 \	},
 \}
 
