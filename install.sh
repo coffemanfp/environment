@@ -168,7 +168,7 @@ installEditor() {
     curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
     sudo apt install -y curl git xclip silversearcher-ag yarn lua5.3 | tee -a "$log_file"
-	sudo snap install ripgrep | tee -a "$log_file"
+	sudo apt install ripgrep | tee -a "$log_file"
 	sudo apt install -y fd-find | tee -a "$log_file"
 	sudo ln -s "$(command -v fdfind)" /usr/bin/fd
 
@@ -295,6 +295,7 @@ installConsole() {
 
     echo "[Console Installer] : - Copying configuration Zsh..." | tee -a "$log_file"
     cp ./config/.zshrc.arthurnavah ~/.zshrc.arthurnavah | tee -a "$log_file"
+	touch ~/.zshrc
     # if they are different, add 'source' command to the end of the file
     [ ! -f ~/.zshrc ] && touch ~/.zshrc
     if [ -n "$(diff ~/.zshrc ~/.zshrc.arthurnavah 2>/dev/null)" ]; then
