@@ -26,6 +26,13 @@
         "markdown"
     ],
 
+    "css.lint.duplicateProperties": "warning",
+    "css.lint.importStatement": "warning",
+    "css.lint.zeroUnits": "warning",
+    "scss.lint.duplicateProperties": "warning",
+    "scss.lint.importStatement": "warning",
+    "scss.lint.zeroUnits": "warning",
+
     "languageserver": {
         "golang": {
             "command": "gopls",
@@ -36,11 +43,10 @@
             }
         }
     },
+    "tsserver.formatOnType": true,
 
     "prettier.tabWidth": 4,
     "prettier.disableSuccessMessage": true,
 
-    "eslint.autoFixOnSave": true,
-
-    "tsserver.formatOnType": true
+    "eslint.autoFixOnSave": true
 }
