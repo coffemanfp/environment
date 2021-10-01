@@ -316,18 +316,9 @@ lua << EOF
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 -- default mappings
 require'nvim-tree'.setup {
-  active = true,
   auto_close          = true,
   open_on_setup       = true,
-  setup = {
-    tab_open = 0,
-    update_focused_file = {
-      enable = 1,
-    },
-  },
-  root_folder_modifier = ":t",
-  allow_resize = 1,
-  auto_ignore_ft = { "startify", "dashboard" },
+  open_on_tab         = true,
   view = {
     width = 30,
     auto_resize = true,
