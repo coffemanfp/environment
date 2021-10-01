@@ -143,7 +143,6 @@ let g:dashboard_custom_header = [
 \ '                                                ',
 \ 'Welcome, '.$USER.'.',
 \ ]
-
 let g:dashboard_default_executive ='telescope'
 let g:indentLine_fileTypeExclude = ['dashboard']
 
@@ -312,6 +311,7 @@ else
 	highlight NvimTreeVertSplit guibg=#1c1c1c guifg=#1c1c1c
 endif
 
+highlight dashboardHeader guifg=orange
 
 " vim config -- theme config
 
