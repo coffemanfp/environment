@@ -27,10 +27,10 @@
     ],
 
     "css.lint.duplicateProperties": "warning",
-    "css.lint.importStatement": "warning",
+    "css.lint.important": "warning",
     "css.lint.zeroUnits": "warning",
     "scss.lint.duplicateProperties": "warning",
-    "scss.lint.importStatement": "warning",
+    "scss.lint.important": "warning",
     "scss.lint.zeroUnits": "warning",
 
     "languageserver": {
