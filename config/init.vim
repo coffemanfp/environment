@@ -64,13 +64,13 @@ call dein#add('nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' })
 call dein#add('neomake/neomake')
 
 " vim-polyglot config
-au BufNewFile,BufReadPost *.md set filetype=markdown
-let g:polyglot_disabled = ['jsx']
-let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'vim', 'go']
+" au BufNewFile,BufReadPost *.md set filetype=markdown
+" let g:polyglot_disabled = ['jsx']
+" let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'vim', 'go']
 
-" vim-polyglot syntax
-call dein#add('sheerun/vim-polyglot')
-call dein#add('matthewbdaly/vim-filetype-settings')
+" " vim-polyglot syntax
+" call dein#add('sheerun/vim-polyglot')
+" call dein#add('matthewbdaly/vim-filetype-settings')
 
 " vim-go - Go Support
 call dein#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
@@ -411,7 +411,7 @@ require'nvim-treesitter.configs'.setup {
     "bash",
     "json",
     "yaml",
-	
+
     "html",
     "scss",
     "css",
