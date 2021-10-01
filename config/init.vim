@@ -318,7 +318,6 @@ local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 require'nvim-tree'.setup {
   auto_close          = true,
   open_on_setup       = true,
-  open_on_tab         = true,
   view = {
     width = 30,
     auto_resize = true,
@@ -333,7 +332,7 @@ require'nvim-tree'.setup {
   }
 }
 EOF
-nnoremap <leader>e :NvimTreeToggle<CR>
+nnoremap <silent> <leader>e :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
 
@@ -402,7 +401,6 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_close_button = 0
 let g:airline#extensions#tabline#show_tabs = 1
-let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#show_buffers = 0
 let g:airline#extensions#tabline#show_tab_count = 0
 let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
@@ -414,6 +412,8 @@ let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#neomake#enabled = 0
 let g:airline#extensions#hunks#enabled=0
 let g:airline#extensions#branch#enabled=1
+let g:airline#extensions#tabline#tab_min_count = 2
+let g:airline#extensions#tabline#tabs_label = ''
 
 let g:airline_extensions = 
 	\ ['branch', 'quickfix', 'tabline', 'whitespace', 'coc']
@@ -432,6 +432,9 @@ let g:airline#extensions#default#layout = [
   \ ]
 
 let g:airline_highlighting_cache = 1
+
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = ' '
 
 " tmuxline.vim config
 let g:tmuxline_powerline_separators = 0
@@ -625,4 +628,3 @@ function! DarkMode()
     silent exec "!echo 'dark' > ~/.mode"
 endfunction
 "----------------------------------------------------
-
