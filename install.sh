@@ -230,6 +230,7 @@ installEditor() {
         echo "" | tee -a "$log_file"
         echo "[Editor Installer] : Installing Providers for NeoVim..." | tee -a "$log_file"
         sudo npm install -g neovim | tee -a "$log_file"
+        sudo npm install -g tree-sitter-cli | tee -a "$log_file"
         sudo gem install neovim | tee -a "$log_file"
         pip install -U pynvim  | tee -a "$log_file"
         python2 -m pip install --user --upgrade pynvim | tee -a "$log_file"
