@@ -417,9 +417,9 @@ require'nvim-treesitter.configs'.setup {
     "css",
     "go",
     "gomod",
-    "python",
     "cpp",
     "lua",
+    "dockerfile",
   },
 }
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
