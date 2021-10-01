@@ -92,7 +92,8 @@ call dein#add('styled-components/vim-styled-components', { 'branch': 'main'})
 
 " typescript-vim - TypeScript Support
 call dein#add('leafgarland/typescript-vim')
-" vim-jsx-typescript - TSX syntax call dein#add('peitalin/vim-jsx-typescript')
+" vim-jsx-typescript - TSX syntax 
+call dein#add('peitalin/vim-jsx-typescript')
 
 " kommentary - Comments fast
 call dein#add('b3nj5m1n/kommentary')
@@ -120,8 +121,9 @@ call dein#add('tpope/vim-surround')
 
 " themes
 call dein#add('vim-airline/vim-airline-themes')
-call dein#add('morhetz/gruvbox')
 call dein#add('lifepillar/vim-gruvbox8')
+call dein#add('tanvirtin/monokai.nvim')
+call dein#add('morhetz/gruvbox')
 
 call dein#end()
 
@@ -301,19 +303,13 @@ if $MODE == "light"
     colorscheme gruvbox
 else
     set background=dark
-	let g:airline_theme='deus'
+	let g:airline_theme='molokai'
 
-    let g:gruvbox_number_column='bg0'
-    colorscheme gruvbox
+	colorscheme monokai_pro
 
-	highlight Cursorline cterm=bold gui=bold guibg=#262626
-
-	highlight CocFloating guibg=#303030 
-	highlight Pmenu guibg=#303030 
-
-	highlight NvimTreeNormal guibg=#262626 
-	highlight NvimTreeVertSplit guibg=#262626 guifg=#262626
-	highlight NvimTreeCursorLine guibg=#1c1c1c
+	highlight Cursorline cterm=bold gui=bold
+	highlight NvimTreeNormal guibg=#1c1c1c 
+	highlight NvimTreeVertSplit guibg=#1c1c1c guifg=#1c1c1c
 endif
 
 
@@ -422,6 +418,7 @@ require'nvim-treesitter.configs'.setup {
     "dockerfile",
   },
 }
+
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
 EOF
@@ -657,25 +654,21 @@ function! LightMode()
     colorscheme gruvbox
 
     silent exec "!echo 'light' > ~/.mode"
+	lua require("notify")("Light Mode!")
 endfunction
 
 command! -nargs=0 DarkMode call DarkMode()
 function! DarkMode()
     set background=dark
-	let g:airline_theme='deus'
+	let g:airline_theme='molokai'
 
-    let g:gruvbox_number_column='dark0'
-    colorscheme gruvbox
+	colorscheme monokai_pro
 
-	highlight Cursorline cterm=bold gui=bold guibg=#262626
-
-	highlight CocFloating guibg=#303030 
-	highlight Pmenu guibg=#303030 
-
-	highlight NvimTreeNormal guibg=#262626 
-	highlight NvimTreeVertSplit guibg=#262626 guifg=#262626
-	highlight NvimTreeCursorLine guibg=#1c1c1c
+	highlight Cursorline cterm=bold gui=bold
+	highlight NvimTreeNormal guibg=#1c1c1c 
+	highlight NvimTreeVertSplit guibg=#1c1c1c guifg=#1c1c1c
 
     silent exec "!echo 'dark' > ~/.mode"
+	lua require("notify")("Dark Mode!")
 endfunction
 "----------------------------------------------------
