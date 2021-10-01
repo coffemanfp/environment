@@ -668,8 +668,13 @@ function! DarkMode()
     colorscheme gruvbox
 
 	highlight Cursorline cterm=bold gui=bold guibg=#262626
+
 	highlight CocFloating guibg=#303030 
 	highlight Pmenu guibg=#303030 
+
+	highlight NvimTreeNormal guibg=#262626 
+	highlight NvimTreeVertSplit guibg=#262626 guifg=#262626
+	highlight NvimTreeCursorLine guibg=#1c1c1c
 
     silent exec "!echo 'dark' > ~/.mode"
 endfunction
