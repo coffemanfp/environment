@@ -32,6 +32,9 @@ call dein#add('nvim-lua/popup.nvim')
 call dein#add('kyazdani42/nvim-web-devicons')
 call dein#add('ryanoasis/vim-devicons')
 
+" vim-repeat - Repeat in plugins
+call dein#add('tpope/vim-repeat')
+
 " nvim-notify - Notification manager
 call dein#add('rcarriga/nvim-notify')
 let g:dein#enable_notification=1
@@ -59,6 +62,7 @@ call dein#add('neomake/neomake')
 
 " vim-polyglot config
 au BufNewFile,BufReadPost *.md set filetype=markdown
+let g:polyglot_disabled = ['jsx']
 let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'vim', 'go']
 
 " vim-polyglot syntax
@@ -71,16 +75,21 @@ call dein#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
 " vim-json - JSON Support
 call dein#add('elzr/vim-json')
 
+" scss-syntax - SASS syntax
+call dein#add('cakebaker/scss-syntax.vim')
+
 " vim-javascript - JavaScript Support
 call dein#add('pangloss/vim-javascript')
-" typescript-vim - TypeScript Support
-call dein#add('leafgarland/typescript-vim')
+
 " vim-jsx-pretty - JSX syntax
+call dein#add('yuezk/vim-js')
 call dein#add('maxmellon/vim-jsx-pretty')
-" vim-jsx-typescript - TSX syntax
-call dein#add('peitalin/vim-jsx-typescript')
 " vim-styled-components - Styled Components
 call dein#add('styled-components/vim-styled-components', { 'branch': 'main'})
+
+" typescript-vim - TypeScript Support
+call dein#add('leafgarland/typescript-vim')
+" vim-jsx-typescript - TSX syntax call dein#add('peitalin/vim-jsx-typescript')
 
 " kommentary - Comments fast
 call dein#add('b3nj5m1n/kommentary')
@@ -384,6 +393,35 @@ EOF
 nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>h <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+
+" treesitter config
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  highlight = {
+    enable = true,
+    disable = {},
+  },
+  ensure_installed = {
+    "vim",
+    "javascript",
+    "typescript",
+    "tsx",
+    "bash",
+    "json",
+    "yaml",
+	
+    "html",
+    "scss",
+    "css",
+    "go",
+    "gomod",
+    "python",
+    "cpp",
+  },
+}
+local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
+parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
+EOF
 
 " airline config
 let g:airline_powerline_fonts = 1
