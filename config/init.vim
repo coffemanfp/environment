@@ -32,6 +32,9 @@ call dein#add('nvim-lua/popup.nvim')
 call dein#add('kyazdani42/nvim-web-devicons')
 call dein#add('ryanoasis/vim-devicons')
 
+" colorizer.lua - Colorizer
+call dein#add('norcalli/nvim-colorizer.lua')
+
 " vim-repeat - Repeat in plugins
 call dein#add('tpope/vim-repeat')
 
@@ -399,7 +402,6 @@ lua << EOF
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
-    disable = {},
   },
   ensure_installed = {
     "vim",
@@ -417,10 +419,16 @@ require'nvim-treesitter.configs'.setup {
     "gomod",
     "python",
     "cpp",
+    "lua",
   },
 }
 local parser_config = require "nvim-treesitter.parsers".get_parser_configs()
 parser_config.tsx.used_by = { "javascript", "typescript.tsx" }
+EOF
+
+" colorizer.lua config
+lua << EOF
+require'colorizer'.setup()
 EOF
 
 " airline config
