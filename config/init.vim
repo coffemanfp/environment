@@ -345,8 +345,8 @@ require'nvim-tree'.setup {
 }
 EOF
 nnoremap <silent> <leader>e :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
+nnoremap <silent> <leader>r :NvimTreeRefresh<CR>
+nnoremap <silent> <leader>n :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
 
 " telescope.nvim config
 lua << EOF
@@ -393,9 +393,9 @@ require('telescope').setup{
 	},
 }
 EOF
-nnoremap <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
-nnoremap <leader>h <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <silent> <leader>f <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <silent> <leader>h <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <silent> <leader>b <cmd>lua require('telescope.builtin').buffers()<cr>
 
 " treesitter config
 lua << EOF
