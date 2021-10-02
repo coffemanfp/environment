@@ -32,8 +32,8 @@ main() {
         if [ "$no_providers" == 1 ]; then
             requiredCommands go node npm
         else
-            requiredCommands go node npm python python2 python3
-            requiredSudoCommands node npm snap
+            requiredCommands go node npm python3
+            requiredSudoCommands npm snap
         fi
 
         requiredSudoCommands apt npm apt-key tee add-apt-repository
@@ -175,7 +175,7 @@ installEditor() {
 
     curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
-    sudo apt install -y fonts-powerline curl git xclip silversearcher-ag yarn lua5.3 | tee -a "$log_file"
+    sudo apt install -y fonts-powerline curl git xclip silversearcher-ag yarn | tee -a "$log_file"
 	sudo apt install ripgrep | tee -a "$log_file"
 	sudo apt install -y fd-find | tee -a "$log_file"
 	sudo ln -s "$(command -v fdfind)" /usr/bin/fd
@@ -183,11 +183,11 @@ installEditor() {
     if [ "$no_providers" != 1 ]; then
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
         sudo apt update 1>/dev/null | tee -a "$log_file"
-        sudo apt install -y python-setuptools python3-neovim python3-pip python3-dev python3-setuptools ruby-dev perl cpanminus | tee -a "$log_file"
+        sudo apt install -y python-setuptools python3-neovim python3-pip python3-dev python3-setuptools | tee -a "$log_file"
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
-        requiredCommands pip pip3 gem
-        requiredSudoCommands gem cpanm node npm
+        requiredCommands pip3
+        requiredSudoCommands node npm
     fi
 
     requiredCommands curl git
@@ -231,16 +231,11 @@ installEditor() {
         echo "[Editor Installer] : Installing Providers for NeoVim..." | tee -a "$log_file"
         sudo npm install -g neovim | tee -a "$log_file"
         sudo npm install -g tree-sitter-cli | tee -a "$log_file"
-        sudo gem install neovim | tee -a "$log_file"
-        pip install -U pynvim  | tee -a "$log_file"
-        python2 -m pip install --user --upgrade pynvim | tee -a "$log_file"
         pip3 install -U pynvim | tee -a "$log_file"
         python3 -m pip install --user --upgrade pynvim | tee -a "$log_file"
-        pip install -U msgpack-python | tee -a "$log_file"
         pip3 install -U msgpack-python | tee -a "$log_file"
         python3 -mpip install --user -U msgpack | tee -a "$log_file"
         yarn install --froken-lockfile | tee -a "$log_file"
-        cpanm Neovim::Ext | tee -a "$log_file"
         echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
     fi
 
