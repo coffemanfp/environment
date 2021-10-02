@@ -10,20 +10,18 @@
     "coc.preferences.formatOnSaveFiletypes": [
         "go",
 
-        "javascript",
-        "javascriptreact",
-        "typescript",
-        "typescriptreact",
-
-        "html",
         "css",
         "scss",
 
         "json",
         "yaml",
-        "python",
 
-        "markdown"
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+
+        "python"
     ],
 
     "css.lint.duplicateProperties": "warning",
