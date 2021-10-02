@@ -148,27 +148,27 @@ let g:indentLine_fileTypeExclude = ['dashboard']
 
 let g:dashboard_custom_section={
 \	'new_file': {
-\		'description': ['    New file'],
+\		'description': ['    New file	(i)'],
 \		'command': 'DashboardNewFile',
 \	},
 \	'find_file': {
-\		'description': ['   Find File'],
+\		'description': ['   Find File	(f)'],
 \		'command': 'DashboardFindFile',
 \	},
 \	'find_word': {
-\		'description': ['   Find Word'],
+\		'description': ['   Find Word	(h)'],
 \		'command': 'DashboardFindWord',
 \	},
 \	'open_tree': {
-\		'description': ['  Open Tree'],
+\		'description': ['  Open Tree	(e)'],
 \		'command': 'NvimTreeOpen',
 \	},
 \	'edit_config': {
-\		'description': [' Edit Config'],
+\		'description': [' Edit Config	(c)'],
 \		'command': 'e ~/.config/nvim/init.vim',
 \	},
 \	'open_folder': {
-\		'description': [' Open Folder'],
+\		'description': [' Open Folder	(o)'],
 \		'command': '!gio open .',
 \	},
 \	'checkhealth': {
@@ -176,6 +176,12 @@ let g:dashboard_custom_section={
 \		'command': 'checkhealth',
 \	},
 \}
+autocmd FileType dashboard nmap <buffer> <silent> i :DashboardNewFile<CR>
+autocmd FileType dashboard nmap <buffer> <silent> f :DashboardFindFile<CR>
+autocmd FileType dashboard nmap <buffer> <silent> h :DashboardFindWord<CR>
+autocmd FileType dashboard nmap <buffer> <silent> e :NvimTreeOpen<CR>
+autocmd FileType dashboard nmap <buffer> <silent> c :e ~/.config/nvim/init.vim<CR>
+autocmd FileType dashboard nmap <buffer> <silent> o :silent exec '!gio open .'<CR>
 
 " vim config
 if &compatible

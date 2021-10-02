@@ -420,14 +420,20 @@ El `gopls` esta configurado con el `usePlaceholders` en `true`, al autocompletar
 
 -   Actualizar contenido del archivo actual: `:e`
 
--   Alternar numeros de line relativas: `:set relativenumber!`
+-   Alternar numeros de linea relativas: `:set rnu!`
 
 -   Cambiar a modo LightMode: `:LightMode`
 -   Cambiar a modo DarkMode: `:DarkMode`
 
+-   Abrir Dashboard: `:Dashboard`
+
 ## vim-surround
 
 Esta configuracion incluye [vim-surround](https://github.com/tpope/vim-surround), para la utilizacion del mismo recomiendo leer su [README.markdown](https://github.com/tpope/vim-surround/blob/master/README.markdown) ya que explica todo lo fundamental
+
+## vim-fugitive
+
+Esta configuracion incluye [vim-fugitive](https://github.com/tpope/vim-fugitive), para la utilizacion del mismo recomiendo leer su [README.markdown](https://github.com/tpope/vim-fugitive/blob/master/README.markdown) ya que explica todo lo fundamental
 
 ## coc-emoji
 
