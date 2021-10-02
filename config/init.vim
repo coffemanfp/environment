@@ -348,7 +348,7 @@ require'nvim-tree'.setup {
 EOF
 nnoremap <silent> <leader>e :NvimTreeToggle<CR>
 nnoremap <silent> <leader>r :NvimTreeRefresh<CR>
-nnoremap <silent> <leader>n :NvimTreeFindFile<CR>:NvimTreeFocus<CR>
+nnoremap <silent> <leader>n :NvimTreeToggleFindFile<CR>
 
 " telescope.nvim config
 lua << EOF
@@ -676,5 +676,14 @@ function! DarkMode()
 
     silent exec "!echo 'dark' > ~/.mode"
 	lua require("notify")("Dark Mode!")
+endfunction
+
+command! -nargs=0 NvimTreeToggleFindFile call NvimTreeToggleFindFile()
+function! NvimTreeToggleFindFile()
+	if &filetype == "NvimTree"
+		NvimTreeClose
+	else
+		NvimTreeFindFile
+	endif
 endfunction
 "----------------------------------------------------
