@@ -254,6 +254,7 @@ installEditor() {
 
     echo "[Editor Installer] : - Copying configuration NeoVim..." | tee -a "$log_file"
     cp ./config/init.vim ~/.config/nvim/. | tee -a "$log_file"
+    sudo cp ./config/nvim.desktop /usr/local/share/applications/nvim.desktop | tee -a "$log_file"
 
     echo "[Editor Installer] : - Copying configuration coc.nvim..." | tee -a "$log_file"
     cp ./config/coc-settings.json ~/.config/nvim/. | tee -a "$log_file"
