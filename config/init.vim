@@ -102,7 +102,7 @@ call dein#add('b3nj5m1n/kommentary')
 call dein#add('mattn/emmet-vim')
 
 " coc.nvim - Autocomplete
-call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'master', 'build': 'yarn install --frozen-lockfile' })
+call dein#add('neoclide/coc.nvim', { 'merged': 0, 'rev': 'release' })
 
 " gitsigns - GIT change signal icons
 call dein#add('lewis6991/gitsigns.nvim')

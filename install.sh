@@ -176,7 +176,7 @@ installEditor() {
     curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
 
     sudo apt install -y fonts-powerline curl git xclip silversearcher-ag yarn | tee -a "$log_file"
-	sudo apt install ripgrep | tee -a "$log_file"
+	sudo apt install -y ripgrep | tee -a "$log_file"
 	sudo apt install -y fd-find | tee -a "$log_file"
 	sudo ln -s "$(command -v fdfind)" /usr/bin/fd
 
