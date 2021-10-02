@@ -133,7 +133,6 @@ let g:dashboard_custom_header = [
 \ 'Welcome, '.$USER.'.',
 \ ]
 let g:dashboard_default_executive ='telescope'
-let g:indentLine_fileTypeExclude = ['dashboard']
 
 let g:dashboard_custom_section={
 \	'1': {
@@ -260,7 +259,7 @@ setlocal conceallevel=0
 let g:vim_json_syntax_conceal=0
 let g:vim_markdown_conceal=0
 let g:vim_markdown_conceal_code_blocks=0
-let g:indentLine_fileTypeExclude = ['markdown']
+let g:indentLine_fileTypeExclude = ['dashboard', 'markdown']
 
 " vim config -- increment speed
 set lazyredraw
