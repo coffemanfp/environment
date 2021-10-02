@@ -147,41 +147,59 @@ let g:dashboard_default_executive ='telescope'
 let g:indentLine_fileTypeExclude = ['dashboard']
 
 let g:dashboard_custom_section={
-\	'new_file': {
-\		'description': ['    New file	(i)'],
+\	'1': {
+\		'description': ['    New file		(i)'],
 \		'command': 'DashboardNewFile',
 \	},
-\	'find_file': {
-\		'description': ['   Find File	(f)'],
+\	'11': {
+\		'description': ['   Find File		(f)'],
 \		'command': 'DashboardFindFile',
 \	},
-\	'find_word': {
-\		'description': ['   Find Word	(h)'],
+\	'2': {
+\		'description': ['   Find Word		(h)'],
 \		'command': 'DashboardFindWord',
 \	},
-\	'open_tree': {
-\		'description': ['  Open Tree	(e)'],
+\	'22': {
+\		'description': [''],
+\		'command': '',
+\	},
+\	'3': {
+\		'description': ['   Open Tree		(e)'],
 \		'command': 'NvimTreeOpen',
 \	},
-\	'edit_config': {
-\		'description': [' Edit Config	(c)'],
-\		'command': 'e ~/.config/nvim/init.vim',
-\	},
-\	'open_folder': {
-\		'description': [' Open Folder	(o)'],
+\	'33': {
+\		'description': ['  Open Folder		(o)'],
 \		'command': '!gio open .',
 \	},
-\	'checkhealth': {
-\		'description': ['❤️ Checkhealth'],
+\	'4': {
+\		'description': [''],
+\		'command': '',
+\	},
+\	'44': {
+\		'description': ['  Edit Config		(c)'],
+\		'command': 'e ~/.config/nvim/init.vim',
+\	},
+\	'5': {
+\		'description': ['❤️  Checkhealth		(s)'],
 \		'command': 'checkhealth',
+\	},
+\	'55': {
+\		'description': [''],
+\		'command': '',
+\	},
+\	'99': {
+\		'description': ['❌       Exit		(q)'],
+\		'command': 'q',
 \	},
 \}
 autocmd FileType dashboard nmap <buffer> <silent> i :DashboardNewFile<CR>
 autocmd FileType dashboard nmap <buffer> <silent> f :DashboardFindFile<CR>
 autocmd FileType dashboard nmap <buffer> <silent> h :DashboardFindWord<CR>
 autocmd FileType dashboard nmap <buffer> <silent> e :NvimTreeOpen<CR>
-autocmd FileType dashboard nmap <buffer> <silent> c :e ~/.config/nvim/init.vim<CR>
 autocmd FileType dashboard nmap <buffer> <silent> o :silent exec '!gio open .'<CR>
+autocmd FileType dashboard nmap <buffer> <silent> c :e ~/.config/nvim/init.vim<CR>
+autocmd FileType dashboard nmap <buffer> <silent> s :checkhealth<CR>
+autocmd FileType dashboard nmap <buffer> <silent> q :q<CR>
 
 " vim config
 if &compatible
