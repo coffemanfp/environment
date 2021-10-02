@@ -62,15 +62,6 @@ call dein#add('nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' })
 " neomake - Check errors
 call dein#add('neomake/neomake')
 
-" vim-polyglot config
-" au BufNewFile,BufReadPost *.md set filetype=markdown
-" let g:polyglot_disabled = ['jsx']
-" let g:markdown_fenced_languages = ['bash=sh', 'css', 'django', 'javascript', 'js=javascript', 'json=javascript', 'perl', 'php', 'python', 'ruby', 'sass', 'xml', 'html', 'vim', 'go']
-
-" " vim-polyglot syntax
-" call dein#add('sheerun/vim-polyglot')
-" call dein#add('matthewbdaly/vim-filetype-settings')
-
 " vim-go - Go Support
 call dein#add('fatih/vim-go', { 'do': ':GoUpdateBinaries' })
 
@@ -270,6 +261,7 @@ setlocal conceallevel=0
 let g:vim_json_syntax_conceal=0
 let g:vim_markdown_conceal=0
 let g:vim_markdown_conceal_code_blocks=0
+let g:indentLine_fileTypeExclude = ['markdown']
 
 " vim config -- increment speed
 set lazyredraw
