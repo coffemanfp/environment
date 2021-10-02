@@ -54,7 +54,6 @@ call dein#add('kyazdani42/nvim-tree.lua')
 call dein#add('bling/vim-airline')
 
 " Denite - Search file
-" call dein#add('Shougo/denite.nvim')
 call dein#add('nvim-telescope/telescope.nvim')
 call dein#add('nvim-telescope/telescope-fzf-native.nvim')
 call dein#add('nvim-treesitter/nvim-treesitter', { 'do': 'TSUpdate' })
