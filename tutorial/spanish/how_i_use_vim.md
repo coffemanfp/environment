@@ -427,6 +427,8 @@ El `gopls` esta configurado con el `usePlaceholders` en `true`, al autocompletar
 
 -   Abrir Dashboard: `:Dashboard`
 
+-   Copiar path actual: `:Cpath`
+
 ## vim-surround
 
 Esta configuracion incluye [vim-surround](https://github.com/tpope/vim-surround), para la utilizacion del mismo recomiendo leer su [README.markdown](https://github.com/tpope/vim-surround/blob/master/README.markdown) ya que explica todo lo fundamental

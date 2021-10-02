@@ -663,9 +663,9 @@ function! BufOnly(buffer, bang)
 	endwhile
 
 	if delete_count == 1
-		echomsg delete_count "buffer deleted"
+		lua require("notify")("Buffer deleted")
 	elseif delete_count > 1
-		echomsg delete_count "buffers deleted"
+		lua require("notify")("Buffers deleted")
 	endif
 endfunction
 
@@ -703,5 +703,11 @@ function! NvimTreeToggleFindFile()
 	else
 		NvimTreeFindFile
 	endif
+endfunction
+
+command! -nargs=0 Cpath call Cpath()
+function! Cpath()
+    silent exec "!pwd | xclip -selection clipboard"
+	lua require("notify")("Copied " .. vim.fn.getcwd())
 endfunction
 "----------------------------------------------------
