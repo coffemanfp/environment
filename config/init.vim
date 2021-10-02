@@ -1,5 +1,4 @@
 let g:coc_global_extensions = [
-\ 'coc-omni', 
 \ 'coc-html',
 \ 'coc-css',
 \ 'coc-emmet',
@@ -267,9 +266,10 @@ let g:loaded_perl_provider = 0
 
 " vim config -- disable conceal
 set conceallevel=0
-let g:vim_json_syntax_conceal = 0
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
+setlocal conceallevel=0
+let g:vim_json_syntax_conceal=0
+let g:vim_markdown_conceal=0
+let g:vim_markdown_conceal_code_blocks=0
 
 " vim config -- increment speed
 set lazyredraw

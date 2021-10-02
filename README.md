@@ -29,6 +29,15 @@ Personal Terminal Development Environment, with Zsh, Tmux and Vim. (Screenshots 
     -   Fira Mono
     -   Ubuntu Mono
 
+## Requirements
+
+-   `go` >= _v1.15.0_
+-   `node` >= _v12.0.0_
+
+    -   `npm`
+
+-   `python3`
+
 ## Installation
 
 ```sh
