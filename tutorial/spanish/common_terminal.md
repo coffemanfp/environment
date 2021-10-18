@@ -71,3 +71,9 @@ Limpiar cache de DNS:
 sudo systemd-resolve --flush-caches
 # alias "flushdns"
 ```
+
+Calcular fechas:
+
+```sh
+date -d "13 Sep 2021 + 180 days"
+```
