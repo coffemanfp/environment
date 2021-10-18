@@ -112,6 +112,7 @@ call dein#add('tpope/vim-surround')
 call dein#add('vim-airline/vim-airline-themes')
 call dein#add('lifepillar/vim-gruvbox8')
 call dein#add('tanvirtin/monokai.nvim')
+call dein#add('rafamadriz/neon')
 call dein#add('morhetz/gruvbox')
 
 call dein#end()
@@ -306,6 +307,11 @@ let g:gruvbox_italicize_comments=1
 let g:gruvbox_italicize_strings=1
 let g:gruvbox_sign_column='bg0'
 
+" let g:neon_style='dark'
+" let g:neon_italic_comment=1
+" let g:neon_italic_keyword=1
+" let g:neon_italic_function=1
+
 set cursorline
 
 if $MODE == "light"
@@ -318,6 +324,7 @@ else
     set background=dark
 	let g:airline_theme='molokai'
 
+	" colorscheme neon
 	colorscheme monokai_pro
 
 	highlight Cursorline cterm=bold gui=bold
