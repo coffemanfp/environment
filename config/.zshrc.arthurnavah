@@ -64,3 +64,9 @@ alias cpath='pwd | xclip -selection clipboard'
 
 # Flush the DNS Cache
 alias flushdns='sudo systemd-resolve --flush-caches'
+
+# Get Public IP
+alias publicip='curl -s ipinfo.io/ip'
+
+# Get Public IP Geolocation
+alias geoip='curl ipinfo.io/"$(curl -s ipinfo.io/ip)"'

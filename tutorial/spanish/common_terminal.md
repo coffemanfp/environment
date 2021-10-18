@@ -77,3 +77,24 @@ Calcular fechas:
 ```sh
 date -d "13 Sep 2021 + 180 days"
 ```
+
+Obtener tu IP Publica:
+
+```sh
+curl -s ipinfo.io/ip
+# alias "publicip"
+```
+
+Obtener la geolocalizacion de una IP Publica:
+
+```sh
+curl ipinfo.io/{PublicIP}
+# example: curl ipinfo.io/1.0.0.1
+```
+
+Geolocalizar tu IP Publica:
+
+```sh
+curl ipinfo.io/"$(curl -s ipinfo.io/ip)"
+# alias "geoip"
+```
