@@ -24,6 +24,25 @@ export LS_COLORS="rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;
 
 # Load alias
 [ -f ~/.alias ] && source ~/.alias
+[ -f ~/.aliases ] && source ~/.aliases
+
+[ -f ~/.bash_alias ] && source ~/.bash_alias
+[ -f ~/.bash.alias ] && source ~/.bash.alias
+[ -f ~/.bashrc_alias ] && source ~/.bashrc_alias
+[ -f ~/.bashrc.alias ] && source ~/.bashrc.alias
+[ -f ~/.bash_aliases ] && source ~/.bash_aliases
+[ -f ~/.bash.aliases ] && source ~/.bash.aliases
+[ -f ~/.bashrc_aliases ] && source ~/.bashrc_aliases
+[ -f ~/.bashrc.aliases ] && source ~/.bashrc.aliases
+
+[ -f ~/.zsh_alias ] && source ~/.zsh_alias
+[ -f ~/.zsh.alias ] && source ~/.zsh.alias
+[ -f ~/.zshrc_alias ] && source ~/.zshrc_alias
+[ -f ~/.zshrc.alias ] && source ~/.zshrc.alias
+[ -f ~/.zsh_aliases ] && source ~/.zsh_aliases
+[ -f ~/.zsh.aliases ] && source ~/.zsh.aliases
+[ -f ~/.zshrc_aliases ] && source ~/.zshrc_aliases
+[ -f ~/.zshrc.aliases ] && source ~/.zshrc.aliases
 
 # Load mode
 [ -f ~/.mode ] && export MODE=$(cat ~/.mode)
