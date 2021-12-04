@@ -339,12 +339,18 @@ highlight dashboardHeader guifg=orange
 " --- end vim config
 
 " nvim-tree config
-let g:nvim_tree_ignore = [ '.git', '.pyc', '__pycache__' ]
-let g:nvim_tree_refresh_wait = 600
+let g:nvim_tree_refresh_wait = 500
 lua << EOF
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 -- default mappings
 require'nvim-tree'.setup {
+  filters = {
+    custom = {
+	  ".git",
+	  ".pyc",
+	  "__pycache__"
+	},
+  },
   auto_close          = true,
   open_on_setup       = true,
   view = {
