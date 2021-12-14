@@ -2,7 +2,8 @@
 mkdir logs &>/dev/null
 now=$(date +"%F+%T")
 log_file="$PWD/logs/install-$now.log"
-sudo rm logs/install-* &>/dev/null
+rm -rf logs/install-* &>/dev/null
+install_all=0
 
 if [ ! -x "$0" ]; then
     echo "[Installer Error] : Execute permissions are required (+x)" | tee -a "$log_file"
@@ -15,13 +16,15 @@ main() {
     if [ "$install_all" == 1 ]; then
         install_editor=1
         install_console=1
+        install_libs=1
     fi
 
-    if [ "$install_editor" != 1 ] && [ "$install_console" != 1 ]; then
+    if [ "$install_editor" != 1 ] && [ "$install_console" != 1 ] && [ "$install_libs" != 1 ]; then
         echo "[Installer Error] : List of installations:" | tee -a "$log_file"
         echo -e "\tall" | tee -a "$log_file"
         echo -e "\teditor" | tee -a "$log_file"
         echo -e "\tconsole" | tee -a "$log_file"
+        echo -e "\tlibs" | tee -a "$log_file"
         echo "exit 1" | tee -a "$log_file"
         exit 1
     fi
@@ -70,6 +73,9 @@ main() {
         requiredCommands curl wget git
         requiredSudoCommands snap apt 
     fi
+    if [ "$install_libs" == 1 ]; then
+        requiredCommands go
+    fi
 
     git pull origin master | tee -a "$log_file"
 
@@ -95,6 +101,12 @@ main() {
         fi
 
         installEditor
+    fi
+
+    if [ "$install_libs" == 1 ]; then
+        echo "[Libs Installer] : Install Libs..." | tee -a "$log_file"
+
+        installLibs
     fi
 }
 
@@ -211,14 +223,14 @@ installEditor() {
     sudo add-apt-repository -y ppa:jonathonf/vim
     sudo apt update
     sudo apt install -y vim
-    sudo rm -r downloads/ 2>/dev/null | tee -a "$log_file"
+    rm -rf downloads/ 2>/dev/null | tee -a "$log_file"
     mkdir downloads/ | tee -a "$log_file"
     cd downloads/ || exit
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage | tee -a "$log_file"
     chmod u+x nvim.appimage | tee -a "$log_file"
     ./nvim.appimage --appimage-extract | tee -a "$log_file"
     ./squashfs-root/AppRun --version | tee -a "$log_file"
-    sudo rm -r /nvim-arthurnavah/ | tee -a "$log_file"
+    sudo rm -rf /nvim-arthurnavah/ | tee -a "$log_file"
     sudo rm /usr/bin/nvim | tee -a "$log_file"
     sudo mv squashfs-root /nvim-arthurnavah && sudo ln -s /nvim-arthurnavah/AppRun /usr/bin/nvim | tee -a "$log_file"
     cd ..
@@ -241,10 +253,10 @@ installEditor() {
 
     echo "" | tee -a "$log_file"
     echo "[Editor Installer] : Creating folders..." | tee -a "$log_file"
-    sudo rm -r ~/.config/nvim/tmp | tee -a "$log_file"
+    sudo rm -rf ~/.config/nvim/tmp | tee -a "$log_file"
     mkdir -p ~/.config/nvim/tmp 2>/dev/null | tee -a "$log_file"
 
-    sudo rm -r ~/.config/nvim/dein | tee -a "$log_file"
+    sudo rm -rf ~/.config/nvim/dein | tee -a "$log_file"
     mkdir -p ~/.config/nvim/dein 2>/dev/null | tee -a "$log_file"
 
     echo "[Editor Installer] : - Copying configuration NeoVim..." | tee -a "$log_file"
@@ -312,7 +324,7 @@ installConsole() {
 
     echo "" | tee -a "$log_file"
     echo "[Console Installer] : Downloading Tmux Plugin Manager..." | tee -a "$log_file"
-    sudo rm -r ~/.tmux/plugins  | tee -a "$log_file"
+    sudo rm -rf ~/.tmux/plugins  | tee -a "$log_file"
     git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 1>/dev/null | tee -a "$log_file"
 
     echo "[Console Installer] : - Copying configuration Alacritty..." | tee -a "$log_file"
@@ -364,4 +376,42 @@ installConsole() {
     echo "[Console Installer] : + Installation Console successful! (Restarting the computer to use Zsh for the first time) +" | tee -a "$log_file"
 }
 
+# installLibs install libs
+installLibs() {
+    echo "" | tee -a "$log_file"
+    echo "[Libs Installer] : Installing libs..." | tee -a "$log_file"
+
+	go get -u github.com/lib/pq
+	go get -u github.com/mattn/go-sqlite3
+
+	go get -u github.com/davecgh/go-spew
+
+	go get -u google.golang.org/grpc
+
+	go get -u github.com/gin-gonic/gin
+	go get -u github.com/gin-contrib/static
+	go get -u github.com/labstack/echo
+
+	go get -u github.com/dgrijalva/jwt-go
+
+	go get -u github.com/gorilla/websocket
+
+	go get -u github.com/spf13/cobra
+	go get -u github.com/spf13/viper
+
+    echo "[Libs Installer] : ----------------------" | tee -a "$log_file"
+
+    echo "" | tee -a "$log_file"
+    echo "[Libs Installer] : + Installation Libs successful! +" | tee -a "$log_file"
+}
+
 main "$@"
+
+unset now
+unset log_file
+unset concatMissingCommand
+unset no_providers
+unset install_all
+unset install_editor
+unset install_console
+unset install_libs

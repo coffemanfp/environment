@@ -2,7 +2,8 @@
 mkdir logs &>/dev/null
 now=$(date +"%F+%T")
 log_file="$PWD/logs/update-$now.log"
-sudo rm logs/update-* &>/dev/null
+rm -rf logs/update-* &>/dev/null
+update_all=0
 
 if [ ! -x "$0" ]; then
     echo "[Updater Error] : Execute permissions are required (+x)" | tee -a "$log_file"
@@ -15,13 +16,15 @@ main() {
     if [ "$update_all" == 1 ]; then
         update_editor=1
         update_console=1
+        update_libs=1
     fi
 
-    if [ "$update_editor" != 1 ] && [ "$update_console" != 1 ]; then
+    if [ "$update_editor" != 1 ] && [ "$update_console" != 1 ] && [ "$update_libs" != 1 ]; then
         echo "[Updater Error] : List of update:"
-        echo -e "\t all" | tee -a "$log_file"
-        echo -e "\t editor" | tee -a "$log_file"
-        echo -e "\t console" | tee -a "$log_file"
+        echo -e "\tall" | tee -a "$log_file"
+        echo -e "\teditor" | tee -a "$log_file"
+        echo -e "\tconsole" | tee -a "$log_file"
+        echo -e "\tlibs" | tee -a "$log_file"
         echo "exit 1" | tee -a "$log_file"
         exit 1
     fi
@@ -57,6 +60,9 @@ main() {
     if [ "$update_console" == 1 ]; then
         requiredSudoCommands snap apt
     fi
+    if [ "$update_libs" == 1 ]; then
+        requiredCommands go
+    fi
 
     echo "" | tee -a "$log_file"
     echo "[Fonts Updater] : Updating fonts..." | tee -a "$log_file"
@@ -76,6 +82,12 @@ main() {
         echo "[Editor Updater] : Update Editor..." | tee -a "$log_file"
 
         updateEditor
+    fi
+
+    if [ "$update_libs" == 1 ]; then
+        echo "[Libs Updater] : Update Libs..." | tee -a "$log_file"
+
+        updateLibs
     fi
 }
 
@@ -134,14 +146,14 @@ updateEditor() {
     #sudo snap refresh vim-editor | tee -a "$log_file"
     sudo apt install -y --only-upgrade vim | tee -a "$log_file"
 
-    sudo rm -r downloads/ 2>/dev/null | tee -a "$log_file"
+    rm -rf downloads/ 2>/dev/null | tee -a "$log_file"
     mkdir downloads/ | tee -a "$log_file"
     cd downloads/ || exit
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage | tee -a "$log_file"
     chmod u+x nvim.appimage | tee -a "$log_file"
     ./nvim.appimage --appimage-extract | tee -a "$log_file"
     ./squashfs-root/AppRun --version | tee -a "$log_file"
-    sudo rm -r /nvim-arthurnavah/ | tee -a "$log_file"
+    sudo rm -rf /nvim-arthurnavah/ | tee -a "$log_file"
     sudo rm /usr/bin/nvim | tee -a "$log_file"
     sudo mv squashfs-root /nvim-arthurnavah && sudo ln -s /nvim-arthurnavah/AppRun /usr/bin/nvim | tee -a "$log_file"
     cd ..
@@ -194,4 +206,39 @@ updateConsole() {
     echo "[Console Updater] : + Update console successful! +" | tee -a "$log_file"
 }
 
+# updateLibs update libs
+updateLibs() {
+    echo "" | tee -a "$log_file"
+
+	go get -u github.com/lib/pq
+	go get -u github.com/mattn/go-sqlite3
+
+	go get -u github.com/davecgh/go-spew
+
+	go get -u google.golang.org/grpc
+
+	go get -u github.com/gin-gonic/gin
+	go get -u github.com/gin-contrib/static
+	go get -u github.com/labstack/echo
+
+	go get -u github.com/dgrijalva/jwt-go
+
+	go get -u github.com/gorilla/websocket
+
+	go get -u github.com/spf13/cobra
+	go get -u github.com/spf13/viper
+
+    echo "[Libs Updater] : ----------------------" | tee -a "$log_file"
+
+    echo "" | tee -a "$log_file"
+    echo "[Libs Updater] : + Update Libs successful! +" | tee -a "$log_file"
+}
 main "$@"
+
+unset now
+unset log_file
+unset concatMissingCommand
+unset update_all
+unset update_editor
+unset update_console
+unset update_libs
