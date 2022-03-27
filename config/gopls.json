@@ -1,0 +1,12 @@
+{
+	"gopls": {
+		"gofumpt": true,
+		"staticcheck": true,
+		"analyses": {
+			"assign": true,
+			"copylocks": true,
+			"shadow": true,
+			"unreachable": true
+		}
+	}
+}

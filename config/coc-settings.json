@@ -1,0 +1,50 @@
+{
+    "suggest.noselect": false,
+
+    "diagnostic.errorSign": "✘",
+    "diagnostic.warningSign": "⚠️",
+    "diagnostic.infoSign": "❓",
+    "diagnostic.hintSign": "❓",
+
+    "coc.preferences.formatOnType": true,
+    "coc.preferences.formatOnSaveFiletypes": [
+        "go",
+
+        "css",
+        "scss",
+
+        "json",
+        "yaml",
+
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+
+        "python"
+    ],
+
+    "css.lint.duplicateProperties": "warning",
+    "css.lint.important": "warning",
+    "css.lint.zeroUnits": "warning",
+    "scss.lint.duplicateProperties": "warning",
+    "scss.lint.important": "warning",
+    "scss.lint.zeroUnits": "warning",
+
+    "languageserver": {
+        "golang": {
+            "command": "gopls",
+            "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
+            "filetypes": ["go"],
+            "initializationOptions": {
+                "usePlaceholders": true
+            }
+        }
+    },
+    "tsserver.formatOnType": true,
+
+    "prettier.tabWidth": 4,
+    "prettier.disableSuccessMessage": true,
+
+    "eslint.autoFixOnSave": true
+}

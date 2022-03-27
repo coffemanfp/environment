@@ -1,0 +1,83 @@
+window:
+    decorations: none
+
+    dimensions:
+        columns: 170
+        lines: 40
+
+font:
+    size: 11
+
+    family: Cascadia Mono PL
+
+    normal:
+        family: Cascadia Mono PL
+        style: Regular
+
+    light:
+        family: Cascadia Mono PL
+        style: Light
+
+    light_italic:
+        family: Cascadia Mono PL
+        style: Light Italic
+
+    italic:
+        family: Cascadia Mono PL
+        style: Italic
+
+    bold:
+        family: Cascadia Mono PL
+        style: Bold
+
+    bold_italic:
+        family: Cascadia Mono PL
+        style: Bold Italic
+
+tabspaces: 4
+
+env:
+    TERM: xterm-256color
+
+shell:
+    program: zsh
+    args:
+        - -l
+        - -c
+        - "tmux"
+
+key_bindings:
+    - { key: F11, mods: None, action: ToggleFullscreen }
+
+# TokyoNight Alacritty Colors
+colors:
+    # Default colors
+    primary:
+        background: "0x15161E"
+        foreground: "0xc0caf5"
+
+    # Normal colors
+    normal:
+        black: "0x4A4C67"
+        red: "0xF14D6B"
+        green: "0x78A448"
+        yellow: "0xE0A44D"
+        blue: "0x5988ED"
+        magenta: "0xA27BEA"
+        cyan: "0x58B2E7"
+        white: "0xAFB8E3"
+
+    # Bright colors
+    bright:
+        black: "0x414868"
+        red: "0xf7768e"
+        green: "0x9ece6a"
+        yellow: "0xe0af68"
+        blue: "0x7aa2f7"
+        magenta: "0xbb9af7"
+        cyan: "0x7dcfff"
+        white: "0xc0caf5"
+
+    indexed_colors:
+        - { index: 16, color: "0xff9e64" }
+        - { index: 17, color: "0xdb4b4b" }

@@ -1,0 +1,95 @@
+linters:
+    presets:
+        - unused
+        - bugs
+        - error
+        - style
+        - metalinter
+        - performance
+        - complexity
+        - format
+        - import
+        - module
+        - test
+        - sql
+        - module
+        - comment
+
+    enable:
+        - revive
+
+    disable:
+        # Deprecated
+        - golint
+        - interfacer
+        - scopelint
+        - maligned
+
+        # I do not use it
+        - gofmt
+        - gofumpt
+        - goimports
+        - funlen
+        - paralleltest
+        - exhaustivestruct
+        - gci
+        - lll
+
+linters-settings:
+    forbidigo:
+        forbid:
+            - "^print$(# Do not commit print statements, use the 'fmt' package instead)?"
+            - "^println$(# Do not commit print statements, use the 'fmt' package instead)?"
+
+    revive:
+        rules:
+            - name: atomic
+            - name: unreachable-code
+            - name: blank-imports
+            - name: context-as-argument
+            - name: context-keys-type
+            - name: dot-imports
+            - name: error-return
+            - name: error-strings
+            - name: error-naming
+            - name: if-return
+            - name: increment-decrement
+            - name: var-naming
+            - name: var-declaration
+            - name: range
+            - name: receiver-naming
+            - name: time-naming
+            - name: time-equal
+            - name: unexported-return
+            - name: indent-error-flow
+            - name: errorf
+            - name: unnecessary-stmt
+            - name: get-return
+            - name: modifies-parameter
+            - name: modifies-value-receiver
+            - name: confusing-naming
+            - name: confusing-results
+            - name: constant-logical-expr
+            - name: range-val-in-closure
+            - name: range-val-address
+            - name: waitgroup-by-value
+            - name: empty-block
+            - name: superfluous-else
+            - name: unused-parameter
+            - name: unused-receiver
+            - name: unreachable-code
+            - name: early-return
+            - name: defer
+            - name: useless-break
+            - name: optimize-operands-order
+            - name: unconditional-recursion
+            - name: identical-branches
+            - name: redefines-builtin-id
+
+            - name: imports-blacklist
+              arguments:
+                  - "crypto/md5"
+                  - "crypto/sha1"
+
+            - name: line-length-limit
+              arguments: [100]
