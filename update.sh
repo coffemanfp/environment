@@ -16,15 +16,13 @@ main() {
 	if [ "$update_all" == 1 ]; then
 		update_editor=1
 		update_console=1
-		update_libs=1
 	fi
 
-	if [ "$update_editor" != 1 ] && [ "$update_console" != 1 ] && [ "$update_libs" != 1 ]; then
+	if [ "$update_editor" != 1 ] && [ "$update_console" != 1 ]; then
 		echo "[Updater Error] : List of update:"
 		echo -e "\tall" | tee -a "$log_file"
 		echo -e "\teditor" | tee -a "$log_file"
 		echo -e "\tconsole" | tee -a "$log_file"
-		echo -e "\tlibs" | tee -a "$log_file"
 		echo "exit 1" | tee -a "$log_file"
 		exit 1
 	fi
@@ -38,7 +36,8 @@ main() {
 		requiredCommands nvim node npm
 
 		#--- check node version
-		nodeVersion="$(node --version | cut -d'.' -f1)"; nodeVersion="${nodeVersion#'v'}"
+		nodeVersion="$(node --version | cut -d'.' -f1)"
+		nodeVersion="${nodeVersion#'v'}"
 		if [ "$nodeVersion" -lt 11 ]; then
 			echo "[Editor Updater Error] : NodeJs version must be higher than v11.0.0 ( >= v12.0.0 )" | tee -a "$log_file"
 			echo "exit 1" | tee -a "$log_file"
@@ -60,9 +59,6 @@ main() {
 	if [ "$update_console" == 1 ]; then
 		requiredSudoCommands snap apt
 	fi
-	if [ "$update_libs" == 1 ]; then
-		requiredCommands go
-	fi
 
 	echo "" | tee -a "$log_file"
 	echo "[Fonts Updater] : Updating fonts..." | tee -a "$log_file"
@@ -83,26 +79,20 @@ main() {
 
 		updateEditor
 	fi
-
-	if [ "$update_libs" == 1 ]; then
-		echo "[Libs Updater] : Update Libs..." | tee -a "$log_file"
-
-		updateLibs
-	fi
 }
 
 # excluding opts from the arguments
 for a; do
 	shift
 	case $a in
-		-*) opts+=("$a");;
-		*) set -- "$@" "$a";;
+	-*) opts+=("$a") ;;
+	*) set -- "$@" "$a" ;;
 	esac
 done
 # set vars with arguments
 for p in "$@"; do
 	eval update_"$p"=1
-done;
+done
 if [ "$#" == 0 ]; then
 	update_editor=1
 fi
@@ -114,9 +104,9 @@ requiredCommands() {
 		if ! p_tmp="$(type -p "$p")" || [[ -z $p_tmp ]]; then
 			concatMissingCommand+="\t$p\n"
 		fi
-	done;
+	done
 
-	if [[ -n $concatMissingCommand ]]; then 
+	if [[ -n $concatMissingCommand ]]; then
 		echo "[Updater Error] : Commands are required:" | tee -a "$log_file"
 		echo -e "$concatMissingCommand" | tee -a "$log_file"
 		echo "exit 1" | tee -a "$log_file"
@@ -131,9 +121,9 @@ requiredSudoCommands() {
 		if ! p_tmp="$(sudo which "$p")" || [[ -z $p_tmp ]]; then
 			concatMissingCommand+="\tsudo $p\n"
 		fi
-	done;
+	done
 
-	if [[ -n $concatMissingCommand ]]; then 
+	if [[ -n $concatMissingCommand ]]; then
 		echo "[Updater Error] : Commands with SUDO are required:" | tee -a "$log_file"
 		echo -e "$concatMissingCommand" | tee -a "$log_file"
 		echo "exit 1" | tee -a "$log_file"
@@ -201,7 +191,7 @@ updateConsole() {
 		exist_source=$(awk '$0 ~ "source ~/.zshrc.arthurnavah" { print }' ~/.zshrc 2>/dev/null)
 
 		if [ -z "$exist_source" ]; then
-			echo "source ~/.zshrc.arthurnavah" >> ~/.zshrc
+			echo "source ~/.zshrc.arthurnavah" >>~/.zshrc
 		fi
 	fi
 
@@ -212,33 +202,6 @@ updateConsole() {
 	echo "[Console Updater] : + Update console successful! +" | tee -a "$log_file"
 }
 
-# updateLibs update libs
-updateLibs() {
-	echo "" | tee -a "$log_file"
-
-	go get -u github.com/lib/pq
-	go get -u github.com/mattn/go-sqlite3
-
-	go get -u github.com/davecgh/go-spew
-
-	go get -u google.golang.org/grpc
-
-	go get -u github.com/gin-gonic/gin
-	go get -u github.com/gin-contrib/static
-	go get -u github.com/labstack/echo
-
-	go get -u github.com/dgrijalva/jwt-go
-
-	go get -u github.com/gorilla/websocket
-
-	go get -u github.com/spf13/cobra
-	go get -u github.com/spf13/viper
-
-	echo "[Libs Updater] : ----------------------" | tee -a "$log_file"
-
-	echo "" | tee -a "$log_file"
-	echo "[Libs Updater] : + Update Libs successful! +" | tee -a "$log_file"
-}
 main "$@"
 
 unset now
@@ -247,4 +210,3 @@ unset concatMissingCommand
 unset update_all
 unset update_editor
 unset update_console
-unset update_libs

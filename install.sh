@@ -23,7 +23,7 @@ main() {
 		echo -e "\tall" | tee -a "$log_file"
 		echo -e "\teditor" | tee -a "$log_file"
 		echo -e "\tconsole" | tee -a "$log_file"
-		echo "exit 1" | tee -a "$log_file"
+
 		exit 1
 	fi
 
@@ -40,13 +40,15 @@ main() {
 		requiredSudoCommands apt npm apt-key tee add-apt-repository
 
 		#--- check node version
-		nodeVersion="$(node --version | cut -d'.' -f1)"; nodeVersion="${nodeVersion#'v'}"
+		nodeVersion="$(node --version | cut -d'.' -f1)"
+		nodeVersion="${nodeVersion#'v'}"
 		if [ "$nodeVersion" -lt 11 ]; then
 			echo "[Editor Installer Error] : NodeJs version must be higher than v11.0.0 ( >= v12.0.0 )" | tee -a "$log_file"
 			echo "exit 1" | tee -a "$log_file"
 			exit 1
 		fi
-		goVersion="$(go version | cut -d' ' -f3 | cut -d'.' -f1)"; goVersion="${goVersion#'go'}"
+		goVersion="$(go version | cut -d' ' -f3 | cut -d'.' -f1)"
+		goVersion="${goVersion#'go'}"
 		goVersion2="$(go version | cut -d' ' -f3 | cut -d'.' -f2)"
 
 		if [ "$goVersion" -lt 1 ] || [ "$goVersion2" -lt 15 ]; then
@@ -104,29 +106,29 @@ main() {
 optstring=":n"
 while getopts ${optstring} arg; do
 	case ${arg} in
-		n)
-			no_providers=1
-			;;
-		?)
-			echo "[Installer Error] : Invalid option:"  | tee -a "$log_file"
-			echo -e "\t$OPTARG" | tee -a "$log_file"
-			echo "exit 1" | tee -a "$log_file"
-			exit 1
-			;;
+	n)
+		no_providers=1
+		;;
+	?)
+		echo "[Installer Error] : Invalid option:" | tee -a "$log_file"
+		echo -e "\t$OPTARG" | tee -a "$log_file"
+		echo "exit 1" | tee -a "$log_file"
+		exit 1
+		;;
 	esac
 done
 # excluding opts from the arguments
 for a; do
 	shift
 	case $a in
-		-*) opts+=("$a");;
-		*) set -- "$@" "$a";;
+	-*) opts+=("$a") ;;
+	*) set -- "$@" "$a" ;;
 	esac
 done
 # set vars with arguments
 for p in "$@"; do
 	eval install_"$p"=1
-done;
+done
 if [ "$#" == 0 ]; then
 	install_editor=1
 fi
@@ -138,7 +140,7 @@ requiredCommands() {
 		if ! p_tmp="$(type -p "$p")" || [[ -z $p_tmp ]]; then
 			concatMissingCommand+="\t$p\n"
 		fi
-	done;
+	done
 
 	if [[ -n $concatMissingCommand ]]; then
 		echo "[Installer Error] : Commands are required:" | tee -a "$log_file"
@@ -155,7 +157,7 @@ requiredSudoCommands() {
 		if ! p_tmp="$(sudo which "$p")" || [[ -z $p_tmp ]]; then
 			concatMissingCommand+="\tsudo $p\n"
 		fi
-	done;
+	done
 
 	if [[ -n $concatMissingCommand ]]; then
 		echo "[Installer Error] : Commands with SUDO are required:" | tee -a "$log_file"
@@ -167,7 +169,7 @@ requiredSudoCommands() {
 
 # installEditor install editor
 installEditor() {
-	echo "dark" > ~/.mode | tee -a "$log_file"
+	echo "dark" >~/.mode | tee -a "$log_file"
 
 	echo "" | tee -a "$log_file"
 	echo "[Editor Installer] : Adding yarn key, Updating yarn..." | tee -a "$log_file"
@@ -293,6 +295,9 @@ installEditor() {
 	echo "[Editor Installer] : - ... LuaCacheClear" | tee -a "$log_file"
 	lvim --headless -c "LuaCacheClear" -c "qall" &>/dev/null
 
+	go install github.com/klauspost/asmfmt/cmd/asmfmt@latest
+	go install github.com/bufbuild/buf/cmd/buf@latest
+	go install mvdan.cc/sh/v3/cmd/shfmt@latest
 	go install mvdan.cc/gofumpt@latest
 	go install golang.org/x/tools/gopls@latest
 	go install github.com/mgechev/revive@latest
@@ -307,7 +312,7 @@ installEditor() {
 
 # installConsole install console and tools
 installConsole() {
-	echo "dark" > ~/.mode | tee -a "$log_file"
+	echo "dark" >~/.mode | tee -a "$log_file"
 
 	echo "" | tee -a "$log_file"
 	echo "[Console Installer] : Installing tools..." | tee -a "$log_file"
@@ -346,7 +351,7 @@ installConsole() {
 
 	echo "" | tee -a "$log_file"
 	echo "[Console Installer] : Downloading Tmux Plugin Manager..." | tee -a "$log_file"
-	sudo rm -rf ~/.tmux/plugins  | tee -a "$log_file"
+	sudo rm -rf ~/.tmux/plugins | tee -a "$log_file"
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm 1>/dev/null | tee -a "$log_file"
 
 	echo "[Console Installer] : - Copying configuration Alacritty..." | tee -a "$log_file"
@@ -383,7 +388,7 @@ installConsole() {
 		exist_source=$(awk '$0 ~ "source ~/.zshrc.arthurnavah" { print }' ~/.zshrc 2>/dev/null)
 
 		if [ -z "$exist_source" ]; then
-			echo "source ~/.zshrc.arthurnavah" >> ~/.zshrc
+			echo "source ~/.zshrc.arthurnavah" >>~/.zshrc
 		fi
 	fi
 
@@ -391,7 +396,6 @@ installConsole() {
 	git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 	~/.fzf/install --all
 	echo "[Console Installer] : ----------------------" | tee -a "$log_file"
-
 
 	echo "" | tee -a "$log_file"
 	echo "[Console Installer] : + Installation Console successful! (Restarting the computer to use Zsh for the first time) +" | tee -a "$log_file"

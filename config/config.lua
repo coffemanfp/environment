@@ -255,6 +255,8 @@ vim.lsp.buf.formatting_sync(nil, 2000)
 -- formatters config
 local nullLsFormatters = require "lvim.lsp.null-ls.formatters"
 nullLsFormatters.setup {
+	{ exe = "shfmt" },
+	{ exe = "asmfmt" },
 	{ exe = "black" },
 	{
 		exe = "prettier",
