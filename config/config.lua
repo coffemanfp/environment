@@ -23,6 +23,7 @@ lvim.plugins = {
 	{ "folke/tokyonight.nvim" },
 	{ "tpope/vim-repeat" },
 	{ "fatih/vim-go" },
+	{ "rust-lang/rust.vim" },
 	{
 		"tpope/vim-surround",
 		keys = { "c", "d", "y" }
@@ -41,7 +42,6 @@ lvim.plugins = {
 		"norcalli/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup({ "*" }, {
-				names = true,
 				RGB = true, -- #RGB hex codes
 				RRGGBB = true, -- #RRGGBB hex codes
 				RRGGBBAA = true, -- #RRGGBBAA hex codes
@@ -49,6 +49,7 @@ lvim.plugins = {
 				hsl_fn = true, -- CSS hsl() and hsla() functions
 				css = true, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
 				css_fn = true, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+				names = true, -- "Name" codes like Blue
 			})
 		end,
 	},

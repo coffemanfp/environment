@@ -117,6 +117,18 @@ linters-settings:
             - "^print$(# Do not commit print statements, use the 'fmt' package instead)?"
             - "^println$(# Do not commit print statements, use the 'fmt' package instead)?"
 
+    varnamelen:
+        min-name-length: 2
+        max-distance: 8
+        ignore-decls:
+            - c echo.Context
+            - c *gin.Context
+            - t *testing.T
+            - b *testing.B
+            - i int
+            - w http.ResponseWriter
+            - r *http.Request
+
     revive:
         rules:
             - name: atomic
