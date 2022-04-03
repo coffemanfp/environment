@@ -1,26 +1,42 @@
 #!/bin/bash
-sudo apt remove -y --purge zsh
-sudo apt remove -y --purge tmux
-sudo apt remove -y --purge alacritty
-sudo apt remove -y --purge vim
-sudo apt remove -y --purge vim-editor
-sudo apt remove -y --purge neovim
-sudo apt remove -y --purge nvim
+echo "- Uninstalling zsh, tmux, alacritty, vim, neovim and lunarvim..."
+echo "- ... Phase 1/3"
+sudo apt remove -y --purge zsh &>/dev/null
+sudo apt remove -y --purge tmux &>/dev/null
+sudo apt remove -y --purge alacritty &>/dev/null
+sudo apt remove -y --purge vim &>/dev/null
+sudo apt remove -y --purge vim-editor &>/dev/null
+sudo apt remove -y --purge neovim &>/dev/null
+sudo apt remove -y --purge nvim &>/dev/null
 
-sudo snap remove --purge zsh 
-sudo snap remove --purge tmux
-sudo snap remove --purge alacritty
-sudo snap remove --purge vim
-sudo snap remove --purge vim-editor
-sudo snap remove --purge neovim
-sudo snap remove --purge nvim
+echo "- ... Phase 2/3"
+sudo snap remove --purge zsh &>/dev/null
+sudo snap remove --purge tmux &>/dev/null
+sudo snap remove --purge alacritty &>/dev/null
+sudo snap remove --purge vim &>/dev/null
+sudo snap remove --purge vim-editor &>/dev/null
+sudo snap remove --purge neovim &>/dev/null
+sudo snap remove --purge nvim &>/dev/null
 
-rm -rf ~/.config/lvim
-rm -rf ~/.config/nvim
-rm -rf ~/.local/share/nvim
-rm -rf ~/.local/share/lunarvim
-rm -rf ~/.local/bin/lvim
-rm -rf ~/.cache/nvim
-rm -rf ~/.config/alacritty
+echo "- ... Phase 3/3"
+bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/uninstall.sh) &>/dev/null
+echo "- Ready"
 
-bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/uninstall.sh)
+echo ""
+echo "- Deleting configuration files and caches..."
+echo "- ... Phase 1/1"
+rm -rf ~/.config/lvim &>/dev/null
+rm -rf ~/.config/nvim &>/dev/null
+rm -rf ~/.local/share/nvim &>/dev/null
+rm -rf ~/.local/share/lunarvim &>/dev/null
+rm -rf ~/.local/share/lvim &>/dev/null
+rm -rf ~/.local/bin/lvim &>/dev/null
+rm -rf ~/.cache/nvim &>/dev/null
+rm -rf ~/.cache/nvim.bak &>/dev/null
+rm -rf ~/.config/alacritty &>/dev/null
+rm -rf ~/snap/alacritty/common/.cache &>/dev/null
+rm -rf ~/.tmux &>/dev/null
+echo "- Ready"
+
+echo ""
+echo "+ Uninstallation is complete"
