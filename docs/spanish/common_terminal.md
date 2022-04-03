@@ -125,3 +125,8 @@ dd if=/dev/zero bs=4k iflag=fullblock,count_bytes count=2G of=./big_file.txt
 # or (without actually using up disk space)
 truncate -s 2G big_file.txt
 ```
+
+Obtener Gateway IP:
+```sh
+route -n
+```
