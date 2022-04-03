@@ -292,7 +292,6 @@ nullLsLinters.setup {
 	{ exe = "eslint" },
 	{ exe = "shellcheck" },
 	{ exe = "checkmake" },
-	{ exe = "buf" },
 	{ exe = "trail_space" },
 }
 
@@ -418,7 +417,7 @@ lvim.builtin.alpha.dashboard.section.header.val = {
 -- lsp config
 lvim.lsp.automatic_servers_installation = true
 require("lvim.lsp.manager").setup("emmet_ls")
-vim.list_extend(lvim.lsp.override, { "rust_analyzer" })
+require("lvim.lsp.manager").setup("rust_analyzer")
 
 -- lualine config
 local components = require("lvim.core.lualine.components")
