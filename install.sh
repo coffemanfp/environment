@@ -259,7 +259,7 @@ installEditor() {
 
 	echo "" | tee -a "$log_file"
 	echo "[Editor Installer] : Install LunarVim..." | tee -a "$log_file"
-	bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) --yes --install-dependencies
+	LV_BRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh) --yes --install-dependencies
 
 	echo "[Editor Installer] : - Copying configuration LunarVim..." | tee -a "$log_file"
 	cp ./config/config.lua ~/.config/lvim/. | tee -a "$log_file"

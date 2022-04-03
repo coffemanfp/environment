@@ -292,6 +292,7 @@ nullLsLinters.setup {
 	{ exe = "eslint" },
 	{ exe = "shellcheck" },
 	{ exe = "checkmake" },
+	{ exe = "buf" },
 }
 
 -- disable shellcheck in *.env files
