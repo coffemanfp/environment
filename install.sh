@@ -221,16 +221,10 @@ installEditor() {
 	sudo add-apt-repository -y ppa:jonathonf/vim
 	sudo apt update
 	sudo apt install -y vim
+
 	rm -rf downloads/ 2>/dev/null | tee -a "$log_file"
 	mkdir downloads/ | tee -a "$log_file"
 	cd downloads/ || exit
-	# curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage | tee -a "$log_file"
-	# chmod u+x nvim.appimage | tee -a "$log_file"
-	# ./nvim.appimage --appimage-extract | tee -a "$log_file"
-	# ./squashfs-root/AppRun --version | tee -a "$log_file"
-	# sudo rm -rf /nvim-arthurnavah/ | tee -a "$log_file"
-	# sudo rm /usr/bin/nvim | tee -a "$log_file"
-	# sudo mv squashfs-root /nvim-arthurnavah && sudo ln -s /nvim-arthurnavah/AppRun /usr/bin/nvim | tee -a "$log_file"
 	bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/rolling/utils/installer/install-neovim-from-release)
 	cd ..
 	echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
@@ -241,9 +235,9 @@ installEditor() {
 		echo "" | tee -a "$log_file"
 		echo "[Editor Installer] : Installing Providers for NeoVim..." | tee -a "$log_file"
 		sudo npm install -g neovim | tee -a "$log_file"
+		sudo npm install -g tree-sitter-cli | tee -a "$log_file"
 		sudo npm install -g eslint | tee -a "$log_file"
 		sudo npm install -g prettier | tee -a "$log_file"
-		sudo npm install -g tree-sitter-cli | tee -a "$log_file"
 		sudo npm install -g emmet-ls | tee -a "$log_file"
 		sudo npm install -g bash-language-server | tee -a "$log_file"
 		pip install black | tee -a "$log_file"
@@ -272,7 +266,6 @@ installEditor() {
 	mkdir -p ~/.config/lvim/lsp-settings/ | tee -a "$log_file"
 	cp ./config/gopls.json ~/.config/lvim/lsp-settings/. | tee -a "$log_file"
 	cp ./config/.golangci.yml ~/. | tee -a "$log_file"
-	# cp ./config/revive.toml ~/. | tee -a "$log_file"
 	sudo cp ./config/lvim.desktop /usr/local/share/applications/lvim.desktop | tee -a "$log_file"
 
 	echo "" | tee -a "$log_file"

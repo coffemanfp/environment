@@ -69,7 +69,7 @@ main() {
 
 	# installs
 	if [ "$update_console" == 1 ]; then
-		echo "[Console Updater] : Update Console..." | tee -a "$log_file"
+		echo "[Console Updater] : Update Console and Tools..." | tee -a "$log_file"
 
 		updateConsole
 	fi
@@ -133,40 +133,30 @@ requiredSudoCommands() {
 
 # updateEditor update editor
 updateEditor() {
-	sudo add-apt-repository -y ppa:jonathonf/vim
 	sudo apt update
 	sudo apt install -y --only-upgrade vim | tee -a "$log_file"
 
 	rm -rf downloads/ 2>/dev/null | tee -a "$log_file"
 	mkdir downloads/ | tee -a "$log_file"
 	cd downloads/ || exit
-	# curl -LO https://github.com/neovim/neovim/releases/download/nightly/nvim.appimage | tee -a "$log_file"
-	# chmod u+x nvim.appimage | tee -a "$log_file"
-	# ./nvim.appimage --appimage-extract | tee -a "$log_file"
-	# ./squashfs-root/AppRun --version | tee -a "$log_file"
-	# sudo rm -rf /nvim-arthurnavah/ | tee -a "$log_file"
-	# sudo rm /usr/bin/nvim | tee -a "$log_file"
-	# sudo mv squashfs-root /nvim-arthurnavah && sudo ln -s /nvim-arthurnavah/AppRun /usr/bin/nvim | tee -a "$log_file"
 	bash <(curl -s https://raw.githubusercontent.com/LunarVim/LunarVim/rolling/utils/installer/install-neovim-from-release)
 	cd ..
 
-	# copy configurations
+	echo "[Editor Updater] : - Copying configuration LunarVim..." | tee -a "$log_file"
 	cp ./config/config.lua ~/.config/lvim/. | tee -a "$log_file"
 	mkdir -p ~/.config/lvim/lsp-settings/ | tee -a "$log_file"
 	cp ./config/gopls.json ~/.config/lvim/lsp-settings/. | tee -a "$log_file"
 	cp ./config/.golangci.yml ~/. | tee -a "$log_file"
-	# cp ./config/revive.toml ~/. | tee -a "$log_file"
 	sudo cp ./config/lvim.desktop /usr/local/share/applications/lvim.desktop | tee -a "$log_file"
 
 	echo "[Editor Updater] : - Install plugins..." | tee -a "$log_file"
 	# lvim --headless -c "autocmd User PackerComplete quitall" -c "PackerSync" &>/dev/null
 	lvim --headless -c "LvimUpdate" -c "qall" &>/dev/null
-	lvim --headless -c "GoInstallBinaries" -c "qall" &>/dev/null
 	lvim --headless -c "UpdateRemotePlugins" -c "qall" &>/dev/null
-	lvim --headless -c "LuaCacheClear" -c "qall" &>/dev/null
 	lvim --headless -c "TSUpdateSync" -c "qall" &>/dev/null
 	lvim --headless -c "GoUpdateBinaries" -c "qall" &>/dev/null
 	lvim --headless -c "LuaCacheClear" -c "qall" &>/dev/null
+	lvim --headless -c "LvimCacheReset" -c "qall" &>/dev/null
 
 	echo "" | tee -a "$log_file"
 	echo "[Editor Updater] : + Update editor successful! +" | tee -a "$log_file"
@@ -183,6 +173,7 @@ updateConsole() {
 
 	# copy configurations
 	cp config/alacritty.yml ~/.config/alacritty/. | tee -a "$log_file"
+	cp config/.tmux.conf ~/. | tee -a "$log_file"
 
 	cp ./config/.zshrc.arthurnavah ~/.zshrc.arthurnavah | tee -a "$log_file"
 	# if they are different, add 'source' command to the end of the file
@@ -194,8 +185,6 @@ updateConsole() {
 			echo "source ~/.zshrc.arthurnavah" >>~/.zshrc
 		fi
 	fi
-
-	cp config/.tmux.conf ~/. | tee -a "$log_file"
 
 	bash ~/.tmux/plugins/tpm/scripts/update_plugins.sh | tee -a "$log_file"
 
