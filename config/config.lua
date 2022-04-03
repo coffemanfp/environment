@@ -1,16 +1,27 @@
--- commands install:
---  :LvimCacheReset
+-- Commands for new/first time installation:
+--  (Answer "y" to the question to remove the displayed plugins)
 --  :PackerSync
-
--- only if you need it:
+--
+--
+-- Commands for first installation:
 --  :GoInstallBinaries
+--
+--
+-- Optional commands:
+-- * Update plugins:
+--  :PackerSync
+--
+-- * Update Lunarvim:
+--  :LvimUpdate
+--
+-- * Pre-install/upgrade most common Language Servers:
+--  :LspInstall bashls clangd cmake cssls gopls intelephense jsonls lemminx prosemd_lsp pyright rust_analyzer solargraph sumneko_lua taplo tsserver vimls yamlls jsonls emmet_ls asm_lsp dockerls solang
+--
+-- * Upgrade Treesitter modules:
+--  :TSUpdate all
+--
+-- * Update Go Binaries:
 --  :GoUpdateBinaries
---  npm install -g tree-sitter-cli
---  npm install -g eslint
---  npm install -g prettier
---  npm install -g emmet-ls
---  npm install -g bash-language-server
---  pip install black
 
 ---- core plugins activation
 lvim.builtin.terminal.active = false

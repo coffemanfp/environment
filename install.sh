@@ -235,12 +235,6 @@ installEditor() {
 		echo "" | tee -a "$log_file"
 		echo "[Editor Installer] : Installing Providers for NeoVim..." | tee -a "$log_file"
 		sudo npm install -g neovim | tee -a "$log_file"
-		sudo npm install -g tree-sitter-cli | tee -a "$log_file"
-		sudo npm install -g eslint | tee -a "$log_file"
-		sudo npm install -g prettier | tee -a "$log_file"
-		sudo npm install -g emmet-ls | tee -a "$log_file"
-		sudo npm install -g bash-language-server | tee -a "$log_file"
-		pip install black | tee -a "$log_file"
 		pip3 install -U pynvim | tee -a "$log_file"
 		python3 -m pip install --user --upgrade pynvim | tee -a "$log_file"
 		pip3 install -U msgpack-python | tee -a "$log_file"
@@ -288,14 +282,20 @@ installEditor() {
 	echo "[Editor Installer] : - ... LuaCacheClear" | tee -a "$log_file"
 	lvim --headless -c "LuaCacheClear" -c "qall" &>/dev/null
 
-	go install github.com/klauspost/asmfmt/cmd/asmfmt@latest
-	go install github.com/mrtazz/checkmake/cmd/checkmake@latest
-	go install github.com/klauspost/asmfmt/cmd/asmfmt@latest
-	go install github.com/bufbuild/buf/cmd/buf@latest
-	go install mvdan.cc/sh/v3/cmd/shfmt@latest
-	go install mvdan.cc/gofumpt@latest
-	go install golang.org/x/tools/gopls@latest
-	go install github.com/mgechev/revive@latest
+	echo "[Editor Installer] : - ... Installing dependency commands" | tee -a "$log_file"
+	pip install black | tee -a "$log_file"
+	sudo npm install -g tree-sitter-cli | tee -a "$log_file"
+	sudo npm install -g eslint | tee -a "$log_file"
+	sudo npm install -g prettier | tee -a "$log_file"
+	sudo npm install -g emmet-ls | tee -a "$log_file"
+	sudo npm install -g bash-language-server | tee -a "$log_file"
+	go install github.com/klauspost/asmfmt/cmd/asmfmt@latest | tee -a "$log_file"
+	go install github.com/mrtazz/checkmake/cmd/checkmake@latest | tee -a "$log_file"
+	go install github.com/klauspost/asmfmt/cmd/asmfmt@latest | tee -a "$log_file"
+	go install mvdan.cc/sh/v3/cmd/shfmt@latest | tee -a "$log_file"
+	go install mvdan.cc/gofumpt@latest | tee -a "$log_file"
+	go install golang.org/x/tools/gopls@latest | tee -a "$log_file"
+	go install github.com/mgechev/revive@latest | tee -a "$log_file"
 	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)"/bin
 
 	echo "[Editor Installer] : + Installation Editor successful! +" | tee -a "$log_file"
