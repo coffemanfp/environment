@@ -199,9 +199,7 @@ vim.cmd [[
 autocmd ColorScheme * highlight VertSplit guibg=#16161E
 
 match ExtraWhitespace /\s\+$/
-autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#292e42
-autocmd FileType alpha,Dashboard highlight ExtraWhitespace ctermbg=none guibg=none
-autocmd BufWinLeave * call clearmatches()
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#3C4461
 ]]
 
 ---- mapping keys
@@ -293,6 +291,7 @@ nullLsLinters.setup {
 	{ exe = "golangci-lint" },
 	{ exe = "eslint" },
 	{ exe = "shellcheck" },
+	{ exe = "checkmake" },
 }
 
 -- disable shellcheck in *.env files
@@ -353,8 +352,9 @@ lvim.builtin.treesitter.ensure_installed = {
 	"java",
 	"php",
 	"make",
-	"cpp",
 	"c",
+	"cpp",
+	"solidity",
 
 	"bash",
 	"dockerfile",
@@ -377,6 +377,7 @@ lvim.builtin.treesitter.ensure_installed = {
 
 	"go",
 	"gomod",
+	"gowork",
 }
 
 -- alpha/dashboard config
@@ -535,7 +536,8 @@ command! Bo silent! execute "%bd|e#|bd#"
 
 command! Cpath silent! execute "!pwd | xclip -selection clipboard"
 
-command! SearchWhitespace silent! /\s\+$
+command! SearchExtraWhitespace silent! /\s\+$
+command! RemoveExtraWhitespace silent! :%s/\s\+$//e
 
 command! LinterStop execute "lua FuncLinterStop()"
 command! LinterDisable execute "lua FuncLinterDisable()"

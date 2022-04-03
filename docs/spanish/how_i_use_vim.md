@@ -7,7 +7,6 @@ Cuando empece en VIM sin conocimientos para moverme rapidamente en el editor no 
 ### Disclaimer
 
 En este articulo se da por hecho de que se tiene un conocimiento minimo de VIM, entendimiento del modo `NORMAL`, `INSERT`, `VISUAL`, `V-LINE` e `(INSERT)`, la key leader, y una nocion de los 'objetos' en VIM, en caso contrario se recomienda ver la documentacion y tours de VIM con `:h`.
-
 La distribucion de mi teclado es 'English (US)', es desde donde mas facilidad he sentido para acceder a los simbolos que utilizo con frecuencia intentando seguir las reglas de la mecanografia.
 
 No soy un experto en este editor, me considero ignorante de la gran mayoria de cosas que lo componen, esta es solo una recopilacion de mi utilizacion actual que me a servido para ser mas productivo al desarrollar software, tengo mucho que aprender, recomiendaciones y consejos que adoptar.
@@ -343,7 +342,7 @@ Este entorno usa [LunarVim](https://www.lunarvim.org/), por lo cual el comando e
 * Cerrar archivo del bufferline: `<Ctrl>c`
 * Mover archivo a la derecha en el bufferline: `<Ctrl>l`
 * Mover archivo a la izquierda en el bufferline: `<Ctrl>h`
-* Ir a un archivo del bufferline con su posicion: `<Alt>{number}` | example: `<Alt>2` 
+* Ir a un archivo del bufferline con su posicion: `<Alt>{number}` | example: `<Alt>2`
 
 * Comentar lineas toggle en modo `VISUAL`: `gc`
 * Comentar linea toggle en modo `NORMAL`: `gcc`
@@ -399,12 +398,15 @@ Este entorno usa [LunarVim](https://www.lunarvim.org/), por lo cual el comando e
 
 * Previsualizar Markdown: `:MarkdownPreview`
 
-* Buscar espacios en blanco al final de lineas: `:SearchWhitespace`
+* Buscar espacios en blanco al final de lineas: `:SearchExtraWhitespace`
+* Eliminar espacios en blanco al final de lineas: `:RemoveExtraWhitespace`
 
 * Recargar linters/null-ls: `:LinterRestart`
 * Desactivar linters/null-ls: `:LinterDisable`
 * Activar linters/null-ls: `:LinterEnable`
 * Detener linters/null-ls: `:LinterStop`
+
+* Desactivar el resaltado de busqueda: `:nohl` 
 
 * Cambiar a modo LightMode: `:LightMode`
 * Cambiar a modo DarkMode: `:DarkMode`

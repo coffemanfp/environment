@@ -296,6 +296,8 @@ installEditor() {
 	lvim --headless -c "LuaCacheClear" -c "qall" &>/dev/null
 
 	go install github.com/klauspost/asmfmt/cmd/asmfmt@latest
+	go install github.com/mrtazz/checkmake/cmd/checkmake@latest
+	go install github.com/klauspost/asmfmt/cmd/asmfmt@latest
 	go install github.com/bufbuild/buf/cmd/buf@latest
 	go install mvdan.cc/sh/v3/cmd/shfmt@latest
 	go install mvdan.cc/gofumpt@latest
