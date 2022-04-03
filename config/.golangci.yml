@@ -178,6 +178,7 @@ linters-settings:
               arguments:
                   - "crypto/md5"
                   - "crypto/sha1"
+                  - "io/ioutil"
 
             - name: line-length-limit
               arguments: [100]
