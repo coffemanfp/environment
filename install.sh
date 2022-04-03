@@ -187,7 +187,7 @@ installEditor() {
 	if [ "$no_providers" != 1 ]; then
 		echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 		sudo apt update 1>/dev/null | tee -a "$log_file"
-		sudo apt install -y python-setuptools python3-neovim python3-pip python3-dev python3-setuptools | tee -a "$log_file"
+		sudo apt install -y python-setuptools python3-neovim python3-pip python3-dev python3.8-venv python3-setuptools | tee -a "$log_file"
 		echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
 		requiredCommands pip3 cargo

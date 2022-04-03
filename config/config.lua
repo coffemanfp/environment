@@ -5,9 +5,9 @@
 -- only if you need it:
 --  :GoInstallBinaries
 --  :GoUpdateBinaries
+--  npm install -g tree-sitter-cli
 --  npm install -g eslint
 --  npm install -g prettier
---  npm install -g tree-sitter-cli
 --  npm install -g emmet-ls
 --  npm install -g bash-language-server
 --  pip install black
@@ -249,7 +249,7 @@ nullLs.setup({
 })
 
 -- increase timeout to 2 seconds
-vim.lsp.buf.formatting_sync(nil, 2000)
+vim.lsp.buf.formatting_sync(nil, 5000)
 
 -- formatters config
 local nullLsFormatters = require "lvim.lsp.null-ls.formatters"
@@ -293,6 +293,7 @@ nullLsLinters.setup {
 	{ exe = "shellcheck" },
 	{ exe = "checkmake" },
 	{ exe = "buf" },
+	{ exe = "trail_space" },
 }
 
 -- disable shellcheck in *.env files

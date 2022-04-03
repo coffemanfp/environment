@@ -197,10 +197,10 @@ lvim +checkhealth
 
 * Execute the required commands when installing this environment ([read ~/.config/lvim/config.lua](./config/config.lua))
 
-* The first save (`:w`) when installing this environment is slow, since it is caching.
+* The first save (`:w`) in a new project, or a first installation of this environment will be slow, because it is caching.
 
 ## Light Mode (outdated)
 
-To activate the 'light mode' execute the command `lightmode` or the alias `li`. To return to 'dark mode' execute the command `darkmode` or the alias `da`
+To activate the 'light mode' execute the command `lightmode`, or the alias `li`. To return to 'dark mode' execute the command `darkmode`, or the alias `da`
 
 To change mode in Vim run `:LightMode` or `:DarkMode`

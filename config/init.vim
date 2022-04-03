@@ -81,7 +81,7 @@ call dein#add('styled-components/vim-styled-components', { 'branch': 'main'})
 
 " typescript-vim - TypeScript Support
 call dein#add('leafgarland/typescript-vim')
-" vim-jsx-typescript - TSX syntax 
+" vim-jsx-typescript - TSX syntax
 call dein#add('peitalin/vim-jsx-typescript')
 
 " kommentary - Comments fast
@@ -201,7 +201,7 @@ filetype plugin indent on    " required
 set relativenumber
 set number
 set list
-set listchars=tab:\▏\ 
+set listchars=tab:\▏\
 
 set ruler
 
@@ -220,9 +220,9 @@ set smartcase
 set formatoptions+=1
 
 set updatetime=300
-set timeout 
-set ttimeout 
-set timeoutlen=200 
+set timeout
+set ttimeout
+set timeoutlen=200
 set ttimeoutlen=100
 set history=30
 set ttyfast
@@ -328,7 +328,7 @@ else
 	colorscheme monokai_pro
 
 	highlight Cursorline cterm=bold gui=bold
-	highlight NvimTreeNormal guibg=#1c1c1c 
+	highlight NvimTreeNormal guibg=#1c1c1c
 	highlight NvimTreeVertSplit guibg=#1c1c1c guifg=#1c1c1c
 endif
 
@@ -362,7 +362,7 @@ require'nvim-tree'.setup {
 		  { key = "i",                        cb = tree_cb("split") },
 		  { key = "t",                        cb = tree_cb("tabnew") },
 		  { key = "x",                        cb = tree_cb("close_node") },
-	  } 
+	  }
     }
   }
 }
@@ -485,7 +485,7 @@ let g:airline#extensions#branch#enabled=1
 let g:airline#extensions#tabline#tab_min_count = 2
 let g:airline#extensions#tabline#tabs_label = ''
 
-let g:airline_extensions = 
+let g:airline_extensions =
 	\ ['branch', 'quickfix', 'tabline', 'whitespace', 'coc']
 
 let g:airline_section_b = '%{airline#util#wrap(airline#extensions#branch#get_head(),80)}%{get(b:, "gitsigns_status", "")}'
@@ -692,7 +692,7 @@ function! DarkMode()
 	colorscheme monokai_pro
 
 	highlight Cursorline cterm=bold gui=bold
-	highlight NvimTreeNormal guibg=#1c1c1c 
+	highlight NvimTreeNormal guibg=#1c1c1c
 	highlight NvimTreeVertSplit guibg=#1c1c1c guifg=#1c1c1c
 
     silent exec "!echo 'dark' > ~/.mode"
