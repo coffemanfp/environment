@@ -41,7 +41,23 @@ watch -n 1 -d "<command>"
 Contar todas las linea de un proyecto (considerar excluir binarios y carpetas de dependencias como `node_modules/`):
 
 ```sh
-find | xargs cat 2>/dev/null | wc -l
+grep -r -I -l \
+	--exclude-dir="node_modules" \
+	--exclude-dir="vendor" \
+	--exclude-dir="dist" \
+	--exclude-dir="testdata" \
+	--exclude-dir=".git" \
+	--exclude-dir=".github" \
+	--exclude="package.json" \
+	--exclude="package-lock.json" \
+	--exclude="*.svg" \
+	--exclude="*.map" \
+	--exclude="*.sum" . \
+	--exclude="*.lock" . \
+	--exclude="*.log" . \
+	--exclude="LICENSE" . \
+	--exclude=".gitignore" . \
+	| xargs wc -l
 ```
 
 Copiar el path actual al portapapeles:
@@ -97,4 +113,15 @@ Geolocalizar tu IP Publica:
 ```sh
 curl ipinfo.io/"$(curl -s ipinfo.io/ip)"
 # alias "geoip"
+```
+
+Crear un archivo pesado:
+```sh
+fallocate -l 2G big_file.txt
+
+# or (takes a little longer)
+dd if=/dev/zero bs=4k iflag=fullblock,count_bytes count=2G of=./big_file.txt
+
+# or (without actually using up disk space)
+truncate -s 2G big_file.txt
 ```
