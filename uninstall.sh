@@ -20,7 +20,7 @@ sudo snap remove --purge nvim &>/dev/null
 
 echo "- ... Phase 3/3"
 bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/uninstall.sh) &>/dev/null
-echo "- Ready"
+echo "- ... Ready!"
 
 echo ""
 echo "- Deleting configuration files and caches..."
@@ -36,7 +36,7 @@ rm -rf ~/.cache/nvim.bak &>/dev/null
 rm -rf ~/.config/alacritty &>/dev/null
 rm -rf ~/snap/alacritty/common/.cache &>/dev/null
 rm -rf ~/.tmux &>/dev/null
-echo "- Ready"
+echo "- ... Ready!"
 
 echo ""
 echo "+ Uninstallation is complete"
