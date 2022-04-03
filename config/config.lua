@@ -1,6 +1,7 @@
 -- Commands for new/first time installation:
 --  (Answer "y" to the question to remove the displayed plugins)
 --  :PackerSync
+--  golangci-lint cache clean
 --
 --
 -- Commands for first installation:
