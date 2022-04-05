@@ -1,7 +1,8 @@
 -- Commands for new/first time installation:
 --  (Answer "y" to the question to remove the displayed plugins)
 --  :PackerSync
---  golangci-lint cache clean
+--
+--  !golangci-lint cache clean
 --
 --
 -- Commands for first installation:
@@ -16,7 +17,7 @@
 --  :LvimUpdate
 --
 -- * Pre-install/upgrade most common Language Servers:
---  :LspInstall bashls clangd cmake cssls gopls intelephense jsonls lemminx prosemd_lsp pyright rust_analyzer solargraph sumneko_lua taplo tsserver vimls yamlls jsonls emmet_ls asm_lsp dockerls solang
+--  :LspAutoInstall
 --
 -- * Upgrade Treesitter modules:
 --  :TSUpdate all
@@ -364,6 +365,7 @@ lvim.builtin.treesitter.ensure_installed = {
 	"rust",
 	"java",
 	"php",
+	"ruby",
 	"make",
 	"c",
 	"cpp",
@@ -387,6 +389,7 @@ lvim.builtin.treesitter.ensure_installed = {
 
 	"json",
 	"yaml",
+	"toml",
 
 	"go",
 	"gomod",
@@ -548,6 +551,8 @@ vim.cmd [[
 command! Bo silent! execute "%bd|e#|bd#"
 
 command! Cpath silent! execute "!pwd | xclip -selection clipboard"
+
+command! LspAutoInstall silent! execute "LspInstall bashls clangd cmake cssls gopls intelephense jsonls lemminx prosemd_lsp pyright rust_analyzer solargraph sumneko_lua taplo tsserver vimls yamlls jsonls emmet_ls asm_lsp dockerls solang"
 
 command! SearchExtraWhitespace silent! /\s\+$
 command! RemoveExtraWhitespace silent! :%s/\s\+$//e

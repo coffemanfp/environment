@@ -2,7 +2,25 @@
 
 Este entorno usa [LunarVim](https://www.lunarvim.org/), por lo cual el comando editor es `lvim`.
 
-Cuando empece en VIM sin conocimientos para moverme rapidamente en el editor no lo pense mucho, dejaba presionado `j` o `k` para moverme arriba o abajo en mi archivo, `h` y `j` para moverme en la linea... con el tiempo esto se hizo demasiado molesto asi que busque alternativas, empece a buscar como moverme rapidamente en VIM... esta en mi forma actual:
+Cuando empece en VIM sin conocimientos para moverme rapidamente en el editor no lo pense mucho, dejaba presionado `j` o `k` para moverme arriba o abajo en mi archivo, `h` y `j` para moverme en la linea... con el tiempo esto se hizo demasiado molesto asi que busque alternativas, empece a buscar como moverme rapidamente en VIM... esta en mi forma actual.
+
+#### Table of Contents
+
+1. **[Disclaimer](#disclaimer)**
+2. **[Key leader](#key-leader)**
+3. **[Fast moving in the file](#fast-moving-in-the-file)**
+	* 3.1 **[Actions in file](#actions-in-file)**
+4. **[Fast moving in the line](#fast-moving-in-the-line)**
+	* 4.1 **[Actions in line](#actions-in-line)**
+5. **[Other common actions](#other-common-actions)**
+6. **[File navigation](#file-navigation)**
+7. **[Tricks with Tabs and splits](#tricks-with-tabs-and-splits)**
+8. **[Replace text](#replace-text)**
+9. **[Macros](#macros)**
+10. **[Records](#records)**
+11. **[Indent lines](#indent-lines)**
+12. **[Suspend Vim](#suspend-vim)**
+13. **[:fire: Programming in Vim :fire:](#fire-programming-in-vim-fire)**
 
 ### Disclaimer
 
@@ -15,7 +33,7 @@ No soy un experto en este editor, me considero ignorante de la gran mayoria de c
 
 He configurado la key leader de mi VIM para utilizarla con `<Space>` (tecla de espacio), de esta forma tengo un acceso mas facil y rapido con ambas manos al tener una posicion de mecanografia.
 
-## Fast moving, in the file
+## Fast moving in the file
 
 Al abrir un archivo en VIM, utilizo `<Ctrl>f` para bajar y `<Ctrl>b` para subir en el archivo, avanzando y retrocediendo 'pagina entera' hasta encontrar lo que me interesa... si requiero desplazarme por un bloque de codigo cuidadosamente para visualizar a detalle lo que va sucediendo me muevo con `<Ctrl>d` para bajar y `<Ctrl>u` para subir 'media pagina'... si se necesita un scroll mas preciso utilizo `<Ctrl>e` para bajar suavemente el scroll y `<Ctrl>y` para subirlo, `zz` para centrar la pantalla con el cursor.
 
@@ -27,7 +45,7 @@ _La linea objetivo esta 13 lineas debajo de donde estoy_ : `13k`
 
 _Nota mental: el punto es dejar de moverse por el archivo solo dejando presionado `j` para bajar y `k` para subir, la idea es no hacer ningun movimiento innecesario, no necesitas pasar linea por linea para subir o bajar en un archivo, no necesitas esperar que el cursor llegue al borde de la pantalla para apenas entonces empezar a hacer scroll._
 
-#### Actions
+#### Actions in file
 
 * Ir al inicio del archivo: `gg`
 
@@ -53,7 +71,7 @@ _Nota mental: el punto es dejar de moverse por el archivo solo dejando presionad
 
 * Ir a una marca: `'{a-zA-Z}` (example: `'k`, va a la marca `k`, las marcas en mayuscula pueden ir a otros archivos)
 
-## Fast moving, in the line
+## Fast moving in the line
 
 Una vez que estoy en la linea en la que necesito moverme, utilizo `f` para buscar un caracter hacia delante o `F` para buscar un caracter hacia atras del cursor. Normalmente la primera busqueda por caracter no me lleva hasta donde necesito asi que solo repito la busqueda con `;` hasta ver el cursor en donde quiero llegar, por ejemplo :
 
@@ -76,7 +94,7 @@ Podria pulgar `fi;;` para ir al punto 1 y luego `,` para ir al punto 2.
 
 De resto usar `w` para avanzar una palabra o `b` para retroceder una palabra.
 
-#### Actions
+#### Actions in line
 
 * Inicio de la linea: `0`
 
@@ -208,7 +226,7 @@ Para hacer una busqueda de archivo utilizo el paquete [`telescope.nvim`](https:/
 
 * Abrir archivo en nueva tab (en modo `NORMAL`): `t`
 
-#### Tricks with tabs and splits
+#### Tricks with Tabs and Splits
 
 Con `<Ctrl-w>r` puedes rotar splits.
 
@@ -324,7 +342,7 @@ Programando suelo necesitar indentar lineas, en VIM puedo hacerlo con `<<` y `>>
 
 Se puede recurrir al indentado automatico por defecto que VIM considere correcto con `=`, puede usarse en un `range` y en modo `VISUAL`, por ejemplo... `gg=G` indentaria todo el archivo.
 
-## Suspender VIM
+## Suspend Vim
 
 Con `<Ctrl-z>` puedes suspender el estado actual de VIM y volver a la terminal, esto lo dejara como proceso de background... al igual que con otros procesos en background puedes volver a el ejecutando `%` en la terminal
 
@@ -406,7 +424,7 @@ Este entorno usa [LunarVim](https://www.lunarvim.org/), por lo cual el comando e
 * Activar linters/null-ls: `:LinterEnable`
 * Detener linters/null-ls: `:LinterStop`
 
-* Desactivar el resaltado de busqueda: `:nohl` 
+* Desactivar el resaltado de busqueda: `:nohl`
 
 * Cambiar a modo LightMode: `:LightMode`
 * Cambiar a modo DarkMode: `:DarkMode`
@@ -415,7 +433,7 @@ Este entorno usa [LunarVim](https://www.lunarvim.org/), por lo cual el comando e
 
 Esta configuracion incluye [vim-surround](https://github.com/tpope/vim-surround), para la utilizacion del mismo recomiendo leer su [README.markdown](https://github.com/tpope/vim-surround/blob/master/README.markdown) ya que explica todo lo fundamental
 
-## LightMode
+## LightMode (outdated)
 
 Soy un Digital Nomad, y entre muchas de las situaciones en las que he programado aveces he tenido el problema de que la luz natural opaque mucho mi editor mientras estoy desarrollando lo cual es bastante molesto, he encontrado una solucion en los temas "light" para estas situaciones... cuando la luz del dia no te permita ver bien tu editor un tema light podria ayudar, claro... cuando no programo fuera de casa o en un entorno con tanta luz solar uso los temas "dark" a los cuales se esta mas acostumbrado.
 
