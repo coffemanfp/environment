@@ -348,7 +348,7 @@ Con `<Ctrl-z>` puedes suspender el estado actual de VIM y volver a la terminal, 
 
 ---
 
-# 🔥 Programming in VIM 🔥
+# 🔥 Programming in Vim 🔥
 
 Este entorno usa [LunarVim](https://www.lunarvim.org/), por lo cual el comando editor es `lvim`.
 
