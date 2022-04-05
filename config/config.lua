@@ -552,7 +552,7 @@ command! Bo silent! execute "%bd|e#|bd#"
 
 command! Cpath silent! execute "!pwd | xclip -selection clipboard"
 
-command! LspAutoInstall silent! execute "LspInstall bashls clangd cmake cssls gopls intelephense jsonls lemminx prosemd_lsp pyright rust_analyzer solargraph sumneko_lua taplo tsserver vimls yamlls jsonls emmet_ls asm_lsp dockerls solang"
+command! LspAutoInstall silent! execute "LspInstall bashls clangd cmake cssls gopls intelephense jsonls lemminx prosemd_lsp pyright rust_analyzer solargraph sumneko_lua taplo tsserver vimls yamlls emmet_ls asm_lsp dockerls solang"
 
 command! SearchExtraWhitespace silent! /\s\+$
 command! RemoveExtraWhitespace silent! :%s/\s\+$//e
