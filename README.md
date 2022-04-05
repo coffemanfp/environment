@@ -14,15 +14,15 @@ _**[:scroll: Tutorials here :scroll:](./docs/README.md)**_
 
 #### Table of Contents
 
-1. **[:ballot_box_with_check: Features :ballot_box_with_check:](#ballot_box_with_check-features-ballot_box_with_check)**
+1. **[:ballot_box_with_check: Features :ballot_box_with_check:](#-features-)**
 2. **[:sparkles: Installation :sparkles:](#sparkles-installation-sparkles)**
-3. **[:information_source: After installation :information_source:](#information_source-after-installation-information_source)**
+3. **[:information_source: After installation :information_source:](#-after-installation-)**
 4. **[Requirements](#requirements)**
-5. **[:arrows_clockwise: Update :arrows_clockwise:](#arrows_clockwise-update-arrows_clockwise)**
-5. **[:gear: Custom configuration :gear:](#gear-custom-configuration-gear)**
-6. **[:keyboard: More keyboard speed :keyboard:](#keyboard-more-keyboard-speed-keyboard)**
-6. **[:warning: Precaution :warning:](#warning-precaution-warning)**
-6. **[:heart: LunarVim Checkhealth :heart:](#heart-lunarvim-checkhealth-heart)**
+5. **[:arrows_clockwise: Update :arrows_clockwise:](#-update-)**
+5. **[:gear: Custom configuration :gear:](#-custom-configuration-)**
+6. **[:keyboard: More keyboard speed :keyboard:](#-more-keyboard-speed-)**
+6. **[:warning: Precaution :warning:](#-precaution-)**
+6. **[:heart: LunarVim Checkhealth :heart:](#-lunarvim-checkhealth-)**
 7. **[Reminders](#reminders)**
 
 ## :ballot_box_with_check: Features :ballot_box_with_check:

@@ -20,7 +20,7 @@ Cuando empece en VIM sin conocimientos para moverme rapidamente en el editor no 
 10. **[Records](#records)**
 11. **[Indent lines](#indent-lines)**
 12. **[Suspend Vim](#suspend-vim)**
-13. **[:fire: Programming in Vim :fire:](#fire-programming-in-vim-fire)**
+13. **[:fire: Programming in Vim :fire:](#-programming-in-vim-)**
 
 ### Disclaimer
 
