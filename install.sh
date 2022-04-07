@@ -366,6 +366,7 @@ installConsole() {
 	echo "[Console Installer] : Installing Oh My ZSH!..." | tee -a "$log_file"
 	curl -L http://install.ohmyz.sh 2>/dev/null | sh | tee -a "$log_file"
 	wget --no-check-certificate http://install.ohmyz.sh -O - | sh | tee -a "$log_file"
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"/themes/powerlevel10k
 
 	echo "" | tee -a "$log_file"
 	echo "[Console Installer] : ----------------------" | tee -a "$log_file"
@@ -376,6 +377,7 @@ installConsole() {
 
 	echo "[Console Installer] : - Copying configuration Zsh..." | tee -a "$log_file"
 	cp ./config/.zshrc.arthurnavah ~/.zshrc.arthurnavah | tee -a "$log_file"
+	cp ./config/.p10k.zsh ~/.p10k.zsh | tee -a "$log_file"
 	touch ~/.zshrc
 	# if they are different, add 'source' command to the end of the file
 	[ ! -f ~/.zshrc ] && touch ~/.zshrc

@@ -176,6 +176,7 @@ updateConsole() {
 	cp config/.tmux.conf ~/. | tee -a "$log_file"
 
 	cp ./config/.zshrc.arthurnavah ~/.zshrc.arthurnavah | tee -a "$log_file"
+	cp ./config/.p10k.zsh ~/.p10k.zsh | tee -a "$log_file"
 	# if they are different, add 'source' command to the end of the file
 	[ ! -f ~/.zshrc ] && touch ~/.zshrc
 	if [ -n "$(diff ~/.zshrc ~/.zshrc.arthurnavah 2>/dev/null)" ]; then
