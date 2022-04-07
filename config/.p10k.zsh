@@ -190,6 +190,7 @@
   # Red prompt symbol if the last command failed.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_ERROR_{VIINS,VICMD,VIVIS,VIOWR}_FOREGROUND=196
   # Default prompt symbol.
+  # typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='%244F$(printf "\n\r╰─")%76F❯'
   typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VIINS_CONTENT_EXPANSION='❯'
   # Prompt symbol in command vi mode.
   typeset -g POWERLEVEL9K_PROMPT_CHAR_{OK,ERROR}_VICMD_CONTENT_EXPANSION='❮'
@@ -1571,6 +1572,23 @@
   # If p10k is already loaded, reload configuration.
   # This works even with POWERLEVEL9K_DISABLE_HOT_RELOAD=true.
   (( ! $+functions[p10k] )) || p10k reload
+
+  # arthurnavah Personal Config.
+  typeset -g POWERLEVEL9K_TRANSIENT_PROMPT=off
+
+  function p10k-on-pre-prompt() {
+    p10k display '1'=show
+  }
+
+  function p10k-on-post-prompt() {
+    if [[ $PWD == $my_last_dir ]]; then
+      p10k display '1'=hide
+    else
+      my_last_dir=$PWD
+
+      p10k display '1'=show '2'=show
+    fi
+  }
 }
 
 # Tell `p10k configure` which file it should overwrite.
