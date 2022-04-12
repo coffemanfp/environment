@@ -36,6 +36,7 @@ linters:
         - errname
         - errorlint
         - goerr113
+        - errcheck
         - exhaustive
         - exportloopref
         - forbidigo
@@ -110,6 +111,7 @@ linters:
         - exhaustivestruct
         - gci
         - lll
+        - wrapcheck
 
 linters-settings:
     forbidigo:
