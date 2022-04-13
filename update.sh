@@ -1,4 +1,5 @@
 #!/bin/bash
+
 mkdir logs &>/dev/null
 now=$(date +"%F+%T")
 log_file="$PWD/logs/update-$now.log"

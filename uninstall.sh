@@ -1,4 +1,5 @@
 #!/bin/bash
+
 echo "- Uninstalling zsh, tmux, alacritty, vim, neovim and lunarvim..."
 echo "- ... Phase 1/3"
 sudo apt remove -y --purge zsh &>/dev/null
