@@ -37,6 +37,7 @@ rm -rf ~/.cache/nvim.bak &>/dev/null
 rm -rf ~/.config/alacritty &>/dev/null
 rm -rf ~/snap/alacritty/common/.cache &>/dev/null
 rm -rf ~/.tmux &>/dev/null
+golangci-lint cache clear &>/dev/null
 echo "- ... Ready!"
 
 echo ""

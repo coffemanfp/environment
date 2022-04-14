@@ -148,6 +148,7 @@ updateEditor() {
 	mkdir -p ~/.config/lvim/lsp-settings/ | tee -a "$log_file"
 	cp ./config/gopls.json ~/.config/lvim/lsp-settings/. | tee -a "$log_file"
 	cp ./config/.golangci.yml ~/. | tee -a "$log_file"
+	golangci-lint cache clear &>/dev/null
 	sudo cp ./config/lvim.desktop /usr/local/share/applications/lvim.desktop | tee -a "$log_file"
 
 	echo "[Editor Updater] : - Install plugins..." | tee -a "$log_file"
