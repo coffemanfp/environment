@@ -372,6 +372,7 @@ Este entorno usa [LunarVim](https://www.lunarvim.org/), por lo cual el comando e
 * Ir a las implementaciones de una interface o metodo: `gi`
 * Ir a las referencias de la funcion: `gr`
 
+* Ver seccion de declaracion en una ventana flotante: `gp`
 * Ver documentacion/hover de un simbolo/codigo: `K`
 * Saltar a la ventana flotante de documentacion/hover: `KK`
 * Scroll en el autocompletado: `<Ctrl>f` | `<Ctrl>d`
