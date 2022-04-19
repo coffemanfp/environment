@@ -10,14 +10,11 @@
 --
 --
 -- Optional commands:
--- * Update plugins:
---  :PackerSync
---
--- * Update Lunarvim:
---  :LvimUpdate
---
 -- * Pre-install/upgrade most common Language Servers:
 --  :LspAutoInstall
+--
+-- * Update plugins:
+--  :PackerSync
 --
 -- * Upgrade Treesitter modules:
 --  :TSUpdate all
