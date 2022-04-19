@@ -36,7 +36,13 @@ Ejecutar un comando cada 1 segundo (`-n 1`) resaltando diferencias (`-d`):
 watch -n 1 -d "<command>"
 ```
 
-### Security
+### Develop
+
+Actualizar dependencias de un proyecto en Go:
+
+```sh
+go mod tidy && go get -u && go build
+```
 
 Escanear vulnerabilidades o problemas de seguridad de un proyecto en Go:
 
@@ -44,9 +50,7 @@ Escanear vulnerabilidades o problemas de seguridad de un proyecto en Go:
 gosec ./... ; go list -json -deps | nancy sleuth
 ```
 
-### Others
-
-Contar todas las linea de un proyecto (considerar excluir binarios y carpetas de dependencias como `node_modules/`):
+Contar todas las linea de un proyecto (agregar a los `--exclude` / `--exclude-dir` los archivos y carpetas que no les interesa contar):
 
 ```sh
 grep -r -I -l \
@@ -74,6 +78,19 @@ Copiar el path actual al portapapeles:
 pwd | xclip - selection clipboard:
 # alias "cpath"
 ```
+
+Crear un archivo pesado:
+```sh
+fallocate -l 2G big_file.txt
+
+# or (takes a little longer)
+dd if=/dev/zero bs=4k iflag=fullblock,count_bytes count=2G of=./big_file.txt
+
+# or (without actually using up disk space)
+truncate -s 2G big_file.txt
+```
+
+### Others
 
 Actualizar totalmente el sistema:
 
@@ -121,17 +138,6 @@ Geolocalizar tu IP Publica:
 ```sh
 curl ipinfo.io/"$(curl -s ipinfo.io/ip)"
 # alias "geoip"
-```
-
-Crear un archivo pesado:
-```sh
-fallocate -l 2G big_file.txt
-
-# or (takes a little longer)
-dd if=/dev/zero bs=4k iflag=fullblock,count_bytes count=2G of=./big_file.txt
-
-# or (without actually using up disk space)
-truncate -s 2G big_file.txt
 ```
 
 Obtener Gateway IP:
