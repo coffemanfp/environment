@@ -111,7 +111,6 @@ linters:
         - exhaustivestruct
         - gci
         - lll
-        - wrapcheck
 
 linters-settings:
     forbidigo:
@@ -130,6 +129,46 @@ linters-settings:
             - i int
             - w http.ResponseWriter
             - r *http.Request
+
+    govet:
+        check-shadowing: true
+        enable:
+            - asmdecl
+            - assign
+            - atomic
+            - atomicalign
+            - bools
+            - buildtag
+            - cgocall
+            - composites
+            - copylocks
+            - deepequalerrors
+            - errorsas
+            - fieldalignment
+            - findcall
+            - framepointer
+            - httpresponse
+            - ifaceassert
+            - loopclosure
+            - lostcancel
+            - nilfunc
+            - nilness
+            - printf
+            - reflectvaluecompare
+            - shadow
+            - shift
+            - sigchanyzer
+            - sortslice
+            - stdmethods
+            - stringintconv
+            - structtag
+            - testinggoroutine
+            - tests
+            - unmarshal
+            - unreachable
+            - unsafeptr
+            - unusedresult
+            - unusedwrite
 
     revive:
         rules:
