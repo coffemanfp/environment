@@ -298,6 +298,8 @@ installEditor() {
 	go install mvdan.cc/gofumpt@latest | tee -a "$log_file"
 	go install golang.org/x/tools/gopls@latest | tee -a "$log_file"
 	go install github.com/mgechev/revive@latest | tee -a "$log_file"
+	go install github.com/sonatype-nexus-community/nancy@latest | tee -a "$log_file"
+	curl -sfL https://raw.githubusercontent.com/securego/gosec/master/install.sh | sh -s -- -b "$(go env GOPATH)"/bin
 	curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b "$(go env GOPATH)"/bin
 
 	echo "[Editor Installer] : + Installation Editor successful! +" | tee -a "$log_file"

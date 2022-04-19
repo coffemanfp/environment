@@ -36,6 +36,14 @@ Ejecutar un comando cada 1 segundo (`-n 1`) resaltando diferencias (`-d`):
 watch -n 1 -d "<command>"
 ```
 
+### Security
+
+Escanear vulnerabilidades o problemas de seguridad de un proyecto en Go:
+
+```sh
+gosec ./... ; go list -json -deps | nancy sleuth
+```
+
 ### Others
 
 Contar todas las linea de un proyecto (considerar excluir binarios y carpetas de dependencias como `node_modules/`):
@@ -52,10 +60,10 @@ grep -r -I -l \
 	--exclude="package-lock.json" \
 	--exclude="*.svg" \
 	--exclude="*.map" \
-	--exclude="*.sum" . \
-	--exclude="*.lock" . \
-	--exclude="*.log" . \
-	--exclude="LICENSE" . \
+	--exclude="*.sum" \
+	--exclude="*.lock" \
+	--exclude="*.log" \
+	--exclude="LICENSE" \
 	--exclude=".gitignore" . \
 	| xargs wc -l
 ```
