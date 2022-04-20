@@ -13,6 +13,18 @@ go install github.com/go-delve/delve/cmd/dlv@latest
 dlv debug
 ```
 
+### Iniciar sesion de depuracion en un proceso en ejecusion
+
+```sh
+dlv attach <PID>
+```
+
+### Iniciar sesion de depuracion en archivos de testing
+
+```sh
+dlv test
+```
+
 ### Saber donde te encuentras
 
 ```sh
