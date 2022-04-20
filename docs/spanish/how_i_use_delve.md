@@ -125,12 +125,19 @@ restart
 
 ```sh
 print
+# alias: p
 ```
 
-### Imprimir todas las variables locales
+### Ver todas las variables locales
 
 ```sh
 locals
+```
+
+### Ver y buscar todas las funciones disponibles
+
+```sh
+funcs
 ```
 
 ### Examina el valor raw de una direccion de memoria
