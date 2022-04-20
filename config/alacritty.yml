@@ -49,6 +49,8 @@ shell:
 key_bindings:
     - { key: F11, mods: None, action: ToggleFullscreen }
 
+background_opacity: 0.98
+
 # TokyoNight Alacritty Colors
 colors:
     # Default colors

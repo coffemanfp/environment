@@ -65,7 +65,7 @@ Utilizo `tmux` para multiplexar mi terminal con varios splits y paneles, he camb
 
 * Moverte entre splits (con movimientos de Vim): `<Ctrl>a{h, j, k, l}` | example: `<Ctrl>al`
 
-* Redimensionar split (con movimientos de Vim): `<Ctrl>a{H, J, K, L}` | example: `<Ctrl>aL`
+* Redimensionar split (con movimientos de Vim): `<Ctrl>a{<, +, -, >}` | example: `<Ctrl>a>`
 
 * Modo de movimiento Vi: `<Ctrl>a[`
 
