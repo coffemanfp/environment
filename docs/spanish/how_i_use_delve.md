@@ -52,6 +52,9 @@ break ./main.go:20
 
 # or relative line based on a statement
 break main.main:2
+
+# or when you are already in a statement you can specify the line in the file
+break 13
 ```
 
 Solo puedes crear breakpoints en lineas del statement.
