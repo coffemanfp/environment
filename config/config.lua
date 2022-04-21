@@ -203,6 +203,8 @@ vim.opt.sidescrolloff = 8
 
 -- colorscheme theme
 vim.g.tokyonight_style = "night"
+vim.g.tokyonight_transparent = true
+
 lvim.colorscheme = "tokyonight"
 
 vim.cmd [[
@@ -487,6 +489,15 @@ lvim.builtin.telescope.defaults.mappings = {
 }
 
 -- bufferline config
+lvim.builtin.bufferline.highlights.background = {
+	guibg = "#16161E",
+	gui = "italic",
+}
+
+lvim.builtin.bufferline.highlights.buffer_selected = {
+	guibg = "#16161E",
+	gui = "bold",
+}
 lvim.builtin.bufferline.options.buffer_close_icon = ""
 lvim.builtin.bufferline.options.close_icon = ""
 lvim.builtin.bufferline.options.diagnostics_indicator = function(count, level)
