@@ -203,6 +203,7 @@ vim.opt.sidescrolloff = 8
 
 -- colorscheme theme
 vim.g.tokyonight_style = "night"
+
 vim.g.tokyonight_transparent = true
 
 lvim.colorscheme = "tokyonight"
@@ -212,6 +213,14 @@ autocmd ColorScheme * highlight VertSplit guibg=#16161E
 
 match ExtraWhitespace /\s\+$/
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=darkred guibg=#3C4461
+
+" transparent config
+au ColorScheme * hi Normal ctermbg=none guibg=none
+au ColorScheme * hi SignColumn ctermbg=none guibg=none
+au ColorScheme * hi NormalNC ctermbg=none guibg=none
+au ColorScheme * hi MsgArea ctermbg=none guibg=none
+au ColorScheme * hi TelescopeBorder ctermbg=none guibg=none
+let &fcs='eob: '
 ]]
 
 ---- mapping keys
@@ -429,6 +438,8 @@ lvim.builtin.alpha.dashboard.section.header.val = {
 }
 
 -- lsp config
+lvim.lsp.templates_dir = join_paths(get_runtime_dir(), "after", "ftplugin")
+
 lvim.lsp.automatic_servers_installation = true
 require("lvim.lsp.manager").setup("emmet_ls")
 require("lvim.lsp.manager").setup("rust_analyzer")
@@ -489,14 +500,24 @@ lvim.builtin.telescope.defaults.mappings = {
 }
 
 -- bufferline config
-lvim.builtin.bufferline.highlights.background = {
-	guibg = "#16161E",
-	gui = "italic",
-}
+local blackColor = "#16161E"
 
-lvim.builtin.bufferline.highlights.buffer_selected = {
-	guibg = "#16161E",
-	gui = "bold",
+lvim.builtin.bufferline.highlights.background.guibg = blackColor
+lvim.builtin.bufferline.highlights.buffer_selected.guibg = blackColor
+lvim.builtin.bufferline.highlights.buffer_visible = {
+	guibg = blackColor
+}
+lvim.builtin.bufferline.highlights.separator_selected = {
+	guibg = blackColor
+}
+lvim.builtin.bufferline.highlights.separator_visible = {
+	guibg = blackColor
+}
+lvim.builtin.bufferline.highlights.separator = {
+	guibg = blackColor
+}
+lvim.builtin.bufferline.highlights.fill = {
+	guibg = blackColor
 }
 
 lvim.builtin.bufferline.options.buffer_close_icon = ""
