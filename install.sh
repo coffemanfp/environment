@@ -173,14 +173,8 @@ installEditor() {
 	echo "dark" >~/.mode | tee -a "$log_file"
 
 	echo "" | tee -a "$log_file"
-	echo "[Editor Installer] : Adding yarn key, Updating yarn..." | tee -a "$log_file"
-	curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - &>/dev/null
 
-	echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-
-	curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
-
-	sudo apt install -y fonts-powerline curl git xclip silversearcher-ag yarn | tee -a "$log_file"
+	sudo apt install -y fonts-powerline curl git xclip silversearcher-ag | tee -a "$log_file"
 	sudo apt install -y ripgrep | tee -a "$log_file"
 	sudo apt install -y fd-find | tee -a "$log_file"
 	sudo ln -s "$(command -v fdfind)" /usr/bin/fd
@@ -231,6 +225,7 @@ installEditor() {
 	echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 
 	requiredCommands nvim
+	sudo npm install -g yarn | tee -a "$log_file"
 
 	if [ "$no_providers" != 1 ]; then
 		echo "" | tee -a "$log_file"
