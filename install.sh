@@ -235,7 +235,6 @@ installEditor() {
 		python3 -m pip install --user --upgrade pynvim | tee -a "$log_file"
 		pip3 install -U msgpack-python | tee -a "$log_file"
 		python3 -mpip install --user -U msgpack | tee -a "$log_file"
-		yarn install --froken-lockfile | tee -a "$log_file"
 		echo "[Editor Installer] : ----------------------" | tee -a "$log_file"
 	fi
 
@@ -249,8 +248,8 @@ installEditor() {
 
 	echo "" | tee -a "$log_file"
 	echo "[Editor Installer] : Install LunarVim..." | tee -a "$log_file"
-	# LV_BRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh) --yes --install-dependencies
-	bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) --yes --install-dependencies
+	LV_BRANCH=rolling bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/rolling/utils/installer/install.sh) --yes --install-dependencies
+	# bash <(curl -s https://raw.githubusercontent.com/lunarvim/lunarvim/master/utils/installer/install.sh) --yes --install-dependencies
 
 	echo "[Editor Installer] : - Copying configuration LunarVim..." | tee -a "$log_file"
 	cp ./config/config.lua ~/.config/lvim/. | tee -a "$log_file"
