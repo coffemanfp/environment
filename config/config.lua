@@ -498,6 +498,7 @@ lvim.builtin.bufferline.highlights.buffer_selected = {
 	guibg = "#16161E",
 	gui = "bold",
 }
+
 lvim.builtin.bufferline.options.buffer_close_icon = ""
 lvim.builtin.bufferline.options.close_icon = ""
 lvim.builtin.bufferline.options.diagnostics_indicator = function(count, level)
